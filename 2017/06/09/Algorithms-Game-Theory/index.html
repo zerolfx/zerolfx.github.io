@@ -93,16 +93,16 @@
 
 
 
-<meta name="description" content="你好，世界！">
+<meta name="description" content="基本思想 游戏可以等效为一个有向图，每一个状态相当于图中的一个节点，而可能的状态转移是图中的边。如果必胜态的后继中存在必败态，而必败态的后继全是必胜态。 SG函数 \[ SG(u) = mex\{ SG(v)|u \to v \} \] 函数值为 0 代表必败态，不为 0 代表必胜态。（也就是说，0 只能转移到非 0，而非 0 一定能转移到 0。） 一个组合游戏的 SG 和等于所有子游戏的异或和。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2017/06/08/hello-world/index.html">
+<meta property="og:title" content="算法 - 博弈问题">
+<meta property="og:url" content="http://yoursite.com/2017/06/09/Algorithms-Game-Theory/index.html">
 <meta property="og:site_name" content="Zerol&#39;s Notes">
-<meta property="og:description" content="你好，世界！">
-<meta property="og:updated_time" content="2017-06-08T13:04:02.240Z">
+<meta property="og:description" content="基本思想 游戏可以等效为一个有向图，每一个状态相当于图中的一个节点，而可能的状态转移是图中的边。如果必胜态的后继中存在必败态，而必败态的后继全是必胜态。 SG函数 \[ SG(u) = mex\{ SG(v)|u \to v \} \] 函数值为 0 代表必败态，不为 0 代表必胜态。（也就是说，0 只能转移到非 0，而非 0 一定能转移到 0。） 一个组合游戏的 SG 和等于所有子游戏的异或和。">
+<meta property="og:updated_time" content="2017-06-09T16:10:51.883Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="你好，世界！">
+<meta name="twitter:title" content="算法 - 博弈问题">
+<meta name="twitter:description" content="基本思想 游戏可以等效为一个有向图，每一个状态相当于图中的一个节点，而可能的状态转移是图中的边。如果必胜态的后继中存在必败态，而必败态的后继全是必胜态。 SG函数 \[ SG(u) = mex\{ SG(v)|u \to v \} \] 函数值为 0 代表必败态，不为 0 代表必胜态。（也就是说，0 只能转移到非 0，而非 0 一定能转移到 0。） 一个组合游戏的 SG 和等于所有子游戏的异或和。">
 
 
 
@@ -130,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/06/08/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/06/09/Algorithms-Game-Theory/"/>
 
 
 
 
 
-  <title>Hello World | Zerol's Notes</title>
+  <title>算法 - 博弈问题 | Zerol's Notes</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -299,7 +299,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/08/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/09/Algorithms-Game-Theory/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zerol">
@@ -316,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">算法 - 博弈问题</h1>
         
 
         <div class="post-meta">
@@ -328,8 +328,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-08T20:00:00+08:00">
-                2017-06-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-09T22:30:27+08:00">
+                2017-06-09
               </time>
             
 
@@ -339,6 +339,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithms/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithms</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -347,9 +369,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/06/08/hello-world/#comments" itemprop="discussionUrl">
+                <a href="/2017/06/09/Algorithms-Game-Theory/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/08/hello-world/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/06/09/Algorithms-Game-Theory/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -374,7 +396,20 @@
       
 
       
-        <p>你好，世界！</p>
+        <h2 id="基本思想">基本思想</h2>
+<p>游戏可以等效为一个有向图，每一个状态相当于图中的一个节点，而可能的状态转移是图中的边。如果必胜态的后继中存在必败态，而必败态的后继全是必胜态。</p>
+<h2 id="sg函数">SG函数</h2>
+<p><span class="math display">\[ SG(u) = mex\{ SG(v)|u \to v \} \]</span> 函数值为 0 代表必败态，不为 0 代表必胜态。（也就是说，0 只能转移到非 0，而非 0 一定能转移到 0。） 一个组合游戏的 SG 和等于所有子游戏的异或和。 <a id="more"></a> ## Anti-SG 和 SJ 定理 Anti-SG 游戏： 走完最后一步的一方输，也就是说，SG 为 0 的局面不一定为终止局面。</p>
+<p>SJ 定理： 对于 Anti-SG 游戏，如果游戏结束的条件是所有子游戏的 SG 值均为 0 时，那么先手必胜的条件是： <strong>SG 值不为零</strong> xor <strong>没有子游戏 SG 值大于1</strong></p>
+<h2 id="every-sg">Every-SG</h2>
+<p>每一个非终止状态的子游戏必须进行操作。 <span class="math display">\[
+step(v) =
+\begin{cases}
+0, &amp; \text{$v$ 为终止状态} \\
+max\{step(u)|SG(u)=0\}+1,  &amp; \text{$SG(v)&gt;0$} \\
+min\{step(u)\}, &amp; \text{$SG(v)=0$}  \\
+\end{cases}
+\]</span> 先手必胜的充要条件：所有子游戏中最大的 step 值为奇数</p>
 
       
     </div>
@@ -411,15 +446,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/06/08/Linux-Another-Home/" rel="next" title="Linux - Another Home">
+                <i class="fa fa-chevron-left"></i> Linux - Another Home
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/06/08/Linux-Another-Home/" rel="prev" title="Linux - Another Home">
-                Linux - Another Home <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -473,8 +508,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -527,6 +571,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本思想"><span class="nav-number">1.</span> <span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sg函数"><span class="nav-number">2.</span> <span class="nav-text">SG函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#every-sg"><span class="nav-number">3.</span> <span class="nav-text">Every-SG</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -671,9 +731,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2017/06/08/hello-world/';
-          this.page.identifier = '2017/06/08/hello-world/';
-          this.page.title = 'Hello World';
+          this.page.url = 'http://yoursite.com/2017/06/09/Algorithms-Game-Theory/';
+          this.page.identifier = '2017/06/09/Algorithms-Game-Theory/';
+          this.page.title = '算法 - 博弈问题';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://zerolblog.disqus.com/embed.js';

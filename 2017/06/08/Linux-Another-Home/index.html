@@ -93,16 +93,16 @@
 
 
 
-<meta name="description" content="这篇文章的主要目的是记录我在使用 Linux 的过程中遇到的坑和相应的解决方案，次要目的是帮助读者快速构建一个舒适的 Linux 使用环境。 发行版的选择起初我选择的是 Ubuntu，其主要原因有如下几点：  用户的基数大，遇到问题能够方便得找到相应的解决方案 “网易云音乐”、“搜狗输入法”等应用提供的安装包是 Deb 包（ Ubuntu 可以直接安装，而 Debian 家族以外的发行版无法直接使">
+<meta name="description" content="这篇文章的主要目的是记录我在使用 Linux 的过程中遇到的坑和相应的解决方案，次要目的是帮助读者快速构建一个舒适的 Linux 使用环境。后文的描述基于 Arch Linux 和 KDE 的方案，大部分也适用于 Kubuntu 用户。 发行版的选择 起初我选择的是 Ubuntu，其主要原因有如下几点： + 用户的基数大，遇到问题能够方便得找到相应的解决方案 + “网易云音乐”、“搜狗输入法”等应">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux - Another Home">
 <meta property="og:url" content="http://yoursite.com/2017/06/08/Linux-Another-Home/index.html">
 <meta property="og:site_name" content="Zerol&#39;s Notes">
-<meta property="og:description" content="这篇文章的主要目的是记录我在使用 Linux 的过程中遇到的坑和相应的解决方案，次要目的是帮助读者快速构建一个舒适的 Linux 使用环境。 发行版的选择起初我选择的是 Ubuntu，其主要原因有如下几点：  用户的基数大，遇到问题能够方便得找到相应的解决方案 “网易云音乐”、“搜狗输入法”等应用提供的安装包是 Deb 包（ Ubuntu 可以直接安装，而 Debian 家族以外的发行版无法直接使">
-<meta property="og:updated_time" content="2017-06-09T03:04:21.730Z">
+<meta property="og:description" content="这篇文章的主要目的是记录我在使用 Linux 的过程中遇到的坑和相应的解决方案，次要目的是帮助读者快速构建一个舒适的 Linux 使用环境。后文的描述基于 Arch Linux 和 KDE 的方案，大部分也适用于 Kubuntu 用户。 发行版的选择 起初我选择的是 Ubuntu，其主要原因有如下几点： + 用户的基数大，遇到问题能够方便得找到相应的解决方案 + “网易云音乐”、“搜狗输入法”等应">
+<meta property="og:updated_time" content="2017-06-09T16:10:57.926Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux - Another Home">
-<meta name="twitter:description" content="这篇文章的主要目的是记录我在使用 Linux 的过程中遇到的坑和相应的解决方案，次要目的是帮助读者快速构建一个舒适的 Linux 使用环境。 发行版的选择起初我选择的是 Ubuntu，其主要原因有如下几点：  用户的基数大，遇到问题能够方便得找到相应的解决方案 “网易云音乐”、“搜狗输入法”等应用提供的安装包是 Deb 包（ Ubuntu 可以直接安装，而 Debian 家族以外的发行版无法直接使">
+<meta name="twitter:description" content="这篇文章的主要目的是记录我在使用 Linux 的过程中遇到的坑和相应的解决方案，次要目的是帮助读者快速构建一个舒适的 Linux 使用环境。后文的描述基于 Arch Linux 和 KDE 的方案，大部分也适用于 Kubuntu 用户。 发行版的选择 起初我选择的是 Ubuntu，其主要原因有如下几点： + 用户的基数大，遇到问题能够方便得找到相应的解决方案 + “网易云音乐”、“搜狗输入法”等应">
 
 
 
@@ -238,9 +238,43 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -305,6 +339,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -340,68 +396,31 @@
       
 
       
-        <p>这篇文章的主要目的是记录我在使用 Linux 的过程中遇到的坑和相应的解决方案，次要目的是帮助读者快速构建一个舒适的 Linux 使用环境。</p>
-<h2 id="发行版的选择"><a href="#发行版的选择" class="headerlink" title="发行版的选择"></a>发行版的选择</h2><p>起初我选择的是 Ubuntu，其主要原因有如下几点：</p>
-<ul>
-<li>用户的基数大，遇到问题能够方便得找到相应的解决方案</li>
-<li>“网易云音乐”、“搜狗输入法”等应用提供的安装包是 Deb 包（ Ubuntu 可以直接安装，而 Debian 家族以外的发行版无法直接使用）</li>
-</ul>
-<p>在使用 Ubuntu 将近一年后，我选择了 Arch Linux，它不仅拥有对我而言 Ubuntu 所有的优势，还提供了额外的便利：</p>
-<ul>
-<li>官方仓库和用户软件仓库（AUR）提供了我想要的全部，包括上文中的“网易云音乐”和“搜狗输入法”。</li>
-<li>拥有官方 Wiki，对于解决实际问题和学习 Linux 很有帮助</li>
-<li>没有预装可有可无的软件包，用户拥有更大的选择余地</li>
-</ul>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>由于 Arch 的安装是在 CLI（命令行）下进行的，对于新用户可能有些困难。而在官方 Wiki 和网上教程的帮助下，完成安装应该也不成问题。</p>
-<h2 id="桌面环境的选择"><a href="#桌面环境的选择" class="headerlink" title="桌面环境的选择"></a>桌面环境的选择</h2><p>在尝试过许多桌面环境后，我体会到了 KDE 的可贵。</p>
-<ul>
-<li>可定制性远强于其他桌面环境。<ul>
-<li>有许多桌面控件可供选用（后文会有介绍）</li>
-<li>可以很方便得修改 panel 的样式，于是我可以很轻松地将桌面从 Win10 风格切换至 OS X 风格。</li>
-<li>可以在系统设置中修改动画效果</li>
-<li>提供了虚拟桌面（Virtual desktops）和活动（Activities）的功能</li>
-<li>可以修改主题、图标、窗口样式，而且默认主题十分美观</li>
-</ul>
-</li>
-<li>系统设置丰富 （有些东西没法通过图形界面设置的话就只能通过命令行或者修改配置文件来达到目的，十分不便）</li>
-<li>有些集成的软件十分好用，比如文件管理器 dolphin，终端 konsole，便签 Knotes（当然无论是什么桌面环境这些应用都可以做相应的替换，但是原生不容易出问题，体验也更为一致）。</li>
-<li>缺点<ul>
-<li>集成了一些无用的软件，虽然可以在安装时进行筛选</li>
-<li>设置中播放设备的选择太过繁琐</li>
-<li>难以名状的 Bug，这个似乎很难避免，只要数量不多频率不高问题不大还是可以忍受一些的</li>
-</ul>
-</li>
-</ul>
+        <p>这篇文章的主要目的是记录我在使用 Linux 的过程中遇到的坑和相应的解决方案，次要目的是帮助读者快速构建一个舒适的 Linux 使用环境。后文的描述基于 Arch Linux 和 KDE 的方案，大部分也适用于 Kubuntu 用户。</p>
+<h2 id="发行版的选择">发行版的选择</h2>
+<p>起初我选择的是 Ubuntu，其主要原因有如下几点： + 用户的基数大，遇到问题能够方便得找到相应的解决方案 + “网易云音乐”、“搜狗输入法”等应用提供的安装包是 Deb 包（ Ubuntu 可以直接安装，而 Debian 家族以外的发行版无法直接使用）</p>
+<p>在使用 Ubuntu 将近一年后，我选择了 Arch Linux，它不仅拥有对我而言 Ubuntu 所有的优势，还提供了额外的便利： + 官方仓库和用户软件仓库（AUR）提供了我想要的全部，包括上文中的“网易云音乐”和“搜狗输入法”。 + 拥有官方 Wiki，对于解决实际问题和学习 Linux 很有帮助 + 没有预装可有可无的软件包，用户拥有更大的选择余地 <a id="more"></a> ## 安装 由于 Arch 的安装是在 CLI（命令行）下进行的，对于新用户可能有些困难。而在官方 Wiki 和网上教程的帮助下，完成安装应该也不成问题。</p>
+<h2 id="桌面环境的选择">桌面环境的选择</h2>
+<p>在尝试过许多桌面环境后，我体会到了 KDE 的可贵。 + 可定制性远强于其他桌面环境。 + 有许多桌面控件可供选用（后文会有介绍）算法—— 博弈 + 可以很方便得修改 panel 的样式，于是我可以很轻松地将桌面从 Win10 风格切换至 OS X 风格。 + 可以在系统设置中修改动画效果 + 提供了虚拟桌面（Virtual desktops）和活动（Activities）的功能 + 可以修改主题、图标、窗口样式，而且默认主题十分美观 + 系统设置丰富 （有些东西没法通过图形界面设置的话就只能通过命令行或者修改配置文件来达到目的，十分不便） + 有些集成的软件十分好用，比如文件管理器 dolphin，终端 konsole，便签 Knotes（当然无论是什么桌面环境这些应用都可以做相应的替换，但是原生不容易出问题，体验也更为一致）。 + 缺点 + 集成了一些无用的软件，虽然可以在安装时进行筛选 + 设置中播放设备的选择太过繁琐 + 难以名状的 Bug，这个似乎很难避免，只要数量不多频率不高问题不大还是可以忍受一些的</p>
 <p>KDE 的安装也十分便捷，参照 Wiki 即可，配合 SDDM 风味更佳。</p>
-<h2 id="常用软件"><a href="#常用软件" class="headerlink" title="常用软件"></a>常用软件</h2><p>以下均为包名，可以直接安装（有些属于 AUR）</p>
+<h2 id="常用软件">常用软件</h2>
+<p>以下均为包名，可以直接安装（有些属于 AUR） + chromium / firefox / google-chrome 浏览器三选一 + shadowsocks-qt5 科学上网 + wps-office &amp; ttf-wps-fonts WPS + netease-cloud-music 网易云音乐 + youdao-dict 有道词典 + fcitx-sogoupinyin 搜狗拼音 + calibre 电子书管理 + atom 文本编辑器 + redshift 屏幕色温调节 + uget 多线程下载工具，支持磁链、种子（如果选用 aria2 作为后端） + vlc 视频播放器</p>
+<p>以下软件给出安装方法 + <a href="https://tiebamma.github.io/InstallTutorial/" target="_blank" rel="external">Mathematica</a> 数学计算 + <a href="https://www.jetbrains.com/" target="_blank" rel="external">Jetbrains</a> 智能又强大的 IDE</p>
+<h3 id="qq的安装">QQ的安装</h3>
+<p>解决方案：crossover 16 或 deepin-QQ with crossover 15 <a href="https://www.findhao.net/easycoding/1748" target="_blank" rel="external">参考链接</a><br>
+crossover 16 有对多个版本的 QQ 的官方支持，建议购买正版，有试用期。<br>
+备选方案：crossover 15 的 crack 对 16 同样有效，需要的人自己找</p>
+<h3 id="atom相关">Atom相关</h3>
+<p>项目的开发我还是建议使用 IDE，要让编辑器能拥有 IDE 的功能可能需要花大量的精力来改造。 #### apm Atom 的包管理器 apm 其实就是 npm，于是我们可以通过类似的方法为其设置镜像来加快下载速度。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm set registry https://registry.npm.taobao.org</div><div class="line">apm config set registry https://registry.npm.taobao.org</div></pre></td></tr></table></figure></p>
+<h4 id="插件">插件</h4>
 <ul>
-<li>chromium / firefox / google-chrome 浏览器三选一</li>
-<li>shadowsocks-qt5 科学上网</li>
-<li>wps-office &amp; ttf-wps-fonts WPS</li>
-<li>netease-cloud-music 网易云音乐</li>
-<li>youdao-dict 有道词典</li>
-<li>fcitx-sogoupinyin 搜狗拼音</li>
-<li>calibre 电子书管理</li>
-<li>atom 文本编辑器</li>
-<li>redshift 屏幕色温调节</li>
-<li>uget 多线程下载工具，支持磁链、种子</li>
-<li>vlc 视频播放器</li>
-</ul>
-<p>以下软件给出安装方法</p>
-<ul>
-<li><a href="https://tiebamma.github.io/InstallTutorial/" target="_blank" rel="external">Mathematica</a> 数学计算</li>
-<li><a href="https://www.jetbrains.com/" target="_blank" rel="external">Jetbrains</a> 智能又强大的 IDE</li>
-</ul>
-<h3 id="QQ的安装"><a href="#QQ的安装" class="headerlink" title="QQ的安装"></a>QQ的安装</h3><p>解决方案：crossover 16 或 deepin-QQ with crossover 15 <a href="https://www.findhao.net/easycoding/1748" target="_blank" rel="external">参考链接</a><br>crossover 16 有对多个版本的 QQ 的官方支持，建议购买正版，有试用期。<br>备选方案：crossover 15 的 crack 对 16 同样有效，需要的人自己找</p>
-<h3 id="Atom相关"><a href="#Atom相关" class="headerlink" title="Atom相关"></a>Atom相关</h3><p>项目的开发我还是建议使用 IDE，要让编辑器能拥有 IDE 的功能可能需要花大量的精力来改造。</p>
-<h4 id="apm"><a href="#apm" class="headerlink" title="apm"></a>apm</h4><p>Atom 的包管理器 apm 其实就是 npm，于是我们可以通过类似的方法为其设置镜像来加快下载速度。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm set registry https://registry.npm.taobao.org</div><div class="line">apm config set registry https://registry.npm.taobao.org</div></pre></td></tr></table></figure></p>
-<h4 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h4><ul>
 <li>linter</li>
 <li>linter-gcc</li>
 <li>file-icons</li>
 <li>platformio-ide-terminal</li>
 </ul>
-<h2 id="桌面控件"><a href="#桌面控件" class="headerlink" title="桌面控件"></a>桌面控件</h2><ul>
+<h2 id="桌面控件">桌面控件</h2>
+<ul>
 <li><a href="https://store.kde.org/p/998916" target="_blank" rel="external">Redshift Control</a> 控制 redshift</li>
 <li><a href="https://store.kde.org/p/998895" target="_blank" rel="external">Netspeed Widget</a> 网速监控</li>
 <li><a href="https://store.kde.org/p/998901" target="_blank" rel="external">Event Calendar</a> 带天气和倒计时的日历，可以和谷歌日历同步日程</li>
@@ -409,15 +428,22 @@
 <li><a href="https://store.kde.org/p/998909" target="_blank" rel="external">PlayBar2</a> 播放控制</li>
 <li><a href="https://github.com/psifidotos/Latte-Dock" target="_blank" rel="external">Latte Dock</a> 美观好用的 dock</li>
 </ul>
-<h3 id="额外"><a href="#额外" class="headerlink" title="额外"></a>额外</h3><ul>
+<h3 id="额外">额外</h3>
+<ul>
 <li><a href="https://github.com/martenjj/wallpaperswitch" target="_blank" rel="external">Wallpaper Switcher</a> 不同虚拟桌面可以设置不同壁纸的特性作为 bug 在某一个版本后消失了，但许多用户认为这是一个好功能。于是一个 KDE 的开发人员按照承诺开发了这个工具提供了这个功能。</li>
 <li><a href="https://store.kde.org/p/998910" target="_blank" rel="external">Active Window Control</a>窗口在最大化后还会保留系统标题栏，而屏幕顶部还有一个 panel（如果和我一样把状态栏放到顶部），这样就会有两层，我称之为“双眼皮”。而 OS X 会在窗口最大化后将标题栏和状态栏合并，减少了对屏幕空间的浪费。通过安装这个控件并且设置全屏隐藏标题栏后，可以达到同样的效果。</li>
 </ul>
-<h2 id="易用性"><a href="#易用性" class="headerlink" title="易用性"></a>易用性</h2><h3 id="按键映射"><a href="#按键映射" class="headerlink" title="按键映射"></a>按键映射</h3><p>创建文件<code>～/.Xmodmap</code>，fcitx 会自动读取并应用 xmodmap 的设置<br>以下是我使用的配置文件，将<code>Caps_Lock</code>修改为<code>Ctrl</code>，并交换<code>`~</code> 和<code>Esc</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">remove Lock = Caps_Lock</div><div class="line">keysym Caps_Lock = Control_L</div><div class="line">add Control = Control_L</div><div class="line">keysym Escape = grave asciitilde grave asciitilde</div><div class="line">keysym grave = Escape</div></pre></td></tr></table></figure></p>
-<h3 id="鼠标侧键"><a href="#鼠标侧键" class="headerlink" title="鼠标侧键"></a>鼠标侧键</h3><p>对于拥有鼠标侧键的用户而言，将这些侧键映射为常用快捷键（如浏览器标签页的切换、虚拟桌面的切换）可以带来极大的便捷。<br>我使用的软件是 <a href="https://www.archlinux.org/packages/community/x86_64/xbindkeys/" target="_blank" rel="external">xbindkeys</a>。在<code>~/.xbindkeysrc</code>中修改配置，以下是我使用的配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&quot;xte &apos;keydown Super_L&apos; &apos;key Tab&apos; &apos;keyup Super_L&apos;&quot;</div><div class="line">  b:8</div><div class="line"></div><div class="line">&quot;xte &apos;keydown Super_L&apos; &apos;key Tab&apos; &apos;keyup Super_L&apos;&quot;</div><div class="line">  b:9</div><div class="line"># 侧键切换虚拟桌面</div><div class="line">&quot;xte &apos;keydown Control_L&apos; &apos;usleep 200000&apos; &apos;key Tab&apos; &apos;keyup Control_L&apos;&quot;</div><div class="line">  b:7</div><div class="line"></div><div class="line">&quot;xte &apos;keydown Control_L&apos; &apos;keydown Shift_L&apos; &apos;usleep 200000&apos; &apos;key Tab&apos; &apos;keyup Shift_L&apos; &apos;keyup Control_L&apos;&quot;</div><div class="line">  b:6</div><div class="line">#  水平滚轮切换浏览器标签页，延迟是为了防止切换过快</div></pre></td></tr></table></figure></p>
-<h4 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h4><p><a href="https://blog.hanschen.org/2009/10/13/mouse-shortcuts-with-xbindkeys/" target="_blank" rel="external">https://blog.hanschen.org/2009/10/13/mouse-shortcuts-with-xbindkeys/</a><br><a href="https://wiki.archlinux.org/index.php/Mouse_buttons#xvkbd_and_xbindkeys" target="_blank" rel="external">https://wiki.archlinux.org/index.php/Mouse_buttons#xvkbd_and_xbindkeys</a></p>
-<h3 id="触控板手势"><a href="#触控板手势" class="headerlink" title="触控板手势"></a>触控板手势</h3><p>对于长期使用触控板的用户来说，多指手势可以用来替代许多快捷键。<br>我使用的软件是 <a href="https://wiki.archlinux.org/index.php/Touchegg" target="_blank" rel="external">Touchegg</a>以及对应的 GUI 配置工具 <a href="https://aur.archlinux.org/packages/touchegg-gce-git/" target="_blank" rel="external">touchegg-gce-git</a></p>
-<h2 id="奇怪的小技巧"><a href="#奇怪的小技巧" class="headerlink" title="奇怪的小技巧"></a>奇怪的小技巧</h2><ul>
+<h2 id="易用性">易用性</h2>
+<h3 id="按键映射">按键映射</h3>
+<p>创建文件<code>～/.Xmodmap</code>，fcitx 会自动读取并应用 xmodmap 的设置 以下是我使用的配置文件，将<code>Caps_Lock</code>修改为<code>Ctrl</code>，并交换<code>`~</code> 和<code>Esc</code> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">remove Lock = Caps_Lock</div><div class="line">keysym Caps_Lock = Control_L</div><div class="line">add Control = Control_L</div><div class="line">keysym Escape = grave asciitilde grave asciitilde</div><div class="line">keysym grave = Escape</div></pre></td></tr></table></figure></p>
+<h3 id="鼠标侧键">鼠标侧键</h3>
+<p>对于拥有鼠标侧键的用户而言，将这些侧键映射为常用快捷键（如浏览器标签页的切换、虚拟桌面的切换）可以带来极大的便捷。<br>
+我使用的软件是 <a href="https://www.archlinux.org/packages/community/x86_64/xbindkeys/" target="_blank" rel="external">xbindkeys</a>。在<code>~/.xbindkeysrc</code>中修改配置，以下是我使用的配置 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&quot;xte &apos;keydown Super_L&apos; &apos;key Tab&apos; &apos;keyup Super_L&apos;&quot;</div><div class="line">  b:8</div><div class="line"></div><div class="line">&quot;xte &apos;keydown Super_L&apos; &apos;key Tab&apos; &apos;keyup Super_L&apos;&quot;</div><div class="line">  b:9</div><div class="line"># 侧键切换虚拟桌面</div><div class="line">&quot;xte &apos;keydown Control_L&apos; &apos;usleep 200000&apos; &apos;key Tab&apos; &apos;keyup Control_L&apos;&quot;</div><div class="line">  b:7</div><div class="line"></div><div class="line">&quot;xte &apos;keydown Control_L&apos; &apos;keydown Shift_L&apos; &apos;usleep 200000&apos; &apos;key Tab&apos; &apos;keyup Shift_L&apos; &apos;keyup Control_L&apos;&quot;</div><div class="line">  b:6</div><div class="line">#  水平滚轮切换浏览器标签页，延迟是为了防止切换过快</div></pre></td></tr></table></figure></p>
+<h4 id="参考文章">参考文章</h4>
+<p>https://blog.hanschen.org/2009/10/13/mouse-shortcuts-with-xbindkeys/ https://wiki.archlinux.org/index.php/Mouse_buttons#xvkbd_and_xbindkeys ### 触控板手势 对于长期使用触控板的用户来说，多指手势可以用来替代许多快捷键。<br>
+我使用的软件是 <a href="https://wiki.archlinux.org/index.php/Touchegg" target="_blank" rel="external">Touchegg</a>以及对应的 GUI 配置工具 <a href="https://aur.archlinux.org/packages/touchegg-gce-git/" target="_blank" rel="external">touchegg-gce-git</a></p>
+<h2 id="奇怪的小技巧">奇怪的小技巧</h2>
+<ul>
 <li>dolphin 中<code>Alt + .</code>切换是否显示隐藏文件</li>
 </ul>
 
@@ -465,6 +491,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/09/Algorithms-Game-Theory/" rel="prev" title="算法 - 博弈问题">
+                算法 - 博弈问题 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -543,12 +573,21 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
           
 
           
@@ -582,7 +621,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#发行版的选择"><span class="nav-number">1.</span> <span class="nav-text">发行版的选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#桌面环境的选择"><span class="nav-number">3.</span> <span class="nav-text">桌面环境的选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用软件"><span class="nav-number">4.</span> <span class="nav-text">常用软件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#QQ的安装"><span class="nav-number">4.1.</span> <span class="nav-text">QQ的安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Atom相关"><span class="nav-number">4.2.</span> <span class="nav-text">Atom相关</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#apm"><span class="nav-number">4.2.1.</span> <span class="nav-text">apm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#插件"><span class="nav-number">4.2.2.</span> <span class="nav-text">插件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#桌面控件"><span class="nav-number">5.</span> <span class="nav-text">桌面控件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#额外"><span class="nav-number">5.1.</span> <span class="nav-text">额外</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#易用性"><span class="nav-number">6.</span> <span class="nav-text">易用性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#按键映射"><span class="nav-number">6.1.</span> <span class="nav-text">按键映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#鼠标侧键"><span class="nav-number">6.2.</span> <span class="nav-text">鼠标侧键</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参考文章"><span class="nav-number">6.2.1.</span> <span class="nav-text">参考文章</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#触控板手势"><span class="nav-number">6.3.</span> <span class="nav-text">触控板手势</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#奇怪的小技巧"><span class="nav-number">7.</span> <span class="nav-text">奇怪的小技巧</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#发行版的选择"><span class="nav-number">1.</span> <span class="nav-text">发行版的选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#桌面环境的选择"><span class="nav-number">2.</span> <span class="nav-text">桌面环境的选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用软件"><span class="nav-number">3.</span> <span class="nav-text">常用软件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#qq的安装"><span class="nav-number">3.1.</span> <span class="nav-text">QQ的安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#atom相关"><span class="nav-number">3.2.</span> <span class="nav-text">Atom相关</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#插件"><span class="nav-number">3.2.1.</span> <span class="nav-text">插件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#桌面控件"><span class="nav-number">4.</span> <span class="nav-text">桌面控件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#额外"><span class="nav-number">4.1.</span> <span class="nav-text">额外</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#易用性"><span class="nav-number">5.</span> <span class="nav-text">易用性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#按键映射"><span class="nav-number">5.1.</span> <span class="nav-text">按键映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#鼠标侧键"><span class="nav-number">5.2.</span> <span class="nav-text">鼠标侧键</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参考文章"><span class="nav-number">5.2.1.</span> <span class="nav-text">参考文章</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#奇怪的小技巧"><span class="nav-number">6.</span> <span class="nav-text">奇怪的小技巧</span></a></li></ol></div>
             
 
           </div>
@@ -614,11 +653,11 @@
 
 
 <div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  主题 -
+  Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Pisces
   </a>
@@ -770,6 +809,323 @@
 
 
   
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (search_path.endsWith("json")) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
 
