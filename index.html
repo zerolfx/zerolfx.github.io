@@ -326,7 +326,7 @@
 <h2 id="发行版的选择"><a href="#发行版的选择" class="headerlink" title="发行版的选择"></a>发行版的选择</h2><p>起初我选择的是 Ubuntu，其主要原因有如下几点：</p>
 <ul>
 <li>用户的基数大，遇到问题能够方便得找到相应的解决方案</li>
-<li>“网易云音乐”、“搜狗输入法”等应用提供的安装包是<code>deb</code>包（ Ubuntu 可以直接安装，而 Debian 家族以外的发行版无法直接使用）</li>
+<li>“网易云音乐”、“搜狗输入法”等应用提供的安装包是 Deb 包（ Ubuntu 可以直接安装，而 Debian 家族以外的发行版无法直接使用）</li>
 </ul>
 <p>在使用 Ubuntu 将近一年后，我选择了 Arch Linux，它不仅拥有对我而言 Ubuntu 所有的优势，还提供了额外的便利：</p>
 <ul>
@@ -366,14 +366,24 @@
 <li>calibre 电子书管理</li>
 <li>atom 文本编辑器</li>
 <li>redshift 屏幕色温调节</li>
+<li>uget 多线程下载工具，支持磁链、种子</li>
+<li>vlc 视频播放器</li>
 </ul>
 <p>以下软件给出安装方法</p>
 <ul>
 <li><a href="https://tiebamma.github.io/InstallTutorial/" target="_blank" rel="external">Mathematica</a> 数学计算</li>
-<li><a href="https://www.jetbrains.com/" target="_blank" rel="external">Jetbrains</a> 开发工具</li>
+<li><a href="https://www.jetbrains.com/" target="_blank" rel="external">Jetbrains</a> 智能又强大的 IDE</li>
 </ul>
-<h3 id="QQ的安装"><a href="#QQ的安装" class="headerlink" title="QQ的安装"></a>QQ的安装</h3><p>解决方案：crossover <a href="https://www.findhao.net/easycoding/1748" target="_blank" rel="external">相关链接</a><br>crossover 16 有对多个版本的 QQ 的官方支持，建议购买正版，有试用期。<br>备选方案：crossover 15 的 crack 对 16 同样有效，需要的人自己找</p>
-<h3 id="Atom相关"><a href="#Atom相关" class="headerlink" title="Atom相关"></a>Atom相关</h3><h2 id="桌面控件"><a href="#桌面控件" class="headerlink" title="桌面控件"></a>桌面控件</h2><ul>
+<h3 id="QQ的安装"><a href="#QQ的安装" class="headerlink" title="QQ的安装"></a>QQ的安装</h3><p>解决方案：crossover 16 或 deepin-QQ with crossover 15 <a href="https://www.findhao.net/easycoding/1748" target="_blank" rel="external">参考链接</a><br>crossover 16 有对多个版本的 QQ 的官方支持，建议购买正版，有试用期。<br>备选方案：crossover 15 的 crack 对 16 同样有效，需要的人自己找</p>
+<h3 id="Atom相关"><a href="#Atom相关" class="headerlink" title="Atom相关"></a>Atom相关</h3><p>项目的开发我还是建议使用 IDE，要让编辑器能拥有 IDE 的功能可能需要花大量的精力来改造。</p>
+<h4 id="apm"><a href="#apm" class="headerlink" title="apm"></a>apm</h4><p>Atom 的包管理器 apm 其实就是 npm，于是我们可以通过类似的方法为其设置镜像来加快下载速度。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm set registry https://registry.npm.taobao.org</div><div class="line">apm config set registry https://registry.npm.taobao.org</div></pre></td></tr></table></figure></p>
+<h4 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h4><ul>
+<li>linter</li>
+<li>linter-gcc</li>
+<li>file-icons</li>
+<li>platformio-ide-terminal</li>
+</ul>
+<h2 id="桌面控件"><a href="#桌面控件" class="headerlink" title="桌面控件"></a>桌面控件</h2><ul>
 <li><a href="https://store.kde.org/p/998916" target="_blank" rel="external">Redshift Control</a> 控制 redshift</li>
 <li><a href="https://store.kde.org/p/998895" target="_blank" rel="external">Netspeed Widget</a> 网速监控</li>
 <li><a href="https://store.kde.org/p/998901" target="_blank" rel="external">Event Calendar</a> 带天气和倒计时的日历，可以和谷歌日历同步日程</li>
@@ -385,8 +395,11 @@
 <li><a href="https://github.com/martenjj/wallpaperswitch" target="_blank" rel="external">Wallpaper Switcher</a> 不同虚拟桌面可以设置不同壁纸的特性作为 bug 在某一个版本后消失了，但许多用户认为这是一个好功能。于是一个 KDE 的开发人员按照承诺开发了这个工具提供了这个功能。</li>
 <li><a href="https://store.kde.org/p/998910" target="_blank" rel="external">Active Window Control</a>窗口在最大化后还会保留系统标题栏，而屏幕顶部还有一个 panel（如果和我一样把状态栏放到顶部），这样就会有两层，我称之为“双眼皮”。而 OS X 会在窗口最大化后将标题栏和状态栏合并，减少了对屏幕空间的浪费。通过安装这个控件并且设置全屏隐藏标题栏后，可以达到同样的效果。</li>
 </ul>
-<h2 id="易用性"><a href="#易用性" class="headerlink" title="易用性"></a>易用性</h2><h3 id="按键映射"><a href="#按键映射" class="headerlink" title="按键映射"></a>按键映射</h3><p>创建文件<code>～/.Xmodmap</code>，fcitx 会自动读取并应用 xmodmap 的设置<br>以下是我使用的，将<code>Caps_Lock</code>修改为<code>Ctrl</code>，并交换<code>`~</code> 和<code>Esc</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">remove Lock = Caps_Lock</div><div class="line">keysym Caps_Lock = Control_L</div><div class="line">add Control = Control_L</div><div class="line">keysym Escape = grave asciitilde grave asciitilde</div><div class="line">keysym grave = Escape</div></pre></td></tr></table></figure></p>
-<h3 id="鼠标侧键"><a href="#鼠标侧键" class="headerlink" title="鼠标侧键"></a>鼠标侧键</h3><h3 id="触控板手势"><a href="#触控板手势" class="headerlink" title="触控板手势"></a>触控板手势</h3><h2 id="奇怪的小技巧"><a href="#奇怪的小技巧" class="headerlink" title="奇怪的小技巧"></a>奇怪的小技巧</h2><ul>
+<h2 id="易用性"><a href="#易用性" class="headerlink" title="易用性"></a>易用性</h2><h3 id="按键映射"><a href="#按键映射" class="headerlink" title="按键映射"></a>按键映射</h3><p>创建文件<code>～/.Xmodmap</code>，fcitx 会自动读取并应用 xmodmap 的设置<br>以下是我使用的配置文件，将<code>Caps_Lock</code>修改为<code>Ctrl</code>，并交换<code>`~</code> 和<code>Esc</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">remove Lock = Caps_Lock</div><div class="line">keysym Caps_Lock = Control_L</div><div class="line">add Control = Control_L</div><div class="line">keysym Escape = grave asciitilde grave asciitilde</div><div class="line">keysym grave = Escape</div></pre></td></tr></table></figure></p>
+<h3 id="鼠标侧键"><a href="#鼠标侧键" class="headerlink" title="鼠标侧键"></a>鼠标侧键</h3><p>对于拥有鼠标侧键的用户而言，将这些侧键映射为常用快捷键（如浏览器标签页的切换、虚拟桌面的切换）可以带来极大的便捷。<br>我使用的软件是 <a href="https://www.archlinux.org/packages/community/x86_64/xbindkeys/" target="_blank" rel="external">xbindkeys</a>。在<code>~/.xbindkeysrc</code>中修改配置，以下是我使用的配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&quot;xte &apos;keydown Super_L&apos; &apos;key Tab&apos; &apos;keyup Super_L&apos;&quot;</div><div class="line">  b:8</div><div class="line"></div><div class="line">&quot;xte &apos;keydown Super_L&apos; &apos;key Tab&apos; &apos;keyup Super_L&apos;&quot;</div><div class="line">  b:9</div><div class="line"># 侧键切换虚拟桌面</div><div class="line">&quot;xte &apos;keydown Control_L&apos; &apos;usleep 200000&apos; &apos;key Tab&apos; &apos;keyup Control_L&apos;&quot;</div><div class="line">  b:7</div><div class="line"></div><div class="line">&quot;xte &apos;keydown Control_L&apos; &apos;keydown Shift_L&apos; &apos;usleep 200000&apos; &apos;key Tab&apos; &apos;keyup Shift_L&apos; &apos;keyup Control_L&apos;&quot;</div><div class="line">  b:6</div><div class="line">#  水平滚轮切换浏览器标签页，延迟是为了防止切换过快</div></pre></td></tr></table></figure></p>
+<h4 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h4><p><a href="https://blog.hanschen.org/2009/10/13/mouse-shortcuts-with-xbindkeys/" target="_blank" rel="external">https://blog.hanschen.org/2009/10/13/mouse-shortcuts-with-xbindkeys/</a><br><a href="https://wiki.archlinux.org/index.php/Mouse_buttons#xvkbd_and_xbindkeys" target="_blank" rel="external">https://wiki.archlinux.org/index.php/Mouse_buttons#xvkbd_and_xbindkeys</a></p>
+<h3 id="触控板手势"><a href="#触控板手势" class="headerlink" title="触控板手势"></a>触控板手势</h3><p>对于长期使用触控板的用户来说，多指手势可以用来替代许多快捷键。<br>我使用的软件是 <a href="https://wiki.archlinux.org/index.php/Touchegg" target="_blank" rel="external">Touchegg</a>以及对应的 GUI 配置工具 <a href="https://aur.archlinux.org/packages/touchegg-gce-git/" target="_blank" rel="external">touchegg-gce-git</a></p>
+<h2 id="奇怪的小技巧"><a href="#奇怪的小技巧" class="headerlink" title="奇怪的小技巧"></a>奇怪的小技巧</h2><ul>
 <li>dolphin 中<code>Alt + .</code>切换是否显示隐藏文件</li>
 </ul>
 
