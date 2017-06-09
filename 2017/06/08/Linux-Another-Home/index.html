@@ -93,16 +93,16 @@
 
 
 
-<meta name="description" content="这篇文章的主要目的是记录我在使用 Linux 的过程中遇到的坑和相应的解决方案，次要目的是帮助读者快速构建一个舒适的 Linux 使用环境。后文的描述基于 Arch Linux 和 KDE 的方案，大部分也适用于 Kubuntu 用户。 发行版的选择 起初我选择的是 Ubuntu，其主要原因有如下几点： + 用户的基数大，遇到问题能够方便得找到相应的解决方案 + “网易云音乐”、“搜狗输入法”等应">
+<meta name="description" content="这篇文章的主要目的是记录我在使用 Linux 的过程中遇到的坑和相应的解决方案，次要目的是帮助读者快速构建一个舒适的 Linux 使用环境。后文的描述基于 Arch Linux 和 KDE 的方案，大部分也适用于 Kubuntu 用户。 发行版的选择 起初我选择的是 Ubuntu，其主要原因有如下几点：  用户的基数大，遇到问题能够方便得找到相应的解决方案 “网易云音乐”、“搜狗输入法”等应用提供">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux - Another Home">
 <meta property="og:url" content="http://yoursite.com/2017/06/08/Linux-Another-Home/index.html">
 <meta property="og:site_name" content="Zerol&#39;s Notes">
-<meta property="og:description" content="这篇文章的主要目的是记录我在使用 Linux 的过程中遇到的坑和相应的解决方案，次要目的是帮助读者快速构建一个舒适的 Linux 使用环境。后文的描述基于 Arch Linux 和 KDE 的方案，大部分也适用于 Kubuntu 用户。 发行版的选择 起初我选择的是 Ubuntu，其主要原因有如下几点： + 用户的基数大，遇到问题能够方便得找到相应的解决方案 + “网易云音乐”、“搜狗输入法”等应">
-<meta property="og:updated_time" content="2017-06-09T16:10:57.926Z">
+<meta property="og:description" content="这篇文章的主要目的是记录我在使用 Linux 的过程中遇到的坑和相应的解决方案，次要目的是帮助读者快速构建一个舒适的 Linux 使用环境。后文的描述基于 Arch Linux 和 KDE 的方案，大部分也适用于 Kubuntu 用户。 发行版的选择 起初我选择的是 Ubuntu，其主要原因有如下几点：  用户的基数大，遇到问题能够方便得找到相应的解决方案 “网易云音乐”、“搜狗输入法”等应用提供">
+<meta property="og:updated_time" content="2017-06-09T16:19:30.333Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux - Another Home">
-<meta name="twitter:description" content="这篇文章的主要目的是记录我在使用 Linux 的过程中遇到的坑和相应的解决方案，次要目的是帮助读者快速构建一个舒适的 Linux 使用环境。后文的描述基于 Arch Linux 和 KDE 的方案，大部分也适用于 Kubuntu 用户。 发行版的选择 起初我选择的是 Ubuntu，其主要原因有如下几点： + 用户的基数大，遇到问题能够方便得找到相应的解决方案 + “网易云音乐”、“搜狗输入法”等应">
+<meta name="twitter:description" content="这篇文章的主要目的是记录我在使用 Linux 的过程中遇到的坑和相应的解决方案，次要目的是帮助读者快速构建一个舒适的 Linux 使用环境。后文的描述基于 Arch Linux 和 KDE 的方案，大部分也适用于 Kubuntu 用户。 发行版的选择 起初我选择的是 Ubuntu，其主要原因有如下几点：  用户的基数大，遇到问题能够方便得找到相应的解决方案 “网易云音乐”、“搜狗输入法”等应用提供">
 
 
 
@@ -398,14 +398,58 @@
       
         <p>这篇文章的主要目的是记录我在使用 Linux 的过程中遇到的坑和相应的解决方案，次要目的是帮助读者快速构建一个舒适的 Linux 使用环境。后文的描述基于 Arch Linux 和 KDE 的方案，大部分也适用于 Kubuntu 用户。</p>
 <h2 id="发行版的选择">发行版的选择</h2>
-<p>起初我选择的是 Ubuntu，其主要原因有如下几点： + 用户的基数大，遇到问题能够方便得找到相应的解决方案 + “网易云音乐”、“搜狗输入法”等应用提供的安装包是 Deb 包（ Ubuntu 可以直接安装，而 Debian 家族以外的发行版无法直接使用）</p>
-<p>在使用 Ubuntu 将近一年后，我选择了 Arch Linux，它不仅拥有对我而言 Ubuntu 所有的优势，还提供了额外的便利： + 官方仓库和用户软件仓库（AUR）提供了我想要的全部，包括上文中的“网易云音乐”和“搜狗输入法”。 + 拥有官方 Wiki，对于解决实际问题和学习 Linux 很有帮助 + 没有预装可有可无的软件包，用户拥有更大的选择余地 <a id="more"></a> ## 安装 由于 Arch 的安装是在 CLI（命令行）下进行的，对于新用户可能有些困难。而在官方 Wiki 和网上教程的帮助下，完成安装应该也不成问题。</p>
+<p>起初我选择的是 Ubuntu，其主要原因有如下几点：</p>
+<ul>
+<li>用户的基数大，遇到问题能够方便得找到相应的解决方案</li>
+<li>“网易云音乐”、“搜狗输入法”等应用提供的安装包是 Deb 包（ Ubuntu 可以直接安装，而 Debian 家族以外的发行版无法直接使用）</li>
+</ul>
+<p>在使用 Ubuntu 将近一年后，我选择了 Arch Linux，它不仅拥有对我而言 Ubuntu 所有的优势，还提供了额外的便利：</p>
+<ul>
+<li>官方仓库和用户软件仓库（AUR）提供了我想要的全部，包括上文中的“网易云音乐”和“搜狗输入法”。</li>
+<li>拥有官方 Wiki，对于解决实际问题和学习 Linux 很有帮助</li>
+<li>没有预装可有可无的软件包，用户拥有更大的选择余地 <a id="more"></a> ## 安装 由于 Arch 的安装是在 CLI（命令行）下进行的，对于新用户可能有些困难。而在官方 Wiki 和网上教程的帮助下，完成安装应该也不成问题。</li>
+</ul>
 <h2 id="桌面环境的选择">桌面环境的选择</h2>
-<p>在尝试过许多桌面环境后，我体会到了 KDE 的可贵。 + 可定制性远强于其他桌面环境。 + 有许多桌面控件可供选用（后文会有介绍）算法—— 博弈 + 可以很方便得修改 panel 的样式，于是我可以很轻松地将桌面从 Win10 风格切换至 OS X 风格。 + 可以在系统设置中修改动画效果 + 提供了虚拟桌面（Virtual desktops）和活动（Activities）的功能 + 可以修改主题、图标、窗口样式，而且默认主题十分美观 + 系统设置丰富 （有些东西没法通过图形界面设置的话就只能通过命令行或者修改配置文件来达到目的，十分不便） + 有些集成的软件十分好用，比如文件管理器 dolphin，终端 konsole，便签 Knotes（当然无论是什么桌面环境这些应用都可以做相应的替换，但是原生不容易出问题，体验也更为一致）。 + 缺点 + 集成了一些无用的软件，虽然可以在安装时进行筛选 + 设置中播放设备的选择太过繁琐 + 难以名状的 Bug，这个似乎很难避免，只要数量不多频率不高问题不大还是可以忍受一些的</p>
+<p>在尝试过许多桌面环境后，我体会到了 KDE 的可贵。</p>
+<ul>
+<li>可定制性远强于其他桌面环境。
+<ul>
+<li>有许多桌面控件可供选用（后文会有介绍）算法—— 博弈</li>
+<li>可以很方便得修改 panel 的样式，于是我可以很轻松地将桌面从 Win10 风格切换至 OS X 风格。</li>
+<li>可以在系统设置中修改动画效果</li>
+<li>提供了虚拟桌面（Virtual desktops）和活动（Activities）的功能</li>
+<li>可以修改主题、图标、窗口样式，而且默认主题十分美观</li>
+</ul></li>
+<li>系统设置丰富 （有些东西没法通过图形界面设置的话就只能通过命令行或者修改配置文件来达到目的，十分不便）</li>
+<li>有些集成的软件十分好用，比如文件管理器 dolphin，终端 konsole，便签 Knotes（当然无论是什么桌面环境这些应用都可以做相应的替换，但是原生不容易出问题，体验也更为一致）。</li>
+<li>缺点
+<ul>
+<li>集成了一些无用的软件，虽然可以在安装时进行筛选</li>
+<li>设置中播放设备的选择太过繁琐</li>
+<li>难以名状的 Bug，这个似乎很难避免，只要数量不多频率不高问题不大还是可以忍受一些的</li>
+</ul></li>
+</ul>
 <p>KDE 的安装也十分便捷，参照 Wiki 即可，配合 SDDM 风味更佳。</p>
 <h2 id="常用软件">常用软件</h2>
-<p>以下均为包名，可以直接安装（有些属于 AUR） + chromium / firefox / google-chrome 浏览器三选一 + shadowsocks-qt5 科学上网 + wps-office &amp; ttf-wps-fonts WPS + netease-cloud-music 网易云音乐 + youdao-dict 有道词典 + fcitx-sogoupinyin 搜狗拼音 + calibre 电子书管理 + atom 文本编辑器 + redshift 屏幕色温调节 + uget 多线程下载工具，支持磁链、种子（如果选用 aria2 作为后端） + vlc 视频播放器</p>
-<p>以下软件给出安装方法 + <a href="https://tiebamma.github.io/InstallTutorial/" target="_blank" rel="external">Mathematica</a> 数学计算 + <a href="https://www.jetbrains.com/" target="_blank" rel="external">Jetbrains</a> 智能又强大的 IDE</p>
+<p>以下均为包名，可以直接安装（有些属于 AUR）</p>
+<ul>
+<li>chromium / firefox / google-chrome 浏览器三选一</li>
+<li>shadowsocks-qt5 科学上网</li>
+<li>wps-office &amp; ttf-wps-fonts WPS</li>
+<li>netease-cloud-music 网易云音乐</li>
+<li>youdao-dict 有道词典</li>
+<li>fcitx-sogoupinyin 搜狗拼音</li>
+<li>calibre 电子书管理</li>
+<li>atom 文本编辑器</li>
+<li>redshift 屏幕色温调节</li>
+<li>uget 多线程下载工具，支持磁链、种子（如果选用 aria2 作为后端）</li>
+<li>vlc 视频播放器</li>
+</ul>
+<p>以下软件给出安装方法</p>
+<ul>
+<li><a href="https://tiebamma.github.io/InstallTutorial/" target="_blank" rel="external">Mathematica</a> 数学计算</li>
+<li><a href="https://www.jetbrains.com/" target="_blank" rel="external">Jetbrains</a> 智能又强大的 IDE</li>
+</ul>
 <h3 id="qq的安装">QQ的安装</h3>
 <p>解决方案：crossover 16 或 deepin-QQ with crossover 15 <a href="https://www.findhao.net/easycoding/1748" target="_blank" rel="external">参考链接</a><br>
 crossover 16 有对多个版本的 QQ 的官方支持，建议购买正版，有试用期。<br>
