@@ -99,7 +99,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/06/08/Linux-Another-Home/index.html">
 <meta property="og:site_name" content="Zerol&#39;s Notes">
 <meta property="og:description" content="这篇文章的主要目的是记录我在使用 Linux 的过程中遇到的坑和相应的解决方案，次要目的是帮助读者快速构建一个舒适的 Linux 使用环境。后文的描述基于 Arch Linux 和 KDE 的方案，大部分也适用于 Kubuntu 用户。 发行版的选择 起初我选择的是 Ubuntu，其主要原因有如下几点：  用户的基数大，遇到问题能够方便得找到相应的解决方案 “网易云音乐”、“搜狗输入法”等应用提供">
-<meta property="og:updated_time" content="2017-06-09T16:19:30.333Z">
+<meta property="og:updated_time" content="2017-06-27T07:40:00.532Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux - Another Home">
 <meta name="twitter:description" content="这篇文章的主要目的是记录我在使用 Linux 的过程中遇到的坑和相应的解决方案，次要目的是帮助读者快速构建一个舒适的 Linux 使用环境。后文的描述基于 Arch Linux 和 KDE 的方案，大部分也适用于 Kubuntu 用户。 发行版的选择 起初我选择的是 Ubuntu，其主要原因有如下几点：  用户的基数大，遇到问题能够方便得找到相应的解决方案 “网易云音乐”、“搜狗输入法”等应用提供">
@@ -421,7 +421,7 @@
 <li>可以修改主题、图标、窗口样式，而且默认主题十分美观</li>
 </ul></li>
 <li>系统设置丰富 （有些东西没法通过图形界面设置的话就只能通过命令行或者修改配置文件来达到目的，十分不便）</li>
-<li>有些集成的软件十分好用，比如文件管理器 dolphin，终端 konsole，便签 Knotes（当然无论是什么桌面环境这些应用都可以做相应的替换，但是原生不容易出问题，体验也更为一致）。</li>
+<li>有些集成的软件十分好用，比如文件管理器 dolphin，终端 konsole，便签 Knotes，快捷搜索 Lancelot（当然无论是什么桌面环境这些应用都可以做相应的替换，但是原生不容易出问题，体验也更为一致）。</li>
 <li>缺点
 <ul>
 <li>集成了一些无用的软件，虽然可以在安装时进行筛选</li>
@@ -444,11 +444,12 @@
 <li>redshift 屏幕色温调节</li>
 <li>uget 多线程下载工具，支持磁链、种子（如果选用 aria2 作为后端）</li>
 <li>vlc 视频播放器</li>
+<li>p7zip-natspec &amp; unzip-natspec 使压缩包管理软件 Ark 解压（不是查看）zip、7z时避免出现中文文件名编码错误的问题</li>
 </ul>
 <p>以下软件给出安装方法</p>
 <ul>
 <li><a href="https://tiebamma.github.io/InstallTutorial/" target="_blank" rel="external">Mathematica</a> 数学计算</li>
-<li><a href="https://www.jetbrains.com/" target="_blank" rel="external">Jetbrains</a> 智能又强大的 IDE</li>
+<li><a href="https://www.jetbrains.com/" target="_blank" rel="external">Jetbrains</a> IDE</li>
 </ul>
 <h3 id="qq的安装">QQ的安装</h3>
 <p>解决方案：crossover 16 或 deepin-QQ with crossover 15 <a href="https://www.findhao.net/easycoding/1748" target="_blank" rel="external">参考链接</a><br>
@@ -483,6 +484,9 @@ crossover 16 有对多个版本的 QQ 的官方支持，建议购买正版，有
 <h3 id="鼠标侧键">鼠标侧键</h3>
 <p>对于拥有鼠标侧键的用户而言，将这些侧键映射为常用快捷键（如浏览器标签页的切换、虚拟桌面的切换）可以带来极大的便捷。<br>
 我使用的软件是 <a href="https://www.archlinux.org/packages/community/x86_64/xbindkeys/" target="_blank" rel="external">xbindkeys</a>。在<code>~/.xbindkeysrc</code>中修改配置，以下是我使用的配置 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&quot;xte &apos;keydown Super_L&apos; &apos;key Tab&apos; &apos;keyup Super_L&apos;&quot;</div><div class="line">  b:8</div><div class="line"></div><div class="line">&quot;xte &apos;keydown Super_L&apos; &apos;key Tab&apos; &apos;keyup Super_L&apos;&quot;</div><div class="line">  b:9</div><div class="line"># 侧键切换虚拟桌面</div><div class="line">&quot;xte &apos;keydown Control_L&apos; &apos;usleep 200000&apos; &apos;key Tab&apos; &apos;keyup Control_L&apos;&quot;</div><div class="line">  b:7</div><div class="line"></div><div class="line">&quot;xte &apos;keydown Control_L&apos; &apos;keydown Shift_L&apos; &apos;usleep 200000&apos; &apos;key Tab&apos; &apos;keyup Shift_L&apos; &apos;keyup Control_L&apos;&quot;</div><div class="line">  b:6</div><div class="line">#  水平滚轮切换浏览器标签页，延迟是为了防止切换过快</div></pre></td></tr></table></figure></p>
+<h3 id="与-google-drive-文件同步">与 Google Drive 文件同步</h3>
+<p>使用<code>grive</code>，由于对应 GUI 工具<code>grive-tools</code>不支持代理，因此无法使用。<br>
+替代方案：在系统设置中添加计划任务进行定时同步。</p>
 <h4 id="参考文章">参考文章</h4>
 <p>https://blog.hanschen.org/2009/10/13/mouse-shortcuts-with-xbindkeys/ https://wiki.archlinux.org/index.php/Mouse_buttons#xvkbd_and_xbindkeys ### 触控板手势 对于长期使用触控板的用户来说，多指手势可以用来替代许多快捷键。<br>
 我使用的软件是 <a href="https://wiki.archlinux.org/index.php/Touchegg" target="_blank" rel="external">Touchegg</a>以及对应的 GUI 配置工具 <a href="https://aur.archlinux.org/packages/touchegg-gce-git/" target="_blank" rel="external">touchegg-gce-git</a></p>
@@ -617,7 +621,7 @@ crossover 16 有对多个版本的 QQ 的官方支持，建议购买正版，有
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -628,7 +632,7 @@ crossover 16 有对多个版本的 QQ 的官方支持，建议购买正版，有
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -665,7 +669,7 @@ crossover 16 有对多个版本的 QQ 的官方支持，建议购买正版，有
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#发行版的选择"><span class="nav-number">1.</span> <span class="nav-text">发行版的选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#桌面环境的选择"><span class="nav-number">2.</span> <span class="nav-text">桌面环境的选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用软件"><span class="nav-number">3.</span> <span class="nav-text">常用软件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#qq的安装"><span class="nav-number">3.1.</span> <span class="nav-text">QQ的安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#atom相关"><span class="nav-number">3.2.</span> <span class="nav-text">Atom相关</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#插件"><span class="nav-number">3.2.1.</span> <span class="nav-text">插件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#桌面控件"><span class="nav-number">4.</span> <span class="nav-text">桌面控件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#额外"><span class="nav-number">4.1.</span> <span class="nav-text">额外</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#易用性"><span class="nav-number">5.</span> <span class="nav-text">易用性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#按键映射"><span class="nav-number">5.1.</span> <span class="nav-text">按键映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#鼠标侧键"><span class="nav-number">5.2.</span> <span class="nav-text">鼠标侧键</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参考文章"><span class="nav-number">5.2.1.</span> <span class="nav-text">参考文章</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#奇怪的小技巧"><span class="nav-number">6.</span> <span class="nav-text">奇怪的小技巧</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#发行版的选择"><span class="nav-number">1.</span> <span class="nav-text">发行版的选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#桌面环境的选择"><span class="nav-number">2.</span> <span class="nav-text">桌面环境的选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用软件"><span class="nav-number">3.</span> <span class="nav-text">常用软件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#qq的安装"><span class="nav-number">3.1.</span> <span class="nav-text">QQ的安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#atom相关"><span class="nav-number">3.2.</span> <span class="nav-text">Atom相关</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#插件"><span class="nav-number">3.2.1.</span> <span class="nav-text">插件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#桌面控件"><span class="nav-number">4.</span> <span class="nav-text">桌面控件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#额外"><span class="nav-number">4.1.</span> <span class="nav-text">额外</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#易用性"><span class="nav-number">5.</span> <span class="nav-text">易用性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#按键映射"><span class="nav-number">5.1.</span> <span class="nav-text">按键映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#鼠标侧键"><span class="nav-number">5.2.</span> <span class="nav-text">鼠标侧键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与-google-drive-文件同步"><span class="nav-number">5.3.</span> <span class="nav-text">与 Google Drive 文件同步</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参考文章"><span class="nav-number">5.3.1.</span> <span class="nav-text">参考文章</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#奇怪的小技巧"><span class="nav-number">6.</span> <span class="nav-text">奇怪的小技巧</span></a></li></ol></div>
             
 
           </div>

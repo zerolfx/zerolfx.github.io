@@ -99,7 +99,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/06/09/Algorithms-Game-Theory/index.html">
 <meta property="og:site_name" content="Zerol&#39;s Notes">
 <meta property="og:description" content="基本思想 游戏可以等效为一个有向图，每一个状态相当于图中的一个节点，而可能的状态转移是图中的边。如果必胜态的后继中存在必败态，而必败态的后继全是必胜态。 SG函数 \[ SG(u) = mex\{ SG(v)|u \to v \} \] 函数值为 0 代表必败态，不为 0 代表必胜态。（也就是说，0 只能转移到非 0，而非 0 一定能转移到 0。） 一个组合游戏的 SG 和等于所有子游戏的异或和。">
-<meta property="og:updated_time" content="2017-06-09T16:10:51.883Z">
+<meta property="og:updated_time" content="2017-06-18T05:00:28.461Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法 - 博弈问题">
 <meta name="twitter:description" content="基本思想 游戏可以等效为一个有向图，每一个状态相当于图中的一个节点，而可能的状态转移是图中的边。如果必胜态的后继中存在必败态，而必败态的后继全是必胜态。 SG函数 \[ SG(u) = mex\{ SG(v)|u \to v \} \] 函数值为 0 代表必败态，不为 0 代表必胜态。（也就是说，0 只能转移到非 0，而非 0 一定能转移到 0。） 一个组合游戏的 SG 和等于所有子游戏的异或和。">
@@ -410,6 +410,40 @@ max\{step(u)|SG(u)=0\}+1,  &amp; \text{$SG(v)&gt;0$} \\
 min\{step(u)\}, &amp; \text{$SG(v)=0$}  \\
 \end{cases}
 \]</span> 先手必胜的充要条件：所有子游戏中最大的 step 值为奇数</p>
+<h2 id="green-hackenbush">Green Hackenbush</h2>
+<p>图上的删边游戏，过于复杂，自行搜索。</p>
+<h2 id="题目">题目</h2>
+<h3 id="解题思路">解题思路</h3>
+<p>尽量将问题转换成 Nim 游戏计算 SG 和。 确定边界状态的 SG 值（不存在时为 -1） SG 计算过于复杂时打表找规律</p>
+<h3 id="zero-move">zero-move</h3>
+<p>在 Nim 游戏的基础上增加一个规则，每一堆石子可以进行一次空操作（与玩家无关）。这道题看似同一次状态可以多次抵达，实则不然。同样多的石子，根据经历过空操作与否可以看做两个状态。<br>
+新的 SG 值：</p>
+<table>
+<thead>
+<tr class="header">
+<th>n</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>…</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>SG</td>
+<td>2</td>
+<td>1</td>
+<td>4</td>
+<td>3</td>
+<td>6</td>
+<td>5</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
@@ -455,6 +489,10 @@ min\{step(u)\}, &amp; \text{$SG(v)=0$}  \\
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/17/cpp-tricks/" rel="prev" title="C++ 奇技淫巧">
+                C++ 奇技淫巧 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -533,7 +571,7 @@ min\{step(u)\}, &amp; \text{$SG(v)=0$}  \\
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -544,7 +582,7 @@ min\{step(u)\}, &amp; \text{$SG(v)=0$}  \\
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -581,7 +619,7 @@ min\{step(u)\}, &amp; \text{$SG(v)=0$}  \\
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本思想"><span class="nav-number">1.</span> <span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sg函数"><span class="nav-number">2.</span> <span class="nav-text">SG函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#every-sg"><span class="nav-number">3.</span> <span class="nav-text">Every-SG</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本思想"><span class="nav-number">1.</span> <span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sg函数"><span class="nav-number">2.</span> <span class="nav-text">SG函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#every-sg"><span class="nav-number">3.</span> <span class="nav-text">Every-SG</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#green-hackenbush"><span class="nav-number">4.</span> <span class="nav-text">Green Hackenbush</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">5.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解题思路"><span class="nav-number">5.1.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zero-move"><span class="nav-number">5.2.</span> <span class="nav-text">zero-move</span></a></li></ol></li></ol></div>
             
 
           </div>
