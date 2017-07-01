@@ -93,16 +93,16 @@
 
 
 
-<meta name="description" content="GCC 的内置位运算函数 int __builtin_ffs (unsigned int x) Returns one plus the index of the least significant 1-bit of x, or if x is zero, returns zero. int __builtin_clz (unsigned int x) Returns the number of">
+<meta name="description" content="反正也没什么用，对吧？">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++ 奇技淫巧">
 <meta property="og:url" content="http://yoursite.com/2017/06/17/cpp-tricks/index.html">
 <meta property="og:site_name" content="Zerol&#39;s Notes">
-<meta property="og:description" content="GCC 的内置位运算函数 int __builtin_ffs (unsigned int x) Returns one plus the index of the least significant 1-bit of x, or if x is zero, returns zero. int __builtin_clz (unsigned int x) Returns the number of">
-<meta property="og:updated_time" content="2017-06-17T10:29:20.002Z">
+<meta property="og:description" content="反正也没什么用，对吧？">
+<meta property="og:updated_time" content="2017-07-01T03:06:27.822Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++ 奇技淫巧">
-<meta name="twitter:description" content="GCC 的内置位运算函数 int __builtin_ffs (unsigned int x) Returns one plus the index of the least significant 1-bit of x, or if x is zero, returns zero. int __builtin_clz (unsigned int x) Returns the number of">
+<meta name="twitter:description" content="反正也没什么用，对吧？">
 
 
 
@@ -385,6 +385,10 @@
           
 
           
+              <div class="post-description">
+                  反正也没什么用，对吧？
+              </div>
+          
 
         </div>
       </header>
@@ -396,17 +400,12 @@
       
 
       
-        <h2 id="gcc-的内置位运算函数">GCC 的内置位运算函数</h2>
-<p><code>int __builtin_ffs (unsigned int x)</code><br>
-Returns one plus the index of the least significant 1-bit of x, or if x is zero, returns zero.</p>
-<p><code>int __builtin_clz (unsigned int x)</code><br>
-Returns the number of leading 0-bits in x, starting at the most significant bit position. <strong>If x is 0, the result is undefined.</strong></p>
-<p><code>int __builtin_ctz (unsigned int x)</code><br>
-Returns the number of trailing 0-bits in x, starting at the least significant bit position. <strong>If x is 0, the result is undefined.</strong></p>
-<p><code>int __builtin_popcount (unsigned int x)</code><br>
-Returns the number of 1-bits in x.</p>
-<p><code>int __builtin_parity (unsigned int x)</code><br>
-Returns the parity of x, i.e. the number of 1-bits in x modulo 2.</p>
+        <h2 id="宏"><a href="#宏" class="headerlink" title="宏"></a>宏</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#define FOR(i, x, y) for (__typeof(y) i = (x), _##i = (y); i &lt; _##i; ++i)</div><div class="line">#define FORD(i, x, y) for (__typeof(x) i = (x), _##i = (y); i &gt; _##i; --i)</div></pre></td></tr></table></figure>
+<h2 id="GCC-的内置位运算函数"><a href="#GCC-的内置位运算函数" class="headerlink" title="GCC 的内置位运算函数"></a>GCC 的内置位运算函数</h2><p><code>int __builtin_ffs (unsigned int x)</code><br>Returns one plus the index of the least significant 1-bit of x, or if x is zero, returns zero.</p>
+<p><code>int __builtin_clz (unsigned int x)</code><br>Returns the number of leading 0-bits in x, starting at the most significant bit position. <strong>If x is 0, the result is undefined.</strong></p>
+<p><code>int __builtin_ctz (unsigned int x)</code><br>Returns the number of trailing 0-bits in x, starting at the least significant bit position. <strong>If x is 0, the result is undefined.</strong></p>
+<p><code>int __builtin_popcount (unsigned int x)</code><br>Returns the number of 1-bits in x.</p>
+<p><code>int __builtin_parity (unsigned int x)</code><br>Returns the parity of x, i.e. the number of 1-bits in x modulo 2.</p>
 <p>在函数名后增加<code>l</code>或<code>ll</code>表示<code>unsigned long int</code>和<code>unsigned long long int</code>的对应版本。</p>
 
       
@@ -579,7 +578,7 @@ Returns the parity of x, i.e. the number of 1-bits in x modulo 2.</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#gcc-的内置位运算函数"><span class="nav-number">1.</span> <span class="nav-text">GCC 的内置位运算函数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#宏"><span class="nav-number">1.</span> <span class="nav-text">宏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GCC-的内置位运算函数"><span class="nav-number">2.</span> <span class="nav-text">GCC 的内置位运算函数</span></a></li></ol></div>
             
 
           </div>
