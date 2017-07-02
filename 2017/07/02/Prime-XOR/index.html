@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/07/02/Prime-XOR/index.html">
 <meta property="og:site_name" content="Zerol&#39;s Notes">
 <meta property="og:description" content="题目： https://www.hackerrank.com/challenges/prime-xor 题意： 给 n 个介于 3500 和 4500 之间的数，求不同子集（可以包含重复元素）的总数，使得子集异或和是质数。">
-<meta property="og:updated_time" content="2017-07-02T03:22:56.509Z">
+<meta property="og:updated_time" content="2017-07-02T14:58:38.452Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【题解】HackerRank - Prime XOR">
 <meta name="twitter:description" content="题目： https://www.hackerrank.com/challenges/prime-xor 题意： 给 n 个介于 3500 和 4500 之间的数，求不同子集（可以包含重复元素）的总数，使得子集异或和是质数。">
@@ -397,12 +397,12 @@
       
 
       
-        <p>题目：<br>
-https://www.hackerrank.com/challenges/prime-xor</p>
-<p>题意：<br>
-给 n 个介于 3500 和 4500 之间的数，求不同子集（可以包含重复元素）的总数，使得子集异或和是质数。 <a id="more"></a></p>
-<p>题解：<br>
-异或和的范围在 0～8191 之间，虽然 n 很大，但是每一个数的范围很小，因此可以依次处理 3500～4500 之间的每一个数。</p>
+        <h2 id="题目">题目：</h2>
+<p>https://www.hackerrank.com/challenges/prime-xor</p>
+<h2 id="题意">题意：</h2>
+<p>给 n 个介于 3500 和 4500 之间的数，求不同子集（可以包含重复元素）的总数，使得子集异或和是质数。 <a id="more"></a></p>
+<h2 id="题解">题解：</h2>
+<p>异或和的范围在 0～8191 之间，虽然 n 很大，但是每一个数的范围很小，因此可以依次处理 3500～4500 之间的每一个数。</p>
 <p>dp[i][k] = dp[i - 1][k] * (a[i] / 2 + 1) + dp[i - 1][k ^ v[i]] * ((a[i] + 1) / 2)</p>
 <ul>
 <li>dp[i][k]表示前 i 个数异或和为 k 的方案数</li>
@@ -518,8 +518,17 @@ https://www.hackerrank.com/challenges/prime-xor</p>
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -534,7 +543,7 @@ https://www.hackerrank.com/challenges/prime-xor</p>
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -581,6 +590,22 @@ https://www.hackerrank.com/challenges/prime-xor</p>
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题意"><span class="nav-number">2.</span> <span class="nav-text">题意：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">3.</span> <span class="nav-text">题解：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
