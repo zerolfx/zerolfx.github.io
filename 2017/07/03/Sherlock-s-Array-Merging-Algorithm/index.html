@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="HackerRank," />
 
 
 
@@ -93,16 +93,17 @@
 
 
 
-<meta name="description" content="基本思想 游戏可以等效为一个有向图，每一个状态相当于图中的一个节点，而可能的状态转移是图中的边。如果必胜态的后继中存在必败态，而必败态的后继全是必胜态。 SG函数 \[ SG(u) = mex\{ SG(v)|u \to v \} \] 函数值为 0 代表必败态，不为 0 代表必胜态。（也就是说，0 只能转移到非 0，而非 0 一定能转移到 0。） 一个组合游戏的 SG 和等于所有子游戏的异或和。">
+<meta name="description" content="题目 https://www.hackerrank.com/challenges/sherlocks-array-merging-algorithm/problem 题解  每一列的数在原数列中是连续且单调增的 每一列数的个数是单调减的">
+<meta name="keywords" content="HackerRank">
 <meta property="og:type" content="article">
-<meta property="og:title" content="算法 - 博弈问题">
-<meta property="og:url" content="http://yoursite.com/2017/06/09/Algorithms-Game-Theory/index.html">
+<meta property="og:title" content="【题解】HackerRank - Sherlock&#39;s Array Merging Algorithm">
+<meta property="og:url" content="http://yoursite.com/2017/07/03/Sherlock-s-Array-Merging-Algorithm/index.html">
 <meta property="og:site_name" content="Zerol&#39;s Notes">
-<meta property="og:description" content="基本思想 游戏可以等效为一个有向图，每一个状态相当于图中的一个节点，而可能的状态转移是图中的边。如果必胜态的后继中存在必败态，而必败态的后继全是必胜态。 SG函数 \[ SG(u) = mex\{ SG(v)|u \to v \} \] 函数值为 0 代表必败态，不为 0 代表必胜态。（也就是说，0 只能转移到非 0，而非 0 一定能转移到 0。） 一个组合游戏的 SG 和等于所有子游戏的异或和。">
-<meta property="og:updated_time" content="2017-06-18T05:00:28.461Z">
+<meta property="og:description" content="题目 https://www.hackerrank.com/challenges/sherlocks-array-merging-algorithm/problem 题解  每一列的数在原数列中是连续且单调增的 每一列数的个数是单调减的">
+<meta property="og:updated_time" content="2017-07-03T06:12:09.483Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="算法 - 博弈问题">
-<meta name="twitter:description" content="基本思想 游戏可以等效为一个有向图，每一个状态相当于图中的一个节点，而可能的状态转移是图中的边。如果必胜态的后继中存在必败态，而必败态的后继全是必胜态。 SG函数 \[ SG(u) = mex\{ SG(v)|u \to v \} \] 函数值为 0 代表必败态，不为 0 代表必胜态。（也就是说，0 只能转移到非 0，而非 0 一定能转移到 0。） 一个组合游戏的 SG 和等于所有子游戏的异或和。">
+<meta name="twitter:title" content="【题解】HackerRank - Sherlock&#39;s Array Merging Algorithm">
+<meta name="twitter:description" content="题目 https://www.hackerrank.com/challenges/sherlocks-array-merging-algorithm/problem 题解  每一列的数在原数列中是连续且单调增的 每一列数的个数是单调减的">
 
 
 
@@ -130,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/06/09/Algorithms-Game-Theory/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/07/03/Sherlock-s-Array-Merging-Algorithm/"/>
 
 
 
 
 
-  <title>算法 - 博弈问题 | Zerol's Notes</title>
+  <title>【题解】HackerRank - Sherlock's Array Merging Algorithm | Zerol's Notes</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -299,7 +300,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/09/Algorithms-Game-Theory/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/03/Sherlock-s-Array-Merging-Algorithm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zerol">
@@ -316,7 +317,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">算法 - 博弈问题</h1>
+          <h1 class="post-title" itemprop="name headline">【题解】HackerRank - Sherlock's Array Merging Algorithm</h1>
         
 
         <div class="post-meta">
@@ -328,8 +329,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-09T22:30:27+08:00">
-                2017-06-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-03T13:27:46+08:00">
+                2017-07-03
               </time>
             
 
@@ -351,8 +352,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithms/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithms</span>
+                  <a href="/categories/ACM/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM</span>
                   </a>
                 </span>
 
@@ -369,9 +370,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/06/09/Algorithms-Game-Theory/#comments" itemprop="discussionUrl">
+                <a href="/2017/07/03/Sherlock-s-Array-Merging-Algorithm/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/09/Algorithms-Game-Theory/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/07/03/Sherlock-s-Array-Merging-Algorithm/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -396,54 +397,19 @@
       
 
       
-        <h2 id="基本思想">基本思想</h2>
-<p>游戏可以等效为一个有向图，每一个状态相当于图中的一个节点，而可能的状态转移是图中的边。如果必胜态的后继中存在必败态，而必败态的后继全是必胜态。</p>
-<h2 id="sg函数">SG函数</h2>
-<p><span class="math display">\[ SG(u) = mex\{ SG(v)|u \to v \} \]</span> 函数值为 0 代表必败态，不为 0 代表必胜态。（也就是说，0 只能转移到非 0，而非 0 一定能转移到 0。） 一个组合游戏的 SG 和等于所有子游戏的异或和。 <a id="more"></a> ## Anti-SG 和 SJ 定理 Anti-SG 游戏： 走完最后一步的一方输，也就是说，SG 为 0 的局面不一定为终止局面。</p>
-<p>SJ 定理： 对于 Anti-SG 游戏，如果游戏结束的条件是所有子游戏的 SG 值均为 0 时，那么先手必胜的条件是： <strong>SG 值不为零</strong> xor <strong>没有子游戏 SG 值大于1</strong></p>
-<h2 id="every-sg">Every-SG</h2>
-<p>每一个非终止状态的子游戏必须进行操作。 <span class="math display">\[
-step(v) =
-\begin{cases}
-0, &amp; \text{$v$ 为终止状态} \\
-max\{step(u)|SG(u)=0\}+1,  &amp; \text{$SG(v)&gt;0$} \\
-min\{step(u)\}, &amp; \text{$SG(v)=0$}  \\
-\end{cases}
-\]</span> 先手必胜的充要条件：所有子游戏中最大的 step 值为奇数</p>
-<h2 id="green-hackenbush">Green Hackenbush</h2>
-<p>图上的删边游戏，过于复杂，自行搜索。</p>
-<h2 id="题目">题目</h2>
-<h3 id="解题思路">解题思路</h3>
-<p>尽量将问题转换成 Nim 游戏计算 SG 和。 确定边界状态的 SG 值（不存在时为 -1） SG 计算过于复杂时打表找规律</p>
-<h3 id="zero-move">zero-move</h3>
-<p>在 Nim 游戏的基础上增加一个规则，每一堆石子可以进行一次空操作（与玩家无关）。这道题看似同一次状态可以多次抵达，实则不然。同样多的石子，根据经历过空操作与否可以看做两个状态。<br>
-新的 SG 值：</p>
-<table>
-<thead>
-<tr class="header">
-<th>n</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-<th>6</th>
-<th>…</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>SG</td>
-<td>2</td>
-<td>1</td>
-<td>4</td>
-<td>3</td>
-<td>6</td>
-<td>5</td>
-<td>…</td>
-</tr>
-</tbody>
-</table>
+        <h2 id="题目">题目</h2>
+<p>https://www.hackerrank.com/challenges/sherlocks-array-merging-algorithm/problem</p>
+<h2 id="题解">题解</h2>
+<ul>
+<li>每一列的数在原数列中是连续且单调增的</li>
+<li>每一列数的个数是单调减的 <a id="more"></a></li>
+</ul>
+<p>如果原数列是单调递增的，可以使用如下代码。其中 dp[i][j] 表示前 i 个数分成若干组且最后一组的大小为 j 的总方案数。 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">FOR(i, <span class="number">1</span>, n + <span class="number">1</span>) &#123;</div><div class="line">    dp[i][i] = <span class="number">1</span>;</div><div class="line">    FOR(j, <span class="number">1</span>, i + <span class="number">1</span>) &#123;</div><div class="line">        FOR(k, j, i + <span class="number">1</span>) &#123;</div><div class="line">            dp[i][j] += dp[i - j][k] * A(k, j); <span class="comment">// A 是排列数</span></div></pre></td></tr></table></figure></p>
+<ul>
+<li>需要预处理阶乘和阶乘的逆元</li>
+<li>看起来复杂度是<span class="math inline">\(O(n^3)\)</span>的，但是其实是<span class="math inline">\(O(n^3/6)\)</span>，所以竟然没有超时？</li>
+</ul>
+<p>完整代码 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">#include &lt;bits/stdc++.h&gt;</div><div class="line">#define FOR(i, x, y) for (remove_const&lt;decltype(y)&gt;::type i = (x), _##i = (y); i &lt; _##i; ++i)</div><div class="line">#define FORD(i, x, y) for (remove_const&lt;decltype(x)&gt;::type i = (x), _##i = (y); i &gt; _##i; --i)</div><div class="line">using namespace std;</div><div class="line">typedef long long LL;</div><div class="line">const int maxn = 1200 + 5;</div><div class="line">const int MOD = 1E9 + 7;</div><div class="line">LL dp[maxn][maxn], n, a[maxn], l[maxn];</div><div class="line">LL invf[maxn], factor[maxn];</div><div class="line"></div><div class="line">LL quick_inverse(LL n, LL p) &#123;</div><div class="line">	LL ret = 1;</div><div class="line">	LL exponent = p - 2;</div><div class="line">	for (LL i = exponent; i; i &gt;&gt;= 1, n = n * n % p) &#123;</div><div class="line">		if (i &amp; 1) &#123;</div><div class="line">			ret = ret * n % p;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	return ret;</div><div class="line">&#125;</div><div class="line"></div><div class="line">void get_factorial_inverse(LL n, LL p) &#123;</div><div class="line">	factor[0] = 1;</div><div class="line">	for (LL i = 1; i &lt;= n; ++i) &#123;</div><div class="line">		factor[i] = i * factor[i - 1] % p;</div><div class="line">	&#125;</div><div class="line">	invf[n] = quick_inverse(factor[n], p);</div><div class="line">	for (LL i = n-1; i &gt;= 0; --i) &#123;</div><div class="line">		invf[i] = invf[i + 1] * (i + 1) % p;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">inline LL A(LL n, LL m) &#123; return factor[n] * invf[n - m] % MOD; &#125;</div><div class="line"></div><div class="line">int main() &#123;</div><div class="line">    cin &gt;&gt; n;</div><div class="line">    get_factorial_inverse(n, MOD);</div><div class="line">    FOR(i, 0, n) scanf(&quot;%lld&quot;, &amp;a[i]);</div><div class="line">    l[0] = 1;</div><div class="line">    FOR(i, 1, n) if (a[i] &gt;= a[i - 1]) l[i] = l[i - 1] + 1; else l[i] = 1;</div><div class="line">    FOR(i, 1, n + 1) &#123;</div><div class="line">        FOR(j, 1, l[i - 1] + 1) &#123;</div><div class="line">            if (i == l[i - 1]) dp[i][i] = 1;</div><div class="line">            FOR(k, j, i - j + 1)</div><div class="line">                dp[i][j] = (dp[i][j] + dp[i - j][k] * A(k, j)) % MOD;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    LL ans = 0;</div><div class="line">    FOR(i, 1, l[n - 1] + 1) ans += dp[n][i];</div><div class="line">    cout &lt;&lt; ans % MOD &lt;&lt; endl;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -471,6 +437,12 @@ min\{step(u)\}, &amp; \text{$SG(v)=0$}  \\
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/HackerRank/" rel="tag"># HackerRank</a>
+          
+        </div>
+      
 
       
       
@@ -480,8 +452,8 @@ min\{step(u)\}, &amp; \text{$SG(v)=0$}  \\
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/08/Linux-Another-Home/" rel="next" title="Arch Linux - 大型攻略">
-                <i class="fa fa-chevron-left"></i> Arch Linux - 大型攻略
+              <a href="/2017/07/02/Fair-Cut/" rel="next" title="【题解】HackerRank - Fair Cut">
+                <i class="fa fa-chevron-left"></i> 【题解】HackerRank - Fair Cut
               </a>
             
           </div>
@@ -489,10 +461,6 @@ min\{step(u)\}, &amp; \text{$SG(v)=0$}  \\
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/06/17/cpp-tricks/" rel="prev" title="C++ 奇技淫巧">
-                C++ 奇技淫巧 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -628,7 +596,7 @@ min\{step(u)\}, &amp; \text{$SG(v)=0$}  \\
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本思想"><span class="nav-number">1.</span> <span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sg函数"><span class="nav-number">2.</span> <span class="nav-text">SG函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#every-sg"><span class="nav-number">3.</span> <span class="nav-text">Every-SG</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#green-hackenbush"><span class="nav-number">4.</span> <span class="nav-text">Green Hackenbush</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">5.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解题思路"><span class="nav-number">5.1.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zero-move"><span class="nav-number">5.2.</span> <span class="nav-text">zero-move</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a></li></ol></div>
             
 
           </div>
@@ -778,9 +746,9 @@ min\{step(u)\}, &amp; \text{$SG(v)=0$}  \\
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2017/06/09/Algorithms-Game-Theory/';
-          this.page.identifier = '2017/06/09/Algorithms-Game-Theory/';
-          this.page.title = '算法 - 博弈问题';
+          this.page.url = 'http://yoursite.com/2017/07/03/Sherlock-s-Array-Merging-Algorithm/';
+          this.page.identifier = '2017/07/03/Sherlock-s-Array-Merging-Algorithm/';
+          this.page.title = '【题解】HackerRank - Sherlock\'s Array Merging Algorithm';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://zerolblog.disqus.com/embed.js';
