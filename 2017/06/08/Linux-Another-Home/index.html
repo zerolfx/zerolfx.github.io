@@ -99,7 +99,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/06/08/Linux-Another-Home/index.html">
 <meta property="og:site_name" content="Zerol&#39;s Notes">
 <meta property="og:description" content="这篇文章的主要目的是记录我在使用 Linux 的过程中遇到的坑和相应的解决方案，次要目的是帮助读者快速构建一个舒适的 Linux 使用环境。后文的描述基于 Arch Linux 和 KDE 的方案，大部分也适用于 Kubuntu 用户。 发行版的选择 起初我选择的是 Ubuntu，其主要原因有如下几点：  用户的基数大，遇到问题能够方便得找到相应的解决方案 “网易云音乐”、“搜狗输入法”等应用提供">
-<meta property="og:updated_time" content="2017-07-02T03:01:46.496Z">
+<meta property="og:updated_time" content="2017-07-06T05:57:46.287Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Arch Linux - 大型攻略">
 <meta name="twitter:description" content="这篇文章的主要目的是记录我在使用 Linux 的过程中遇到的坑和相应的解决方案，次要目的是帮助读者快速构建一个舒适的 Linux 使用环境。后文的描述基于 Arch Linux 和 KDE 的方案，大部分也适用于 Kubuntu 用户。 发行版的选择 起初我选择的是 Ubuntu，其主要原因有如下几点：  用户的基数大，遇到问题能够方便得找到相应的解决方案 “网易云音乐”、“搜狗输入法”等应用提供">
@@ -433,6 +433,7 @@
 <h2 id="常用软件">常用软件</h2>
 <p>以下均为包名，可以直接安装（有些属于 AUR）</p>
 <ul>
+<li>base-devel</li>
 <li>chromium / firefox / google-chrome 浏览器三选一</li>
 <li>shadowsocks-qt5 科学上网</li>
 <li>wps-office &amp; ttf-wps-fonts WPS</li>
@@ -484,7 +485,7 @@ crossover 16 有对多个版本的 QQ 的官方支持，建议购买正版，有
 <p>创建文件<code>～/.Xmodmap</code>，fcitx 会自动读取并应用 xmodmap 的设置 以下是我使用的配置文件，将<code>Caps_Lock</code>修改为<code>Ctrl</code>，并交换<code>`~</code> 和<code>Esc</code> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">remove Lock = Caps_Lock</div><div class="line">keysym Caps_Lock = Control_L</div><div class="line">add Control = Control_L</div><div class="line">keysym Escape = grave asciitilde grave asciitilde</div><div class="line">keysym grave = Escape</div></pre></td></tr></table></figure></p>
 <h3 id="鼠标侧键">鼠标侧键</h3>
 <p>对于拥有鼠标侧键的用户而言，将这些侧键映射为常用快捷键（如浏览器标签页的切换、虚拟桌面的切换）可以带来极大的便捷。<br>
-我使用的软件是 <a href="https://www.archlinux.org/packages/community/x86_64/xbindkeys/" target="_blank" rel="external">xbindkeys</a>。在<code>~/.xbindkeysrc</code>中修改配置，以下是我使用的配置 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&quot;xte &apos;keydown Super_L&apos; &apos;key Tab&apos; &apos;keyup Super_L&apos;&quot;</div><div class="line">  b:8</div><div class="line"></div><div class="line">&quot;xte &apos;keydown Super_L&apos; &apos;key Tab&apos; &apos;keyup Super_L&apos;&quot;</div><div class="line">  b:9</div><div class="line"># 侧键切换虚拟桌面</div><div class="line">&quot;xte &apos;keydown Control_L&apos; &apos;usleep 200000&apos; &apos;key Tab&apos; &apos;keyup Control_L&apos;&quot;</div><div class="line">  b:7</div><div class="line"></div><div class="line">&quot;xte &apos;keydown Control_L&apos; &apos;keydown Shift_L&apos; &apos;usleep 200000&apos; &apos;key Tab&apos; &apos;keyup Shift_L&apos; &apos;keyup Control_L&apos;&quot;</div><div class="line">  b:6</div><div class="line">#  水平滚轮切换浏览器标签页，延迟是为了防止切换过快</div></pre></td></tr></table></figure></p>
+我使用的软件是 <a href="https://www.archlinux.org/packages/community/x86_64/xbindkeys/" target="_blank" rel="external">xbindkeys</a>，在<code>~/.xbindkeysrc</code>中修改配置，以下是我使用的配置 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"># 侧键切换虚拟桌面</div><div class="line">&quot;xte &apos;keydown Super_L&apos; &apos;key Tab&apos; &apos;keyup Super_L&apos;&quot;</div><div class="line">  b:8</div><div class="line"></div><div class="line">&quot;xte &apos;keydown Super_L&apos; &apos;key Tab&apos; &apos;keyup Super_L&apos;&quot;</div><div class="line">  b:9</div><div class="line"></div><div class="line">#  水平滚轮切换浏览器标签页，延迟是为了防止切换过快</div><div class="line">&quot;xte &apos;keydown Control_L&apos; &apos;usleep 200000&apos; &apos;key Tab&apos; &apos;keyup Control_L&apos;&quot;</div><div class="line">  b:7</div><div class="line"></div><div class="line">&quot;xte &apos;keydown Control_L&apos; &apos;keydown Shift_L&apos; &apos;usleep 200000&apos; &apos;key Tab&apos; &apos;keyup Shift_L&apos; &apos;keyup Control_L&apos;&quot;</div><div class="line">  b:6</div></pre></td></tr></table></figure></p>
 <h3 id="与-google-drive-文件同步">与 Google Drive 文件同步</h3>
 <p>使用<code>grive</code>，由于对应 GUI 工具<code>grive-tools</code>不支持代理，因此无法使用。<br>
 替代方案：在系统设置中添加计划任务进行定时同步。</p>
@@ -494,7 +495,9 @@ crossover 16 有对多个版本的 QQ 的官方支持，建议购买正版，有
 <h2 id="tips">Tips</h2>
 <ul>
 <li>dolphin 中<code>Alt + .</code>切换是否显示隐藏文件</li>
-<li>更新 kernel 之后不要忘记重启，</li>
+<li>更新 kernel 之后不要忘记重启</li>
+<li><code>yaourt -Syu</code>频率太低会更新失败，太高会占用大量硬盘空间（如果不清理）</li>
+<li>arch 是为数不多的关闭 user namespace 的发行版之一，所以 unprivileged container 无法使用</li>
 </ul>
 
       
@@ -623,7 +626,7 @@ crossover 16 有对多个版本的 QQ 的官方支持，建议购买正版，有
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -633,10 +636,10 @@ crossover 16 有对多个版本的 QQ 的官方支持，建议购买正版，有
             
             
             <div class="site-state-item site-state-categories">
-              
+              <a href="/categories/index.html">
                 <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
-              
+              </a>
             </div>
           
 
@@ -644,10 +647,10 @@ crossover 16 有对多个版本的 QQ 的官方支持，建议购买正版，有
             
             
             <div class="site-state-item site-state-tags">
-              
-                <span class="site-state-item-count">1</span>
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
-              
+              </a>
             </div>
           
 
