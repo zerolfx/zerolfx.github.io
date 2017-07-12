@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[【题解】HackerRank - Summing Pieces]]></title>
+    <url>%2F2017%2F07%2F12%2FSumming-Pieces%2F</url>
+    <content type="text"><![CDATA[题目 https://www.hackerrank.com/challenges/summing-pieces 题意 给定一列数，分割成任意多段，某一种分法的值为每一段的数字和和段长之积之和，求所有方案的值的总和。 题解 首先写一个会超时的\(O(n^2)\)的算法 12345FOR(i, 1, n + 1) FOR(j, 0, i) &#123; cnt[i] += cnt[j]; // cnt[i] = 2 ^ (i - 1) dp[i] += dp[j] + (p[i] - p[j]) * (i - j) * cnt[j]; // p[i]: prefix sum &#125; 发现\(n\)个数有\(2^{n-1}\)种方案（可以理解为有\(n-1\)个空隙，每个空隙都可以选择是否插板） 根据数据范围，这道题目要求\(O(n)\)的算法 官方题解 https://www.hackerrank.com/challenges/summing-pieces/editorial 将 dp[i] 的和式进行变形，利用前缀和快速转移 题解 考虑长度为 l 的一段 它所有的位置覆盖每一个数的次数是这样的: 1, 2, … , m - 1, m, m, … , m, m - 1, …, 2, 1 (m = min(l, n + 1 - l)) 对于某一个位置 如果有一端在头或者尾，则被计算的次数为\(2^{n-l-1}\) 如果在中间，则被计算的次数为\(2^{n-l-2}\) 123456789101112131415161718192021222324252627282930313233#include &lt;bits/stdc++.h&gt;#define FOR(i, x, y) for (decay&lt;decltype(y)&gt;::type i = (x), _##i = (y); i &lt; _##i; ++i)#define FORD(i, x, y) for (decay&lt;decltype(x)&gt;::type i = (x), _##i = (y); i &gt; _##i; --i)using namespace std;typedef long long LL;const LL MOD = 1E9 + 7;const int maxn = 1E6 + 10;LL n, a[maxn], l[maxn], r[maxn], s[maxn], p[maxn] = &#123;1&#125;;LL dp[maxn], cnt[maxn] = &#123;1&#125;;inline LL go(LL x) &#123; return l[x] + r[n + 1 - x] + (s[n - x] - s[x]) * x;&#125;int main() &#123; FOR(i, 1, maxn) p[i] = (p[i - 1] * 2) % MOD; cin &gt;&gt; n; FOR(i, 1, n + 1) &#123; scanf("%lld", &amp;a[i]); l[i] = (i * a[i] + l[i - 1]) % MOD; s[i] = (a[i] + s[i - 1]) % MOD; &#125; FORD(i, n, 0) r[i] = (r[i + 1] + a[i] * (n + 1 - i)) % MOD; LL ans = n * s[n] % MOD; FOR(i, 1, n) &#123; int t = ((s[i] + s[n] - s[n - i]) % MOD + MOD) % MOD; if (i != n - 1) ans += (go(min(i, n + 1 - i)) - t) % MOD * i % MOD * p[n - i - 2]; ans += p[n - i - 1] * t % MOD * i % MOD; ans = (ans % MOD + MOD) % MOD; &#125; cout &lt;&lt; ans &lt;&lt; endl;&#125;]]></content>
+      <categories>
+        <category>ACM</category>
+      </categories>
+      <tags>
+        <tag>HackerRank</tag>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[【题解】HackerRank - New Year Game]]></title>
+    <url>%2F2017%2F07%2F10%2FNew-Year-Game%2F</url>
+    <content type="text"><![CDATA[题目 https://www.hackerrank.com/challenges/newyear-game 题意 给一列数，A 和 B 轮流取，如果每个人取的数之和之差的绝对值被 3 整除，则 B 赢，反之 A 赢。 题解 绝对值没有用，去掉 对于每个数，只关心它模 3 的余数 由于胜利条件不是无法操作，所以和 sg 无关 如果枚举每个状态，复杂度 \(O(n^3)\)，会超时。 但是如果找规律的话，能得出一个 \(O(n)\) 的做法，然后就 AC 了 对于模 3 余 0 的数，如果有偶数个就不影响胜负（显然），如果有奇数个就当成 1 个。所以复杂度变成了 \(O(n^2)\) 123456789101112131415161718192021222324252627282930313233343536373839#include &lt;bits/stdc++.h&gt;#define FOR(i, x, y) for (decay&lt;decltype(y)&gt;::type i = (x), _##i = (y); i &lt; _##i; ++i)#define FORD(i, x, y) for (decay&lt;decltype(x)&gt;::type i = (x), _##i = (y); i &gt; _##i; --i)using namespace std;const int maxn = 2000 + 5;int a[3], T, n, t, k;bool dp[2][maxn][maxn][2][3];inline int f(int x) &#123; return (x + 3) % 3; &#125;void init() &#123; dp[0][0][0][0][1] = dp[0][0][0][0][2] = 1; // first person win dp[0][0][0][1][0] = 1; // second person win FOR(t, 0, 2) // 0 FOR(i, 0, maxn) // 1 FOR(j, 0, maxn) // 2 FOR(r, 0, 2) // 0: first, 1: second FOR(v, 0, 3) &#123; // S_first - S_second (mod 3) int s = r ? 1 : -1; bool &amp;u = dp[t][i][j][r][v]; if (t) u |= !dp[t - 1][i][j][r ^ 1][f(v - s * 0)]; if (i) u |= !dp[t][i - 1][j][r ^ 1][f(v - s * 1)]; if (j) u |= !dp[t][i][j - 1][r ^ 1][f(v - s * 2)]; &#125;&#125;int main() &#123; init(); cin &gt;&gt; T; while (T--) &#123; cin &gt;&gt; n; memset(a, 0, sizeof a); FOR(i, 0, n) &#123; scanf("%d", &amp;t); ++a[t % 3]; &#125; if (dp[a[0] % 2][a[1]][a[2]][0][0]) puts("Balsa"); else puts("Koca"); &#125;&#125;]]></content>
+      <categories>
+        <category>ACM</category>
+      </categories>
+      <tags>
+        <tag>HackerRank</tag>
+        <tag>动态规划</tag>
+        <tag>博弈</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[【题解】HackerRank - Lena Sort]]></title>
     <url>%2F2017%2F07%2F08%2FLena-Sort%2F</url>
     <content type="text"><![CDATA[题目 https://www.hackerrank.com/challenges/lena-sort 题意 题目中用伪代码给出一个排序算法，要求构造 1～n 的一个排列，使得排序过程中恰好比较了 k 次。 题解 玄学做法 先算出长度为 d 的序列至多至少比较多少次，至多是单调，至少是每次把剩余的数列分成尽可能均匀的两部分。 先按至多的方案填，如果填不下去了不行了就按照至少的方案填。保证在填的过程中有解。 官方题解 https://www.hackerrank.com/challenges/lena-sort/editorial 题目等价于构造一个 n 个节点二叉树，使得每个节点深度和为 k。 调整法。如果深度为 x 的那一层没有满，就可以把一个深度为 y 叶节点的深度变为 x，深度和减少了 y-x。 先把树造成一条链，然后从末端进行调整。 123456789101112131415161718192021222324252627282930313233343536373839404142434445#include &lt;bits/stdc++.h&gt;#define FOR(i, x, y) for (remove_const&lt;decltype(y)&gt;::type i = (x), _##i = (y); i &lt; _##i; ++i)#define FORD(i, x, y) for (remove_const&lt;decltype(x)&gt;::type i = (x), _##i = (y); i &gt; _##i; --i)using namespace std;const int maxn = 1E5 + 10;int f[maxn], T, n, d;int ans[maxn];inline bool check(int d, int k) &#123; return d == -1 || (f[d] &lt;= k &amp;&amp; k &lt;= 1LL * d * (d - 1) / 2);&#125;void fill(int x, int y, int k, int l, int r) &#123; if (x &gt; y) return; assert(check(y - x + 1, k)); int d = y - x; k -= d; while (d &gt;= 0 &amp;&amp; check(d, k)) &#123; // plan A ans[l++] = x++; k -= --d; &#125; if (d &gt; 0) &#123; // plan B int t = (x + y + 1) / 2; while (!check(y - t, k - f[t - x])) --t; assert(t &gt; x); ans[l] = t; fill(x, t - 1, f[t - x], l + 1, l + t - x); fill(t + 1, y, k - f[t - x], l + t - x + 1, r); &#125;&#125;int main() &#123; FOR(i, 2, maxn) f[i] = i - 1 + f[i / 2] + f[(i - 1) / 2]; cin &gt;&gt; T; while (T--) &#123; scanf("%d%d", &amp;d, &amp;n); if (!check(d, n)) puts("-1"); else &#123; fill(1, d, n, 1, d); FOR(i, 1, d + 1) printf("%d%c", ans[i], i == d ? '\n' : ' '); &#125; &#125;&#125;]]></content>
@@ -75,7 +100,7 @@
   <entry>
     <title><![CDATA[C++ 奇技淫巧]]></title>
     <url>%2F2017%2F06%2F17%2Fcpp-tricks%2F</url>
-    <content type="text"><![CDATA[宏 12#define FOR(i, x, y) for (remove_const&lt;decltype(y)&gt;::type i = (x), _##i = (y); i &lt; _##i; ++i)#define FORD(i, x, y) for (remove_const&lt;decltype(x)&gt;::type i = (x), _##i = (y); i &gt; _##i; --i) GCC 的内置位运算函数 int __builtin_ffs (unsigned int x) Returns one plus the index of the least significant 1-bit of x, or if x is zero, returns zero. int __builtin_clz (unsigned int x) Returns the number of leading 0-bits in x, starting at the most significant bit position. If x is 0, the result is undefined. int __builtin_ctz (unsigned int x) Returns the number of trailing 0-bits in x, starting at the least significant bit position. If x is 0, the result is undefined. int __builtin_popcount (unsigned int x) Returns the number of 1-bits in x. int __builtin_parity (unsigned int x) Returns the parity of x, i.e. the number of 1-bits in x modulo 2. 在函数名后增加l或ll表示unsigned long int和unsigned long long int的对应版本。]]></content>
+    <content type="text"><![CDATA[宏 12#define FOR(i, x, y) for (decay&lt;decltype(y)&gt;::type i = (x), _##i = (y); i &lt; _##i; ++i)#define FORD(i, x, y) for (decay&lt;decltype(x)&gt;::type i = (x), _##i = (y); i &gt; _##i; --i) GCC 的内置位运算函数 int __builtin_ffs (unsigned int x) Returns one plus the index of the least significant 1-bit of x, or if x is zero, returns zero. int __builtin_clz (unsigned int x) Returns the number of leading 0-bits in x, starting at the most significant bit position. If x is 0, the result is undefined. int __builtin_ctz (unsigned int x) Returns the number of trailing 0-bits in x, starting at the least significant bit position. If x is 0, the result is undefined. int __builtin_popcount (unsigned int x) Returns the number of 1-bits in x. int __builtin_parity (unsigned int x) Returns the parity of x, i.e. the number of 1-bits in x modulo 2. 在函数名后增加l或ll表示unsigned long int和unsigned long long int的对应版本。]]></content>
       <categories>
         <category>ACM</category>
       </categories>

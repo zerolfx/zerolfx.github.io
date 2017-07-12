@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="HackerRank,动态规划,博弈," />
 
 
 
@@ -93,13 +93,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://yoursite.com/tags/index.html">
+<meta name="description" content="题目 https://www.hackerrank.com/challenges/newyear-game 题意 给一列数，A 和 B 轮流取，如果每个人取的数之和之差的绝对值被 3 整除，则 B 赢，反之 A 赢。">
+<meta name="keywords" content="HackerRank,动态规划,博弈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【题解】HackerRank - New Year Game">
+<meta property="og:url" content="http://yoursite.com/2017/07/10/New-Year-Game/index.html">
 <meta property="og:site_name" content="Zerol&#39;s Notes">
-<meta property="og:updated_time" content="2017-07-08T13:15:04.497Z">
+<meta property="og:description" content="题目 https://www.hackerrank.com/challenges/newyear-game 题意 给一列数，A 和 B 轮流取，如果每个人取的数之和之差的绝对值被 3 整除，则 B 赢，反之 A 赢。">
+<meta property="og:updated_time" content="2017-07-12T01:57:42.455Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
+<meta name="twitter:title" content="【题解】HackerRank - New Year Game">
+<meta name="twitter:description" content="题目 https://www.hackerrank.com/challenges/newyear-game 题意 给一列数，A 和 B 轮流取，如果每个人取的数之和之差的绝对值被 3 整除，则 B 赢，反之 A 赢。">
 
 
 
@@ -127,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/07/10/New-Year-Game/"/>
 
 
 
 
 
-  <title>tags | Zerol's Notes</title>
+  <title>【题解】HackerRank - New Year Game | Zerol's Notes</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -287,25 +291,202 @@
             
 
   <div id="posts" class="posts-expand">
-  <header class="post-header">
+    
 
-	<h1 class="post-title" itemprop="name headline">tags</h1>
+  
 
+  
+  
+  
 
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/10/New-Year-Game/">
 
-</header>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zerol">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zerol's Notes">
+    </span>
 
     
-    
-      <div class="tag-cloud">
-        <div class="tag-cloud-title">
-            目前共计 5 个标签
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【题解】HackerRank - New Year Game</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-10T11:16:00+08:00">
+                2017-07-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/07/10/New-Year-Game/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/07/10/New-Year-Game/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
         </div>
-        <div class="tag-cloud-tags">
-          <a href="/tags/HackerRank/" style="font-size: 30px; color: #111">HackerRank</a> <a href="/tags/位运算/" style="font-size: 12px; color: #ccc">位运算</a> <a href="/tags/动态规划/" style="font-size: 21px; color: #6f6f6f">动态规划</a> <a href="/tags/博弈/" style="font-size: 12px; color: #ccc">博弈</a> <a href="/tags/构造/" style="font-size: 12px; color: #ccc">构造</a>
-        </div>
-      </div>
+      </header>
     
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="题目">题目</h2>
+<p>https://www.hackerrank.com/challenges/newyear-game</p>
+<h2 id="题意">题意</h2>
+<p>给一列数，A 和 B 轮流取，如果每个人取的数之和之差的绝对值被 3 整除，则 B 赢，反之 A 赢。 <a id="more"></a></p>
+<h2 id="题解">题解</h2>
+<ul>
+<li>绝对值没有用，去掉</li>
+<li>对于每个数，只关心它模 3 的余数</li>
+<li>由于胜利条件不是无法操作，所以和 sg 无关</li>
+<li>如果枚举每个状态，复杂度 <span class="math inline">\(O(n^3)\)</span>，会超时。
+<ul>
+<li>但是如果找规律的话，能得出一个 <span class="math inline">\(O(n)\)</span> 的做法，然后就 AC 了</li>
+</ul></li>
+<li>对于模 3 余 0 的数，如果有偶数个就不影响胜负（显然），如果有奇数个就当成 1 个。所以复杂度变成了 <span class="math inline">\(O(n^2)\)</span></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FOR(i, x, y) for (decay<span class="meta-string">&lt;decltype(y)&gt;::type i = (x), _##i = (y); i &lt; _##i; ++i)</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FORD(i, x, y) for (decay<span class="meta-string">&lt;decltype(x)&gt;::type i = (x), _##i = (y); i &gt; _##i; --i)</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">2000</span> + <span class="number">5</span>;</div><div class="line"><span class="keyword">int</span> a[<span class="number">3</span>], T, n, t, k;</div><div class="line"><span class="keyword">bool</span> dp[<span class="number">2</span>][maxn][maxn][<span class="number">2</span>][<span class="number">3</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; <span class="keyword">return</span> (x + <span class="number">3</span>) % <span class="number">3</span>; &#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</div><div class="line">    dp[<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>][<span class="number">1</span>] = dp[<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>][<span class="number">2</span>] = <span class="number">1</span>; <span class="comment">// first person win</span></div><div class="line">    dp[<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>][<span class="number">1</span>][<span class="number">0</span>] = <span class="number">1</span>; <span class="comment">// second person win</span></div><div class="line">    FOR(t, <span class="number">0</span>, <span class="number">2</span>) <span class="comment">// 0</span></div><div class="line">        FOR(i, <span class="number">0</span>, maxn) <span class="comment">// 1</span></div><div class="line">            FOR(j, <span class="number">0</span>, maxn) <span class="comment">// 2</span></div><div class="line">                FOR(r, <span class="number">0</span>, <span class="number">2</span>) <span class="comment">// 0: first, 1: second</span></div><div class="line">                    FOR(v, <span class="number">0</span>, <span class="number">3</span>) &#123; <span class="comment">// S_first - S_second (mod 3)</span></div><div class="line">                        <span class="keyword">int</span> s = r ? <span class="number">1</span> : <span class="number">-1</span>;</div><div class="line">                        <span class="keyword">bool</span> &amp;u = dp[t][i][j][r][v];</div><div class="line">                        <span class="keyword">if</span> (t) u |= !dp[t - <span class="number">1</span>][i][j][r ^ <span class="number">1</span>][f(v - s * <span class="number">0</span>)];</div><div class="line">                        <span class="keyword">if</span> (i) u |= !dp[t][i - <span class="number">1</span>][j][r ^ <span class="number">1</span>][f(v - s * <span class="number">1</span>)];</div><div class="line">                        <span class="keyword">if</span> (j) u |= !dp[t][i][j - <span class="number">1</span>][r ^ <span class="number">1</span>][f(v - s * <span class="number">2</span>)];</div><div class="line">                    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    init();</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; T;</div><div class="line">    <span class="keyword">while</span> (T--) &#123;</div><div class="line">        <span class="built_in">cin</span> &gt;&gt; n;</div><div class="line">        <span class="built_in">memset</span>(a, <span class="number">0</span>, <span class="keyword">sizeof</span> a);</div><div class="line">        FOR(i, <span class="number">0</span>, n) &#123;</div><div class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;t);</div><div class="line">            ++a[t % <span class="number">3</span>];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (dp[a[<span class="number">0</span>] % <span class="number">2</span>][a[<span class="number">1</span>]][a[<span class="number">2</span>]][<span class="number">0</span>][<span class="number">0</span>]) <span class="built_in">puts</span>(<span class="string">"Balsa"</span>); <span class="keyword">else</span> <span class="built_in">puts</span>(<span class="string">"Koca"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/HackerRank/" rel="tag"># HackerRank</a>
+          
+            <a href="/tags/动态规划/" rel="tag"># 动态规划</a>
+          
+            <a href="/tags/博弈/" rel="tag"># 博弈</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/08/Lena-Sort/" rel="next" title="【题解】HackerRank - Lena Sort">
+                <i class="fa fa-chevron-left"></i> 【题解】HackerRank - Lena Sort
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/12/Summing-Pieces/" rel="prev" title="【题解】HackerRank - Summing Pieces">
+                【题解】HackerRank - Summing Pieces <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -314,6 +495,17 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -333,8 +525,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -396,6 +597,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题意"><span class="nav-number">2.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">3.</span> <span class="nav-text">题解</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -516,10 +733,10 @@
 
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
-  
+
 
   
 
@@ -537,6 +754,18 @@
       <script id="dsq-count-scr" src="https://zerolblog.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2017/07/10/New-Year-Game/';
+          this.page.identifier = '2017/07/10/New-Year-Game/';
+          this.page.title = '【题解】HackerRank - New Year Game';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://zerolblog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
