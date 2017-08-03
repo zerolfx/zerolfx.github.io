@@ -99,7 +99,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/06/08/Linux-Another-Home/index.html">
 <meta property="og:site_name" content="Zerol&#39;s Notes">
 <meta property="og:description" content="这篇文章的主要目的是记录我在使用 Linux 的过程中遇到的坑和相应的解决方案，次要目的是帮助读者快速构建一个舒适的 Linux 使用环境。后文的描述基于 Arch Linux 和 KDE 的方案，大部分也适用于 Kubuntu 用户。 发行版的选择 起初我选择的是 Ubuntu，其主要原因有如下几点：  用户的基数大，遇到问题能够方便得找到相应的解决方案 “网易云音乐”、“搜狗输入法”等应用提供">
-<meta property="og:updated_time" content="2017-07-06T05:57:46.287Z">
+<meta property="og:updated_time" content="2017-07-26T16:08:13.139Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Arch Linux - 大型攻略">
 <meta name="twitter:description" content="这篇文章的主要目的是记录我在使用 Linux 的过程中遇到的坑和相应的解决方案，次要目的是帮助读者快速构建一个舒适的 Linux 使用环境。后文的描述基于 Arch Linux 和 KDE 的方案，大部分也适用于 Kubuntu 用户。 发行版的选择 起初我选择的是 Ubuntu，其主要原因有如下几点：  用户的基数大，遇到问题能够方便得找到相应的解决方案 “网易云音乐”、“搜狗输入法”等应用提供">
@@ -496,7 +496,7 @@ crossover 16 有对多个版本的 QQ 的官方支持，建议购买正版，有
 <ul>
 <li>dolphin 中<code>Alt + .</code>切换是否显示隐藏文件</li>
 <li>更新 kernel 之后不要忘记重启</li>
-<li><code>yaourt -Syu</code>频率太低会更新失败，太高会占用大量硬盘空间（如果不清理）</li>
+<li><code>yaourt -Syu</code>频率太低会更新失败，太高会占用大量硬盘空间（<code>/var/cache/pacman/pkg/</code>）</li>
 <li>arch 是为数不多的关闭 user namespace 的发行版之一，所以 unprivileged container 无法使用</li>
 </ul>
 
@@ -626,7 +626,7 @@ crossover 16 有对多个版本的 QQ 的官方支持，建议购买正版，有
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
