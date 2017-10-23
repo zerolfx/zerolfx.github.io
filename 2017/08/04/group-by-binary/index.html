@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="HackerRank,位运算," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -93,17 +93,16 @@
 
 
 
-<meta name="description" content="题目 https://www.hackerrank.com/challenges/yet-another-minimax-problem 题意 给出 n 个整数，求一个排列使得相邻两数的异或值的最大值最小，输出该值。">
-<meta name="keywords" content="HackerRank,位运算">
+<meta name="description" content="资料 具体见 2013 年集训队论文《浅谈数据结构题的几个非经典解法》（作者：许昊然）。 为什么  题目要求支持修改和查询操作。 但是你只有一种不支持修改的算法，往往是通过预处理来支持快速查询操作。 如果直接使用这种算法，可能要预处理很慢却要常常进行，查询很快却没几个，时间复杂度分配很不合理。 于是你想到，可以通过分块使时间复杂度变得均匀合理。就是把每 \(\sqrt n\) 个修改操作（假设修改">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【题解】HackerRank - Yet Another Minimax Problem">
-<meta property="og:url" content="http://yoursite.com/2017/07/03/Yet-Another-Minimax-Problem/index.html">
+<meta property="og:title" content="算法 - 二进制分组">
+<meta property="og:url" content="http://yoursite.com/2017/08/04/group-by-binary/index.html">
 <meta property="og:site_name" content="Zerol&#39;s Notes">
-<meta property="og:description" content="题目 https://www.hackerrank.com/challenges/yet-another-minimax-problem 题意 给出 n 个整数，求一个排列使得相邻两数的异或值的最大值最小，输出该值。">
-<meta property="og:updated_time" content="2017-07-08T13:10:41.000Z">
+<meta property="og:description" content="资料 具体见 2013 年集训队论文《浅谈数据结构题的几个非经典解法》（作者：许昊然）。 为什么  题目要求支持修改和查询操作。 但是你只有一种不支持修改的算法，往往是通过预处理来支持快速查询操作。 如果直接使用这种算法，可能要预处理很慢却要常常进行，查询很快却没几个，时间复杂度分配很不合理。 于是你想到，可以通过分块使时间复杂度变得均匀合理。就是把每 \(\sqrt n\) 个修改操作（假设修改">
+<meta property="og:updated_time" content="2017-08-04T15:11:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【题解】HackerRank - Yet Another Minimax Problem">
-<meta name="twitter:description" content="题目 https://www.hackerrank.com/challenges/yet-another-minimax-problem 题意 给出 n 个整数，求一个排列使得相邻两数的异或值的最大值最小，输出该值。">
+<meta name="twitter:title" content="算法 - 二进制分组">
+<meta name="twitter:description" content="资料 具体见 2013 年集训队论文《浅谈数据结构题的几个非经典解法》（作者：许昊然）。 为什么  题目要求支持修改和查询操作。 但是你只有一种不支持修改的算法，往往是通过预处理来支持快速查询操作。 如果直接使用这种算法，可能要预处理很慢却要常常进行，查询很快却没几个，时间复杂度分配很不合理。 于是你想到，可以通过分块使时间复杂度变得均匀合理。就是把每 \(\sqrt n\) 个修改操作（假设修改">
 
 
 
@@ -131,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/07/03/Yet-Another-Minimax-Problem/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/08/04/group-by-binary/"/>
 
 
 
 
 
-  <title>【题解】HackerRank - Yet Another Minimax Problem | Zerol's Notes</title>
+  <title>算法 - 二进制分组 | Zerol's Notes</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -300,7 +299,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/03/Yet-Another-Minimax-Problem/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/04/group-by-binary/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zerol">
@@ -317,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">【题解】HackerRank - Yet Another Minimax Problem</h1>
+          <h1 class="post-title" itemprop="name headline">算法 - 二进制分组</h1>
         
 
         <div class="post-meta">
@@ -329,8 +328,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-03T17:22:44+08:00">
-                2017-07-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-04T12:35:44+08:00">
+                2017-08-04
               </time>
             
 
@@ -352,8 +351,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ACM/" itemprop="url" rel="index">
-                    <span itemprop="name">ACM</span>
+                  <a href="/categories/Algorithms/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithms</span>
                   </a>
                 </span>
 
@@ -370,9 +369,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/07/03/Yet-Another-Minimax-Problem/#comments" itemprop="discussionUrl">
+                <a href="/2017/08/04/group-by-binary/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/07/03/Yet-Another-Minimax-Problem/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/08/04/group-by-binary/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -397,18 +396,30 @@
       
 
       
-        <h2 id="题目">题目</h2>
-<p>https://www.hackerrank.com/challenges/yet-another-minimax-problem</p>
-<h2 id="题意">题意</h2>
-<p>给出 n 个整数，求一个排列使得相邻两数的异或值的最大值最小，输出该值。 <a id="more"></a></p>
-<h2 id="题解">题解</h2>
+        <h2 id="资料">资料</h2>
+<p>具体见 2013 年集训队论文《浅谈数据结构题的几个非经典解法》（作者：许昊然）。</p>
+<h2 id="为什么">为什么</h2>
 <ul>
-<li>如果有一位所有数都是 0 或 1，则异或之后这一位始终是 0。</li>
-<li>如果有一位既有 1 又有 0，我可以把 1 和 0 各自放在一起，但是会由一个交界处，交界处的异或值的该位为 1，其他位置是 0。</li>
-<li>问题就是找到所有数不完全相同的最高的那位，然后按那位是 0 或 1 分成两组，求两组分别取一个数是异或值最小。</li>
-<li>利用 Trie 求一个数与一堆数异或的最小值。</li>
+<li>题目要求支持修改和查询操作。</li>
+<li>但是你只有一种不支持修改的算法，往往是通过预处理来支持快速查询操作。</li>
+<li>如果直接使用这种算法，可能要预处理很慢却要常常进行，查询很快却没几个，时间复杂度分配很不合理。</li>
+<li>于是你想到，可以通过分块使时间复杂度变得均匀合理。就是把每 <span class="math inline">\(\sqrt n\)</span> 个修改操作（假设修改操作共 <span class="math inline">\(n\)</span> 个）分为一组，然后每次需要预处理的长度上限就变小了，作为代价，增加了查询的时间。</li>
+<li>二进制分组是一种更为优秀的分组策略（具体和预处理复杂度和查询复杂度相关）。如果当前有 k 个修改操作，会按照 2 的幂将 k 分解从大到小的若干组。如果增加一个操作，分组的变化通过暴力删除和重建进行（当然如果可以合并的话那就只需要合并了）。(如 5 = 4 + 1, 6 = 4 + 2，从 5 增加到 6 就把原来那个大小为 1 的组删了，再将原来最后一个和新增加的那一个建一个大小为 2 的组)</li>
+<li>复杂度：
+<ul>
+<li>单次查询复杂度 <span class="math inline">\(\times \log n\)</span>，毕竟最多只有 <span class="math inline">\(\log n\)</span> 组嘛。</li>
+<li>总的预处理复杂度是单次的 <span class="math inline">\(\log n\)</span> 倍，具体证明见论文。</li>
+</ul></li>
 </ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FOR(i, x, y) for (remove_const<span class="meta-string">&lt;decltype(y)&gt;::type i = (x), _##i = (y); i &lt; _##i; ++i)</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FORD(i, x, y) for (remove_const<span class="meta-string">&lt;decltype(x)&gt;::type i = (x), _##i = (y); i &gt; _##i; --i)</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">3000</span> + <span class="number">10</span>;</div><div class="line"><span class="keyword">int</span> n, a[maxn], b[maxn], la, lb, m;</div><div class="line"><span class="keyword">int</span> trie[maxn * <span class="number">20</span>][<span class="number">2</span>];</div><div class="line"><span class="keyword">int</span> sz = <span class="number">1</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> u = <span class="number">0</span>;</div><div class="line">    FORD(i, m - <span class="number">1</span>, <span class="number">-1</span>) &#123;</div><div class="line">        <span class="keyword">bool</span> b = (<span class="number">1</span> &lt;&lt; i) &amp; n;</div><div class="line">        <span class="keyword">if</span> (!trie[u][b]) trie[u][b] = sz++;</div><div class="line">        u = trie[u][b];</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> u = <span class="number">0</span>, ret = <span class="number">0</span>;</div><div class="line">    FORD(i, m - <span class="number">1</span>, <span class="number">-1</span>) &#123;</div><div class="line">        <span class="keyword">bool</span> b = (<span class="number">1</span> &lt;&lt; i) &amp; n;</div><div class="line">        <span class="keyword">if</span> (!trie[u][b]) &#123;</div><div class="line">            ret += (<span class="number">1</span> &lt;&lt; i);</div><div class="line">            b ^= <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        u = trie[u][b];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> ret;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; n;</div><div class="line">    m = <span class="number">0</span>;</div><div class="line">    LL p = <span class="number">-1</span>, q = <span class="number">0</span>;</div><div class="line">    FOR(i, <span class="number">0</span>, n) &#123;</div><div class="line">        <span class="built_in">cin</span> &gt;&gt; a[i];</div><div class="line">        p &amp;= a[i];</div><div class="line">        q |= a[i];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (!(p ^ q)) &#123; <span class="built_in">puts</span>(<span class="string">"0"</span>); <span class="keyword">return</span> <span class="number">0</span>; &#125;</div><div class="line">    m = <span class="number">31</span> - __builtin_clz(p ^ q);</div><div class="line">    FOR(i, <span class="number">0</span>, n) &#123;</div><div class="line">        <span class="keyword">if</span> (a[i] &amp; (<span class="number">1</span> &lt;&lt; m)) a[la++] = a[i];</div><div class="line">        <span class="keyword">else</span> b[lb++] = a[i];</div><div class="line">    &#125;</div><div class="line">    FOR(i, <span class="number">0</span>, la) add(a[i]);</div><div class="line">    LL ans = <span class="number">1E10</span>;</div><div class="line">    FOR(i, <span class="number">0</span>, lb) ans = min(ans, (LL)query(b[i]));</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; ans + (<span class="number">1</span> &lt;&lt; m) &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="限制">限制</h2>
+<ul>
+<li>如果这不是一道强制在线题，我大可以选择时间分治。</li>
+<li>如果有支持在线的算法或数据结构，我就没有必要用 log 的代价把在线换成离线。</li>
+<li>要求修改操作的贡献可以任意次序累加。</li>
+</ul>
+<h2 id="例题">例题</h2>
+<p>不存在的。这个算法想法很不错，不过很可能用不上。</p>
 
       
     </div>
@@ -436,14 +447,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/HackerRank/" rel="tag"># HackerRank</a>
-          
-            <a href="/tags/位运算/" rel="tag"># 位运算</a>
-          
-        </div>
-      
 
       
       
@@ -453,8 +456,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/03/Sherlock-s-Array-Merging-Algorithm/" rel="next" title="【题解】HackerRank - Sherlock's Array Merging Algorithm">
-                <i class="fa fa-chevron-left"></i> 【题解】HackerRank - Sherlock's Array Merging Algorithm
+              <a href="/2017/08/03/ACGN/" rel="next" title="ACGN">
+                <i class="fa fa-chevron-left"></i> ACGN
               </a>
             
           </div>
@@ -462,10 +465,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/08/Lena-Sort/" rel="prev" title="【题解】HackerRank - Lena Sort">
-                【题解】HackerRank - Lena Sort <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -601,7 +600,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题意"><span class="nav-number">2.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">3.</span> <span class="nav-text">题解</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#资料"><span class="nav-number">1.</span> <span class="nav-text">资料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么"><span class="nav-number">2.</span> <span class="nav-text">为什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#限制"><span class="nav-number">3.</span> <span class="nav-text">限制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例题"><span class="nav-number">4.</span> <span class="nav-text">例题</span></a></li></ol></div>
             
 
           </div>
@@ -751,9 +750,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2017/07/03/Yet-Another-Minimax-Problem/';
-          this.page.identifier = '2017/07/03/Yet-Another-Minimax-Problem/';
-          this.page.title = '【题解】HackerRank - Yet Another Minimax Problem';
+          this.page.url = 'http://yoursite.com/2017/08/04/group-by-binary/';
+          this.page.identifier = '2017/08/04/group-by-binary/';
+          this.page.title = '算法 - 二进制分组';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://zerolblog.disqus.com/embed.js';
