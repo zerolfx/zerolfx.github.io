@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="图论," />
 
 
 
@@ -95,12 +95,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Zerol&#39;s Notes">
-<meta property="og:url" content="http://yoursite.com/tags/构造/index.html">
+<meta name="description" content="题目 https://www.hackerrank.com/challenges/beautiful-path/problem 题意 求起点到终点的一条路径，使得边权 or 最小。">
+<meta name="keywords" content="图论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【题解】HackerRank - Minimum Penalty Path">
+<meta property="og:url" content="http://yoursite.com/2017/11/13/Minimum-Penalty-Path/index.html">
 <meta property="og:site_name" content="Zerol&#39;s Notes">
+<meta property="og:description" content="题目 https://www.hackerrank.com/challenges/beautiful-path/problem 题意 求起点到终点的一条路径，使得边权 or 最小。">
+<meta property="og:updated_time" content="2017-11-13T08:30:09.696Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Zerol&#39;s Notes">
+<meta name="twitter:title" content="【题解】HackerRank - Minimum Penalty Path">
+<meta name="twitter:description" content="题目 https://www.hackerrank.com/challenges/beautiful-path/problem 题意 求起点到终点的一条路径，使得边权 or 最小。">
 
 
 
@@ -128,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/构造/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/11/13/Minimum-Penalty-Path/"/>
 
 
 
 
 
-  <title>标签: 构造 | Zerol's Notes</title>
+  <title>【题解】HackerRank - Minimum Penalty Path | Zerol's Notes</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -169,7 +174,7 @@
     
   
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -287,44 +292,201 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h1>构造<small>标签</small>
-      </h1>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/13/Minimum-Penalty-Path/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zerol">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zerol's Notes">
+    </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【题解】HackerRank - Minimum Penalty Path</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-13T16:11:28+08:00">
+                2017-11-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ACM/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/13/Minimum-Penalty-Path/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/11/13/Minimum-Penalty-Path/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h2 id="题目">题目</h2>
+<p>https://www.hackerrank.com/challenges/beautiful-path/problem</p>
+<h2 id="题意">题意</h2>
+<p>求起点到终点的一条路径，使得边权 or 最小。 <a id="more"></a></p>
+<h2 id="题解">题解</h2>
+<h3 id="官方题解">官方题解</h3>
+<ul>
+<li>状态为 (u, k) u 为结点编号，k 为当前 or 的结果</li>
+<li>随便 bfs, dfs 都可以。</li>
+<li>复杂度 <span class="math inline">\(O(n C)\)</span></li>
+</ul>
+<h3 id="题解-1">题解</h3>
+<ul>
+<li>复杂度更低，更省空间。</li>
+<li>从高到低考虑答案中的每一个 bit，如果没有这一位，则所有该 bit 为 1 的边都不能走，如果剩下的边无法使起点和终点联通，那么答案中的这一位只能为 1。</li>
+<li>如果确定了答案中的某一位必须为 1，那么所有边权就不需要考虑这一位了。</li>
+<li>从大到小计算出答案的每一位，连通性用并查集处理。</li>
+<li>复杂度 <span class="math inline">\(O(n log C)\)</span></li>
+</ul>
+<p>代码（细节比较多）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FOR(i, x, y) for (decay<span class="meta-string">&lt;decltype(y)&gt;::type i = (x), _##i = (y); i &lt; _##i; ++i)</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FORD(i, x, y) for (decay<span class="meta-string">&lt;decltype(x)&gt;::type i = (x), _##i = (y); i &gt; _##i; --i)</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> zerol</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> dbg(args...) do &#123; cout <span class="meta-string">&lt;&lt; "\033[32;1m" &lt;&lt; #args&lt;&lt; " -&gt; "; err(args); &#125; while (0)</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">else</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> dbg(...)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">err</span><span class="params">()</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"\033[39;0m"</span> &lt;&lt; <span class="built_in">endl</span>; &#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... Args&gt;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">err</span><span class="params">(T a, Args... args)</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="string">' '</span>; err(args...); &#125;</div><div class="line"><span class="comment">// -----------------------------------------------------------------------------</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1E3</span> + <span class="number">100</span>;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">E</span> &#123;</span></div><div class="line">    <span class="keyword">int</span> u, v, d;</div><div class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> E&amp; rhs) <span class="keyword">const</span> &#123; <span class="keyword">return</span> d &lt; rhs.d; &#125;</div><div class="line">&#125;;</div><div class="line"><span class="built_in">vector</span>&lt;E&gt; edges;</div><div class="line"><span class="keyword">int</span> n, m, fa[maxn], st, ed;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">findset</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; <span class="keyword">return</span> fa[x] == <span class="number">-1</span> ? x : fa[x] = findset(fa[x]); &#125;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">highbit</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; assert(x); <span class="keyword">return</span> <span class="number">31</span> - __builtin_clz(x); &#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</div><div class="line">    FOR (_, <span class="number">0</span>, m) &#123;</div><div class="line">        <span class="keyword">static</span> <span class="keyword">int</span> u, v, d;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;u, &amp;v, &amp;d);</div><div class="line">        edges.push_back(&#123;u, v, d&#125;);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; st &gt;&gt; ed;</div><div class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</div><div class="line">    <span class="keyword">while</span> (<span class="number">1</span>) &#123;</div><div class="line">        sort(edges.begin(), edges.end());</div><div class="line">        <span class="built_in">memset</span>(fa, <span class="number">-1</span>, <span class="keyword">sizeof</span> fa);</div><div class="line">        <span class="keyword">auto</span> it = edges.begin();</div><div class="line">        <span class="keyword">while</span> (<span class="number">1</span>) &#123;</div><div class="line">            <span class="keyword">if</span> (it == edges.end()) &#123; <span class="built_in">puts</span>(<span class="string">"-1"</span>); <span class="keyword">return</span> <span class="number">0</span>; &#125;</div><div class="line">            E&amp; e = *it;</div><div class="line">            <span class="keyword">int</span> fu = findset(e.u), fv = findset(e.v);</div><div class="line">            <span class="keyword">if</span> (fu != fv) fa[fu] = fv;</div><div class="line">            <span class="keyword">if</span> (findset(st) == findset(ed)) <span class="keyword">break</span>;</div><div class="line">            ++it;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (!it-&gt;d) <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">int</span> t = <span class="number">1</span> &lt;&lt; highbit(it-&gt;d);</div><div class="line">        <span class="keyword">for</span> (; it != edges.end() &amp;&amp; it-&gt;d &lt; (t &lt;&lt; <span class="number">1</span>); ++it);</div><div class="line">        edges.erase(it, edges.end());</div><div class="line">        ans |= t;</div><div class="line">        <span class="keyword">for</span> (E&amp; e: edges)</div><div class="line">            e.d &amp;= ~t;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
-      <h2 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2017/07/08/Lena-Sort/" itemprop="url">
-              
-                <span itemprop="name">【题解】HackerRank - Lena Sort</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h2>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-07-08T20:49:38+08:00"
-              content="2017-07-08" >
-          07-08
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/图论/" rel="tag"># 图论</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/12/synchronous-shopping/" rel="next" title="【题解】HackerRank - synchronous-shopping">
+                <i class="fa fa-chevron-left"></i> 【题解】HackerRank - synchronous-shopping
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -332,6 +494,17 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -351,8 +524,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -432,6 +614,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题意"><span class="nav-number">2.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">3.</span> <span class="nav-text">题解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#官方题解"><span class="nav-number">3.1.</span> <span class="nav-text">官方题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题解-1"><span class="nav-number">3.2.</span> <span class="nav-text">题解</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -552,10 +750,10 @@
 
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
-  
+
 
   
 
@@ -573,6 +771,18 @@
       <script id="dsq-count-scr" src="https://zerolblog.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2017/11/13/Minimum-Penalty-Path/';
+          this.page.identifier = '2017/11/13/Minimum-Penalty-Path/';
+          this.page.title = '【题解】HackerRank - Minimum Penalty Path';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://zerolblog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
