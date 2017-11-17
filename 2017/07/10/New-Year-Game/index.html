@@ -95,17 +95,18 @@
 
 
 
-<meta name="description" content="题目 https://www.hackerrank.com/challenges/newyear-game 题意 给一列数，A 和 B 轮流取，如果每个人取的数之和之差的绝对值被 3 整除，则 B 赢，反之 A 赢。">
+<meta name="description" content="题目https://www.hackerrank.com/challenges/newyear-game 题意给一列数，A 和 B 轮流取，如果每个人取的数之和之差的绝对值被 3 整除，则 B 赢，反之 A 赢。">
 <meta name="keywords" content="HackerRank,动态规划,博弈">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【题解】HackerRank - New Year Game">
 <meta property="og:url" content="http://yoursite.com/2017/07/10/New-Year-Game/index.html">
 <meta property="og:site_name" content="Zerol&#39;s Notes">
-<meta property="og:description" content="题目 https://www.hackerrank.com/challenges/newyear-game 题意 给一列数，A 和 B 轮流取，如果每个人取的数之和之差的绝对值被 3 整除，则 B 赢，反之 A 赢。">
+<meta property="og:description" content="题目https://www.hackerrank.com/challenges/newyear-game 题意给一列数，A 和 B 轮流取，如果每个人取的数之和之差的绝对值被 3 整除，则 B 赢，反之 A 赢。">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-07-12T01:57:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【题解】HackerRank - New Year Game">
-<meta name="twitter:description" content="题目 https://www.hackerrank.com/challenges/newyear-game 题意 给一列数，A 和 B 轮流取，如果每个人取的数之和之差的绝对值被 3 整除，则 B 赢，反之 A 赢。">
+<meta name="twitter:description" content="题目https://www.hackerrank.com/challenges/newyear-game 题意给一列数，A 和 B 轮流取，如果每个人取的数之和之差的绝对值被 3 整除，则 B 赢，反之 A 赢。">
 
 
 
@@ -399,20 +400,17 @@
       
 
       
-        <h2 id="题目">题目</h2>
-<p>https://www.hackerrank.com/challenges/newyear-game</p>
-<h2 id="题意">题意</h2>
-<p>给一列数，A 和 B 轮流取，如果每个人取的数之和之差的绝对值被 3 整除，则 B 赢，反之 A 赢。 <a id="more"></a></p>
-<h2 id="题解">题解</h2>
-<ul>
+        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://www.hackerrank.com/challenges/newyear-game" target="_blank" rel="noopener">https://www.hackerrank.com/challenges/newyear-game</a></p>
+<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>给一列数，A 和 B 轮流取，如果每个人取的数之和之差的绝对值被 3 整除，则 B 赢，反之 A 赢。<br><a id="more"></a></p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><ul>
 <li>绝对值没有用，去掉</li>
 <li>对于每个数，只关心它模 3 的余数</li>
 <li>由于胜利条件不是无法操作，所以和 sg 无关</li>
-<li>如果枚举每个状态，复杂度 <span class="math inline">\(O(n^3)\)</span>，会超时。
-<ul>
-<li>但是如果找规律的话，能得出一个 <span class="math inline">\(O(n)\)</span> 的做法，然后就 AC 了</li>
-</ul></li>
-<li>对于模 3 余 0 的数，如果有偶数个就不影响胜负（显然），如果有奇数个就当成 1 个。所以复杂度变成了 <span class="math inline">\(O(n^2)\)</span></li>
+<li>如果枚举每个状态，复杂度 $O(n^3)$，会超时。<ul>
+<li>但是如果找规律的话，能得出一个 $O(n)$ 的做法，然后就 AC 了</li>
+</ul>
+</li>
+<li>对于模 3 余 0 的数，如果有偶数个就不影响胜负（显然），如果有奇数个就当成 1 个。所以复杂度变成了 $O(n^2)$</li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FOR(i, x, y) for (decay<span class="meta-string">&lt;decltype(y)&gt;::type i = (x), _##i = (y); i &lt; _##i; ++i)</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FORD(i, x, y) for (decay<span class="meta-string">&lt;decltype(x)&gt;::type i = (x), _##i = (y); i &gt; _##i; --i)</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">2000</span> + <span class="number">5</span>;</div><div class="line"><span class="keyword">int</span> a[<span class="number">3</span>], T, n, t, k;</div><div class="line"><span class="keyword">bool</span> dp[<span class="number">2</span>][maxn][maxn][<span class="number">2</span>][<span class="number">3</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; <span class="keyword">return</span> (x + <span class="number">3</span>) % <span class="number">3</span>; &#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</div><div class="line">    dp[<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>][<span class="number">1</span>] = dp[<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>][<span class="number">2</span>] = <span class="number">1</span>; <span class="comment">// first person win</span></div><div class="line">    dp[<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>][<span class="number">1</span>][<span class="number">0</span>] = <span class="number">1</span>; <span class="comment">// second person win</span></div><div class="line">    FOR(t, <span class="number">0</span>, <span class="number">2</span>) <span class="comment">// 0</span></div><div class="line">        FOR(i, <span class="number">0</span>, maxn) <span class="comment">// 1</span></div><div class="line">            FOR(j, <span class="number">0</span>, maxn) <span class="comment">// 2</span></div><div class="line">                FOR(r, <span class="number">0</span>, <span class="number">2</span>) <span class="comment">// 0: first, 1: second</span></div><div class="line">                    FOR(v, <span class="number">0</span>, <span class="number">3</span>) &#123; <span class="comment">// S_first - S_second (mod 3)</span></div><div class="line">                        <span class="keyword">int</span> s = r ? <span class="number">1</span> : <span class="number">-1</span>;</div><div class="line">                        <span class="keyword">bool</span> &amp;u = dp[t][i][j][r][v];</div><div class="line">                        <span class="keyword">if</span> (t) u |= !dp[t - <span class="number">1</span>][i][j][r ^ <span class="number">1</span>][f(v - s * <span class="number">0</span>)];</div><div class="line">                        <span class="keyword">if</span> (i) u |= !dp[t][i - <span class="number">1</span>][j][r ^ <span class="number">1</span>][f(v - s * <span class="number">1</span>)];</div><div class="line">                        <span class="keyword">if</span> (j) u |= !dp[t][i][j - <span class="number">1</span>][r ^ <span class="number">1</span>][f(v - s * <span class="number">2</span>)];</div><div class="line">                    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    init();</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; T;</div><div class="line">    <span class="keyword">while</span> (T--) &#123;</div><div class="line">        <span class="built_in">cin</span> &gt;&gt; n;</div><div class="line">        <span class="built_in">memset</span>(a, <span class="number">0</span>, <span class="keyword">sizeof</span> a);</div><div class="line">        FOR(i, <span class="number">0</span>, n) &#123;</div><div class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;t);</div><div class="line">            ++a[t % <span class="number">3</span>];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (dp[a[<span class="number">0</span>] % <span class="number">2</span>][a[<span class="number">1</span>]][a[<span class="number">2</span>]][<span class="number">0</span>][<span class="number">0</span>]) <span class="built_in">puts</span>(<span class="string">"Balsa"</span>); <span class="keyword">else</span> <span class="built_in">puts</span>(<span class="string">"Koca"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
@@ -552,7 +550,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -574,7 +572,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

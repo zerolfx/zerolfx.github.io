@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="搜索," />
 
 
 
@@ -95,13 +95,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Zerol&#39;s Notes">
-<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+<meta name="description" content="题目https://www.hackerrank.com/challenges/borrowing-money/problem 题意无向图上每个结点有个权值，求权最大的独立集的权及其方案数。">
+<meta name="keywords" content="搜索">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【题解】HackerRank - Demanding Money">
+<meta property="og:url" content="http://yoursite.com/2017/11/17/Demanding-Money/index.html">
 <meta property="og:site_name" content="Zerol&#39;s Notes">
+<meta property="og:description" content="题目https://www.hackerrank.com/challenges/borrowing-money/problem 题意无向图上每个结点有个权值，求权最大的独立集的权及其方案数。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-11-17T02:48:18.134Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Zerol&#39;s Notes">
+<meta name="twitter:title" content="【题解】HackerRank - Demanding Money">
+<meta name="twitter:description" content="题目https://www.hackerrank.com/challenges/borrowing-money/problem 题意无向图上每个结点有个权值，求权最大的独立集的权及其方案数。">
 
 
 
@@ -129,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/page/3/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/11/17/Demanding-Money/"/>
 
 
 
 
 
-  <title>Zerol's Notes</title>
+  <title>【题解】HackerRank - Demanding Money | Zerol's Notes</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -170,9 +175,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -289,9 +292,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -300,7 +303,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/09/Algorithms-Game-Theory/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/17/Demanding-Money/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zerol">
@@ -317,9 +320,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/09/Algorithms-Game-Theory/" itemprop="url">算法 - 博弈问题</a></h1>
+          <h1 class="post-title" itemprop="name headline">【题解】HackerRank - Demanding Money</h1>
         
 
         <div class="post-meta">
@@ -331,8 +332,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-09T22:30:27+08:00">
-                2017-06-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-17T09:34:49+08:00">
+                2017-11-17
               </time>
             
 
@@ -354,8 +355,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithms/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithms</span>
+                  <a href="/categories/ACM/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM</span>
                   </a>
                 </span>
 
@@ -372,9 +373,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/06/09/Algorithms-Game-Theory/#comments" itemprop="discussionUrl">
+                <a href="/2017/11/17/Demanding-Money/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/09/Algorithms-Game-Theory/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/11/17/Demanding-Money/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -399,341 +400,84 @@
       
 
       
-        
-          <h2 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h2><p>游戏可以等效为一个有向图，每一个状态相当于图中的一个节点，而可能的状态转移是图中的边。如果必胜态的后继中存在必败态，而必败态的后继全是必胜态。</p>
-<h2 id="SG函数"><a href="#SG函数" class="headerlink" title="SG函数"></a>SG函数</h2><p>$$ SG(u) = mex{ SG(v)|u \to v } $$<br>函数值为 0 代表必败态，不为 0 代表必胜态。（也就是说，0 只能转移到非 0，而非 0 一定能转移到 0。）<br>一个组合游戏的 SG 和等于所有子游戏的异或和。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/06/09/Algorithms-Game-Theory/#more" rel="contents">
-              Go →
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/08/Linux-Another-Home/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zerol">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zerol's Notes">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/08/Linux-Another-Home/" itemprop="url">Arch Linux - 大型攻略</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-08T20:26:18+08:00">
-                2017-06-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/06/08/Linux-Another-Home/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/08/Linux-Another-Home/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>这篇文章的主要目的是记录我在使用 Linux 的过程中遇到的坑和相应的解决方案，次要目的是帮助读者快速构建一个舒适的 Linux 使用环境。后文的描述基于 Arch Linux 和 KDE 的方案，大部分也适用于 Kubuntu 用户。</p>
-<h2 id="UPDATE-2017-10"><a href="#UPDATE-2017-10" class="headerlink" title="UPDATE 2017.10"></a>UPDATE 2017.10</h2><ul>
-<li>重装了系统，现在选择了基于 arch 的发行版 majaro（桌面环境还是 KDE），安装确实方便挺多，也称得上是开箱即用。</li>
-<li>这两个月 <code>shadowsocks-qt5</code> 的最新版本很不好用，估计是依赖的问题（github 上 issue 不断）。所以还是选择了 <code>shadowsocks-libev</code> 命令行版本，配合 <code>polipo</code> socks5 转 HTTP 代理（其实不怎么用得到）。</li>
+        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://www.hackerrank.com/challenges/borrowing-money/problem" target="_blank" rel="noopener">https://www.hackerrank.com/challenges/borrowing-money/problem</a></p>
+<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>无向图上每个结点有个权值，求权最大的独立集的权及其方案数。<br><a id="more"></a></p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><ul>
+<li>对于一般图的最大独立集，是 NPC 问题，题目中 n 也很小，所以搜索。</li>
+<li>这个问题中要求输出方案数，但是如果有很多的孤立点，那么方案数会很大 ($2^k$)。由于要统计方案数，一个一个数即便是有剪枝也会超时（因为孤立点的值可以为 0）。</li>
+<li>对于所有孤立点单独考虑，如果孤立点值不为 0，那么肯定要选，答案乘上权值，如果值为 0，那么计数要乘 2。</li>
+<li>剔除所有孤立点进行搜索，现在联通块的大小至少为 2，枚举所有取法不剪枝，那么在所有联通块大小均为 2 时，复杂度为 $O(2^{n/2})$，可以接受。</li>
+<li>官方题解是 meet-in-the-middle，实现起来比较繁琐，也不见得快。</li>
 </ul>
-<h2 id="发行版的选择"><a href="#发行版的选择" class="headerlink" title="发行版的选择"></a>发行版的选择</h2><p>起初我选择的是 Ubuntu，其主要原因有如下几点：</p>
-<ul>
-<li>用户的基数大，遇到问题能够方便得找到相应的解决方案</li>
-<li>“网易云音乐”、“搜狗输入法”等应用提供的安装包是 Deb 包（ Ubuntu 可以直接安装，而 Debian 家族以外的发行版无法直接使用）</li>
-</ul>
-<p>在使用 Ubuntu 将近一年后，我选择了 Arch Linux，它不仅拥有对我而言 Ubuntu 所有的优势，还提供了额外的便利：</p>
-<ul>
-<li>官方仓库和用户软件仓库（AUR）提供了我想要的全部，包括上文中的“网易云音乐”和“搜狗输入法”。</li>
-<li>拥有官方 Wiki，对于解决实际问题和学习 Linux 很有帮助</li>
-<li>没有预装可有可无的软件包，用户拥有更大的选择余地
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/06/08/Linux-Another-Home/#more" rel="contents">
-              Go →
-            </a>
-          </div>
-          <!--/noindex-->
+<p>代码</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FOR(i, x, y) for (decay<span class="meta-string">&lt;decltype(y)&gt;::type i = (x), _##i = (y); i &lt; _##i; ++i)</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FORD(i, x, y) for (decay<span class="meta-string">&lt;decltype(x)&gt;::type i = (x), _##i = (y); i &gt; _##i; --i)</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> zerol</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> dbg(args...) do &#123; cout <span class="meta-string">&lt;&lt; "\033[32;1m" &lt;&lt; #args&lt;&lt; " -&gt; "; err(args); &#125; while (0)</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">else</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> dbg(...)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">err</span><span class="params">()</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"\033[39;0m"</span> &lt;&lt; <span class="built_in">endl</span>; &#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... Args&gt;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">err</span><span class="params">(T a, Args... args)</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="string">' '</span>; err(args...); &#125;</div><div class="line"><span class="comment">// -----------------------------------------------------------------------------</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">34</span> + <span class="number">5</span>;</div><div class="line"><span class="keyword">int</span> w[maxn], n, m, ans, cnt;</div><div class="line"><span class="keyword">bool</span> G[maxn][maxn], vis[maxn];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">go</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span> s)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (k == n) &#123;</div><div class="line">        <span class="keyword">if</span> (s &lt; ans) <span class="keyword">return</span>;</div><div class="line">        <span class="keyword">if</span> (s &gt; ans) &#123; ans = s; cnt = <span class="number">0</span>; &#125;</div><div class="line">        ++cnt;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    go(k + <span class="number">1</span>, s);</div><div class="line">    <span class="keyword">if</span> (vis[k]) <span class="keyword">return</span>;</div><div class="line">    <span class="keyword">bool</span> f = <span class="literal">true</span>;</div><div class="line">    FOR (i, <span class="number">0</span>, k)</div><div class="line">        <span class="keyword">if</span> (G[k][i] &amp;&amp; vis[i]) &#123; f = <span class="literal">false</span>; <span class="keyword">break</span>; &#125;</div><div class="line">    <span class="keyword">if</span> (f) &#123;</div><div class="line">        vis[k] = <span class="number">1</span>;</div><div class="line">        go(k + <span class="number">1</span>, s + w[k]);</div><div class="line">        vis[k] = <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</div><div class="line">    FOR (i, <span class="number">0</span>, n) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;w[i]);</div><div class="line">    FOR (_, <span class="number">0</span>, m) &#123;</div><div class="line">        <span class="keyword">static</span> <span class="keyword">int</span> u, v;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;u, &amp;v);</div><div class="line">        --u; --v;</div><div class="line">        G[u][v] = G[v][u] = <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    LL add = <span class="number">0</span>, mul = <span class="number">1</span>;</div><div class="line">    FOR (i, <span class="number">0</span>, n) &#123;</div><div class="line">        <span class="keyword">bool</span> f = <span class="number">1</span>;</div><div class="line">        FOR (j, <span class="number">0</span>, n) <span class="keyword">if</span> (G[i][j]) &#123; f = <span class="number">0</span>; <span class="keyword">break</span>; &#125;</div><div class="line">        <span class="keyword">if</span> (f) &#123;</div><div class="line">            <span class="keyword">if</span> (w[i]) add += w[i];</div><div class="line">            <span class="keyword">else</span> mul &lt;&lt;= <span class="number">1</span>;</div><div class="line">            vis[i] = <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    go(<span class="number">0</span>, <span class="number">0</span>);</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; ans + add &lt;&lt; <span class="string">' '</span> &lt;&lt; cnt * mul &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <div>
+      
+        
+
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/08/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zerol">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zerol's Notes">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/08/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-08T20:00:00+08:00">
-                2017-06-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/搜索/" rel="tag"># 搜索</a>
           
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/06/08/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/08/hello-world/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>你好，世界！</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/13/Minimum-Penalty-Path/" rel="next" title="【题解】HackerRank - Minimum Penalty Path">
+                <i class="fa fa-chevron-left"></i> 【题解】HackerRank - Minimum Penalty Path
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
-  </nav>
-
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -741,6 +485,17 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -760,8 +515,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -841,6 +605,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题意"><span class="nav-number">2.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">3.</span> <span class="nav-text">题解</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -961,10 +741,10 @@
 
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
-  
+
 
   
 
@@ -982,6 +762,18 @@
       <script id="dsq-count-scr" src="https://zerolblog.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2017/11/17/Demanding-Money/';
+          this.page.identifier = '2017/11/17/Demanding-Money/';
+          this.page.title = '【题解】HackerRank - Demanding Money';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://zerolblog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
