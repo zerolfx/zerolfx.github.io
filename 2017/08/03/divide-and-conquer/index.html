@@ -95,7 +95,7 @@
 
 
 
-<meta name="description" content="资料具体见 2013 年集训队论文《浅谈数据结构题的几个非经典解法》（作者：许昊然）。本文假设读者已经读过这篇论文中整体二分的部分。 限制 需要离线 可以二分答案 修改操作，要求对于一次查询，前面的修改操作可以交换顺序而不影响查询结果 贡献可以累加 注意将操作（包括询问）分离到两个新的答案区间这个过程的复杂度应该和操作">
+<meta name="description" content="资料具体见 2013 年集训队论文《浅谈数据结构题的几个非经典解法》（作者：许昊然）。本文假设读者已经读过这篇论文中整体二分的部分。 限制 需要离线 可以二分答案 修改操作，要求对于一次查询，前面的修改操作可以交换顺序而不影响查询结果 贡献可以累加 注意将操作（包括询问）分离到两个新的答案区间这个过程的复杂度应该和操作数的个数相关，而不能和以下两项相关： 总的区间（就是最初的答案区间） 尤其是序列">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法 - 整体二分">
 <meta property="og:url" content="http://yoursite.com/2017/08/03/divide-and-conquer/index.html">
@@ -633,7 +633,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#资料"><span class="nav-number">1.</span> <span class="nav-text">资料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#限制"><span class="nav-number">2.</span> <span class="nav-text">限制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例题"><span class="nav-number">3.</span> <span class="nav-text">例题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#静态区间第k大"><span class="nav-number">3.1.</span> <span class="nav-text">静态区间第k大</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态区间第k大"><span class="nav-number">3.2.</span> <span class="nav-text">动态区间第k大</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#资料"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x8D44;&#x6599;" class="headerlink" title="&#x8D44;&#x6599;"></a>&#x8D44;&#x6599;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#限制"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x9650;&#x5236;" class="headerlink" title="&#x9650;&#x5236;"></a>&#x9650;&#x5236;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例题"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x4F8B;&#x9898;" class="headerlink" title="&#x4F8B;&#x9898;"></a>&#x4F8B;&#x9898;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#静态区间第k大"><span class="nav-number">3.1.</span> <span class="nav-text"><a href="#&#x9759;&#x6001;&#x533A;&#x95F4;&#x7B2C;k&#x5927;" class="headerlink" title="&#x9759;&#x6001;&#x533A;&#x95F4;&#x7B2C;k&#x5927;"></a>&#x9759;&#x6001;&#x533A;&#x95F4;&#x7B2C;k&#x5927;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态区间第k大"><span class="nav-number">3.2.</span> <span class="nav-text"><a href="#&#x52A8;&#x6001;&#x533A;&#x95F4;&#x7B2C;k&#x5927;" class="headerlink" title="&#x52A8;&#x6001;&#x533A;&#x95F4;&#x7B2C;k&#x5927;"></a>&#x52A8;&#x6001;&#x533A;&#x95F4;&#x7B2C;k&#x5927;</span></a></li></ol></li></ol></div>
             
 
           </div>

@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="Zerol&#39;s Notes">
 <meta property="og:description" content="题目http://acm.ecnu.edu.cn/problem/3438/ 题意给定一个由 n 条高度不等的列组成的棋盘，其中所有列的底边位于同一水平线上。求放置 k 个互不攻击的車的方案总数。（車能互相攻击当且仅当能通过棋盘上连续的一行或一列格子直接连在一起）">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-07T15:16:18.979Z">
+<meta property="og:updated_time" content="2017-12-07T15:27:28.279Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【题解】EOJ - 棋盘上的車 (bzoj 2616 - SPOJ PERIODNI)">
 <meta name="twitter:description" content="题目http://acm.ecnu.edu.cn/problem/3438/ 题意给定一个由 n 条高度不等的列组成的棋盘，其中所有列的底边位于同一水平线上。求放置 k 个互不攻击的車的方案总数。（車能互相攻击当且仅当能通过棋盘上连续的一行或一列格子直接连在一起）">
@@ -420,7 +420,7 @@
 </li>
 <li><p>此时状态转移方程变为$dp[x][k]=\displaystyle \sum_{i=0}^{k} {length \choose i} {height \choose i} i! \times g[k-i]$，也可以在 $O(length^2)$ 内处理出来（还要枚举 k）。当然这道题还需要预处理阶乘以及阶乘的逆元使得组合数计算$O(1)$才能做到这个复杂度。</p>
 </li>
-<li><p>所以总复杂度为 $O(n^4)$。</p>
+<li><p>所以总复杂度为 $O(n^3)$。</p>
 <p>​</p>
 </li>
 </ul>
@@ -629,7 +629,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题意"><span class="nav-number">2.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">3.</span> <span class="nav-text">题解</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x9898;&#x76EE;" class="headerlink" title="&#x9898;&#x76EE;"></a>&#x9898;&#x76EE;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题意"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x9898;&#x610F;" class="headerlink" title="&#x9898;&#x610F;"></a>&#x9898;&#x610F;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x9898;&#x89E3;" class="headerlink" title="&#x9898;&#x89E3;"></a>&#x9898;&#x89E3;</span></a></li></ol></div>
             
 
           </div>
