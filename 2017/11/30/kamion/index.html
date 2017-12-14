@@ -7,7 +7,7 @@
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="Zerol&#39;s Notes">
 <meta property="og:description" content="题目http://acm.ecnu.edu.cn/problem/3437/ 题意有点复杂，请自行读题。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-07T14:34:56.864Z">
+<meta property="og:updated_time" content="2017-12-08T04:00:16.124Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【题解】EOJ - 卡车运输 (kamion)">
 <meta name="twitter:description" content="题目http://acm.ecnu.edu.cn/problem/3437/ 题意有点复杂，请自行读题。">
@@ -140,7 +140,7 @@
 
 
 
-  <title>【题解】EOJ - 卡车运输 (kamion) | Zerol's Notes</title>
+  <title>【题解】EOJ - 卡车运输 (kamion) | Zerol's Notes</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -150,7 +150,7 @@
 
 
 
-<script>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
           m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -404,20 +404,15 @@
 <h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>有点复杂，请自行读题。<br><a id="more"></a></p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><ul>
 <li><p>$f[i][j][k]$ 从 $i$ 到 $j$ 走 $k$ 步且始末为空，且全程不空的方案数 （由装货，g，卸货组成）</p>
-<p>$$f[i][j][k]=\displaystyle \sum_{i \stackrel{type 1(X)}{\longrightarrow}a} \sum_{b \stackrel{type 2(x)}{\longrightarrow} j}g[a][b][k-2]$$</p>
-</li>
+<script type="math/tex; mode=display">f[i][j][k]=\displaystyle \sum_{i \stackrel{type 1(X)}{\longrightarrow}a} \sum_{b \stackrel{type 2(x)}{\longrightarrow} j}g[a][b][k-2]</script></li>
 <li><p>$empty[i][j][k]$ 从 $i$ 到 $j$ 走 $k$ 步且全程为空方案数 （由 empty 和 第三种路组成）</p>
-<p>$$empty[i][j][k]=\displaystyle \sum_{t \stackrel{type 3}{\longrightarrow}j}empty[i][t][k-1]$$</p>
-</li>
+<script type="math/tex; mode=display">empty[i][j][k]=\displaystyle \sum_{t \stackrel{type 3}{\longrightarrow}j}empty[i][t][k-1]</script></li>
 <li><p>$g[i][j][k]$ 从 $i$ 到 $j$ 走 $k$ 步且始末为空的方案数 （由 g 和 gg 组成）</p>
-<p>$$g[i][j][k]=\displaystyle \sum_{t=1}^n \sum_{k’=0}^{k} g[i][t][k’] \times gg[t][j][k-k’]$$</p>
-</li>
+<script type="math/tex; mode=display">g[i][j][k]=\displaystyle \sum_{t=1}^n \sum_{k'=0}^{k} g[i][t][k'] \times gg[t][j][k-k']</script></li>
 <li><p>$gg[i][j][k]$ （由 f 和 empty 组成）用于追加在 g 尾部形成新的 g。</p>
-<p>$$gg[i][j][k]=\displaystyle \sum_{t=1}^n \sum_{k’=0}^{k} f[i][t][k’] \times empty[t][j][k-k’]$$</p>
-</li>
-<li><p>$h[i][j][k]$ 从 $i$ 到 $j$ 走 $k$ 步且一开始为空的方案数（由  1、3 两种路以及 f  组成）</p>
-<p>$$h[i][j][k]=\displaystyle \sum_{t=1}^n \sum_{k’=0}^{k} f[i][t][k’] \times h[t][j][k-k’] + \sum_{t \stackrel{type 1/3}{\longrightarrow}  j}h[i][t][k-1]$$</p>
-</li>
+<script type="math/tex; mode=display">gg[i][j][k]=\displaystyle \sum_{t=1}^n \sum_{k'=0}^{k} f[i][t][k'] \times empty[t][j][k-k']+empty[i][j][k]</script></li>
+<li><p>$h[i][j][k]​$ 从 $i​$ 到 $j​$ 走 $k​$ 步且一开始为空的方案数（由  1、3 两种路以及 f  组成）</p>
+<script type="math/tex; mode=display">h[i][j][k]=\displaystyle \sum_{t=1}^n \sum_{k'=0}^{k} h[i][t][k'] \times f[t][j][k-k'] + \sum_{t \stackrel{type 1/3}{\longrightarrow}  j}h[i][t][k-1]</script></li>
 <li><p>由于只要求不超过 k 步，那么最后的答案为 $\sum_{k=0}^K h[1][n][k]$，复杂度 $O(n^5)$，由于我用的是邻接矩阵而非邻接表，所以常数会大一些。</p>
 </li>
 <li><p>搞了那么多状态转移方程，到底有什么必要呢？很遗憾，很可能是做复杂了。</p>
@@ -561,7 +556,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1172,7 +1167,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 

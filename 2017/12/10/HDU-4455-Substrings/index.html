@@ -95,17 +95,17 @@
 
 
 
-<meta name="description" content="基本思想游戏可以等效为一个有向图，每一个状态相当于图中的一个节点，而可能的状态转移是图中的边。如果必胜态的后继中存在必败态，而必败态的后继全是必胜态。 SG函数SG(u) = mex\{ SG(v)|u \to v \}函数值为 0 代表必败态，不为 0 代表必胜态。（也就是说，0 只能转移到非 0，而非 0 一定能转移到 0。）一个组合游戏的 SG 和等于所有子游戏的异或和。">
+<meta name="description" content="题目http://acm.hdu.edu.cn/showproblem.php?pid=4455 题意给定一个数组，对于每次询问，求所有长度为给定值的区间的不同数字个数之和。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="算法 - 博弈问题">
-<meta property="og:url" content="http://yoursite.com/2017/06/09/Algorithms-Game-Theory/index.html">
+<meta property="og:title" content="【题解】HDU-4455 Substrings">
+<meta property="og:url" content="http://yoursite.com/2017/12/10/HDU-4455-Substrings/index.html">
 <meta property="og:site_name" content="Zerol&#39;s Notes">
-<meta property="og:description" content="基本思想游戏可以等效为一个有向图，每一个状态相当于图中的一个节点，而可能的状态转移是图中的边。如果必胜态的后继中存在必败态，而必败态的后继全是必胜态。 SG函数SG(u) = mex\{ SG(v)|u \to v \}函数值为 0 代表必败态，不为 0 代表必胜态。（也就是说，0 只能转移到非 0，而非 0 一定能转移到 0。）一个组合游戏的 SG 和等于所有子游戏的异或和。">
+<meta property="og:description" content="题目http://acm.hdu.edu.cn/showproblem.php?pid=4455 题意给定一个数组，对于每次询问，求所有长度为给定值的区间的不同数字个数之和。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-07-03T14:39:05.000Z">
+<meta property="og:updated_time" content="2017-12-10T14:47:02.567Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="算法 - 博弈问题">
-<meta name="twitter:description" content="基本思想游戏可以等效为一个有向图，每一个状态相当于图中的一个节点，而可能的状态转移是图中的边。如果必胜态的后继中存在必败态，而必败态的后继全是必胜态。 SG函数SG(u) = mex\{ SG(v)|u \to v \}函数值为 0 代表必败态，不为 0 代表必胜态。（也就是说，0 只能转移到非 0，而非 0 一定能转移到 0。）一个组合游戏的 SG 和等于所有子游戏的异或和。">
+<meta name="twitter:title" content="【题解】HDU-4455 Substrings">
+<meta name="twitter:description" content="题目http://acm.hdu.edu.cn/showproblem.php?pid=4455 题意给定一个数组，对于每次询问，求所有长度为给定值的区间的不同数字个数之和。">
 
 
 
@@ -133,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/06/09/Algorithms-Game-Theory/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/12/10/HDU-4455-Substrings/"/>
 
 
 
 
 
-  <title>算法 - 博弈问题 | Zerol's Notes</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>【题解】HDU-4455 Substrings | Zerol's Notes</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -302,7 +302,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/09/Algorithms-Game-Theory/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/10/HDU-4455-Substrings/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zerol">
@@ -319,7 +319,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">算法 - 博弈问题</h1>
+          <h1 class="post-title" itemprop="name headline">【题解】HDU-4455 Substrings</h1>
         
 
         <div class="post-meta">
@@ -331,8 +331,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-09T22:30:27+08:00">
-                2017-06-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-10T22:31:20+08:00">
+                2017-12-10
               </time>
             
 
@@ -354,8 +354,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithms/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithms</span>
+                  <a href="/categories/ACM/" itemprop="url" rel="index">
+                    <span itemprop="name">ACM</span>
                   </a>
                 </span>
 
@@ -372,9 +372,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/06/09/Algorithms-Game-Theory/#comments" itemprop="discussionUrl">
+                <a href="/2017/12/10/HDU-4455-Substrings/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/09/Algorithms-Game-Theory/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/12/10/HDU-4455-Substrings/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -399,49 +399,23 @@
       
 
       
-        <h2 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h2><p>游戏可以等效为一个有向图，每一个状态相当于图中的一个节点，而可能的状态转移是图中的边。如果必胜态的后继中存在必败态，而必败态的后继全是必胜态。</p>
-<h2 id="SG函数"><a href="#SG函数" class="headerlink" title="SG函数"></a>SG函数</h2><script type="math/tex; mode=display">SG(u) = mex\{ SG(v)|u \to v \}</script><p>函数值为 0 代表必败态，不为 0 代表必胜态。（也就是说，0 只能转移到非 0，而非 0 一定能转移到 0。）<br>一个组合游戏的 SG 和等于所有子游戏的异或和。<br><a id="more"></a></p>
-<h2 id="Anti-SG-和-SJ-定理"><a href="#Anti-SG-和-SJ-定理" class="headerlink" title="Anti-SG 和 SJ 定理"></a>Anti-SG 和 SJ 定理</h2><p>Anti-SG 游戏：<br>走完最后一步的一方输，也就是说，SG 为 0 的局面不一定为终止局面。</p>
-<p>SJ 定理：<br>对于 Anti-SG 游戏，如果游戏结束的条件是所有子游戏的 SG 值均为 0 时，那么先手必胜的条件是：<br><strong>SG 值不为零</strong> xor <strong>没有子游戏 SG 值大于1</strong></p>
-<h2 id="Every-SG"><a href="#Every-SG" class="headerlink" title="Every-SG"></a>Every-SG</h2><p>每一个非终止状态的子游戏必须进行操作。</p>
-<script type="math/tex; mode=display">
-step(v) =
-\begin{cases}
-0, & \text{$v$ 为终止状态} \\
-max\{step(u)|SG(u)=0\}+1,  & \text{$SG(v)>0$} \\
-min\{step(u)\}, & \text{$SG(v)=0$}  \\
-\end{cases}</script><p>先手必胜的充要条件：所有子游戏中最大的 step 值为奇数</p>
-<h2 id="Green-Hackenbush"><a href="#Green-Hackenbush" class="headerlink" title="Green Hackenbush"></a>Green Hackenbush</h2><p>图上的删边游戏，过于复杂，自行搜索。</p>
-<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>尽量将问题转换成 Nim 游戏计算 SG 和。<br>确定边界状态的 SG 值（不存在时为 -1）<br>SG 计算过于复杂时打表找规律</p>
-<h3 id="zero-move"><a href="#zero-move" class="headerlink" title="zero-move"></a>zero-move</h3><p>在 Nim 游戏的基础上增加一个规则，每一堆石子可以进行一次空操作（与玩家无关）。这道题看似同一次状态可以多次抵达，实则不然。同样多的石子，根据经历过空操作与否可以看做两个状态。<br>新的 SG 值：</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>n</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-<th>6</th>
-<th>…</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>SG</td>
-<td>2</td>
-<td>1</td>
-<td>4</td>
-<td>3</td>
-<td>6</td>
-<td>5</td>
-<td>…</td>
-</tr>
-</tbody>
-</table>
-</div>
+        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=4455" target="_blank" rel="noopener">http://acm.hdu.edu.cn/showproblem.php?pid=4455</a></p>
+<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>给定一个数组，对于每次询问，求所有长度为给定值的区间的不同数字个数之和。</p>
+<a id="more"></a>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><ul>
+<li>考虑每个数的贡献，如果一个数在区间内出现了多次，那么只记第一次有贡献。</li>
+<li>考虑每个数，对于长度为 w 的区间，当区间左端点在 [l, r] 之间时产生了贡献。</li>
+<li>设 last[p] 为上一个与 p 这个位置上的数相同的数的位置</li>
+<li>l[p] = max{last[p] + 1, p - w + 1}, r[p] = min{p, n - w + 1}</li>
+<li>令 r[p] = p，最后把多算的减掉（长度为 1 ~ w - 1 的后缀的不同数的个数之和）。</li>
+<li>p 的贡献为 r[p] - l[p] + 1 = min{p - last[p], w}，只要预处理 p - last[p] 并进行排序再求前缀和就行了。</li>
+<li>如果采用基数排序，那么可以省一个 log。</li>
+</ul>
+<ul>
+<li>看了看别人的题解，好像多为 dp，但是算法本质是一样的。</li>
+</ul>
+<p>代码</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FOR(i, x, y) for (decay<span class="meta-string">&lt;decltype(y)&gt;::type i = (x), _##i = (y); i &lt; _##i; ++i)</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FORD(i, x, y) for (decay<span class="meta-string">&lt;decltype(x)&gt;::type i = (x), _##i = (y); i &gt; _##i; --i)</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> zerol</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> dbg(args...) do &#123; cout <span class="meta-string">&lt;&lt; "\033[32;1m" &lt;&lt; #args&lt;&lt; " -&gt; "; err(args); &#125; while (0)</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">else</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> dbg(...)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">err</span><span class="params">()</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"\033[39;0m"</span> &lt;&lt; <span class="built_in">endl</span>; &#125;</div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... Args&gt;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">err</span><span class="params">(T a, Args... args)</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="string">' '</span>; err(args...); &#125;</div><div class="line"><span class="comment">// -----------------------------------------------------------------------------</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1E6</span> + <span class="number">100</span>;</div><div class="line"><span class="keyword">int</span> a[maxn], pos[maxn], up[maxn];</div><div class="line">LL sum[maxn], ss[maxn], n, k;</div><div class="line"><span class="keyword">bool</span> vis[maxn];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">while</span> (<span class="built_in">cin</span> &gt;&gt; n &amp;&amp; n) &#123;</div><div class="line">        FOR (i, <span class="number">0</span>, n) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[i]);</div><div class="line">      </div><div class="line">        <span class="built_in">memset</span>(vis, <span class="number">0</span>, <span class="keyword">sizeof</span> vis);</div><div class="line">        LL cnt = <span class="number">0</span>;</div><div class="line">        FORD (i, n - <span class="number">1</span>, <span class="number">-1</span>) &#123;</div><div class="line">            <span class="keyword">if</span> (!vis[a[i]]) &#123; vis[a[i]] = <span class="number">1</span>; ++cnt; &#125;</div><div class="line">            ss[n - i] = ss[n - i - <span class="number">1</span>] + cnt;</div><div class="line">        &#125; <span class="comment">// ss[k] 为前 k 个后缀的不同数的个数和</span></div><div class="line"></div><div class="line">        <span class="built_in">memset</span>(pos, <span class="number">-1</span>, <span class="keyword">sizeof</span> pos);</div><div class="line">        FOR (i, <span class="number">0</span>, n) &#123;</div><div class="line">            up[i] = i - pos[a[i]]; <span class="comment">// up[p] 为 p 这个位置上的数字的贡献的上限</span></div><div class="line">            pos[a[i]] = i; <span class="comment">// 记录 a[i] 上一次出现的位置</span></div><div class="line">        &#125;</div><div class="line">        sort(up, up + n);</div><div class="line">        FOR (i, <span class="number">0</span>, n) sum[i + <span class="number">1</span>] = sum[i] + up[i];</div><div class="line">      </div><div class="line">        LL Q; <span class="built_in">cin</span> &gt;&gt; Q;</div><div class="line">        <span class="keyword">while</span> (Q--) &#123;</div><div class="line">            <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;k);</div><div class="line">            LL len = upper_bound(up, up + n, k) - up; <span class="comment">// len 为 up 中不大于 w 的个数</span></div><div class="line">            LL ans = sum[len] + (n - len) * k;</div><div class="line">            ans -= ss[k - <span class="number">1</span>];</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, ans);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -478,8 +452,8 @@ min\{step(u)\}, & \text{$SG(v)=0$}  \\
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/08/Linux-Another-Home/" rel="next" title="Arch Linux - 大型攻略">
-                <i class="fa fa-chevron-left"></i> Arch Linux - 大型攻略
+              <a href="/2017/12/07/PERIODNI/" rel="next" title="【题解】EOJ - 棋盘上的車 (bzoj 2616 - SPOJ PERIODNI)">
+                <i class="fa fa-chevron-left"></i> 【题解】EOJ - 棋盘上的車 (bzoj 2616 - SPOJ PERIODNI)
               </a>
             
           </div>
@@ -487,10 +461,6 @@ min\{step(u)\}, & \text{$SG(v)=0$}  \\
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/06/17/cpp-tricks/" rel="prev" title="C++ 奇技淫巧">
-                C++ 奇技淫巧 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -644,7 +614,7 @@ min\{step(u)\}, & \text{$SG(v)=0$}  \\
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本思想"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x57FA;&#x672C;&#x601D;&#x60F3;" class="headerlink" title="&#x57FA;&#x672C;&#x601D;&#x60F3;"></a>&#x57FA;&#x672C;&#x601D;&#x60F3;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SG函数"><span class="nav-number">2.</span> <span class="nav-text"><a href="#SG&#x51FD;&#x6570;" class="headerlink" title="SG&#x51FD;&#x6570;"></a>SG&#x51FD;&#x6570;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Anti-SG-和-SJ-定理"><span class="nav-number">3.</span> <span class="nav-text"><a href="#Anti-SG-&#x548C;-SJ-&#x5B9A;&#x7406;" class="headerlink" title="Anti-SG &#x548C; SJ &#x5B9A;&#x7406;"></a>Anti-SG &#x548C; SJ &#x5B9A;&#x7406;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Every-SG"><span class="nav-number">4.</span> <span class="nav-text"><a href="#Every-SG" class="headerlink" title="Every-SG"></a>Every-SG</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Green-Hackenbush"><span class="nav-number">5.</span> <span class="nav-text"><a href="#Green-Hackenbush" class="headerlink" title="Green Hackenbush"></a>Green Hackenbush</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">6.</span> <span class="nav-text"><a href="#&#x9898;&#x76EE;" class="headerlink" title="&#x9898;&#x76EE;"></a>&#x9898;&#x76EE;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解题思路"><span class="nav-number">6.1.</span> <span class="nav-text"><a href="#&#x89E3;&#x9898;&#x601D;&#x8DEF;" class="headerlink" title="&#x89E3;&#x9898;&#x601D;&#x8DEF;"></a>&#x89E3;&#x9898;&#x601D;&#x8DEF;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zero-move"><span class="nav-number">6.2.</span> <span class="nav-text"><a href="#zero-move" class="headerlink" title="zero-move"></a>zero-move</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x9898;&#x76EE;" class="headerlink" title="&#x9898;&#x76EE;"></a>&#x9898;&#x76EE;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题意"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x9898;&#x610F;" class="headerlink" title="&#x9898;&#x610F;"></a>&#x9898;&#x610F;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x9898;&#x89E3;" class="headerlink" title="&#x9898;&#x89E3;"></a>&#x9898;&#x89E3;</span></a></li></ol></div>
             
 
           </div>
@@ -794,9 +764,9 @@ min\{step(u)\}, & \text{$SG(v)=0$}  \\
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2017/06/09/Algorithms-Game-Theory/';
-          this.page.identifier = '2017/06/09/Algorithms-Game-Theory/';
-          this.page.title = '算法 - 博弈问题';
+          this.page.url = 'http://yoursite.com/2017/12/10/HDU-4455-Substrings/';
+          this.page.identifier = '2017/12/10/HDU-4455-Substrings/';
+          this.page.title = '【题解】HDU-4455 Substrings';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://zerolblog.disqus.com/embed.js';
