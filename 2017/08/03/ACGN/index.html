@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
@@ -7,9 +7,10 @@
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+  <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
 
 
 
@@ -36,36 +37,7 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
@@ -74,38 +46,43 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Hexo, NexT" />
+<link href="/css/main.css?v=6.0.0" rel="stylesheet" type="text/css" />
 
 
 
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=6.0.0">
 
 
-  <link rel="alternate" href="/atom.xml" title="Zerol's Notes" type="application/atom+xml" />
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=6.0.0">
 
 
 
 
 
 
-<meta name="description" content="本文的目的是记录一些对于 ACGN 作品的感想，而所谓感想，难免带有强烈的主观色彩，勿较真。大坑待填。">
+  <meta name="keywords" content="HackerRank," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值) &amp;lt;!-- more --&amp;gt; 题解  如果固定右端点，扩展左端点，那么 gc">
+<meta name="keywords" content="HackerRank">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ACGN">
-<meta property="og:url" content="http://yoursite.com/2017/08/03/ACGN/index.html">
+<meta property="og:title" content="【题解】HackerRank - The Strange Function">
+<meta property="og:url" content="http://yoursite.com/2018/01/05/The-Strange-Function/index.html">
 <meta property="og:site_name" content="Zerol&#39;s Notes">
-<meta property="og:description" content="本文的目的是记录一些对于 ACGN 作品的感想，而所谓感想，难免带有强烈的主观色彩，勿较真。大坑待填。">
+<meta property="og:description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值) &amp;lt;!-- more --&amp;gt; 题解  如果固定右端点，扩展左端点，那么 gc">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-23T12:15:51.164Z">
+<meta property="og:updated_time" content="2018-01-05T06:21:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ACGN">
-<meta name="twitter:description" content="本文的目的是记录一些对于 ACGN 作品的感想，而所谓感想，难免带有强烈的主观色彩，勿较真。大坑待填。">
+<meta name="twitter:title" content="【题解】HackerRank - The Strange Function">
+<meta name="twitter:description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值) &amp;lt;!-- more --&amp;gt; 题解  如果固定右端点，扩展左端点，那么 gc">
 
 
 
@@ -114,9 +91,13 @@
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
-    fancybox: true,
-    motion: true,
+    version: '6.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
       author: '博主'
@@ -133,23 +114,19 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/08/03/ACGN/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/01/05/The-Strange-Function/"/>
 
 
 
 
 
-  <title>ACGN | Zerol's Notes</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>ACGN | Zerol's Notes</title>
   
 
 
 
 
-<!-- hexo-inject:begin --><!-- hexo-inject:end --><script>
+<script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
           m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -162,23 +139,20 @@
 
 
 
+</head>
 
-
-
-
-
-
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+      <div class="header-inner"> <div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
@@ -215,17 +189,11 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              首页
             
-            归档
+
           </a>
         </li>
       
@@ -235,7 +203,39 @@
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            标签
+
+            
+              标签
+            
+
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+
+            
+              分类
+            
+
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+
+            
+              归档
+            
+
           </a>
         </li>
       
@@ -301,13 +301,19 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/03/ACGN/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zerol">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="image" content="/images/illust_66436803_20171230_022825.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -331,9 +337,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-03T23:16:14+08:00">
-                2017-08-03
-              </time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-03T23:16:14+08:00">2017-08-03</time>
             
 
             
@@ -367,17 +371,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/08/03/ACGN/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/08/03/ACGN/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -393,33 +386,58 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
       
 
       
-        <p>本文的目的是记录一些对于 ACGN 作品的感想，而所谓感想，难免带有强烈的主观色彩，勿较真。<br>大坑待填。<br><a id="more"></a></p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h2 id="心态"><a href="#心态" class="headerlink" title="心态"></a>心态</h2><p>我觉得通常有两种心态。</p>
+        <p>本文的目的是记录一些对于 ACGN 作品的感想，而所谓感想，难免带有强烈的主观色彩，勿较真。
+大坑待填。
+&lt;!-- more --&gt;</p>
+<h1>前言</h1>
+<h2>心态</h2>
+<p>我觉得通常有两种心态。</p>
 <ul>
 <li>其一，作品之外。带着批判、审视的眼光去看作品，于是便能够描述出作品的优劣之处，给予合理的评价。</li>
-<li>其二，作品之内。尽量使自己代入作者所构建的世界中，并为人物的遭遇或悲或喜，甚至可能在看完之后久久不能释怀。<br>我更倾向于选择后者，因为这样我才能够感受作者想要展现的一切，想要表达的一切，也算是对作者的一种尊重。</li>
+<li>其二，作品之内。尽量使自己代入作者所构建的世界中，并为人物的遭遇或悲或喜，甚至可能在看完之后久久不能释怀。
+我更倾向于选择后者，因为这样我才能够感受作者想要展现的一切，想要表达的一切，也算是对作者的一种尊重。</li>
 </ul>
-<h2 id="设定"><a href="#设定" class="headerlink" title="设定"></a>设定</h2><p>我觉得一部优秀的作品应该有优秀的设定，最好能够令人耳目一新。在我看来合理性是建立在设定上的，因此即便是设定离现实很遥远，但只要人物的行为符合设定下的情境和心理，我便认为这是合理的。倘若产生了不合理、突兀的情节，又用补充新的设定去弥补，那真是太糟糕了。</p>
-<h2 id="过往"><a href="#过往" class="headerlink" title="过往"></a>过往</h2><p>情节的起源、人物的动机常常源于人物童年时的经历（替弗洛伊德深表赞成）。</p>
-<h2 id="从这里寻求什么"><a href="#从这里寻求什么" class="headerlink" title="从这里寻求什么"></a>从这里寻求什么</h2><h2 id="观看顺序"><a href="#观看顺序" class="headerlink" title="观看顺序"></a>观看顺序</h2><p>刚入坑时的感受与多年以后肯定有所不同。也许眼光更高，对作品的要求更为苛刻，也许以前令我耳目一新的情节就变为了烂大街的桥段。</p>
-<h1 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h1><h2 id="A"><a href="#A" class="headerlink" title="A+"></a>A+</h2><h3 id="命运石之门-Steins-Gate-【A-】"><a href="#命运石之门-Steins-Gate-【A-】" class="headerlink" title="命运石之门 (Steins;Gate)【A+】"></a>命运石之门 (Steins;Gate)【A+】</h3><h3 id="魔法少女小圆【A-】"><a href="#魔法少女小圆【A-】" class="headerlink" title="魔法少女小圆【A+】"></a>魔法少女小圆【A+】</h3><ul>
+<h2>设定</h2>
+<p>我觉得一部优秀的作品应该有优秀的设定，最好能够令人耳目一新。在我看来合理性是建立在设定上的，因此即便是设定离现实很遥远，但只要人物的行为符合设定下的情境和心理，我便认为这是合理的。倘若产生了不合理、突兀的情节，又用补充新的设定去弥补，那真是太糟糕了。</p>
+<h2>过往</h2>
+<p>情节的起源、人物的动机常常源于人物童年时的经历（替弗洛伊德深表赞成）。</p>
+<h2>从这里寻求什么</h2>
+<p>在这个虚拟的世界中，很容易出现一些观众所喜爱的元素。比如说动画中的集各种属性于一身的美少女，陷入二次元的谁，总是能够找到那些被自己所喜爱的只存在于虚幻中的那个她。</p>
+<h2>观看顺序</h2>
+<p>刚入坑时的感受与多年以后肯定有所不同。也许眼光更高，对作品的要求更为苛刻，也许以前令我耳目一新的情节就变为了烂大街的桥段。</p>
+<h1>动画</h1>
+<h2>A+</h2>
+<h3>命运石之门 (Steins;Gate)【A+】</h3>
+<h3>魔法少女小圆【A+】</h3>
+<ul>
 <li>编剧：虚渊玄</li>
-<li>沙耶香，为他人祈愿，想成为正义的伙伴。那么她最终得到了她想要的东西了吗，又是否会后悔？<br>这个角色最令我心痛，看着她从美好（自私）的祈愿走向注定的灭亡。一周目时觉得她有些不可理喻，伤害了自己，还伤害了朋友，而二周目后才发现，她可能是最为真实的那个角色。</li>
+<li>沙耶香，为他人祈愿，想成为正义的伙伴。那么她最终得到了她想要的东西了吗，又是否会后悔？
+这个角色最令我心痛，看着她从美好（自私）的祈愿走向注定的灭亡。一周目时觉得她有些不可理喻，伤害了自己，还伤害了朋友，而二周目后才发现，她可能是最为真实的那个角色。</li>
 <li>晓美焰，为了小圆一次次轮回，曾经的愿望，逐渐成为模糊不清的结局，也许这一次，就是最后一次了吧。</li>
 <li>从动画一开始，就展现了小圆所拥有的幸福。所谓幸福，着实是令人羡慕的事物。这样的她，本没有成为魔法少女的理由。</li>
 </ul>
-<h3 id="弹丸论破-弹丸轮舞-【A-】"><a href="#弹丸论破-弹丸轮舞-【A-】" class="headerlink" title="弹丸论破 (弹丸轮舞)【A+】"></a>弹丸论破 (弹丸轮舞)【A+】</h3><h3 id="Fate-Zero-FZ-【A-】"><a href="#Fate-Zero-FZ-【A-】" class="headerlink" title="Fate/Zero (FZ)【A+】"></a>Fate/Zero (FZ)【A+】</h3><ul>
+<h3>弹丸论破 (弹丸轮舞)【A+】</h3>
+<h3>Fate/Zero (FZ)【A+】</h3>
+<ul>
 <li>同名小说动画化，因为作者是虚渊玄，所以剧情上一定很精彩。事实上小说和动画都很不错。</li>
 <li>动画中的许多登场人物中，最后得到救赎的寥寥无几。御主的愿望和英灵的夙愿，倘若想要完成自己的心愿就必须牺牲别人的心愿，因而注定充斥着悲剧。</li>
 <li>正义是什么？是不是应该为了大部分人的生而舍弃少部分人？</li>
 </ul>
-<h3 id="Fate-stay-night-Unlimited-Blade-Works-FSN-UBW篇-【A-】"><a href="#Fate-stay-night-Unlimited-Blade-Works-FSN-UBW篇-【A-】" class="headerlink" title="Fate/stay night [Unlimited Blade Works] (FSN UBW篇)【A+】"></a>Fate/stay night [Unlimited Blade Works] (FSN UBW篇)【A+】</h3><h3 id="冰菓【A-】"><a href="#冰菓【A-】" class="headerlink" title="冰菓【A+】"></a>冰菓【A+】</h3><h3 id="死亡笔记-Death-Note-【A-】"><a href="#死亡笔记-Death-Note-【A-】" class="headerlink" title="死亡笔记 (Death Note)【A+】"></a>死亡笔记 (Death Note)【A+】</h3><h2 id="A-1"><a href="#A-1" class="headerlink" title="A"></a>A</h2><h3 id="Another-替身-【A】"><a href="#Another-替身-【A】" class="headerlink" title="Another (替身) 【A】"></a>Another (替身) 【A】</h3><p>当得知这部动画是由 绫辻行人 的作品改编之时，我便立即找小说来看。那么首先介绍一下绫辻行人。</p>
+<h3>Fate/stay night [Unlimited Blade Works] (FSN UBW篇)【A+】</h3>
+<h3>冰菓【A+】</h3>
+<h3>死亡笔记 (Death Note)【A+】</h3>
+<h2>A</h2>
+<h3>Another (替身) 【A】</h3>
+<p>当得知这部动画是由 绫辻行人 的作品改编之时，我便立即找小说来看。那么首先介绍一下绫辻行人。</p>
 <p>绫辻行人的推理作品我一直很喜欢，新本格推理也令我着迷。一定要说好在哪里的话，我觉得氛围的营造十分出色。但如果你十分追求推理作品解答的合理、线索的公平，那可能就会感到失望了。推荐路线《十角馆杀人预告》-&gt;《雾越邸杀人事件》-&gt; 《钟表馆幽灵》</p>
 <ul>
 <li>《Another》在我看来不是轻小说（这个判断不会错的），所以改变成动画令我感到有些意外（其实还改编成漫画）。（也许是因为故事发生在小城市的校园中，剧情又从一开始就引人入胜，很像是轻小说的架构？）</li>
@@ -429,16 +447,52 @@
 <li>如果从悬疑来看，这确实是出色的作品。</li>
 <li>绫辻行人后来写了《Another S》（替身S）。与《Another》的关联并不大，不推荐阅读。（如果实在喜欢《Another》这部作品，也不妨阅读一下这个，顶多看完有点后悔。）</li>
 </ul>
-<h3 id="罪恶王冠【A】"><a href="#罪恶王冠【A】" class="headerlink" title="罪恶王冠【A】"></a>罪恶王冠【A】</h3><h3 id="GOSICK【A】"><a href="#GOSICK【A】" class="headerlink" title="GOSICK【A】"></a>GOSICK【A】</h3><h3 id="Angel-Beats-天使的心跳-【A】"><a href="#Angel-Beats-天使的心跳-【A】" class="headerlink" title="Angel Beats! (天使的心跳)【A】"></a>Angel Beats! (天使的心跳)【A】</h3><h3 id="天才麻将少女【A】"><a href="#天才麻将少女【A】" class="headerlink" title="天才麻将少女【A】"></a>天才麻将少女【A】</h3><h3 id="刀剑神域【A】"><a href="#刀剑神域【A】" class="headerlink" title="刀剑神域【A】"></a>刀剑神域【A】</h3><h2 id="A-2"><a href="#A-2" class="headerlink" title="A-"></a>A-</h2><h3 id="Re：从零开始的异世界生活-Re-0-【A-】"><a href="#Re：从零开始的异世界生活-Re-0-【A-】" class="headerlink" title="Re：从零开始的异世界生活 (Re:0)【A-】"></a>Re：从零开始的异世界生活 (Re:0)【A-】</h3><h3 id="CLANNAD【A-】"><a href="#CLANNAD【A-】" class="headerlink" title="CLANNAD【A-】"></a>CLANNAD【A-】</h3><h3 id="四月是你的谎言【A-】"><a href="#四月是你的谎言【A-】" class="headerlink" title="四月是你的谎言【A-】"></a>四月是你的谎言【A-】</h3><h2 id="B"><a href="#B" class="headerlink" title="B"></a>B</h2><h3 id="编舟记【B】"><a href="#编舟记【B】" class="headerlink" title="编舟记【B】"></a>编舟记【B】</h3><h3 id="狐妖小红娘【B】"><a href="#狐妖小红娘【B】" class="headerlink" title="狐妖小红娘【B】"></a>狐妖小红娘【B】</h3><h3 id="小林家的龙女仆【B】"><a href="#小林家的龙女仆【B】" class="headerlink" title="小林家的龙女仆【B】"></a>小林家的龙女仆【B】</h3><h3 id="埃罗芒阿老师-黄漫老师-【B】"><a href="#埃罗芒阿老师-黄漫老师-【B】" class="headerlink" title="埃罗芒阿老师 (黄漫老师)【B】"></a>埃罗芒阿老师 (黄漫老师)【B】</h3><h3 id="混沌之子-Chaos-Head-【B】"><a href="#混沌之子-Chaos-Head-【B】" class="headerlink" title="混沌之子 (Chaos;Head)【B】"></a>混沌之子 (Chaos;Head)【B】</h3><ul>
+<h3>罪恶王冠【A】</h3>
+<h3>GOSICK【A】</h3>
+<h3>Angel Beats! (天使的心跳)【A】</h3>
+<h3>天才麻将少女【A】</h3>
+<h3>刀剑神域【A】</h3>
+<h2>A-</h2>
+<h3>Re：从零开始的异世界生活 (Re:0)【A-】</h3>
+<h3>CLANNAD【A-】</h3>
+<h3>四月是你的谎言【A-】</h3>
+<h2>B</h2>
+<h3>编舟记【B】</h3>
+<h3>狐妖小红娘【B】</h3>
+<h3>小林家的龙女仆【B】</h3>
+<h3>埃罗芒阿老师 (黄漫老师)【B】</h3>
+<h3>混沌之子 (Chaos;Head)【B】</h3>
+<ul>
 <li>特指动画</li>
 </ul>
-<h2 id="C"><a href="#C" class="headerlink" title="C"></a>C</h2><h3 id="混沌之脑-Chaos-Child-【C】"><a href="#混沌之脑-Chaos-Child-【C】" class="headerlink" title="混沌之脑 (Chaos;Child)【C】"></a>混沌之脑 (Chaos;Child)【C】</h3><ul>
+<h2>C</h2>
+<h3>混沌之脑 (Chaos;Child)【C】</h3>
+<ul>
 <li>特指动画</li>
 </ul>
-<h3 id="时钟机关之星【C】"><a href="#时钟机关之星【C】" class="headerlink" title="时钟机关之星【C】"></a>时钟机关之星【C】</h3><h1 id="小说"><a href="#小说" class="headerlink" title="小说"></a>小说</h1><p>这里只列举了一部分我看过的轻小说。</p>
-<h2 id="野村美月的作品"><a href="#野村美月的作品" class="headerlink" title="野村美月的作品"></a>野村美月的作品</h2><h3 id="文学小女【-】"><a href="#文学小女【-】" class="headerlink" title="文学小女【???】"></a>文学小女【???】</h3><h3 id="光在地球之时【-】"><a href="#光在地球之时【-】" class="headerlink" title="光在地球之时【??】"></a>光在地球之时【??】</h3><h3 id="女装家教-女装皇家教师-【-】"><a href="#女装家教-女装皇家教师-【-】" class="headerlink" title="女装家教 (女装皇家教师)【??】"></a>女装家教 (女装皇家教师)【??】</h3><h3 id="陆与千星-发送世界的少年与别墅的少女【-】"><a href="#陆与千星-发送世界的少年与别墅的少女【-】" class="headerlink" title="陆与千星~发送世界的少年与别墅的少女【?】"></a>陆与千星~发送世界的少年与别墅的少女【?】</h3><h2 id="动画化的作品"><a href="#动画化的作品" class="headerlink" title="动画化的作品"></a>动画化的作品</h2><h3 id="刀剑神域【A-】"><a href="#刀剑神域【A-】" class="headerlink" title="刀剑神域【A-】"></a>刀剑神域【A-】</h3><h3 id="机巧少女不会受伤【B】"><a href="#机巧少女不会受伤【B】" class="headerlink" title="机巧少女不会受伤【B】"></a>机巧少女不会受伤【B】</h3><h3 id="精灵使的剑舞【B】"><a href="#精灵使的剑舞【B】" class="headerlink" title="精灵使的剑舞【B】"></a>精灵使的剑舞【B】</h3><h3 id="绯弹的亚里亚【B】"><a href="#绯弹的亚里亚【B】" class="headerlink" title="绯弹的亚里亚【B】"></a>绯弹的亚里亚【B】</h3><h3 id="约会大作战-DATE-A-LIFE-【B】"><a href="#约会大作战-DATE-A-LIFE-【B】" class="headerlink" title="约会大作战 (DATE A LIFE)【B】"></a>约会大作战 (DATE A LIFE)【B】</h3><h1 id="游戏"><a href="#游戏" class="headerlink" title="游戏"></a>游戏</h1><h2 id="弹丸轮舞-2【A-】"><a href="#弹丸轮舞-2【A-】" class="headerlink" title="弹丸轮舞 2【A+】"></a>弹丸轮舞 2【A+】</h2><h1 id="漫画"><a href="#漫画" class="headerlink" title="漫画"></a>漫画</h1><h2 id="端脑【A】"><a href="#端脑【A】" class="headerlink" title="端脑【A】"></a>端脑【A】</h2><h1 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h1><ul>
+<h3>时钟机关之星【C】</h3>
+<h1>小说</h1>
+<p>这里只列举了一部分我看过的轻小说。</p>
+<h2>野村美月的作品</h2>
+<h3>文学小女【???】</h3>
+<h3>光在地球之时【??】</h3>
+<h3>女装家教 (女装皇家教师)【??】</h3>
+<h3>陆与千星~发送世界的少年与别墅的少女【?】</h3>
+<h2>动画化的作品</h2>
+<h3>刀剑神域【A-】</h3>
+<h3>机巧少女不会受伤【B】</h3>
+<h3>精灵使的剑舞【B】</h3>
+<h3>绯弹的亚里亚【B】</h3>
+<h3>约会大作战 (DATE A LIFE)【B】</h3>
+<h1>游戏</h1>
+<h2>弹丸轮舞 2【A+】</h2>
+<h1>漫画</h1>
+<h2>端脑【A】</h2>
+<h1>备注</h1>
+<ul>
 <li>文中的推荐路线很可能并没有把作者最优秀的作品放在最前面，因为考虑到作品的长度和难度，以及对该作者作品的优秀程度信任的累积过程。</li>
-<li>评价，其中 A 代表我会向别人推荐这部作品。<ul>
+<li>评价，其中 A 代表我会向别人推荐这部作品。
+<ul>
 <li>A+: 我认为很出色，而且是多数人都会喜欢的作品。</li>
 <li>A: 我认为很出色，但可能只有少部分人会喜欢的作品。</li>
 <li>A-: 大多数人都会喜欢，但我觉得没那么出色的作品。</li>
@@ -450,27 +504,15 @@
 
       
     </div>
+    
+    
+    
 
-    <div>
-      
-        
+    
 
-      
-    </div>
+    
 
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
+    
 
     <footer class="post-footer">
       
@@ -504,6 +546,10 @@
       
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -519,16 +565,9 @@
 
 
           
-  <div class="comments" id="comments">
-    
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
-    
-  </div>
+
+  
+
 
 
         </div>
@@ -544,99 +583,94 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
             站点概览
           </li>
         </ul>
       
 
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.png"
-               alt="zerol" />
-          <p class="site-author-name" itemprop="name">zerol</p>
-           
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/illust_66436803_20171230_022825.jpg"
+                alt="zerol" />
+            
+              <p class="site-author-name" itemprop="name">zerol</p>
               <p class="site-description motion-element" itemprop="description"></p>
-          
-        </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">30</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">14</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
           </div>
-        
 
-        <div class="links-of-author motion-element">
           
-            
-              <span class="links-of-author-item">
-                <a href="https://zerolin.gitbooks.io/template/content/" target="_blank" title="ACM 模板库">
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
                   
-                    <i class="fa fa-fw fa-book"></i>
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">分类</span>
                   
-                  ACM 模板库
-                </a>
-              </span>
-            
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
           
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://zerolin.gitbooks.io/template/content/" target="_blank" title="ACM 模板库">
+                      
+                        <i class="fa fa-fw fa-book"></i>ACM 模板库</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
         </div>
-
-        
-        
-
-        
-        
-
-        
-
-
       </section>
 
       
@@ -649,7 +683,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#心态"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#&#x5FC3;&#x6001;" class="headerlink" title="&#x5FC3;&#x6001;"></a>&#x5FC3;&#x6001;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设定"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#&#x8BBE;&#x5B9A;" class="headerlink" title="&#x8BBE;&#x5B9A;"></a>&#x8BBE;&#x5B9A;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过往"><span class="nav-number">1.3.</span> <span class="nav-text"><a href="#&#x8FC7;&#x5F80;" class="headerlink" title="&#x8FC7;&#x5F80;"></a>&#x8FC7;&#x5F80;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从这里寻求什么"><span class="nav-number">1.4.</span> <span class="nav-text"><a href="#&#x4ECE;&#x8FD9;&#x91CC;&#x5BFB;&#x6C42;&#x4EC0;&#x4E48;" class="headerlink" title="&#x4ECE;&#x8FD9;&#x91CC;&#x5BFB;&#x6C42;&#x4EC0;&#x4E48;"></a>&#x4ECE;&#x8FD9;&#x91CC;&#x5BFB;&#x6C42;&#x4EC0;&#x4E48;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#观看顺序"><span class="nav-number">1.5.</span> <span class="nav-text"><a href="#&#x89C2;&#x770B;&#x987A;&#x5E8F;" class="headerlink" title="&#x89C2;&#x770B;&#x987A;&#x5E8F;"></a>&#x89C2;&#x770B;&#x987A;&#x5E8F;</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#动画"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x52A8;&#x753B;" class="headerlink" title="&#x52A8;&#x753B;"></a>&#x52A8;&#x753B;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#A"><span class="nav-number">2.1.</span> <span class="nav-text"><a href="#A" class="headerlink" title="A+"></a>A+</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#命运石之门-Steins-Gate-【A-】"><span class="nav-number">2.1.1.</span> <span class="nav-text"><a href="#&#x547D;&#x8FD0;&#x77F3;&#x4E4B;&#x95E8;-Steins-Gate-&#x3010;A-&#x3011;" class="headerlink" title="&#x547D;&#x8FD0;&#x77F3;&#x4E4B;&#x95E8; (Steins;Gate)&#x3010;A+&#x3011;"></a>&#x547D;&#x8FD0;&#x77F3;&#x4E4B;&#x95E8; (Steins;Gate)&#x3010;A+&#x3011;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#魔法少女小圆【A-】"><span class="nav-number">2.1.2.</span> <span class="nav-text"><a href="#&#x9B54;&#x6CD5;&#x5C11;&#x5973;&#x5C0F;&#x5706;&#x3010;A-&#x3011;" class="headerlink" title="&#x9B54;&#x6CD5;&#x5C11;&#x5973;&#x5C0F;&#x5706;&#x3010;A+&#x3011;"></a>&#x9B54;&#x6CD5;&#x5C11;&#x5973;&#x5C0F;&#x5706;&#x3010;A+&#x3011;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#弹丸论破-弹丸轮舞-【A-】"><span class="nav-number">2.1.3.</span> <span class="nav-text"><a href="#&#x5F39;&#x4E38;&#x8BBA;&#x7834;-&#x5F39;&#x4E38;&#x8F6E;&#x821E;-&#x3010;A-&#x3011;" class="headerlink" title="&#x5F39;&#x4E38;&#x8BBA;&#x7834; (&#x5F39;&#x4E38;&#x8F6E;&#x821E;)&#x3010;A+&#x3011;"></a>&#x5F39;&#x4E38;&#x8BBA;&#x7834; (&#x5F39;&#x4E38;&#x8F6E;&#x821E;)&#x3010;A+&#x3011;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fate-Zero-FZ-【A-】"><span class="nav-number">2.1.4.</span> <span class="nav-text"><a href="#Fate-Zero-FZ-&#x3010;A-&#x3011;" class="headerlink" title="Fate/Zero (FZ)&#x3010;A+&#x3011;"></a>Fate/Zero (FZ)&#x3010;A+&#x3011;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fate-stay-night-Unlimited-Blade-Works-FSN-UBW篇-【A-】"><span class="nav-number">2.1.5.</span> <span class="nav-text"><a href="#Fate-stay-night-Unlimited-Blade-Works-FSN-UBW&#x7BC7;-&#x3010;A-&#x3011;" class="headerlink" title="Fate/stay night [Unlimited Blade Works] (FSN UBW&#x7BC7;)&#x3010;A+&#x3011;"></a>Fate/stay night [Unlimited Blade Works] (FSN UBW&#x7BC7;)&#x3010;A+&#x3011;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#冰菓【A-】"><span class="nav-number">2.1.6.</span> <span class="nav-text"><a href="#&#x51B0;&#x83D3;&#x3010;A-&#x3011;" class="headerlink" title="&#x51B0;&#x83D3;&#x3010;A+&#x3011;"></a>&#x51B0;&#x83D3;&#x3010;A+&#x3011;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#死亡笔记-Death-Note-【A-】"><span class="nav-number">2.1.7.</span> <span class="nav-text"><a href="#&#x6B7B;&#x4EA1;&#x7B14;&#x8BB0;-Death-Note-&#x3010;A-&#x3011;" class="headerlink" title="&#x6B7B;&#x4EA1;&#x7B14;&#x8BB0; (Death Note)&#x3010;A+&#x3011;"></a>&#x6B7B;&#x4EA1;&#x7B14;&#x8BB0; (Death Note)&#x3010;A+&#x3011;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#A-1"><span class="nav-number">2.2.</span> <span class="nav-text"><a href="#A-1" class="headerlink" title="A"></a>A</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Another-替身-【A】"><span class="nav-number">2.2.1.</span> <span class="nav-text"><a href="#Another-&#x66FF;&#x8EAB;-&#x3010;A&#x3011;" class="headerlink" title="Another (&#x66FF;&#x8EAB;) &#x3010;A&#x3011;"></a>Another (&#x66FF;&#x8EAB;) &#x3010;A&#x3011;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#罪恶王冠【A】"><span class="nav-number">2.2.2.</span> <span class="nav-text"><a href="#&#x7F6A;&#x6076;&#x738B;&#x51A0;&#x3010;A&#x3011;" class="headerlink" title="&#x7F6A;&#x6076;&#x738B;&#x51A0;&#x3010;A&#x3011;"></a>&#x7F6A;&#x6076;&#x738B;&#x51A0;&#x3010;A&#x3011;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GOSICK【A】"><span class="nav-number">2.2.3.</span> <span class="nav-text"><a href="#GOSICK&#x3010;A&#x3011;" class="headerlink" title="GOSICK&#x3010;A&#x3011;"></a>GOSICK&#x3010;A&#x3011;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Angel-Beats-天使的心跳-【A】"><span class="nav-number">2.2.4.</span> <span class="nav-text"><a href="#Angel-Beats-&#x5929;&#x4F7F;&#x7684;&#x5FC3;&#x8DF3;-&#x3010;A&#x3011;" class="headerlink" title="Angel Beats! (&#x5929;&#x4F7F;&#x7684;&#x5FC3;&#x8DF3;)&#x3010;A&#x3011;"></a>Angel Beats! (&#x5929;&#x4F7F;&#x7684;&#x5FC3;&#x8DF3;)&#x3010;A&#x3011;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#天才麻将少女【A】"><span class="nav-number">2.2.5.</span> <span class="nav-text"><a href="#&#x5929;&#x624D;&#x9EBB;&#x5C06;&#x5C11;&#x5973;&#x3010;A&#x3011;" class="headerlink" title="&#x5929;&#x624D;&#x9EBB;&#x5C06;&#x5C11;&#x5973;&#x3010;A&#x3011;"></a>&#x5929;&#x624D;&#x9EBB;&#x5C06;&#x5C11;&#x5973;&#x3010;A&#x3011;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#刀剑神域【A】"><span class="nav-number">2.2.6.</span> <span class="nav-text"><a href="#&#x5200;&#x5251;&#x795E;&#x57DF;&#x3010;A&#x3011;" class="headerlink" title="&#x5200;&#x5251;&#x795E;&#x57DF;&#x3010;A&#x3011;"></a>&#x5200;&#x5251;&#x795E;&#x57DF;&#x3010;A&#x3011;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#A-2"><span class="nav-number">2.3.</span> <span class="nav-text"><a href="#A-2" class="headerlink" title="A-"></a>A-</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Re：从零开始的异世界生活-Re-0-【A-】"><span class="nav-number">2.3.1.</span> <span class="nav-text"><a href="#Re&#xFF1A;&#x4ECE;&#x96F6;&#x5F00;&#x59CB;&#x7684;&#x5F02;&#x4E16;&#x754C;&#x751F;&#x6D3B;-Re-0-&#x3010;A-&#x3011;" class="headerlink" title="Re&#xFF1A;&#x4ECE;&#x96F6;&#x5F00;&#x59CB;&#x7684;&#x5F02;&#x4E16;&#x754C;&#x751F;&#x6D3B; (Re:0)&#x3010;A-&#x3011;"></a>Re&#xFF1A;&#x4ECE;&#x96F6;&#x5F00;&#x59CB;&#x7684;&#x5F02;&#x4E16;&#x754C;&#x751F;&#x6D3B; (Re:0)&#x3010;A-&#x3011;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CLANNAD【A-】"><span class="nav-number">2.3.2.</span> <span class="nav-text"><a href="#CLANNAD&#x3010;A-&#x3011;" class="headerlink" title="CLANNAD&#x3010;A-&#x3011;"></a>CLANNAD&#x3010;A-&#x3011;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四月是你的谎言【A-】"><span class="nav-number">2.3.3.</span> <span class="nav-text"><a href="#&#x56DB;&#x6708;&#x662F;&#x4F60;&#x7684;&#x8C0E;&#x8A00;&#x3010;A-&#x3011;" class="headerlink" title="&#x56DB;&#x6708;&#x662F;&#x4F60;&#x7684;&#x8C0E;&#x8A00;&#x3010;A-&#x3011;"></a>&#x56DB;&#x6708;&#x662F;&#x4F60;&#x7684;&#x8C0E;&#x8A00;&#x3010;A-&#x3011;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B"><span class="nav-number">2.4.</span> <span class="nav-text"><a href="#B" class="headerlink" title="B"></a>B</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#编舟记【B】"><span class="nav-number">2.4.1.</span> <span class="nav-text"><a href="#&#x7F16;&#x821F;&#x8BB0;&#x3010;B&#x3011;" class="headerlink" title="&#x7F16;&#x821F;&#x8BB0;&#x3010;B&#x3011;"></a>&#x7F16;&#x821F;&#x8BB0;&#x3010;B&#x3011;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#狐妖小红娘【B】"><span class="nav-number">2.4.2.</span> <span class="nav-text"><a href="#&#x72D0;&#x5996;&#x5C0F;&#x7EA2;&#x5A18;&#x3010;B&#x3011;" class="headerlink" title="&#x72D0;&#x5996;&#x5C0F;&#x7EA2;&#x5A18;&#x3010;B&#x3011;"></a>&#x72D0;&#x5996;&#x5C0F;&#x7EA2;&#x5A18;&#x3010;B&#x3011;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小林家的龙女仆【B】"><span class="nav-number">2.4.3.</span> <span class="nav-text"><a href="#&#x5C0F;&#x6797;&#x5BB6;&#x7684;&#x9F99;&#x5973;&#x4EC6;&#x3010;B&#x3011;" class="headerlink" title="&#x5C0F;&#x6797;&#x5BB6;&#x7684;&#x9F99;&#x5973;&#x4EC6;&#x3010;B&#x3011;"></a>&#x5C0F;&#x6797;&#x5BB6;&#x7684;&#x9F99;&#x5973;&#x4EC6;&#x3010;B&#x3011;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#埃罗芒阿老师-黄漫老师-【B】"><span class="nav-number">2.4.4.</span> <span class="nav-text"><a href="#&#x57C3;&#x7F57;&#x8292;&#x963F;&#x8001;&#x5E08;-&#x9EC4;&#x6F2B;&#x8001;&#x5E08;-&#x3010;B&#x3011;" class="headerlink" title="&#x57C3;&#x7F57;&#x8292;&#x963F;&#x8001;&#x5E08; (&#x9EC4;&#x6F2B;&#x8001;&#x5E08;)&#x3010;B&#x3011;"></a>&#x57C3;&#x7F57;&#x8292;&#x963F;&#x8001;&#x5E08; (&#x9EC4;&#x6F2B;&#x8001;&#x5E08;)&#x3010;B&#x3011;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#混沌之子-Chaos-Head-【B】"><span class="nav-number">2.4.5.</span> <span class="nav-text"><a href="#&#x6DF7;&#x6C8C;&#x4E4B;&#x5B50;-Chaos-Head-&#x3010;B&#x3011;" class="headerlink" title="&#x6DF7;&#x6C8C;&#x4E4B;&#x5B50; (Chaos;Head)&#x3010;B&#x3011;"></a>&#x6DF7;&#x6C8C;&#x4E4B;&#x5B50; (Chaos;Head)&#x3010;B&#x3011;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C"><span class="nav-number">2.5.</span> <span class="nav-text"><a href="#C" class="headerlink" title="C"></a>C</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#混沌之脑-Chaos-Child-【C】"><span class="nav-number">2.5.1.</span> <span class="nav-text"><a href="#&#x6DF7;&#x6C8C;&#x4E4B;&#x8111;-Chaos-Child-&#x3010;C&#x3011;" class="headerlink" title="&#x6DF7;&#x6C8C;&#x4E4B;&#x8111; (Chaos;Child)&#x3010;C&#x3011;"></a>&#x6DF7;&#x6C8C;&#x4E4B;&#x8111; (Chaos;Child)&#x3010;C&#x3011;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时钟机关之星【C】"><span class="nav-number">2.5.2.</span> <span class="nav-text"><a href="#&#x65F6;&#x949F;&#x673A;&#x5173;&#x4E4B;&#x661F;&#x3010;C&#x3011;" class="headerlink" title="&#x65F6;&#x949F;&#x673A;&#x5173;&#x4E4B;&#x661F;&#x3010;C&#x3011;"></a>&#x65F6;&#x949F;&#x673A;&#x5173;&#x4E4B;&#x661F;&#x3010;C&#x3011;</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小说"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x5C0F;&#x8BF4;" class="headerlink" title="&#x5C0F;&#x8BF4;"></a>&#x5C0F;&#x8BF4;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#野村美月的作品"><span class="nav-number">3.1.</span> <span class="nav-text"><a href="#&#x91CE;&#x6751;&#x7F8E;&#x6708;&#x7684;&#x4F5C;&#x54C1;" class="headerlink" title="&#x91CE;&#x6751;&#x7F8E;&#x6708;&#x7684;&#x4F5C;&#x54C1;"></a>&#x91CE;&#x6751;&#x7F8E;&#x6708;&#x7684;&#x4F5C;&#x54C1;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文学小女【-】"><span class="nav-number">3.1.1.</span> <span class="nav-text"><a href="#&#x6587;&#x5B66;&#x5C0F;&#x5973;&#x3010;-&#x3011;" class="headerlink" title="&#x6587;&#x5B66;&#x5C0F;&#x5973;&#x3010;???&#x3011;"></a>&#x6587;&#x5B66;&#x5C0F;&#x5973;&#x3010;???&#x3011;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#光在地球之时【-】"><span class="nav-number">3.1.2.</span> <span class="nav-text"><a href="#&#x5149;&#x5728;&#x5730;&#x7403;&#x4E4B;&#x65F6;&#x3010;-&#x3011;" class="headerlink" title="&#x5149;&#x5728;&#x5730;&#x7403;&#x4E4B;&#x65F6;&#x3010;??&#x3011;"></a>&#x5149;&#x5728;&#x5730;&#x7403;&#x4E4B;&#x65F6;&#x3010;??&#x3011;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#女装家教-女装皇家教师-【-】"><span class="nav-number">3.1.3.</span> <span class="nav-text"><a href="#&#x5973;&#x88C5;&#x5BB6;&#x6559;-&#x5973;&#x88C5;&#x7687;&#x5BB6;&#x6559;&#x5E08;-&#x3010;-&#x3011;" class="headerlink" title="&#x5973;&#x88C5;&#x5BB6;&#x6559; (&#x5973;&#x88C5;&#x7687;&#x5BB6;&#x6559;&#x5E08;)&#x3010;??&#x3011;"></a>&#x5973;&#x88C5;&#x5BB6;&#x6559; (&#x5973;&#x88C5;&#x7687;&#x5BB6;&#x6559;&#x5E08;)&#x3010;??&#x3011;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#陆与千星-发送世界的少年与别墅的少女【-】"><span class="nav-number">3.1.4.</span> <span class="nav-text"><a href="#&#x9646;&#x4E0E;&#x5343;&#x661F;-&#x53D1;&#x9001;&#x4E16;&#x754C;&#x7684;&#x5C11;&#x5E74;&#x4E0E;&#x522B;&#x5885;&#x7684;&#x5C11;&#x5973;&#x3010;-&#x3011;" class="headerlink" title="&#x9646;&#x4E0E;&#x5343;&#x661F;~&#x53D1;&#x9001;&#x4E16;&#x754C;&#x7684;&#x5C11;&#x5E74;&#x4E0E;&#x522B;&#x5885;&#x7684;&#x5C11;&#x5973;&#x3010;?&#x3011;"></a>&#x9646;&#x4E0E;&#x5343;&#x661F;~&#x53D1;&#x9001;&#x4E16;&#x754C;&#x7684;&#x5C11;&#x5E74;&#x4E0E;&#x522B;&#x5885;&#x7684;&#x5C11;&#x5973;&#x3010;?&#x3011;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动画化的作品"><span class="nav-number">3.2.</span> <span class="nav-text"><a href="#&#x52A8;&#x753B;&#x5316;&#x7684;&#x4F5C;&#x54C1;" class="headerlink" title="&#x52A8;&#x753B;&#x5316;&#x7684;&#x4F5C;&#x54C1;"></a>&#x52A8;&#x753B;&#x5316;&#x7684;&#x4F5C;&#x54C1;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#刀剑神域【A-】"><span class="nav-number">3.2.1.</span> <span class="nav-text"><a href="#&#x5200;&#x5251;&#x795E;&#x57DF;&#x3010;A-&#x3011;" class="headerlink" title="&#x5200;&#x5251;&#x795E;&#x57DF;&#x3010;A-&#x3011;"></a>&#x5200;&#x5251;&#x795E;&#x57DF;&#x3010;A-&#x3011;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#机巧少女不会受伤【B】"><span class="nav-number">3.2.2.</span> <span class="nav-text"><a href="#&#x673A;&#x5DE7;&#x5C11;&#x5973;&#x4E0D;&#x4F1A;&#x53D7;&#x4F24;&#x3010;B&#x3011;" class="headerlink" title="&#x673A;&#x5DE7;&#x5C11;&#x5973;&#x4E0D;&#x4F1A;&#x53D7;&#x4F24;&#x3010;B&#x3011;"></a>&#x673A;&#x5DE7;&#x5C11;&#x5973;&#x4E0D;&#x4F1A;&#x53D7;&#x4F24;&#x3010;B&#x3011;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#精灵使的剑舞【B】"><span class="nav-number">3.2.3.</span> <span class="nav-text"><a href="#&#x7CBE;&#x7075;&#x4F7F;&#x7684;&#x5251;&#x821E;&#x3010;B&#x3011;" class="headerlink" title="&#x7CBE;&#x7075;&#x4F7F;&#x7684;&#x5251;&#x821E;&#x3010;B&#x3011;"></a>&#x7CBE;&#x7075;&#x4F7F;&#x7684;&#x5251;&#x821E;&#x3010;B&#x3011;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绯弹的亚里亚【B】"><span class="nav-number">3.2.4.</span> <span class="nav-text"><a href="#&#x7EEF;&#x5F39;&#x7684;&#x4E9A;&#x91CC;&#x4E9A;&#x3010;B&#x3011;" class="headerlink" title="&#x7EEF;&#x5F39;&#x7684;&#x4E9A;&#x91CC;&#x4E9A;&#x3010;B&#x3011;"></a>&#x7EEF;&#x5F39;&#x7684;&#x4E9A;&#x91CC;&#x4E9A;&#x3010;B&#x3011;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#约会大作战-DATE-A-LIFE-【B】"><span class="nav-number">3.2.5.</span> <span class="nav-text"><a href="#&#x7EA6;&#x4F1A;&#x5927;&#x4F5C;&#x6218;-DATE-A-LIFE-&#x3010;B&#x3011;" class="headerlink" title="&#x7EA6;&#x4F1A;&#x5927;&#x4F5C;&#x6218; (DATE A LIFE)&#x3010;B&#x3011;"></a>&#x7EA6;&#x4F1A;&#x5927;&#x4F5C;&#x6218; (DATE A LIFE)&#x3010;B&#x3011;</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#游戏"><span class="nav-number">4.</span> <span class="nav-text"><a href="#&#x6E38;&#x620F;" class="headerlink" title="&#x6E38;&#x620F;"></a>&#x6E38;&#x620F;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#弹丸轮舞-2【A-】"><span class="nav-number">4.1.</span> <span class="nav-text"><a href="#&#x5F39;&#x4E38;&#x8F6E;&#x821E;-2&#x3010;A-&#x3011;" class="headerlink" title="&#x5F39;&#x4E38;&#x8F6E;&#x821E; 2&#x3010;A+&#x3011;"></a>&#x5F39;&#x4E38;&#x8F6E;&#x821E; 2&#x3010;A+&#x3011;</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#漫画"><span class="nav-number">5.</span> <span class="nav-text"><a href="#&#x6F2B;&#x753B;" class="headerlink" title="&#x6F2B;&#x753B;"></a>&#x6F2B;&#x753B;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#端脑【A】"><span class="nav-number">5.1.</span> <span class="nav-text"><a href="#&#x7AEF;&#x8111;&#x3010;A&#x3011;" class="headerlink" title="&#x7AEF;&#x8111;&#x3010;A&#x3011;"></a>&#x7AEF;&#x8111;&#x3010;A&#x3011;</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#备注"><span class="nav-number">6.</span> <span class="nav-text"><a href="#&#x5907;&#x6CE8;" class="headerlink" title="&#x5907;&#x6CE8;"></a>&#x5907;&#x6CE8;</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">心态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.</span> <span class="nav-text">设定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.</span> <span class="nav-text">过往</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.4.</span> <span class="nav-text">从这里寻求什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.5.</span> <span class="nav-text">观看顺序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">动画</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">A+</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.1.</span> <span class="nav-text">命运石之门 (Steins;Gate)【A+】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.2.</span> <span class="nav-text">魔法少女小圆【A+】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.3.</span> <span class="nav-text">弹丸论破 (弹丸轮舞)【A+】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.4.</span> <span class="nav-text">Fate/Zero (FZ)【A+】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.5.</span> <span class="nav-text">Fate/stay night [Unlimited Blade Works] (FSN UBW篇)【A+】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.6.</span> <span class="nav-text">冰菓【A+】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.7.</span> <span class="nav-text">死亡笔记 (Death Note)【A+】</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">A</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.1.</span> <span class="nav-text">Another (替身) 【A】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.2.</span> <span class="nav-text">罪恶王冠【A】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.3.</span> <span class="nav-text">GOSICK【A】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.4.</span> <span class="nav-text">Angel Beats! (天使的心跳)【A】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.5.</span> <span class="nav-text">天才麻将少女【A】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.6.</span> <span class="nav-text">刀剑神域【A】</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.</span> <span class="nav-text">A-</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.1.</span> <span class="nav-text">Re：从零开始的异世界生活 (Re:0)【A-】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.2.</span> <span class="nav-text">CLANNAD【A-】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.3.</span> <span class="nav-text">四月是你的谎言【A-】</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.4.</span> <span class="nav-text">B</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.4.1.</span> <span class="nav-text">编舟记【B】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.4.2.</span> <span class="nav-text">狐妖小红娘【B】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.4.3.</span> <span class="nav-text">小林家的龙女仆【B】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.4.4.</span> <span class="nav-text">埃罗芒阿老师 (黄漫老师)【B】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.4.5.</span> <span class="nav-text">混沌之子 (Chaos;Head)【B】</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.5.</span> <span class="nav-text">C</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.5.1.</span> <span class="nav-text">混沌之脑 (Chaos;Child)【C】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.5.2.</span> <span class="nav-text">时钟机关之星【C】</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">小说</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.</span> <span class="nav-text">野村美月的作品</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.1.</span> <span class="nav-text">文学小女【???】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.2.</span> <span class="nav-text">光在地球之时【??】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.3.</span> <span class="nav-text">女装家教 (女装皇家教师)【??】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.4.</span> <span class="nav-text">陆与千星~发送世界的少年与别墅的少女【?】</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.</span> <span class="nav-text">动画化的作品</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.1.</span> <span class="nav-text">刀剑神域【A-】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.2.</span> <span class="nav-text">机巧少女不会受伤【B】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.3.</span> <span class="nav-text">精灵使的剑舞【B】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.4.</span> <span class="nav-text">绯弹的亚里亚【B】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.5.</span> <span class="nav-text">约会大作战 (DATE A LIFE)【B】</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">游戏</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.1.</span> <span class="nav-text">弹丸轮舞 2【A+】</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">漫画</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">5.1.</span> <span class="nav-text">端脑【A】</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">备注</span></a></li></ol></div>
             
 
           </div>
@@ -669,30 +703,38 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">zerol</span>
+
+  
+
+  
 </div>
 
 
-<div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
-</div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
-<div class="theme-info">
-  Theme -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
-</div>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a></div>
+
+
 
 
         
+
+
+
+
+
+
 
         
       </div>
@@ -703,6 +745,8 @@
         <i class="fa fa-arrow-up"></i>
         
       </div>
+    
+
     
 
   </div>
@@ -723,7 +767,6 @@
 
 
 
-  
 
 
 
@@ -736,79 +779,61 @@
 
 
 
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
 
 
 
   
   
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
 
 
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+  
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.0"></script>
 
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.0"></script>
 
 
 
   
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.0"></script>
 
 
 
   
 
 
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.0"></script>
+
+
+
   
 
-    
-      <script id="dsq-count-scr" src="https://zerolblog.disqus.com/count.js" async></script>
-    
-
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2017/08/03/ACGN/';
-          this.page.identifier = '2017/08/03/ACGN/';
-          this.page.title = 'ACGN';
-        };
-        var d = document, s = d.createElement('script');
-        s.src = 'https://zerolblog.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      </script>
-    
 
   
 
@@ -836,6 +861,10 @@
 
 
 
+
+
+
+
   
 
   <script type="text/javascript">
@@ -843,10 +872,10 @@
     var isfetched = false;
     var isXml = true;
     // Search DB path;
-    var search_path = "search.xml";
+    var search_path = "";
     if (search_path.length === 0) {
       search_path = "search.xml";
-    } else if (search_path.endsWith("json")) {
+    } else if (/json$/i.test(search_path)) {
       isXml = false;
     }
     var path = "/" + search_path;
@@ -1167,6 +1196,9 @@
 
   
   
+
+  
+  
     <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
         tex2jax: {
@@ -1185,7 +1217,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

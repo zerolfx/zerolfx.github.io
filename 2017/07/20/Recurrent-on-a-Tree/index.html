@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
@@ -7,9 +7,10 @@
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+  <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
 
 
 
@@ -36,36 +37,7 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
@@ -74,39 +46,43 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="HackerRank,动态规划," />
+<link href="/css/main.css?v=6.0.0" rel="stylesheet" type="text/css" />
 
 
 
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=6.0.0">
 
 
-  <link rel="alternate" href="/atom.xml" title="Zerol's Notes" type="application/atom+xml" />
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=6.0.0">
 
 
 
 
 
 
-<meta name="description" content="题目https://www.hackerrank.com/contests/w34/challenges/recurrent-on-tree 题意给一棵树，每个点有一个值。求任意两个顶点（可以相同）路径上的值的和经过 f 函数后的和。f(x) 是斐波那契数列第 x 项。">
-<meta name="keywords" content="HackerRank,动态规划">
+  <meta name="keywords" content="HackerRank," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值) &amp;lt;!-- more --&amp;gt; 题解  如果固定右端点，扩展左端点，那么 gc">
+<meta name="keywords" content="HackerRank">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【题解】HackerRank - Recurrent on a Tree">
-<meta property="og:url" content="http://yoursite.com/2017/07/20/Recurrent-on-a-Tree/index.html">
+<meta property="og:title" content="【题解】HackerRank - The Strange Function">
+<meta property="og:url" content="http://yoursite.com/2018/01/05/The-Strange-Function/index.html">
 <meta property="og:site_name" content="Zerol&#39;s Notes">
-<meta property="og:description" content="题目https://www.hackerrank.com/contests/w34/challenges/recurrent-on-tree 题意给一棵树，每个点有一个值。求任意两个顶点（可以相同）路径上的值的和经过 f 函数后的和。f(x) 是斐波那契数列第 x 项。">
+<meta property="og:description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值) &amp;lt;!-- more --&amp;gt; 题解  如果固定右端点，扩展左端点，那么 gc">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-17T01:37:52.468Z">
+<meta property="og:updated_time" content="2018-01-05T06:21:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【题解】HackerRank - Recurrent on a Tree">
-<meta name="twitter:description" content="题目https://www.hackerrank.com/contests/w34/challenges/recurrent-on-tree 题意给一棵树，每个点有一个值。求任意两个顶点（可以相同）路径上的值的和经过 f 函数后的和。f(x) 是斐波那契数列第 x 项。">
+<meta name="twitter:title" content="【题解】HackerRank - The Strange Function">
+<meta name="twitter:description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值) &amp;lt;!-- more --&amp;gt; 题解  如果固定右端点，扩展左端点，那么 gc">
 
 
 
@@ -115,9 +91,13 @@
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
-    fancybox: true,
-    motion: true,
+    version: '6.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
       author: '博主'
@@ -134,23 +114,19 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/07/20/Recurrent-on-a-Tree/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/01/05/The-Strange-Function/"/>
 
 
 
 
 
-  <title>【题解】HackerRank - Recurrent on a Tree | Zerol's Notes</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>【题解】HackerRank - Recurrent on a Tree | Zerol's Notes</title>
   
 
 
 
 
-<!-- hexo-inject:begin --><!-- hexo-inject:end --><script>
+<script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
           m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -163,23 +139,20 @@
 
 
 
+</head>
 
-
-
-
-
-
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+      <div class="header-inner"> <div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
@@ -216,17 +189,11 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              首页
             
-            归档
+
           </a>
         </li>
       
@@ -236,7 +203,39 @@
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            标签
+
+            
+              标签
+            
+
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+
+            
+              分类
+            
+
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+
+            
+              归档
+            
+
           </a>
         </li>
       
@@ -302,13 +301,19 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/20/Recurrent-on-a-Tree/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zerol">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="image" content="/images/illust_66436803_20171230_022825.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -332,9 +337,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-20T22:43:11+08:00">
-                2017-07-20
-              </time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-20T22:43:11+08:00">2017-07-20</time>
             
 
             
@@ -368,17 +371,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/07/20/Recurrent-on-a-Tree/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/07/20/Recurrent-on-a-Tree/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -394,43 +386,38 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
       
 
       
-        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://www.hackerrank.com/contests/w34/challenges/recurrent-on-tree" target="_blank" rel="noopener">https://www.hackerrank.com/contests/w34/challenges/recurrent-on-tree</a></p>
-<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>给一棵树，每个点有一个值。求任意两个顶点（可以相同）路径上的值的和经过 f 函数后的和。f(x) 是斐波那契数列第 x 项。<br><a id="more"></a></p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><ul>
+        <h2>题目</h2>
+<p>https://www.hackerrank.com/contests/w34/challenges/recurrent-on-tree</p>
+<h2>题意</h2>
+<p>给一棵树，每个点有一个值。求任意两个顶点（可以相同）路径上的值的和经过 f 函数后的和。f(x) 是斐波那契数列第 x 项。
+&lt;!-- more --&gt;</p>
+<h2>题解</h2>
+<ul>
 <li>斐波那契数列的某一项可以通过矩阵快速幂求得。与之类似的，利用矩阵乘法可以将 f(? + ?) 的问题转化为求 Mat(?) * Mat(?) 的问题，进而转化为寻常的树上 dp。</li>
 <li>由于运算中矩阵都是某一个矩阵的幂，所以满足交换律。</li>
 </ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FOR(i, x, y) for (decay<span class="meta-string">&lt;decltype(y)&gt;::type i = (x), _##i = (y); i &lt; _##i; ++i)</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FORD(i, x, y) for (decay<span class="meta-string">&lt;decltype(x)&gt;::type i = (x), _##i = (y); i &gt; _##i; --i)</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</div><div class="line"><span class="keyword">const</span> LL MOD = <span class="number">1E9</span> + <span class="number">7</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxm = <span class="number">1E5</span> + <span class="number">1</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">2E5</span> + <span class="number">10</span>;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Mat</span> &#123;</span></div><div class="line">    LL v[<span class="number">2</span>][<span class="number">2</span>];</div><div class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123;</div><div class="line">        v[<span class="number">0</span>][<span class="number">0</span>] = v[<span class="number">0</span>][<span class="number">1</span>] = v[<span class="number">1</span>][<span class="number">0</span>] = v[<span class="number">1</span>][<span class="number">1</span>] = <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>;</div><div class="line">Mat <span class="keyword">operator</span> * (Mat x, Mat y);</div><div class="line">Mat <span class="keyword">operator</span> + (Mat x, Mat y);</div><div class="line">Mat <span class="keyword">operator</span> - (Mat x, Mat y);</div><div class="line"></div><div class="line">Mat r[maxm], s[maxn], ans, cs[maxn];</div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; G[maxn];</div><div class="line"><span class="keyword">int</span> n, u, v, a[maxn];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span> fa)</span> </span>&#123;</div><div class="line">    FOR(i, <span class="number">0</span>, G[k].size())</div><div class="line">        <span class="keyword">if</span> (G[k][i] != fa)</div><div class="line">            dfs(G[k][i], k);</div><div class="line">    FOR(i, <span class="number">0</span>, G[k].size()) &#123;</div><div class="line">        <span class="keyword">int</span> t = G[k][i];</div><div class="line">        <span class="keyword">if</span> (t == fa) <span class="keyword">continue</span>;</div><div class="line">        ans = ans + r[a[k]] * s[t] * (cs[k] - s[t]);</div><div class="line">        s[k] = s[k] + s[t];</div><div class="line">    &#125;</div><div class="line">    s[k] = s[k] * r[a[k]] + r[a[k]];</div><div class="line">    cs[fa] = cs[fa] + s[k];</div><div class="line">    ans = ans + s[k] + s[k] - r[a[k]];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    init();</div><div class="line">    <span class="built_in">cin</span> &gt;&gt; n;</div><div class="line">    FOR(i, <span class="number">1</span>, n) &#123;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;u, &amp;v);</div><div class="line">        G[u].push_back(v);</div><div class="line">        G[v].push_back(u);</div><div class="line">    &#125;</div><div class="line">    FOR(i, <span class="number">1</span>, n + <span class="number">1</span>) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[i]);</div><div class="line">    dfs(<span class="number">1</span>, <span class="number">0</span>);</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; (ans.v[<span class="number">1</span>][<span class="number">0</span>] + ans.v[<span class="number">1</span>][<span class="number">1</span>]) % MOD &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</div><div class="line">    Mat p;</div><div class="line">    p.v[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>; p.v[<span class="number">0</span>][<span class="number">1</span>] = <span class="number">1</span>;</div><div class="line">    p.v[<span class="number">1</span>][<span class="number">0</span>] = <span class="number">1</span>; p.v[<span class="number">1</span>][<span class="number">1</span>] = <span class="number">0</span>;</div><div class="line">    r[<span class="number">0</span>].v[<span class="number">0</span>][<span class="number">0</span>] = r[<span class="number">0</span>].v[<span class="number">1</span>][<span class="number">1</span>] = <span class="number">1</span>;</div><div class="line">    FOR(i, <span class="number">1</span>, maxm)</div><div class="line">        r[i] = r[i - <span class="number">1</span>] * p;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Mat <span class="keyword">operator</span> * (Mat x, Mat y) &#123;</div><div class="line">    Mat ret;</div><div class="line">    FOR(i, <span class="number">0</span>, <span class="number">2</span>)</div><div class="line">        FOR(j, <span class="number">0</span>, <span class="number">2</span>) &#123;</div><div class="line">            ret.v[i][j] = <span class="number">0</span>;</div><div class="line">            FOR(k, <span class="number">0</span>, <span class="number">2</span>)</div><div class="line">                ret.v[i][j] = (ret.v[i][j] + x.v[i][k] * y.v[k][j]) % MOD;</div><div class="line">        &#125;</div><div class="line">    <span class="keyword">return</span> ret;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Mat <span class="keyword">operator</span> + (Mat x, Mat y) &#123;</div><div class="line">    Mat ret;</div><div class="line">    FOR(i, <span class="number">0</span>, <span class="number">2</span>)</div><div class="line">        FOR(j, <span class="number">0</span>, <span class="number">2</span>)</div><div class="line">            ret.v[i][j] = (x.v[i][j] + y.v[i][j]) % MOD;</div><div class="line">    <span class="keyword">return</span> ret;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Mat <span class="keyword">operator</span> - (Mat x, Mat y) &#123;</div><div class="line">    Mat ret;</div><div class="line">    FOR(i, <span class="number">0</span>, <span class="number">2</span>)</div><div class="line">        FOR(j, <span class="number">0</span>, <span class="number">2</span>)</div><div class="line">            ret.v[i][j] = (x.v[i][j] - y.v[i][j] + MOD) % MOD;</div><div class="line">    <span class="keyword">return</span> ret;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FOR(i, x, y) for (decay<span class="meta-string">&lt;decltype(y)&gt;::type i = (x), _##i = (y); i &lt; _##i; ++i)</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FORD(i, x, y) for (decay<span class="meta-string">&lt;decltype(x)&gt;::type i = (x), _##i = (y); i &gt; _##i; --i)</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> LL MOD = <span class="number">1E9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxm = <span class="number">1E5</span> + <span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">2E5</span> + <span class="number">10</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Mat</span> &#123;</span></span><br><span class="line">    LL v[<span class="number">2</span>][<span class="number">2</span>];</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        v[<span class="number">0</span>][<span class="number">0</span>] = v[<span class="number">0</span>][<span class="number">1</span>] = v[<span class="number">1</span>][<span class="number">0</span>] = v[<span class="number">1</span>][<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>;</span><br><span class="line">Mat <span class="keyword">operator</span> * (Mat x, Mat y);</span><br><span class="line">Mat <span class="keyword">operator</span> + (Mat x, Mat y);</span><br><span class="line">Mat <span class="keyword">operator</span> - (Mat x, Mat y);</span><br><span class="line"></span><br><span class="line">Mat r[maxm], s[maxn], ans, cs[maxn];</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; G[maxn];</span><br><span class="line"><span class="keyword">int</span> n, u, v, a[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span> fa)</span> </span>&#123;</span><br><span class="line">    FOR(i, <span class="number">0</span>, G[k].size())</span><br><span class="line">        <span class="keyword">if</span> (G[k][i] != fa)</span><br><span class="line">            dfs(G[k][i], k);</span><br><span class="line">    FOR(i, <span class="number">0</span>, G[k].size()) &#123;</span><br><span class="line">        <span class="keyword">int</span> t = G[k][i];</span><br><span class="line">        <span class="keyword">if</span> (t == fa) <span class="keyword">continue</span>;</span><br><span class="line">        ans = ans + r[a[k]] * s[t] * (cs[k] - s[t]);</span><br><span class="line">        s[k] = s[k] + s[t];</span><br><span class="line">    &#125;</span><br><span class="line">    s[k] = s[k] * r[a[k]] + r[a[k]];</span><br><span class="line">    cs[fa] = cs[fa] + s[k];</span><br><span class="line">    ans = ans + s[k] + s[k] - r[a[k]];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    init();</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    FOR(i, <span class="number">1</span>, n) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;u, &amp;v);</span><br><span class="line">        G[u].push_back(v);</span><br><span class="line">        G[v].push_back(u);</span><br><span class="line">    &#125;</span><br><span class="line">    FOR(i, <span class="number">1</span>, n + <span class="number">1</span>) <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[i]);</span><br><span class="line">    dfs(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; (ans.v[<span class="number">1</span>][<span class="number">0</span>] + ans.v[<span class="number">1</span>][<span class="number">1</span>]) % MOD &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Mat p;</span><br><span class="line">    p.v[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>; p.v[<span class="number">0</span>][<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    p.v[<span class="number">1</span>][<span class="number">0</span>] = <span class="number">1</span>; p.v[<span class="number">1</span>][<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    r[<span class="number">0</span>].v[<span class="number">0</span>][<span class="number">0</span>] = r[<span class="number">0</span>].v[<span class="number">1</span>][<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    FOR(i, <span class="number">1</span>, maxm)</span><br><span class="line">        r[i] = r[i - <span class="number">1</span>] * p;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Mat <span class="keyword">operator</span> * (Mat x, Mat y) &#123;</span><br><span class="line">    Mat ret;</span><br><span class="line">    FOR(i, <span class="number">0</span>, <span class="number">2</span>)</span><br><span class="line">        FOR(j, <span class="number">0</span>, <span class="number">2</span>) &#123;</span><br><span class="line">            ret.v[i][j] = <span class="number">0</span>;</span><br><span class="line">            FOR(k, <span class="number">0</span>, <span class="number">2</span>)</span><br><span class="line">                ret.v[i][j] = (ret.v[i][j] + x.v[i][k] * y.v[k][j]) % MOD;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Mat <span class="keyword">operator</span> + (Mat x, Mat y) &#123;</span><br><span class="line">    Mat ret;</span><br><span class="line">    FOR(i, <span class="number">0</span>, <span class="number">2</span>)</span><br><span class="line">        FOR(j, <span class="number">0</span>, <span class="number">2</span>)</span><br><span class="line">            ret.v[i][j] = (x.v[i][j] + y.v[i][j]) % MOD;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Mat <span class="keyword">operator</span> - (Mat x, Mat y) &#123;</span><br><span class="line">    Mat ret;</span><br><span class="line">    FOR(i, <span class="number">0</span>, <span class="number">2</span>)</span><br><span class="line">        FOR(j, <span class="number">0</span>, <span class="number">2</span>)</span><br><span class="line">            ret.v[i][j] = (x.v[i][j] - y.v[i][j] + MOD) % MOD;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
+    
+    
+    
 
-    <div>
-      
-        
+    
 
-      
-    </div>
+    
 
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
+    
 
     <footer class="post-footer">
       
@@ -472,6 +459,10 @@
       
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -487,16 +478,9 @@
 
 
           
-  <div class="comments" id="comments">
-    
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
-    
-  </div>
+
+  
+
 
 
         </div>
@@ -512,99 +496,94 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
             站点概览
           </li>
         </ul>
       
 
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.png"
-               alt="zerol" />
-          <p class="site-author-name" itemprop="name">zerol</p>
-           
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/illust_66436803_20171230_022825.jpg"
+                alt="zerol" />
+            
+              <p class="site-author-name" itemprop="name">zerol</p>
               <p class="site-description motion-element" itemprop="description"></p>
-          
-        </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">30</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">14</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
           </div>
-        
 
-        <div class="links-of-author motion-element">
           
-            
-              <span class="links-of-author-item">
-                <a href="https://zerolin.gitbooks.io/template/content/" target="_blank" title="ACM 模板库">
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
                   
-                    <i class="fa fa-fw fa-book"></i>
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">分类</span>
                   
-                  ACM 模板库
-                </a>
-              </span>
-            
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
           
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://zerolin.gitbooks.io/template/content/" target="_blank" title="ACM 模板库">
+                      
+                        <i class="fa fa-fw fa-book"></i>ACM 模板库</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
         </div>
-
-        
-        
-
-        
-        
-
-        
-
-
       </section>
 
       
@@ -617,7 +596,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x9898;&#x76EE;" class="headerlink" title="&#x9898;&#x76EE;"></a>&#x9898;&#x76EE;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题意"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x9898;&#x610F;" class="headerlink" title="&#x9898;&#x610F;"></a>&#x9898;&#x610F;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x9898;&#x89E3;" class="headerlink" title="&#x9898;&#x89E3;"></a>&#x9898;&#x89E3;</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">题解</span></a></li></ol></div>
             
 
           </div>
@@ -637,30 +616,38 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">zerol</span>
+
+  
+
+  
 </div>
 
 
-<div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
-</div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
-<div class="theme-info">
-  Theme -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
-</div>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a></div>
+
+
 
 
         
+
+
+
+
+
+
 
         
       </div>
@@ -671,6 +658,8 @@
         <i class="fa fa-arrow-up"></i>
         
       </div>
+    
+
     
 
   </div>
@@ -691,7 +680,6 @@
 
 
 
-  
 
 
 
@@ -704,79 +692,61 @@
 
 
 
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
 
 
 
   
   
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
 
 
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+  
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.0"></script>
 
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.0"></script>
 
 
 
   
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.0"></script>
 
 
 
   
 
 
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.0"></script>
+
+
+
   
 
-    
-      <script id="dsq-count-scr" src="https://zerolblog.disqus.com/count.js" async></script>
-    
-
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2017/07/20/Recurrent-on-a-Tree/';
-          this.page.identifier = '2017/07/20/Recurrent-on-a-Tree/';
-          this.page.title = '【题解】HackerRank - Recurrent on a Tree';
-        };
-        var d = document, s = d.createElement('script');
-        s.src = 'https://zerolblog.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      </script>
-    
 
   
 
@@ -804,6 +774,10 @@
 
 
 
+
+
+
+
   
 
   <script type="text/javascript">
@@ -811,10 +785,10 @@
     var isfetched = false;
     var isXml = true;
     // Search DB path;
-    var search_path = "search.xml";
+    var search_path = "";
     if (search_path.length === 0) {
       search_path = "search.xml";
-    } else if (search_path.endsWith("json")) {
+    } else if (/json$/i.test(search_path)) {
       isXml = false;
     }
     var path = "/" + search_path;
@@ -1135,6 +1109,9 @@
 
   
   
+
+  
+  
     <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
         tex2jax: {
@@ -1153,7 +1130,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

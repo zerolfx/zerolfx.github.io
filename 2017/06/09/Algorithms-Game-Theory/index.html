@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 
 
@@ -7,9 +7,10 @@
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+  <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
 
 
 
@@ -36,36 +37,7 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
 
 
 
@@ -74,38 +46,43 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Hexo, NexT" />
+<link href="/css/main.css?v=6.0.0" rel="stylesheet" type="text/css" />
 
 
 
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=6.0.0">
 
 
-  <link rel="alternate" href="/atom.xml" title="Zerol's Notes" type="application/atom+xml" />
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=6.0.0">
 
 
 
 
 
 
-<meta name="description" content="基本思想游戏可以等效为一个有向图，每一个状态相当于图中的一个节点，而可能的状态转移是图中的边。如果必胜态的后继中存在必败态，而必败态的后继全是必胜态。 SG函数SG(u) = mex\{ SG(v)|u \to v \}函数值为 0 代表必败态，不为 0 代表必胜态。（也就是说，0 只能转移到非 0，而非 0 一定能转移到 0。）一个组合游戏的 SG 和等于所有子游戏的异或和。">
+  <meta name="keywords" content="HackerRank," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值) &amp;lt;!-- more --&amp;gt; 题解  如果固定右端点，扩展左端点，那么 gc">
+<meta name="keywords" content="HackerRank">
 <meta property="og:type" content="article">
-<meta property="og:title" content="算法 - 博弈问题">
-<meta property="og:url" content="http://yoursite.com/2017/06/09/Algorithms-Game-Theory/index.html">
+<meta property="og:title" content="【题解】HackerRank - The Strange Function">
+<meta property="og:url" content="http://yoursite.com/2018/01/05/The-Strange-Function/index.html">
 <meta property="og:site_name" content="Zerol&#39;s Notes">
-<meta property="og:description" content="基本思想游戏可以等效为一个有向图，每一个状态相当于图中的一个节点，而可能的状态转移是图中的边。如果必胜态的后继中存在必败态，而必败态的后继全是必胜态。 SG函数SG(u) = mex\{ SG(v)|u \to v \}函数值为 0 代表必败态，不为 0 代表必胜态。（也就是说，0 只能转移到非 0，而非 0 一定能转移到 0。）一个组合游戏的 SG 和等于所有子游戏的异或和。">
+<meta property="og:description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值) &amp;lt;!-- more --&amp;gt; 题解  如果固定右端点，扩展左端点，那么 gc">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-07-03T14:39:05.000Z">
+<meta property="og:updated_time" content="2018-01-05T06:21:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="算法 - 博弈问题">
-<meta name="twitter:description" content="基本思想游戏可以等效为一个有向图，每一个状态相当于图中的一个节点，而可能的状态转移是图中的边。如果必胜态的后继中存在必败态，而必败态的后继全是必胜态。 SG函数SG(u) = mex\{ SG(v)|u \to v \}函数值为 0 代表必败态，不为 0 代表必胜态。（也就是说，0 只能转移到非 0，而非 0 一定能转移到 0。）一个组合游戏的 SG 和等于所有子游戏的异或和。">
+<meta name="twitter:title" content="【题解】HackerRank - The Strange Function">
+<meta name="twitter:description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值) &amp;lt;!-- more --&amp;gt; 题解  如果固定右端点，扩展左端点，那么 gc">
 
 
 
@@ -114,9 +91,13 @@
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
-    fancybox: true,
-    motion: true,
+    version: '6.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
       author: '博主'
@@ -133,23 +114,19 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/06/09/Algorithms-Game-Theory/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/01/05/The-Strange-Function/"/>
 
 
 
 
 
-  <title>算法 - 博弈问题 | Zerol's Notes</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
+  <title>算法 - 博弈问题 | Zerol's Notes</title>
   
 
 
 
 
-<!-- hexo-inject:begin --><!-- hexo-inject:end --><script>
+<script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
           m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -162,23 +139,20 @@
 
 
 
+</head>
 
-
-
-
-
-
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
     
   
 
-  <div class="container sidebar-position-left page-post-detail ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+      <div class="header-inner"> <div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
@@ -215,17 +189,11 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
+
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              首页
             
-            归档
+
           </a>
         </li>
       
@@ -235,7 +203,39 @@
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            标签
+
+            
+              标签
+            
+
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+
+            
+              分类
+            
+
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+
+            
+              归档
+            
+
           </a>
         </li>
       
@@ -301,13 +301,19 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/09/Algorithms-Game-Theory/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zerol">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="image" content="/images/illust_66436803_20171230_022825.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -331,9 +337,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-09T22:30:27+08:00">
-                2017-06-09
-              </time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-09T22:30:27+08:00">2017-06-09</time>
             
 
             
@@ -367,17 +371,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/06/09/Algorithms-Game-Theory/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/09/Algorithms-Game-Theory/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -393,28 +386,49 @@
       </header>
     
 
+    
+    
+    
     <div class="post-body" itemprop="articleBody">
 
       
       
 
       
-        <h2 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h2><p>游戏可以等效为一个有向图，每一个状态相当于图中的一个节点，而可能的状态转移是图中的边。如果必胜态的后继中存在必败态，而必败态的后继全是必胜态。</p>
-<h2 id="SG函数"><a href="#SG函数" class="headerlink" title="SG函数"></a>SG函数</h2><script type="math/tex; mode=display">SG(u) = mex\{ SG(v)|u \to v \}</script><p>函数值为 0 代表必败态，不为 0 代表必胜态。（也就是说，0 只能转移到非 0，而非 0 一定能转移到 0。）<br>一个组合游戏的 SG 和等于所有子游戏的异或和。<br><a id="more"></a></p>
-<h2 id="Anti-SG-和-SJ-定理"><a href="#Anti-SG-和-SJ-定理" class="headerlink" title="Anti-SG 和 SJ 定理"></a>Anti-SG 和 SJ 定理</h2><p>Anti-SG 游戏：<br>走完最后一步的一方输，也就是说，SG 为 0 的局面不一定为终止局面。</p>
-<p>SJ 定理：<br>对于 Anti-SG 游戏，如果游戏结束的条件是所有子游戏的 SG 值均为 0 时，那么先手必胜的条件是：<br><strong>SG 值不为零</strong> xor <strong>没有子游戏 SG 值大于1</strong></p>
-<h2 id="Every-SG"><a href="#Every-SG" class="headerlink" title="Every-SG"></a>Every-SG</h2><p>每一个非终止状态的子游戏必须进行操作。</p>
-<script type="math/tex; mode=display">
+        <h2>基本思想</h2>
+<p>游戏可以等效为一个有向图，每一个状态相当于图中的一个节点，而可能的状态转移是图中的边。如果必胜态的后继中存在必败态，而必败态的后继全是必胜态。</p>
+<h2>SG函数</h2>
+<p>$$ SG(u) = mex{ SG(v)|u \to v } $$
+函数值为 0 代表必败态，不为 0 代表必胜态。（也就是说，0 只能转移到非 0，而非 0 一定能转移到 0。）
+一个组合游戏的 SG 和等于所有子游戏的异或和。
+&lt;!-- more --&gt;</p>
+<h2>Anti-SG 和 SJ 定理</h2>
+<p>Anti-SG 游戏：
+走完最后一步的一方输，也就是说，SG 为 0 的局面不一定为终止局面。</p>
+<p>SJ 定理：
+对于 Anti-SG 游戏，如果游戏结束的条件是所有子游戏的 SG 值均为 0 时，那么先手必胜的条件是：
+<strong>SG 值不为零</strong> xor <strong>没有子游戏 SG 值大于1</strong></p>
+<h2>Every-SG</h2>
+<p>每一个非终止状态的子游戏必须进行操作。
+$$
 step(v) =
 \begin{cases}
-0, & \text{$v$ 为终止状态} \\
-max\{step(u)|SG(u)=0\}+1,  & \text{$SG(v)>0$} \\
-min\{step(u)\}, & \text{$SG(v)=0$}  \\
-\end{cases}</script><p>先手必胜的充要条件：所有子游戏中最大的 step 值为奇数</p>
-<h2 id="Green-Hackenbush"><a href="#Green-Hackenbush" class="headerlink" title="Green Hackenbush"></a>Green Hackenbush</h2><p>图上的删边游戏，过于复杂，自行搜索。</p>
-<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>尽量将问题转换成 Nim 游戏计算 SG 和。<br>确定边界状态的 SG 值（不存在时为 -1）<br>SG 计算过于复杂时打表找规律</p>
-<h3 id="zero-move"><a href="#zero-move" class="headerlink" title="zero-move"></a>zero-move</h3><p>在 Nim 游戏的基础上增加一个规则，每一堆石子可以进行一次空操作（与玩家无关）。这道题看似同一次状态可以多次抵达，实则不然。同样多的石子，根据经历过空操作与否可以看做两个状态。<br>新的 SG 值：</p>
-<div class="table-container">
+0, &amp; \text{$v$ 为终止状态} \
+max{step(u)|SG(u)=0}+1,  &amp; \text{$SG(v)&gt;0$} \
+min{step(u)}, &amp; \text{$SG(v)=0$}  \
+\end{cases}
+$$
+先手必胜的充要条件：所有子游戏中最大的 step 值为奇数</p>
+<h2>Green Hackenbush</h2>
+<p>图上的删边游戏，过于复杂，自行搜索。</p>
+<h2>题目</h2>
+<h3>解题思路</h3>
+<p>尽量将问题转换成 Nim 游戏计算 SG 和。
+确定边界状态的 SG 值（不存在时为 -1）
+SG 计算过于复杂时打表找规律</p>
+<h3>zero-move</h3>
+<p>在 Nim 游戏的基础上增加一个规则，每一堆石子可以进行一次空操作（与玩家无关）。这道题看似同一次状态可以多次抵达，实则不然。同样多的石子，根据经历过空操作与否可以看做两个状态。<br>
+新的 SG 值：</p>
 <table>
 <thead>
 <tr>
@@ -425,7 +439,7 @@ min\{step(u)\}, & \text{$SG(v)=0$}  \\
 <th>4</th>
 <th>5</th>
 <th>6</th>
-<th>…</th>
+<th>...</th>
 </tr>
 </thead>
 <tbody>
@@ -437,35 +451,22 @@ min\{step(u)\}, & \text{$SG(v)=0$}  \\
 <td>3</td>
 <td>6</td>
 <td>5</td>
-<td>…</td>
+<td>...</td>
 </tr>
 </tbody>
 </table>
-</div>
 
       
     </div>
+    
+    
+    
 
-    <div>
-      
-        
+    
 
-      
-    </div>
+    
 
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
+    
 
     <footer class="post-footer">
       
@@ -478,7 +479,7 @@ min\{step(u)\}, & \text{$SG(v)=0$}  \\
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/08/Linux-Another-Home/" rel="next" title="Arch Linux - 大型攻略">
+              <a href="/2017/06/08/Linux/" rel="next" title="Arch Linux - 大型攻略">
                 <i class="fa fa-chevron-left"></i> Arch Linux - 大型攻略
               </a>
             
@@ -499,6 +500,10 @@ min\{step(u)\}, & \text{$SG(v)=0$}  \\
       
       
     </footer>
+  </div>
+  
+  
+  
   </article>
 
 
@@ -514,16 +519,9 @@ min\{step(u)\}, & \text{$SG(v)=0$}  \\
 
 
           
-  <div class="comments" id="comments">
-    
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
-    
-  </div>
+
+  
+
 
 
         </div>
@@ -539,99 +537,94 @@ min\{step(u)\}, & \text{$SG(v)=0$}  \\
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
             站点概览
           </li>
         </ul>
       
 
-      <section class="site-overview sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.png"
-               alt="zerol" />
-          <p class="site-author-name" itemprop="name">zerol</p>
-           
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/illust_66436803_20171230_022825.jpg"
+                alt="zerol" />
+            
+              <p class="site-author-name" itemprop="name">zerol</p>
               <p class="site-description motion-element" itemprop="description"></p>
-          
-        </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives/">
-                <span class="site-state-item-count">30</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-categories">
-              <a href="/categories/index.html">
-                <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            
-            
-            <div class="site-state-item site-state-tags">
-              <a href="/tags/index.html">
-                <span class="site-state-item-count">14</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
           </div>
-        
 
-        <div class="links-of-author motion-element">
           
-            
-              <span class="links-of-author-item">
-                <a href="https://zerolin.gitbooks.io/template/content/" target="_blank" title="ACM 模板库">
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
                   
-                    <i class="fa fa-fw fa-book"></i>
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">分类</span>
                   
-                  ACM 模板库
-                </a>
-              </span>
-            
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    <span class="site-state-item-count">14</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
           
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://zerolin.gitbooks.io/template/content/" target="_blank" title="ACM 模板库">
+                      
+                        <i class="fa fa-fw fa-book"></i>ACM 模板库</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
         </div>
-
-        
-        
-
-        
-        
-
-        
-
-
       </section>
 
       
@@ -644,7 +637,7 @@ min\{step(u)\}, & \text{$SG(v)=0$}  \\
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本思想"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x57FA;&#x672C;&#x601D;&#x60F3;" class="headerlink" title="&#x57FA;&#x672C;&#x601D;&#x60F3;"></a>&#x57FA;&#x672C;&#x601D;&#x60F3;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SG函数"><span class="nav-number">2.</span> <span class="nav-text"><a href="#SG&#x51FD;&#x6570;" class="headerlink" title="SG&#x51FD;&#x6570;"></a>SG&#x51FD;&#x6570;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Anti-SG-和-SJ-定理"><span class="nav-number">3.</span> <span class="nav-text"><a href="#Anti-SG-&#x548C;-SJ-&#x5B9A;&#x7406;" class="headerlink" title="Anti-SG &#x548C; SJ &#x5B9A;&#x7406;"></a>Anti-SG &#x548C; SJ &#x5B9A;&#x7406;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Every-SG"><span class="nav-number">4.</span> <span class="nav-text"><a href="#Every-SG" class="headerlink" title="Every-SG"></a>Every-SG</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Green-Hackenbush"><span class="nav-number">5.</span> <span class="nav-text"><a href="#Green-Hackenbush" class="headerlink" title="Green Hackenbush"></a>Green Hackenbush</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">6.</span> <span class="nav-text"><a href="#&#x9898;&#x76EE;" class="headerlink" title="&#x9898;&#x76EE;"></a>&#x9898;&#x76EE;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解题思路"><span class="nav-number">6.1.</span> <span class="nav-text"><a href="#&#x89E3;&#x9898;&#x601D;&#x8DEF;" class="headerlink" title="&#x89E3;&#x9898;&#x601D;&#x8DEF;"></a>&#x89E3;&#x9898;&#x601D;&#x8DEF;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zero-move"><span class="nav-number">6.2.</span> <span class="nav-text"><a href="#zero-move" class="headerlink" title="zero-move"></a>zero-move</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">SG函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Anti-SG 和 SJ 定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">Every-SG</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">Green Hackenbush</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">6.1.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">6.2.</span> <span class="nav-text">zero-move</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -664,30 +657,38 @@ min\{step(u)\}, & \text{$SG(v)=0$}  \\
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2017</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">zerol</span>
+
+  
+
+  
 </div>
 
 
-<div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
-</div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
-<div class="theme-info">
-  Theme -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
-</div>
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a></div>
+
+
 
 
         
+
+
+
+
+
+
 
         
       </div>
@@ -698,6 +699,8 @@ min\{step(u)\}, & \text{$SG(v)=0$}  \\
         <i class="fa fa-arrow-up"></i>
         
       </div>
+    
+
     
 
   </div>
@@ -718,7 +721,6 @@ min\{step(u)\}, & \text{$SG(v)=0$}  \\
 
 
 
-  
 
 
 
@@ -731,79 +733,61 @@ min\{step(u)\}, & \text{$SG(v)=0$}  \\
 
 
 
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
 
 
 
   
   
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
 
 
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+  
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.0"></script>
 
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.0"></script>
 
 
 
   
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.0"></script>
 
 
 
   
 
 
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.0"></script>
+
+
+
   
 
-    
-      <script id="dsq-count-scr" src="https://zerolblog.disqus.com/count.js" async></script>
-    
-
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2017/06/09/Algorithms-Game-Theory/';
-          this.page.identifier = '2017/06/09/Algorithms-Game-Theory/';
-          this.page.title = '算法 - 博弈问题';
-        };
-        var d = document, s = d.createElement('script');
-        s.src = 'https://zerolblog.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      </script>
-    
 
   
 
@@ -831,6 +815,10 @@ min\{step(u)\}, & \text{$SG(v)=0$}  \\
 
 
 
+
+
+
+
   
 
   <script type="text/javascript">
@@ -838,10 +826,10 @@ min\{step(u)\}, & \text{$SG(v)=0$}  \\
     var isfetched = false;
     var isXml = true;
     // Search DB path;
-    var search_path = "search.xml";
+    var search_path = "";
     if (search_path.length === 0) {
       search_path = "search.xml";
-    } else if (search_path.endsWith("json")) {
+    } else if (/json$/i.test(search_path)) {
       isXml = false;
     }
     var path = "/" + search_path;
@@ -1162,6 +1150,9 @@ min\{step(u)\}, & \text{$SG(v)=0$}  \\
 
   
   
+
+  
+  
     <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
         tex2jax: {
@@ -1180,7 +1171,7 @@ min\{step(u)\}, & \text{$SG(v)=0$}  \\
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
