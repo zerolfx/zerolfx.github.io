@@ -71,18 +71,18 @@
 
 
 
-<meta name="description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值) &amp;lt;!-- more --&amp;gt; 题解  如果固定右端点，扩展左端点，那么 gc">
+<meta name="description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值)">
 <meta name="keywords" content="HackerRank">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【题解】HackerRank - The Strange Function">
 <meta property="og:url" content="http://yoursite.com/2018/01/05/The-Strange-Function/index.html">
 <meta property="og:site_name" content="Zerol&#39;s Notes">
-<meta property="og:description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值) &amp;lt;!-- more --&amp;gt; 题解  如果固定右端点，扩展左端点，那么 gc">
+<meta property="og:description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值)">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-01-05T06:21:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【题解】HackerRank - The Strange Function">
-<meta name="twitter:description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值) &amp;lt;!-- more --&amp;gt; 题解  如果固定右端点，扩展左端点，那么 gc">
+<meta name="twitter:description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值)">
 
 
 
@@ -399,27 +399,17 @@
 
       
         
-          
-            <h2>题目</h2>
+          <h2 id="题目">题目</h2>
 <p>https://www.hackerrank.com/challenges/newyear-game</p>
-<h2>题意</h2>
+<h2 id="题意">题意</h2>
 <p>给一列数，A 和 B 轮流取，如果每个人取的数之和之差的绝对值被 3 整除，则 B 赢，反之 A 赢。
-&lt;!-- more --&gt;</p>
-<h2>题解</h2>
-<ul>
-<li>绝对值没有用，去掉</li>
-<li>对于每个数，只关心它模 3 的余数</li>
-<li>由于胜利条件不是无法操作，所以和 sg 无关</li>
-<li>如果枚举每个状态，复杂度 $O(n^3)$，会超时。
-<ul>
-<li>但是如果找规律的话，能得出一个 $O(n)$ 的做法，然后就 AC 了</li>
-</ul>
-</li>
-<li>对于模 3 余 0 的数，如果有偶数个就不影响胜负（显然），如果有奇数个就当成 1 个。所以复杂度变成了 $O(n^2)$</li>
-</ul>
-<p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FOR(i, x, y) for (decay<span class="meta-string">&lt;decltype(y)&gt;::type i = (x), _##i = (y); i &lt; _##i; ++i)</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FORD(i, x, y) for (decay<span class="meta-string">&lt;decltype(x)&gt;::type i = (x), _##i = (y); i &gt; _##i; --i)</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">2000</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">3</span>], T, n, t, k;</span><br><span class="line"><span class="keyword">bool</span> dp[<span class="number">2</span>][maxn][maxn][<span class="number">2</span>][<span class="number">3</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; <span class="keyword">return</span> (x + <span class="number">3</span>) % <span class="number">3</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    dp[<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>][<span class="number">1</span>] = dp[<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>][<span class="number">2</span>] = <span class="number">1</span>; <span class="comment">// first person win</span></span><br><span class="line">    dp[<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>][<span class="number">1</span>][<span class="number">0</span>] = <span class="number">1</span>; <span class="comment">// second person win</span></span><br><span class="line">    FOR(t, <span class="number">0</span>, <span class="number">2</span>) <span class="comment">// 0</span></span><br><span class="line">        FOR(i, <span class="number">0</span>, maxn) <span class="comment">// 1</span></span><br><span class="line">            FOR(j, <span class="number">0</span>, maxn) <span class="comment">// 2</span></span><br><span class="line">                FOR(r, <span class="number">0</span>, <span class="number">2</span>) <span class="comment">// 0: first, 1: second</span></span><br><span class="line">                    FOR(v, <span class="number">0</span>, <span class="number">3</span>) &#123; <span class="comment">// S_first - S_second (mod 3)</span></span><br><span class="line">                        <span class="keyword">int</span> s = r ? <span class="number">1</span> : <span class="number">-1</span>;</span><br><span class="line">                        <span class="keyword">bool</span> &amp;u = dp[t][i][j][r][v];</span><br><span class="line">                        <span class="keyword">if</span> (t) u |= !dp[t - <span class="number">1</span>][i][j][r ^ <span class="number">1</span>][f(v - s * <span class="number">0</span>)];</span><br><span class="line">                        <span class="keyword">if</span> (i) u |= !dp[t][i - <span class="number">1</span>][j][r ^ <span class="number">1</span>][f(v - s * <span class="number">1</span>)];</span><br><span class="line">                        <span class="keyword">if</span> (j) u |= !dp[t][i][j - <span class="number">1</span>][r ^ <span class="number">1</span>][f(v - s * <span class="number">2</span>)];</span><br><span class="line">                    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    init();</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; T;</span><br><span class="line">    <span class="keyword">while</span> (T--) &#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">        <span class="built_in">memset</span>(a, <span class="number">0</span>, <span class="keyword">sizeof</span> a);</span><br><span class="line">        FOR(i, <span class="number">0</span>, n) &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;t);</span><br><span class="line">            ++a[t % <span class="number">3</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (dp[a[<span class="number">0</span>] % <span class="number">2</span>][a[<span class="number">1</span>]][a[<span class="number">2</span>]][<span class="number">0</span>][<span class="number">0</span>]) <span class="built_in">puts</span>(<span class="string">"Balsa"</span>); <span class="keyword">else</span> <span class="built_in">puts</span>(<span class="string">"Koca"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/10/New-Year-Game/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -558,28 +548,17 @@
 
       
         
-          
-            <h2>题目</h2>
+          <h2 id="题目">题目</h2>
 <p>https://www.hackerrank.com/challenges/lena-sort</p>
-<h2>题意</h2>
+<h2 id="题意">题意</h2>
 <p>题目中用伪代码给出一个排序算法，要求构造 1～n 的一个排列，使得排序过程中恰好比较了 k 次。
-&lt;!-- more --&gt;</p>
-<h2>题解</h2>
-<h3>玄学做法</h3>
-<ul>
-<li>先算出长度为 d 的序列至多至少比较多少次，至多是单调，至少是每次把剩余的数列分成尽可能均匀的两部分。</li>
-<li>先按至多的方案填，如果填不下去了不行了就按照至少的方案填。保证在填的过程中有解。</li>
-</ul>
-<h3>官方题解</h3>
-<ul>
-<li>https://www.hackerrank.com/challenges/lena-sort/editorial</li>
-<li>题目等价于构造一个 n 个节点二叉树，使得每个节点深度和为 k。</li>
-<li>调整法。如果深度为 x 的那一层没有满，就可以把一个深度为 y 叶节点的深度变为 x，深度和减少了 y-x。</li>
-<li>先把树造成一条链，然后从末端进行调整。</li>
-</ul>
-<p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FOR(i, x, y) for (remove_const<span class="meta-string">&lt;decltype(y)&gt;::type i = (x), _##i = (y); i &lt; _##i; ++i)</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FORD(i, x, y) for (remove_const<span class="meta-string">&lt;decltype(x)&gt;::type i = (x), _##i = (y); i &gt; _##i; --i)</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1E5</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> f[maxn], T, n, d;</span><br><span class="line"><span class="keyword">int</span> ans[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> d, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> d == <span class="number">-1</span> || (f[d] &lt;= k &amp;&amp; k &lt;= <span class="number">1L</span>L * d * (d - <span class="number">1</span>) / <span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fill</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> k, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &gt; y) <span class="keyword">return</span>;</span><br><span class="line">    assert(check(y - x + <span class="number">1</span>, k));</span><br><span class="line">    <span class="keyword">int</span> d = y - x;</span><br><span class="line">    k -= d;</span><br><span class="line">    <span class="keyword">while</span> (d &gt;= <span class="number">0</span> &amp;&amp; check(d, k)) &#123; <span class="comment">// plan A</span></span><br><span class="line">        ans[l++] = x++;</span><br><span class="line">        k -= --d;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (d &gt; <span class="number">0</span>) &#123; <span class="comment">// plan B</span></span><br><span class="line">        <span class="keyword">int</span> t = (x + y + <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">while</span> (!check(y - t, k - f[t - x])) --t;</span><br><span class="line">        assert(t &gt; x);</span><br><span class="line">        ans[l] = t;</span><br><span class="line">        fill(x, t - <span class="number">1</span>, f[t - x], l + <span class="number">1</span>, l + t - x);</span><br><span class="line">        fill(t + <span class="number">1</span>, y, k - f[t - x], l + t - x + <span class="number">1</span>, r);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    FOR(i, <span class="number">2</span>, maxn)</span><br><span class="line">        f[i] = i - <span class="number">1</span> + f[i / <span class="number">2</span>] + f[(i - <span class="number">1</span>) / <span class="number">2</span>];</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; T;</span><br><span class="line">    <span class="keyword">while</span> (T--) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;d, &amp;n);</span><br><span class="line">        <span class="keyword">if</span> (!check(d, n)) <span class="built_in">puts</span>(<span class="string">"-1"</span>);</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            fill(<span class="number">1</span>, d, n, <span class="number">1</span>, d);</span><br><span class="line">            FOR(i, <span class="number">1</span>, d + <span class="number">1</span>)</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%d%c"</span>, ans[i], i == d ? <span class="string">'\n'</span> : <span class="string">' '</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/08/Lena-Sort/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -718,22 +697,17 @@
 
       
         
-          
-            <h2>题目</h2>
+          <h2 id="题目">题目</h2>
 <p>https://www.hackerrank.com/challenges/yet-another-minimax-problem</p>
-<h2>题意</h2>
+<h2 id="题意">题意</h2>
 <p>给出 n 个整数，求一个排列使得相邻两数的异或值的最大值最小，输出该值。
-&lt;!-- more --&gt;</p>
-<h2>题解</h2>
-<ul>
-<li>如果有一位所有数都是 0 或 1，则异或之后这一位始终是 0。</li>
-<li>如果有一位既有 1 又有 0，我可以把 1 和 0 各自放在一起，但是会由一个交界处，交界处的异或值的该位为 1，其他位置是 0。</li>
-<li>问题就是找到所有数不完全相同的最高的那位，然后按那位是 0 或 1 分成两组，求两组分别取一个数是异或值最小。</li>
-<li>利用 Trie 求一个数与一堆数异或的最小值。</li>
-</ul>
-<p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FOR(i, x, y) for (remove_const<span class="meta-string">&lt;decltype(y)&gt;::type i = (x), _##i = (y); i &lt; _##i; ++i)</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FORD(i, x, y) for (remove_const<span class="meta-string">&lt;decltype(x)&gt;::type i = (x), _##i = (y); i &gt; _##i; --i)</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">3000</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> n, a[maxn], b[maxn], la, lb, m;</span><br><span class="line"><span class="keyword">int</span> trie[maxn * <span class="number">20</span>][<span class="number">2</span>];</span><br><span class="line"><span class="keyword">int</span> sz = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> u = <span class="number">0</span>;</span><br><span class="line">    FORD(i, m - <span class="number">1</span>, <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="keyword">bool</span> b = (<span class="number">1</span> &lt;&lt; i) &amp; n;</span><br><span class="line">        <span class="keyword">if</span> (!trie[u][b]) trie[u][b] = sz++;</span><br><span class="line">        u = trie[u][b];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> u = <span class="number">0</span>, ret = <span class="number">0</span>;</span><br><span class="line">    FORD(i, m - <span class="number">1</span>, <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="keyword">bool</span> b = (<span class="number">1</span> &lt;&lt; i) &amp; n;</span><br><span class="line">        <span class="keyword">if</span> (!trie[u][b]) &#123;</span><br><span class="line">            ret += (<span class="number">1</span> &lt;&lt; i);</span><br><span class="line">            b ^= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        u = trie[u][b];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    m = <span class="number">0</span>;</span><br><span class="line">    LL p = <span class="number">-1</span>, q = <span class="number">0</span>;</span><br><span class="line">    FOR(i, <span class="number">0</span>, n) &#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">        p &amp;= a[i];</span><br><span class="line">        q |= a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!(p ^ q)) &#123; <span class="built_in">puts</span>(<span class="string">"0"</span>); <span class="keyword">return</span> <span class="number">0</span>; &#125;</span><br><span class="line">    m = <span class="number">31</span> - __builtin_clz(p ^ q);</span><br><span class="line">    FOR(i, <span class="number">0</span>, n) &#123;</span><br><span class="line">        <span class="keyword">if</span> (a[i] &amp; (<span class="number">1</span> &lt;&lt; m)) a[la++] = a[i];</span><br><span class="line">        <span class="keyword">else</span> b[lb++] = a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    FOR(i, <span class="number">0</span>, la) add(a[i]);</span><br><span class="line">    LL ans = <span class="number">1E10</span>;</span><br><span class="line">    FOR(i, <span class="number">0</span>, lb) ans = min(ans, (LL)query(b[i]));</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ans + (<span class="number">1</span> &lt;&lt; m) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/03/Yet-Another-Minimax-Problem/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -872,25 +846,19 @@
 
       
         
-          
-            <h2>题目</h2>
+          <h2 id="题目">题目</h2>
 <p>https://www.hackerrank.com/challenges/sherlocks-array-merging-algorithm/problem</p>
-<h2>题解</h2>
+<h2 id="题解">题解</h2>
 <ul>
 <li>每一列的数在原数列中是连续且单调增的</li>
 <li>每一列数的个数是单调减的
-&lt;!-- more --&gt;</li>
-</ul>
-<p>如果原数列是单调递增的，可以使用如下代码。其中 dp[i][j] 表示前 i 个数分成若干组且最后一组的大小为 j 的总方案数。
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">FOR(i, <span class="number">1</span>, n + <span class="number">1</span>) &#123;</span><br><span class="line">    dp[i][i] = <span class="number">1</span>;</span><br><span class="line">    FOR(j, <span class="number">1</span>, i + <span class="number">1</span>) &#123;</span><br><span class="line">        FOR(k, j, i + <span class="number">1</span>) &#123;</span><br><span class="line">            dp[i][j] += dp[i - j][k] * A(k, j); <span class="comment">// A 是排列数</span></span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>需要预处理阶乘和阶乘的逆元</li>
-<li>看起来复杂度是$O(n^3)$的，但是其实是$O(n^3/6)$，所以竟然没有超时？</li>
-</ul>
-<p>完整代码
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FOR(i, x, y) for (remove_const<span class="meta-string">&lt;decltype(y)&gt;::type i = (x), _##i = (y); i &lt; _##i; ++i)</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FORD(i, x, y) for (remove_const<span class="meta-string">&lt;decltype(x)&gt;::type i = (x), _##i = (y); i &gt; _##i; --i)</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1200</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MOD = <span class="number">1E9</span> + <span class="number">7</span>;</span><br><span class="line">LL dp[maxn][maxn], n, a[maxn], l[maxn];</span><br><span class="line">LL invf[maxn], factor[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function">LL <span class="title">quick_inverse</span><span class="params">(LL n, LL p)</span> </span>&#123;</span><br><span class="line">	LL ret = <span class="number">1</span>;</span><br><span class="line">	LL exponent = p - <span class="number">2</span>;</span><br><span class="line">	<span class="keyword">for</span> (LL i = exponent; i; i &gt;&gt;= <span class="number">1</span>, n = n * n % p) &#123;</span><br><span class="line">		<span class="keyword">if</span> (i &amp; <span class="number">1</span>) &#123;</span><br><span class="line">			ret = ret * n % p;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_factorial_inverse</span><span class="params">(LL n, LL p)</span> </span>&#123;</span><br><span class="line">	factor[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (LL i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">		factor[i] = i * factor[i - <span class="number">1</span>] % p;</span><br><span class="line">	&#125;</span><br><span class="line">	invf[n] = quick_inverse(factor[n], p);</span><br><span class="line">	<span class="keyword">for</span> (LL i = n<span class="number">-1</span>; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">		invf[i] = invf[i + <span class="number">1</span>] * (i + <span class="number">1</span>) % p;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> LL <span class="title">A</span><span class="params">(LL n, LL m)</span> </span>&#123; <span class="keyword">return</span> factor[n] * invf[n - m] % MOD; &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    get_factorial_inverse(n, MOD);</span><br><span class="line">    FOR(i, <span class="number">0</span>, n) <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;a[i]);</span><br><span class="line">    l[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    FOR(i, <span class="number">1</span>, n) <span class="keyword">if</span> (a[i] &gt;= a[i - <span class="number">1</span>]) l[i] = l[i - <span class="number">1</span>] + <span class="number">1</span>; <span class="keyword">else</span> l[i] = <span class="number">1</span>;</span><br><span class="line">    FOR(i, <span class="number">1</span>, n + <span class="number">1</span>) &#123;</span><br><span class="line">        FOR(j, <span class="number">1</span>, l[i - <span class="number">1</span>] + <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i == l[i - <span class="number">1</span>]) dp[i][i] = <span class="number">1</span>;</span><br><span class="line">            FOR(k, j, i - j + <span class="number">1</span>)</span><br><span class="line">                dp[i][j] = (dp[i][j] + dp[i - j][k] * A(k, j)) % MOD;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    LL ans = <span class="number">0</span>;</span><br><span class="line">    FOR(i, <span class="number">1</span>, l[n - <span class="number">1</span>] + <span class="number">1</span>) ans += dp[n][i];</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ans % MOD &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/03/Sherlock-s-Array-Merging-Algorithm/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1029,22 +997,17 @@
 
       
         
-          
-            <h2>题目</h2>
+          <h2 id="题目">题目</h2>
 <p>https://www.hackerrank.com/challenges/fair-cut</p>
-<h2>题意</h2>
+<h2 id="题意">题意</h2>
 <p>给 n 个数，分成 k 和 n - k 两组，使得两个组之间任意数对之差的绝对值之和最小。
-&lt;!-- more --&gt;</p>
-<h2>题解</h2>
-<ul>
-<li>将问题转化为对于两组数每组内部元素两两之差的绝对值之和的和最大</li>
-<li>排个序把绝对值去了</li>
-<li>对于一组有 k 个元素有序的数，两两之差之和的值为 Sum[a[i] * (2i + k - 1), {i, 1, k}]</li>
-<li>dp[i][j] 表示第一组取 i 个数，第二组取 j 个数 （可以开成滚动数组）</li>
-</ul>
-<p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FOR(i, x, y) for (remove_const<span class="meta-string">&lt;decltype(y)&gt;::type i = (x), _##i = (y); i &lt; _##i; ++i)</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FORD(i, x, y) for (remove_const<span class="meta-string">&lt;decltype(x)&gt;::type i = (x), _##i = (y); i &gt; _##i; --i)</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">3000</span> + <span class="number">5</span>;</span><br><span class="line">LL dp[maxn][maxn], n, k, a[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; k;</span><br><span class="line">    FOR(i, <span class="number">0</span>, n) <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">    sort(a, a + n);</span><br><span class="line">    FOR(i, <span class="number">0</span>, k + <span class="number">1</span>)</span><br><span class="line">        FOR(j, <span class="number">0</span>, n - k + <span class="number">1</span>) &#123;</span><br><span class="line">            dp[i][j] = (i || j) ? <span class="number">-1E18</span> : <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span> (i) dp[i][j] = max(dp[i - <span class="number">1</span>][j] + a[i + j - <span class="number">1</span>] * (<span class="number">2</span> * i - k - <span class="number">1</span>), dp[i][j]);</span><br><span class="line">            <span class="keyword">if</span> (j) dp[i][j] = max(dp[i][j - <span class="number">1</span>] + a[i + j - <span class="number">1</span>] * (<span class="number">2</span> * j - (n - k) - <span class="number">1</span>), dp[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">    LL ans = -dp[k][n - k];</span><br><span class="line">    FOR(i, <span class="number">0</span>, n) ans += a[i] * (<span class="number">2</span> * i - n + <span class="number">1</span>);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/02/Fair-Cut/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1183,20 +1146,17 @@
 
       
         
-          
-            <h2>题目</h2>
+          <h2 id="题目">题目</h2>
 <p>https://www.hackerrank.com/challenges/prime-xor</p>
-<h2>题意</h2>
+<h2 id="题意">题意</h2>
 <p>定义一种新的数值表示方法，每一位权值和二进制一样，但是每一位都可以是 0～9。问第 k 大的数是几（如果表示的数值一样大的话，再看做十进制比较）。
-&lt;!-- more --&gt;</p>
-<h2>题解</h2>
-<p>dp[i][j] 表示 i 用不超过 j 位表示的方案数</p>
-<p>先估计一下范围，但是开一维 dp 做会有这样的问题：表示同样的值的数没法按数值大小排序。
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">FOR(i, <span class="number">2</span>, <span class="number">1000000</span>) &#123;</span><br><span class="line">    FOR(j, <span class="number">0</span>, <span class="number">10</span>)</span><br><span class="line">        <span class="keyword">if</span> ((i - j) % <span class="number">2</span> == <span class="number">0</span>) dp[i] += dp[(i - j) / <span class="number">2</span>];</span><br><span class="line">    <span class="comment">// cerr &lt;&lt; i &lt;&lt; ' ' &lt;&lt; dp[i] &lt;&lt; endl;</span></span><br><span class="line">    s += dp[i];</span><br><span class="line">    <span class="keyword">if</span> (s &gt; <span class="number">1E16</span>) &#123;</span><br><span class="line">        <span class="built_in">cerr</span> &lt;&lt; dp[i] &lt;&lt; <span class="string">' '</span> &lt;&lt; i &lt;&lt; <span class="built_in">endl</span>; <span class="comment">// 114928788468 285112</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>代码
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FOR(i, x, y) for (remove_const<span class="meta-string">&lt;decltype(y)&gt;::type i = (x), _##i = (y); i &lt; _##i; ++i)</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FORD(i, x, y) for (remove_const<span class="meta-string">&lt;decltype(x)&gt;::type i = (x), _##i = (y); i &gt; _##i; --i)</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">285112</span> + <span class="number">5</span>, maxm = <span class="number">20</span>;</span><br><span class="line">LL dp[maxn][maxm], s[maxn] = &#123;<span class="number">1</span>&#125;;</span><br><span class="line">LL T, n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">go</span><span class="params">(LL n, LL rank, LL pos, <span class="keyword">bool</span> leading)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// cerr &lt;&lt; n &lt;&lt; ' ' &lt;&lt; rank &lt;&lt; ' ' &lt;&lt; pos &lt;&lt; ' ' &lt;&lt; leading &lt;&lt; endl;</span></span><br><span class="line">    <span class="keyword">if</span> (!pos) <span class="keyword">return</span>;</span><br><span class="line">    assert(n &gt;= <span class="number">0</span> &amp;&amp; rank &gt;= <span class="number">0</span>);</span><br><span class="line">    LL t = <span class="number">1</span> &lt;&lt; (pos - <span class="number">1</span>);</span><br><span class="line">    LL s = <span class="number">0</span>;</span><br><span class="line">    FOR(i, <span class="number">0</span>, <span class="number">10</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (s + dp[n - i * t][pos - <span class="number">1</span>] &lt;= rank) s += dp[n - i * t][pos - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (!leading || i) <span class="built_in">cout</span> &lt;&lt; i;</span><br><span class="line">            go(n - i * t, rank - s, pos - <span class="number">1</span>, leading &amp;&amp; !i);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    FOR(i, <span class="number">0</span>, maxm) dp[<span class="number">0</span>][i] = <span class="number">1</span>;</span><br><span class="line">    FOR(i, <span class="number">1</span>, maxn) &#123;</span><br><span class="line">        s[i] = s[i - <span class="number">1</span>] + dp[i - <span class="number">1</span>][maxm - <span class="number">1</span>];</span><br><span class="line">        FOR(j, <span class="number">1</span>, maxm) &#123;</span><br><span class="line">            dp[i][j] = dp[i][j - <span class="number">1</span>];</span><br><span class="line">            LL t = <span class="number">1</span> &lt;&lt; (j - <span class="number">1</span>);</span><br><span class="line">            FOR(k, <span class="number">1</span>, <span class="number">10</span>)</span><br><span class="line">                <span class="keyword">if</span> (t * k &lt;= i) dp[i][j] += dp[i - t * k][j - <span class="number">1</span>];</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; T;</span><br><span class="line">    <span class="keyword">while</span> (T--) &#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">        LL k = upper_bound(s, s + maxn, n) - s - <span class="number">1</span>;</span><br><span class="line">        go(k, n - s[k], maxm, <span class="number">1</span>);</span><br><span class="line">        <span class="built_in">puts</span>(<span class="string">""</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/02/Decibinary-Numbers/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1335,23 +1295,17 @@
 
       
         
-          
-            <h2>题目</h2>
+          <h2 id="题目">题目</h2>
 <p>https://www.hackerrank.com/challenges/prime-xor</p>
-<h2>题意</h2>
+<h2 id="题意">题意</h2>
 <p>给 n 个介于 3500 和 4500 之间的数，求不同子集（可以包含重复元素）的总数，使得子集异或和是质数。
-&lt;!-- more --&gt;</p>
-<h2>题解</h2>
-<p>异或和的范围在 0～8191 之间，虽然 n 很大，但是每一个数的范围很小，因此可以依次处理 3500～4500 之间的每一个数。</p>
-<p>dp[i][k] = dp[i - 1][k] * (a[i] / 2 + 1) + dp[i - 1][k ^ v[i]] * ((a[i] + 1) / 2)</p>
-<ul>
-<li>dp[i][k]表示前 i 个数异或和为 k 的方案数</li>
-<li>a[i]记录 n 个数中 i 出现的次数，(a[i] / 2 + 1) 表示取偶数个，((a[i] + 1) / 2) 表示取奇数个</li>
-<li>v[i]表示第 i 个数的值</li>
-</ul>
-<p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FOR(i, x, y) for (__typeof(y) i = (x), _##i = (y); i &lt; _##i; ++i)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FORD(i, x, y) for (__typeof(x) i = (x), _##i = (y); i &gt; _##i; --i)</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MOD = <span class="number">1E9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">8192</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">bool</span> p[maxn];</span><br><span class="line"><span class="keyword">int</span> t, a[<span class="number">5000</span>], T, n, u;</span><br><span class="line">LL dp[<span class="number">2</span>][maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; maxn; ++i)</span><br><span class="line">        <span class="keyword">if</span> (!p[i])</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + i; j &lt; maxn; j += i)</span><br><span class="line">                p[j] = <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;T);</span><br><span class="line">    <span class="keyword">while</span> (T--) &#123;</span><br><span class="line">        <span class="built_in">memset</span>(dp, <span class="number">0</span>, <span class="keyword">sizeof</span> dp); u = <span class="number">0</span>; dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">memset</span>(a, <span class="number">0</span>, <span class="keyword">sizeof</span> a);</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">        FOR(i, <span class="number">0</span>, n) &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;t);</span><br><span class="line">            ++a[t];</span><br><span class="line">        &#125;</span><br><span class="line">        FOR(i, <span class="number">3500</span>, <span class="number">4501</span>)</span><br><span class="line">            <span class="keyword">if</span> (a[i]) &#123;</span><br><span class="line">                u ^= <span class="number">1</span>;</span><br><span class="line">                FOR(j, <span class="number">0</span>, <span class="number">8192</span>)</span><br><span class="line">                    dp[u][j] = ((<span class="number">1</span> + a[i] / <span class="number">2</span>) * dp[u ^ <span class="number">1</span>][j] + (a[i] + <span class="number">1</span>) / <span class="number">2</span> * dp[u ^ <span class="number">1</span>][j ^ i]) % MOD;</span><br><span class="line">            &#125;</span><br><span class="line">        LL ans = <span class="number">0</span>;</span><br><span class="line">        FOR(i, <span class="number">2</span>, <span class="number">8192</span>)</span><br><span class="line">            <span class="keyword">if</span> (!p[i]) ans += dp[u][i];</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, ans % MOD);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/02/Prime-XOR/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1636,69 +1590,17 @@
 
       
         
-          
-            <h2>基本思想</h2>
+          <h2 id="基本思想">基本思想</h2>
 <p>游戏可以等效为一个有向图，每一个状态相当于图中的一个节点，而可能的状态转移是图中的边。如果必胜态的后继中存在必败态，而必败态的后继全是必胜态。</p>
-<h2>SG函数</h2>
-<p>$$ SG(u) = mex{ SG(v)|u \to v } $$
-函数值为 0 代表必败态，不为 0 代表必胜态。（也就是说，0 只能转移到非 0，而非 0 一定能转移到 0。）
-一个组合游戏的 SG 和等于所有子游戏的异或和。
-&lt;!-- more --&gt;</p>
-<h2>Anti-SG 和 SJ 定理</h2>
-<p>Anti-SG 游戏：
-走完最后一步的一方输，也就是说，SG 为 0 的局面不一定为终止局面。</p>
-<p>SJ 定理：
-对于 Anti-SG 游戏，如果游戏结束的条件是所有子游戏的 SG 值均为 0 时，那么先手必胜的条件是：
-<strong>SG 值不为零</strong> xor <strong>没有子游戏 SG 值大于1</strong></p>
-<h2>Every-SG</h2>
-<p>每一个非终止状态的子游戏必须进行操作。
-$$
-step(v) =
-\begin{cases}
-0, &amp; \text{$v$ 为终止状态} \
-max{step(u)|SG(u)=0}+1,  &amp; \text{$SG(v)&gt;0$} \
-min{step(u)}, &amp; \text{$SG(v)=0$}  \
-\end{cases}
-$$
-先手必胜的充要条件：所有子游戏中最大的 step 值为奇数</p>
-<h2>Green Hackenbush</h2>
-<p>图上的删边游戏，过于复杂，自行搜索。</p>
-<h2>题目</h2>
-<h3>解题思路</h3>
-<p>尽量将问题转换成 Nim 游戏计算 SG 和。
-确定边界状态的 SG 值（不存在时为 -1）
-SG 计算过于复杂时打表找规律</p>
-<h3>zero-move</h3>
-<p>在 Nim 游戏的基础上增加一个规则，每一堆石子可以进行一次空操作（与玩家无关）。这道题看似同一次状态可以多次抵达，实则不然。同样多的石子，根据经历过空操作与否可以看做两个状态。<br>
-新的 SG 值：</p>
-<table>
-<thead>
-<tr>
-<th>n</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-<th>6</th>
-<th>...</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>SG</td>
-<td>2</td>
-<td>1</td>
-<td>4</td>
-<td>3</td>
-<td>6</td>
-<td>5</td>
-<td>...</td>
-</tr>
-</tbody>
-</table>
-
-          
+<h2 id="sg函数">SG函数</h2>
+<p><span class="math display">\[ SG(u) = mex\{ SG(v)|u \to v \} \]</span> 函数值为 0 代表必败态，不为 0 代表必胜态。（也就是说，0 只能转移到非 0，而非 0 一定能转移到 0。） 一个组合游戏的 SG 和等于所有子游戏的异或和。
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/06/09/Algorithms-Game-Theory/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1837,14 +1739,13 @@ SG 计算过于复杂时打表找规律</p>
 
       
         
-          
-            <p>这篇文章的主要目的是记录我在使用 Linux 的过程中遇到的坑和相应的解决方案，次要目的是帮助读者快速构建一个舒适的 Linux 使用环境。后文的描述基于 Arch Linux 和 KDE 的方案，大部分也适用于 Kubuntu 用户。</p>
-<h2>UPDATE 2017.10</h2>
+          <p>这篇文章的主要目的是记录我在使用 Linux 的过程中遇到的坑和相应的解决方案，次要目的是帮助读者快速构建一个舒适的 Linux 使用环境。后文的描述基于 Arch Linux 和 KDE 的方案，大部分也适用于 Kubuntu 用户。</p>
+<h2 id="update-2017.10">UPDATE 2017.10</h2>
 <ul>
 <li>重装了系统，现在选择了基于 arch 的发行版 majaro（桌面环境还是 KDE），安装确实方便挺多，也称得上是开箱即用。</li>
 <li>这两个月 <code>shadowsocks-qt5</code> 的最新版本很不好用，估计是依赖的问题（github 上 issue 不断）。所以还是选择了 <code>shadowsocks-libev</code> 命令行版本，配合 <code>polipo</code> socks5 转 HTTP 代理（其实不怎么用得到）。</li>
 </ul>
-<h2>发行版的选择</h2>
+<h2 id="发行版的选择">发行版的选择</h2>
 <p>起初我选择的是 Ubuntu，其主要原因有如下几点：</p>
 <ul>
 <li>用户的基数大，遇到问题能够方便得找到相应的解决方案</li>
@@ -1855,123 +1756,13 @@ SG 计算过于复杂时打表找规律</p>
 <li>官方仓库和用户软件仓库（AUR）提供了我想要的全部，包括上文中的“网易云音乐”和“搜狗输入法”。</li>
 <li>拥有官方 Wiki，对于解决实际问题和学习 Linux 很有帮助</li>
 <li>没有预装可有可无的软件包，用户拥有更大的选择余地
-&lt;!-- more --&gt;</li>
-</ul>
-<h2>安装</h2>
-<p>由于 Arch 的安装是在 CLI（命令行）下进行的，对于新用户可能有些困难。而在官方 Wiki 和网上教程的帮助下，完成安装应该也不成问题。</p>
-<h2>桌面环境的选择</h2>
-<p>在尝试过许多桌面环境后，我体会到了 KDE 的可贵。</p>
-<ul>
-<li>可定制性远强于其他桌面环境。
-<ul>
-<li>有许多桌面控件可供选用（后文会有介绍）算法—— 博弈</li>
-<li>可以很方便得修改 panel 的样式，于是我可以很轻松地将桌面从 Win10 风格切换至 OS X 风格。</li>
-<li>可以在系统设置中修改动画效果</li>
-<li>提供了虚拟桌面（Virtual desktops）和活动（Activities）的功能</li>
-<li>可以修改主题、图标、窗口样式，而且默认主题十分美观</li>
-</ul>
-</li>
-<li>系统设置丰富 （有些东西没法通过图形界面设置的话就只能通过命令行或者修改配置文件来达到目的，十分不便）</li>
-<li>有些集成的软件十分好用，比如文件管理器 dolphin，终端 konsole，便签 Knotes，快捷搜索 Lancelot（当然无论是什么桌面环境这些应用都可以做相应的替换，但是原生不容易出问题，体验也更为一致）。</li>
-<li>缺点
-<ul>
-<li>集成了一些无用的软件，虽然可以在安装时进行筛选</li>
-<li>设置中播放设备的选择太过繁琐</li>
-<li>难以名状的 Bug，这个似乎很难避免，只要数量不多频率不高问题不大还是可以忍受一些的</li>
-</ul>
-</li>
-</ul>
-<p>KDE 的安装也十分便捷，参照 Wiki 即可，配合 SDDM 风味更佳。</p>
-<h2>常用软件</h2>
-<p>以下均为包名，可以直接安装（有些属于 AUR）</p>
-<ul>
-<li>base-devel</li>
-<li>chromium / firefox / google-chrome 浏览器三选一</li>
-<li>shadowsocks-qt5 科学上网</li>
-<li>wps-office &amp; ttf-wps-fonts WPS</li>
-<li>netease-cloud-music 网易云音乐 （字变成方块，间歇性白屏，沙盒无法启动，各种问题的解决方法在 AUR 讨论区里有。<a href="https://aur.archlinux.org/packages/netease-cloud-music/" target="_blank" rel="noopener">链接</a>）</li>
-<li>youdao-dict 有道词典</li>
-<li>fcitx-sogoupinyin 搜狗拼音</li>
-<li>calibre 电子书管理</li>
-<li>atom 文本编辑器</li>
-<li>redshift 屏幕色温调节</li>
-<li>uget 多线程下载工具，支持磁链、种子（如果选用 aria2 作为后端，还需安装 aria2）</li>
-<li>vlc 视频播放器</li>
-<li>p7zip-natspec &amp; unzip-natspec 使压缩包管理软件 Ark 解压（不是查看）zip、7z时避免出现中文文件名编码错误的问题</li>
-<li>ntfs-3g 挂载 ntfs 分区（访问 Windows 分区或 ntfs 的移动硬盘）</li>
-<li>downgrade (一定要是 AUR 版本) 降级软件包，救命神器。</li>
-</ul>
-<p>以下软件给出安装方法</p>
-<ul>
-<li><a href="https://tiebamma.github.io/InstallTutorial/" target="_blank" rel="noopener">Mathematica</a> 数学计算</li>
-<li><a href="https://www.jetbrains.com/" target="_blank" rel="noopener">Jetbrains</a> IDE (可以通过 AUR 安装)</li>
-</ul>
-<h3>QQ的安装</h3>
-<p>解决方案：crossover 16 或 deepin-QQ with crossover 15 <a href="https://www.findhao.net/easycoding/1748" target="_blank" rel="noopener">参考链接</a><br>
-crossover 16 有对多个版本的 QQ 的官方支持，建议购买正版，有试用期。<br>
-备选方案：crossover 15 的 crack 对 16 同样有效，需要的人自己找。<br>
-另：如果发现许多字变为方块，那么安装 crossover 中的 QQ 2012，期间安装的一些依赖可以解决这个问题。</p>
-<h3>Atom相关</h3>
-<p>项目的开发我还是建议使用 IDE，要让编辑器能拥有 IDE 的功能可能需要花大量的精力来改造。</p>
-<h4>apm</h4>
-<p>Atom 的包管理器 apm 其实就是 npm，于是我们可以通过类似的方法为其设置镜像来加快下载速度。
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm set registry https://registry.npm.taobao.org</span><br><span class="line">apm config set registry https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure></p>
-<h4>插件</h4>
-<ul>
-<li>linter</li>
-<li>linter-gcc</li>
-<li>file-icons</li>
-<li>platformio-ide-terminal 这个好像也不怎么好用，推荐一发下拉式终端 <a href="https://www.archlinux.org/packages/community/x86_64/yakuake/" target="_blank" rel="noopener">yakuake</a></li>
-</ul>
-<h2>桌面控件</h2>
-<ul>
-<li><a href="https://store.kde.org/p/998916" target="_blank" rel="noopener">Redshift Control</a> 控制 redshift</li>
-<li><a href="https://store.kde.org/p/998895" target="_blank" rel="noopener">Netspeed Widget</a> 网速监控</li>
-<li><a href="https://store.kde.org/p/998901" target="_blank" rel="noopener">Event Calendar</a> 带天气和倒计时的日历，可以和谷歌日历同步日程</li>
-<li><a href="https://store.kde.org/p/998915" target="_blank" rel="noopener">Thermal Monitor</a> 温度监测</li>
-<li><a href="https://store.kde.org/p/998909" target="_blank" rel="noopener">PlayBar2</a> 播放控制</li>
-<li><a href="https://github.com/psifidotos/Latte-Dock" target="_blank" rel="noopener">Latte Dock</a> 美观好用的 dock</li>
-</ul>
-<h3>额外</h3>
-<ul>
-<li><a href="https://github.com/martenjj/wallpaperswitch" target="_blank" rel="noopener">Wallpaper Switcher</a> 不同虚拟桌面可以设置不同壁纸的特性作为 bug 在某一个版本后消失了，但许多用户认为这是一个好功能。于是一个 KDE 的开发人员兑现承诺开发了这个工具提供了这个功能。</li>
-<li><a href="https://store.kde.org/p/998910" target="_blank" rel="noopener">Active Window Control</a>窗口在最大化后还会保留系统标题栏，而屏幕顶部还有一个 panel（如果和我一样把状态栏放到顶部），这样就会有两层，既不美观又浪费了空间。通过安装这个控件并且设置全屏隐藏标题栏后，可以达到和 OS X 同样的全屏后合并标题栏和系统状态栏的效果。</li>
-</ul>
-<h2>易用性</h2>
-<h3>按键映射</h3>
-<p>创建文件<code>～/.Xmodmap</code>，fcitx 会自动读取并应用 xmodmap 的设置
-以下是我使用的配置文件，将<code>Caps_Lock</code>修改为<code>Ctrl</code>，并交换<code>`~</code> 和<code>Esc</code>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">remove Lock = Caps_Lock</span><br><span class="line">keysym Caps_Lock = Control_L</span><br><span class="line">add Control = Control_L</span><br><span class="line">keysym Escape = grave asciitilde grave asciitilde</span><br><span class="line">keysym grave = Escape</span><br></pre></td></tr></table></figure></p>
-<h3>鼠标侧键</h3>
-<p>对于拥有鼠标侧键的用户而言，将这些侧键映射为常用快捷键（如浏览器标签页的切换、虚拟桌面的切换）可以带来极大的便捷。<br>
-我使用的软件是 <a href="https://www.archlinux.org/packages/community/x86_64/xbindkeys/" target="_blank" rel="noopener">xbindkeys</a>，在<code>~/.xbindkeysrc</code>中修改配置，以下是我使用的配置
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 侧键切换虚拟桌面</span><br><span class="line">&quot;xte &apos;keydown Super_L&apos; &apos;key Tab&apos; &apos;keyup Super_L&apos;&quot;</span><br><span class="line">  b:8</span><br><span class="line"></span><br><span class="line">&quot;xte &apos;keydown Super_L&apos; &apos;key Tab&apos; &apos;keyup Super_L&apos;&quot;</span><br><span class="line">  b:9</span><br><span class="line"></span><br><span class="line">#  水平滚轮切换浏览器标签页，延迟是为了防止切换过快</span><br><span class="line">&quot;xte &apos;keydown Control_L&apos; &apos;usleep 200000&apos; &apos;key Tab&apos; &apos;keyup Control_L&apos;&quot;</span><br><span class="line">  b:7</span><br><span class="line"></span><br><span class="line">&quot;xte &apos;keydown Control_L&apos; &apos;keydown Shift_L&apos; &apos;usleep 200000&apos; &apos;key Tab&apos; &apos;keyup Shift_L&apos; &apos;keyup Control_L&apos;&quot;</span><br><span class="line">  b:6</span><br></pre></td></tr></table></figure></p>
-<h3>文件同步</h3>
-<p>建议使用坚果云，免费便利。Linux 下有客户端的网盘真的少。Dropbox 必须翻墙，不支持多文件夹同步。</p>
-<h3>终端提示符颜色</h3>
-<p><code>~/.bashrc</code>中添加</p>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">COLOR=<span class="string">"\[<span class="variable">$(tput setaf 105)</span>\]"</span></span><br><span class="line">RESET=<span class="string">"\[<span class="variable">$(tput sgr0)</span>\]"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> PS1=<span class="string">"<span class="variable">$&#123;COLOR&#125;</span>\u@\h \W &gt;<span class="variable">$&#123;RESET&#125;</span> "</span></span><br></pre></td></tr></table></figure></p>
-<p>应用配置 <code>source ~/.bashrc</code></p>
-<h4>参考文章</h4>
-<p>https://blog.hanschen.org/2009/10/13/mouse-shortcuts-with-xbindkeys/
-https://wiki.archlinux.org/index.php/Mouse_buttons#xvkbd_and_xbindkeys</p>
-<h3>触控板手势</h3>
-<p>对于长期使用触控板的用户来说，多指手势可以用来替代许多快捷键。<br>
-我使用的软件是 <a href="https://wiki.archlinux.org/index.php/Touchegg" target="_blank" rel="noopener">Touchegg</a>以及对应的 GUI 配置工具 <a href="https://aur.archlinux.org/packages/touchegg-gce-git/" target="_blank" rel="noopener">touchegg-gce-git</a></p>
-<h2>Tips</h2>
-<ul>
-<li>dolphin 中<code>Alt + .</code>切换是否显示隐藏文件</li>
-<li>更新 kernel 之后不要忘记重启</li>
-<li><code>yaourt -Syu</code>频率太低会更新失败，太高会占用大量硬盘空间（<code>/var/cache/pacman/pkg/</code>）</li>
-<li>arch 是为数不多的关闭 user namespace 的发行版之一，所以 unprivileged container 无法使用</li>
-<li>如果 PGP 签名挂了 那么</li>
-</ul>
-<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -rf /etc/pacman.d/gnupg</span><br><span class="line">sudo pacman-key --init</span><br><span class="line">sudo pacman-key --populate archlinux</span><br><span class="line">sudo pacman-key --refresh-keys</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>与其手动下载安装包，不如去 AUR 找一找，这样更新会省力不少。</li>
-</ul>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/06/08/Linux/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

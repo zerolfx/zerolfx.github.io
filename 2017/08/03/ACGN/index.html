@@ -71,18 +71,18 @@
 
 
 
-<meta name="description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值) &amp;lt;!-- more --&amp;gt; 题解  如果固定右端点，扩展左端点，那么 gc">
+<meta name="description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值)">
 <meta name="keywords" content="HackerRank">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【题解】HackerRank - The Strange Function">
 <meta property="og:url" content="http://yoursite.com/2018/01/05/The-Strange-Function/index.html">
 <meta property="og:site_name" content="Zerol&#39;s Notes">
-<meta property="og:description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值) &amp;lt;!-- more --&amp;gt; 题解  如果固定右端点，扩展左端点，那么 gc">
+<meta property="og:description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值)">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-01-05T06:21:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【题解】HackerRank - The Strange Function">
-<meta name="twitter:description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值) &amp;lt;!-- more --&amp;gt; 题解  如果固定右端点，扩展左端点，那么 gc">
+<meta name="twitter:description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值)">
 
 
 
@@ -395,48 +395,44 @@
       
 
       
-        <p>本文的目的是记录一些对于 ACGN 作品的感想，而所谓感想，难免带有强烈的主观色彩，勿较真。
-大坑待填。
-&lt;!-- more --&gt;</p>
-<h1>前言</h1>
-<h2>心态</h2>
+        <p>本文的目的是记录一些对于 ACGN 作品的感想，而所谓感想，难免带有强烈的主观色彩，勿较真。 大坑待填。 <a id="more"></a></p>
+<h1 id="前言">前言</h1>
+<h2 id="心态">心态</h2>
 <p>我觉得通常有两种心态。</p>
 <ul>
 <li>其一，作品之外。带着批判、审视的眼光去看作品，于是便能够描述出作品的优劣之处，给予合理的评价。</li>
-<li>其二，作品之内。尽量使自己代入作者所构建的世界中，并为人物的遭遇或悲或喜，甚至可能在看完之后久久不能释怀。
-我更倾向于选择后者，因为这样我才能够感受作者想要展现的一切，想要表达的一切，也算是对作者的一种尊重。</li>
+<li>其二，作品之内。尽量使自己代入作者所构建的世界中，并为人物的遭遇或悲或喜，甚至可能在看完之后久久不能释怀。 我更倾向于选择后者，因为这样我才能够感受作者想要展现的一切，想要表达的一切，也算是对作者的一种尊重。</li>
 </ul>
-<h2>设定</h2>
+<h2 id="设定">设定</h2>
 <p>我觉得一部优秀的作品应该有优秀的设定，最好能够令人耳目一新。在我看来合理性是建立在设定上的，因此即便是设定离现实很遥远，但只要人物的行为符合设定下的情境和心理，我便认为这是合理的。倘若产生了不合理、突兀的情节，又用补充新的设定去弥补，那真是太糟糕了。</p>
-<h2>过往</h2>
+<h2 id="过往">过往</h2>
 <p>情节的起源、人物的动机常常源于人物童年时的经历（替弗洛伊德深表赞成）。</p>
-<h2>从这里寻求什么</h2>
+<h2 id="从这里寻求什么">从这里寻求什么</h2>
 <p>在这个虚拟的世界中，很容易出现一些观众所喜爱的元素。比如说动画中的集各种属性于一身的美少女，陷入二次元的谁，总是能够找到那些被自己所喜爱的只存在于虚幻中的那个她。</p>
-<h2>观看顺序</h2>
+<h2 id="观看顺序">观看顺序</h2>
 <p>刚入坑时的感受与多年以后肯定有所不同。也许眼光更高，对作品的要求更为苛刻，也许以前令我耳目一新的情节就变为了烂大街的桥段。</p>
-<h1>动画</h1>
-<h2>A+</h2>
-<h3>命运石之门 (Steins;Gate)【A+】</h3>
-<h3>魔法少女小圆【A+】</h3>
+<h1 id="动画">动画</h1>
+<h2 id="a">A+</h2>
+<h3 id="命运石之门-steinsgatea">命运石之门 (Steins;Gate)【A+】</h3>
+<h3 id="魔法少女小圆a">魔法少女小圆【A+】</h3>
 <ul>
 <li>编剧：虚渊玄</li>
-<li>沙耶香，为他人祈愿，想成为正义的伙伴。那么她最终得到了她想要的东西了吗，又是否会后悔？
-这个角色最令我心痛，看着她从美好（自私）的祈愿走向注定的灭亡。一周目时觉得她有些不可理喻，伤害了自己，还伤害了朋友，而二周目后才发现，她可能是最为真实的那个角色。</li>
+<li>沙耶香，为他人祈愿，想成为正义的伙伴。那么她最终得到了她想要的东西了吗，又是否会后悔？ 这个角色最令我心痛，看着她从美好（自私）的祈愿走向注定的灭亡。一周目时觉得她有些不可理喻，伤害了自己，还伤害了朋友，而二周目后才发现，她可能是最为真实的那个角色。</li>
 <li>晓美焰，为了小圆一次次轮回，曾经的愿望，逐渐成为模糊不清的结局，也许这一次，就是最后一次了吧。</li>
 <li>从动画一开始，就展现了小圆所拥有的幸福。所谓幸福，着实是令人羡慕的事物。这样的她，本没有成为魔法少女的理由。</li>
 </ul>
-<h3>弹丸论破 (弹丸轮舞)【A+】</h3>
-<h3>Fate/Zero (FZ)【A+】</h3>
+<h3 id="弹丸论破-弹丸轮舞a">弹丸论破 (弹丸轮舞)【A+】</h3>
+<h3 id="fatezero-fza">Fate/Zero (FZ)【A+】</h3>
 <ul>
 <li>同名小说动画化，因为作者是虚渊玄，所以剧情上一定很精彩。事实上小说和动画都很不错。</li>
 <li>动画中的许多登场人物中，最后得到救赎的寥寥无几。御主的愿望和英灵的夙愿，倘若想要完成自己的心愿就必须牺牲别人的心愿，因而注定充斥着悲剧。</li>
 <li>正义是什么？是不是应该为了大部分人的生而舍弃少部分人？</li>
 </ul>
-<h3>Fate/stay night [Unlimited Blade Works] (FSN UBW篇)【A+】</h3>
-<h3>冰菓【A+】</h3>
-<h3>死亡笔记 (Death Note)【A+】</h3>
-<h2>A</h2>
-<h3>Another (替身) 【A】</h3>
+<h3 id="fatestay-night-unlimited-blade-works-fsn-ubw篇a">Fate/stay night [Unlimited Blade Works] (FSN UBW篇)【A+】</h3>
+<h3 id="冰菓a">冰菓【A+】</h3>
+<h3 id="死亡笔记-death-notea">死亡笔记 (Death Note)【A+】</h3>
+<h2 id="a-1">A</h2>
+<h3 id="another-替身-a">Another (替身) 【A】</h3>
 <p>当得知这部动画是由 绫辻行人 的作品改编之时，我便立即找小说来看。那么首先介绍一下绫辻行人。</p>
 <p>绫辻行人的推理作品我一直很喜欢，新本格推理也令我着迷。一定要说好在哪里的话，我觉得氛围的营造十分出色。但如果你十分追求推理作品解答的合理、线索的公平，那可能就会感到失望了。推荐路线《十角馆杀人预告》-&gt;《雾越邸杀人事件》-&gt; 《钟表馆幽灵》</p>
 <ul>
@@ -447,48 +443,48 @@
 <li>如果从悬疑来看，这确实是出色的作品。</li>
 <li>绫辻行人后来写了《Another S》（替身S）。与《Another》的关联并不大，不推荐阅读。（如果实在喜欢《Another》这部作品，也不妨阅读一下这个，顶多看完有点后悔。）</li>
 </ul>
-<h3>罪恶王冠【A】</h3>
-<h3>GOSICK【A】</h3>
-<h3>Angel Beats! (天使的心跳)【A】</h3>
-<h3>天才麻将少女【A】</h3>
-<h3>刀剑神域【A】</h3>
-<h2>A-</h2>
-<h3>Re：从零开始的异世界生活 (Re:0)【A-】</h3>
-<h3>CLANNAD【A-】</h3>
-<h3>四月是你的谎言【A-】</h3>
-<h2>B</h2>
-<h3>编舟记【B】</h3>
-<h3>狐妖小红娘【B】</h3>
-<h3>小林家的龙女仆【B】</h3>
-<h3>埃罗芒阿老师 (黄漫老师)【B】</h3>
-<h3>混沌之子 (Chaos;Head)【B】</h3>
+<h3 id="罪恶王冠a">罪恶王冠【A】</h3>
+<h3 id="gosicka">GOSICK【A】</h3>
+<h3 id="angel-beats-天使的心跳a">Angel Beats! (天使的心跳)【A】</h3>
+<h3 id="天才麻将少女a">天才麻将少女【A】</h3>
+<h3 id="刀剑神域a">刀剑神域【A】</h3>
+<h2 id="a-">A-</h2>
+<h3 id="re从零开始的异世界生活-re0a-">Re：从零开始的异世界生活 (Re:0)【A-】</h3>
+<h3 id="clannada-">CLANNAD【A-】</h3>
+<h3 id="四月是你的谎言a-">四月是你的谎言【A-】</h3>
+<h2 id="b">B</h2>
+<h3 id="编舟记b">编舟记【B】</h3>
+<h3 id="狐妖小红娘b">狐妖小红娘【B】</h3>
+<h3 id="小林家的龙女仆b">小林家的龙女仆【B】</h3>
+<h3 id="埃罗芒阿老师-黄漫老师b">埃罗芒阿老师 (黄漫老师)【B】</h3>
+<h3 id="混沌之子-chaosheadb">混沌之子 (Chaos;Head)【B】</h3>
 <ul>
 <li>特指动画</li>
 </ul>
-<h2>C</h2>
-<h3>混沌之脑 (Chaos;Child)【C】</h3>
+<h2 id="c">C</h2>
+<h3 id="混沌之脑-chaoschildc">混沌之脑 (Chaos;Child)【C】</h3>
 <ul>
 <li>特指动画</li>
 </ul>
-<h3>时钟机关之星【C】</h3>
-<h1>小说</h1>
+<h3 id="时钟机关之星c">时钟机关之星【C】</h3>
+<h1 id="小说">小说</h1>
 <p>这里只列举了一部分我看过的轻小说。</p>
-<h2>野村美月的作品</h2>
-<h3>文学小女【???】</h3>
-<h3>光在地球之时【??】</h3>
-<h3>女装家教 (女装皇家教师)【??】</h3>
-<h3>陆与千星~发送世界的少年与别墅的少女【?】</h3>
-<h2>动画化的作品</h2>
-<h3>刀剑神域【A-】</h3>
-<h3>机巧少女不会受伤【B】</h3>
-<h3>精灵使的剑舞【B】</h3>
-<h3>绯弹的亚里亚【B】</h3>
-<h3>约会大作战 (DATE A LIFE)【B】</h3>
-<h1>游戏</h1>
-<h2>弹丸轮舞 2【A+】</h2>
-<h1>漫画</h1>
-<h2>端脑【A】</h2>
-<h1>备注</h1>
+<h2 id="野村美月的作品">野村美月的作品</h2>
+<h3 id="文学小女">文学小女【???】</h3>
+<h3 id="光在地球之时">光在地球之时【??】</h3>
+<h3 id="女装家教-女装皇家教师">女装家教 (女装皇家教师)【??】</h3>
+<h3 id="陆与千星发送世界的少年与别墅的少女">陆与千星~发送世界的少年与别墅的少女【?】</h3>
+<h2 id="动画化的作品">动画化的作品</h2>
+<h3 id="刀剑神域a-">刀剑神域【A-】</h3>
+<h3 id="机巧少女不会受伤b">机巧少女不会受伤【B】</h3>
+<h3 id="精灵使的剑舞b">精灵使的剑舞【B】</h3>
+<h3 id="绯弹的亚里亚b">绯弹的亚里亚【B】</h3>
+<h3 id="约会大作战-date-a-lifeb">约会大作战 (DATE A LIFE)【B】</h3>
+<h1 id="游戏">游戏</h1>
+<h2 id="弹丸轮舞-2a">弹丸轮舞 2【A+】</h2>
+<h1 id="漫画">漫画</h1>
+<h2 id="端脑a">端脑【A】</h2>
+<h1 id="备注">备注</h1>
 <ul>
 <li>文中的推荐路线很可能并没有把作者最优秀的作品放在最前面，因为考虑到作品的长度和难度，以及对该作者作品的优秀程度信任的累积过程。</li>
 <li>评价，其中 A 代表我会向别人推荐这部作品。
@@ -498,8 +494,7 @@
 <li>A-: 大多数人都会喜欢，但我觉得没那么出色的作品。</li>
 <li>B: 我认为一般，或者我不会推荐给别人看的作品。</li>
 <li>C: 我认为糟糕，而且会劝别人不要看的作品。</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 
       
@@ -683,7 +678,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">心态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.</span> <span class="nav-text">设定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.</span> <span class="nav-text">过往</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.4.</span> <span class="nav-text">从这里寻求什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.5.</span> <span class="nav-text">观看顺序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">动画</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">A+</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.1.</span> <span class="nav-text">命运石之门 (Steins;Gate)【A+】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.2.</span> <span class="nav-text">魔法少女小圆【A+】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.3.</span> <span class="nav-text">弹丸论破 (弹丸轮舞)【A+】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.4.</span> <span class="nav-text">Fate/Zero (FZ)【A+】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.5.</span> <span class="nav-text">Fate/stay night [Unlimited Blade Works] (FSN UBW篇)【A+】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.6.</span> <span class="nav-text">冰菓【A+】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.7.</span> <span class="nav-text">死亡笔记 (Death Note)【A+】</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">A</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.1.</span> <span class="nav-text">Another (替身) 【A】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.2.</span> <span class="nav-text">罪恶王冠【A】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.3.</span> <span class="nav-text">GOSICK【A】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.4.</span> <span class="nav-text">Angel Beats! (天使的心跳)【A】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.5.</span> <span class="nav-text">天才麻将少女【A】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.6.</span> <span class="nav-text">刀剑神域【A】</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.</span> <span class="nav-text">A-</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.1.</span> <span class="nav-text">Re：从零开始的异世界生活 (Re:0)【A-】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.2.</span> <span class="nav-text">CLANNAD【A-】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.3.</span> <span class="nav-text">四月是你的谎言【A-】</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.4.</span> <span class="nav-text">B</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.4.1.</span> <span class="nav-text">编舟记【B】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.4.2.</span> <span class="nav-text">狐妖小红娘【B】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.4.3.</span> <span class="nav-text">小林家的龙女仆【B】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.4.4.</span> <span class="nav-text">埃罗芒阿老师 (黄漫老师)【B】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.4.5.</span> <span class="nav-text">混沌之子 (Chaos;Head)【B】</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.5.</span> <span class="nav-text">C</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.5.1.</span> <span class="nav-text">混沌之脑 (Chaos;Child)【C】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.5.2.</span> <span class="nav-text">时钟机关之星【C】</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">小说</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.</span> <span class="nav-text">野村美月的作品</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.1.</span> <span class="nav-text">文学小女【???】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.2.</span> <span class="nav-text">光在地球之时【??】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.3.</span> <span class="nav-text">女装家教 (女装皇家教师)【??】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.4.</span> <span class="nav-text">陆与千星~发送世界的少年与别墅的少女【?】</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.</span> <span class="nav-text">动画化的作品</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.1.</span> <span class="nav-text">刀剑神域【A-】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.2.</span> <span class="nav-text">机巧少女不会受伤【B】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.3.</span> <span class="nav-text">精灵使的剑舞【B】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.4.</span> <span class="nav-text">绯弹的亚里亚【B】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.2.5.</span> <span class="nav-text">约会大作战 (DATE A LIFE)【B】</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">游戏</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.1.</span> <span class="nav-text">弹丸轮舞 2【A+】</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">漫画</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">5.1.</span> <span class="nav-text">端脑【A】</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">备注</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#心态"><span class="nav-number">1.1.</span> <span class="nav-text">心态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设定"><span class="nav-number">1.2.</span> <span class="nav-text">设定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过往"><span class="nav-number">1.3.</span> <span class="nav-text">过往</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从这里寻求什么"><span class="nav-number">1.4.</span> <span class="nav-text">从这里寻求什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#观看顺序"><span class="nav-number">1.5.</span> <span class="nav-text">观看顺序</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#动画"><span class="nav-number">2.</span> <span class="nav-text">动画</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#a"><span class="nav-number">2.1.</span> <span class="nav-text">A+</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#命运石之门-steinsgatea"><span class="nav-number">2.1.1.</span> <span class="nav-text">命运石之门 (Steins;Gate)【A+】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#魔法少女小圆a"><span class="nav-number">2.1.2.</span> <span class="nav-text">魔法少女小圆【A+】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#弹丸论破-弹丸轮舞a"><span class="nav-number">2.1.3.</span> <span class="nav-text">弹丸论破 (弹丸轮舞)【A+】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fatezero-fza"><span class="nav-number">2.1.4.</span> <span class="nav-text">Fate/Zero (FZ)【A+】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fatestay-night-unlimited-blade-works-fsn-ubw篇a"><span class="nav-number">2.1.5.</span> <span class="nav-text">Fate/stay night [Unlimited Blade Works] (FSN UBW篇)【A+】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#冰菓a"><span class="nav-number">2.1.6.</span> <span class="nav-text">冰菓【A+】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#死亡笔记-death-notea"><span class="nav-number">2.1.7.</span> <span class="nav-text">死亡笔记 (Death Note)【A+】</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#a-1"><span class="nav-number">2.2.</span> <span class="nav-text">A</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#another-替身-a"><span class="nav-number">2.2.1.</span> <span class="nav-text">Another (替身) 【A】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#罪恶王冠a"><span class="nav-number">2.2.2.</span> <span class="nav-text">罪恶王冠【A】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gosicka"><span class="nav-number">2.2.3.</span> <span class="nav-text">GOSICK【A】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#angel-beats-天使的心跳a"><span class="nav-number">2.2.4.</span> <span class="nav-text">Angel Beats! (天使的心跳)【A】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#天才麻将少女a"><span class="nav-number">2.2.5.</span> <span class="nav-text">天才麻将少女【A】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#刀剑神域a"><span class="nav-number">2.2.6.</span> <span class="nav-text">刀剑神域【A】</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#a-"><span class="nav-number">2.3.</span> <span class="nav-text">A-</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#re从零开始的异世界生活-re0a-"><span class="nav-number">2.3.1.</span> <span class="nav-text">Re：从零开始的异世界生活 (Re:0)【A-】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clannada-"><span class="nav-number">2.3.2.</span> <span class="nav-text">CLANNAD【A-】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四月是你的谎言a-"><span class="nav-number">2.3.3.</span> <span class="nav-text">四月是你的谎言【A-】</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#b"><span class="nav-number">2.4.</span> <span class="nav-text">B</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#编舟记b"><span class="nav-number">2.4.1.</span> <span class="nav-text">编舟记【B】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#狐妖小红娘b"><span class="nav-number">2.4.2.</span> <span class="nav-text">狐妖小红娘【B】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小林家的龙女仆b"><span class="nav-number">2.4.3.</span> <span class="nav-text">小林家的龙女仆【B】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#埃罗芒阿老师-黄漫老师b"><span class="nav-number">2.4.4.</span> <span class="nav-text">埃罗芒阿老师 (黄漫老师)【B】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#混沌之子-chaosheadb"><span class="nav-number">2.4.5.</span> <span class="nav-text">混沌之子 (Chaos;Head)【B】</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#c"><span class="nav-number">2.5.</span> <span class="nav-text">C</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#混沌之脑-chaoschildc"><span class="nav-number">2.5.1.</span> <span class="nav-text">混沌之脑 (Chaos;Child)【C】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#时钟机关之星c"><span class="nav-number">2.5.2.</span> <span class="nav-text">时钟机关之星【C】</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#小说"><span class="nav-number">3.</span> <span class="nav-text">小说</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#野村美月的作品"><span class="nav-number">3.1.</span> <span class="nav-text">野村美月的作品</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文学小女"><span class="nav-number">3.1.1.</span> <span class="nav-text">文学小女【???】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#光在地球之时"><span class="nav-number">3.1.2.</span> <span class="nav-text">光在地球之时【??】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#女装家教-女装皇家教师"><span class="nav-number">3.1.3.</span> <span class="nav-text">女装家教 (女装皇家教师)【??】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#陆与千星发送世界的少年与别墅的少女"><span class="nav-number">3.1.4.</span> <span class="nav-text">陆与千星~发送世界的少年与别墅的少女【?】</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动画化的作品"><span class="nav-number">3.2.</span> <span class="nav-text">动画化的作品</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#刀剑神域a-"><span class="nav-number">3.2.1.</span> <span class="nav-text">刀剑神域【A-】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#机巧少女不会受伤b"><span class="nav-number">3.2.2.</span> <span class="nav-text">机巧少女不会受伤【B】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#精灵使的剑舞b"><span class="nav-number">3.2.3.</span> <span class="nav-text">精灵使的剑舞【B】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绯弹的亚里亚b"><span class="nav-number">3.2.4.</span> <span class="nav-text">绯弹的亚里亚【B】</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#约会大作战-date-a-lifeb"><span class="nav-number">3.2.5.</span> <span class="nav-text">约会大作战 (DATE A LIFE)【B】</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#游戏"><span class="nav-number">4.</span> <span class="nav-text">游戏</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#弹丸轮舞-2a"><span class="nav-number">4.1.</span> <span class="nav-text">弹丸轮舞 2【A+】</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#漫画"><span class="nav-number">5.</span> <span class="nav-text">漫画</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#端脑a"><span class="nav-number">5.1.</span> <span class="nav-text">端脑【A】</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#备注"><span class="nav-number">6.</span> <span class="nav-text">备注</span></a></li></ol></div>
             
 
           </div>

@@ -71,18 +71,18 @@
 
 
 
-<meta name="description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值) &amp;lt;!-- more --&amp;gt; 题解  如果固定右端点，扩展左端点，那么 gc">
+<meta name="description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值)">
 <meta name="keywords" content="HackerRank">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【题解】HackerRank - The Strange Function">
 <meta property="og:url" content="http://yoursite.com/2018/01/05/The-Strange-Function/index.html">
 <meta property="og:site_name" content="Zerol&#39;s Notes">
-<meta property="og:description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值) &amp;lt;!-- more --&amp;gt; 题解  如果固定右端点，扩展左端点，那么 gc">
+<meta property="og:description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值)">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-01-05T06:21:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【题解】HackerRank - The Strange Function">
-<meta name="twitter:description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值) &amp;lt;!-- more --&amp;gt; 题解  如果固定右端点，扩展左端点，那么 gc">
+<meta name="twitter:description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值)">
 
 
 
@@ -395,43 +395,31 @@
       
 
       
-        <h2>基本思想</h2>
+        <h2 id="基本思想">基本思想</h2>
 <p>游戏可以等效为一个有向图，每一个状态相当于图中的一个节点，而可能的状态转移是图中的边。如果必胜态的后继中存在必败态，而必败态的后继全是必胜态。</p>
-<h2>SG函数</h2>
-<p>$$ SG(u) = mex{ SG(v)|u \to v } $$
-函数值为 0 代表必败态，不为 0 代表必胜态。（也就是说，0 只能转移到非 0，而非 0 一定能转移到 0。）
-一个组合游戏的 SG 和等于所有子游戏的异或和。
-&lt;!-- more --&gt;</p>
-<h2>Anti-SG 和 SJ 定理</h2>
-<p>Anti-SG 游戏：
-走完最后一步的一方输，也就是说，SG 为 0 的局面不一定为终止局面。</p>
-<p>SJ 定理：
-对于 Anti-SG 游戏，如果游戏结束的条件是所有子游戏的 SG 值均为 0 时，那么先手必胜的条件是：
-<strong>SG 值不为零</strong> xor <strong>没有子游戏 SG 值大于1</strong></p>
-<h2>Every-SG</h2>
-<p>每一个非终止状态的子游戏必须进行操作。
-$$
+<h2 id="sg函数">SG函数</h2>
+<p><span class="math display">\[ SG(u) = mex\{ SG(v)|u \to v \} \]</span> 函数值为 0 代表必败态，不为 0 代表必胜态。（也就是说，0 只能转移到非 0，而非 0 一定能转移到 0。） 一个组合游戏的 SG 和等于所有子游戏的异或和。 <a id="more"></a> ## Anti-SG 和 SJ 定理 Anti-SG 游戏： 走完最后一步的一方输，也就是说，SG 为 0 的局面不一定为终止局面。</p>
+<p>SJ 定理： 对于 Anti-SG 游戏，如果游戏结束的条件是所有子游戏的 SG 值均为 0 时，那么先手必胜的条件是： <strong>SG 值不为零</strong> xor <strong>没有子游戏 SG 值大于1</strong></p>
+<h2 id="every-sg">Every-SG</h2>
+<p>每一个非终止状态的子游戏必须进行操作。 <span class="math display">\[
 step(v) =
 \begin{cases}
-0, &amp; \text{$v$ 为终止状态} \
-max{step(u)|SG(u)=0}+1,  &amp; \text{$SG(v)&gt;0$} \
-min{step(u)}, &amp; \text{$SG(v)=0$}  \
+0, &amp; \text{$v$ 为终止状态} \\
+max\{step(u)|SG(u)=0\}+1,  &amp; \text{$SG(v)&gt;0$} \\
+min\{step(u)\}, &amp; \text{$SG(v)=0$}  \\
 \end{cases}
-$$
-先手必胜的充要条件：所有子游戏中最大的 step 值为奇数</p>
-<h2>Green Hackenbush</h2>
+\]</span> 先手必胜的充要条件：所有子游戏中最大的 step 值为奇数</p>
+<h2 id="green-hackenbush">Green Hackenbush</h2>
 <p>图上的删边游戏，过于复杂，自行搜索。</p>
-<h2>题目</h2>
-<h3>解题思路</h3>
-<p>尽量将问题转换成 Nim 游戏计算 SG 和。
-确定边界状态的 SG 值（不存在时为 -1）
-SG 计算过于复杂时打表找规律</p>
-<h3>zero-move</h3>
+<h2 id="题目">题目</h2>
+<h3 id="解题思路">解题思路</h3>
+<p>尽量将问题转换成 Nim 游戏计算 SG 和。 确定边界状态的 SG 值（不存在时为 -1） SG 计算过于复杂时打表找规律</p>
+<h3 id="zero-move">zero-move</h3>
 <p>在 Nim 游戏的基础上增加一个规则，每一堆石子可以进行一次空操作（与玩家无关）。这道题看似同一次状态可以多次抵达，实则不然。同样多的石子，根据经历过空操作与否可以看做两个状态。<br>
 新的 SG 值：</p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>n</th>
 <th>1</th>
 <th>2</th>
@@ -439,11 +427,11 @@ SG 计算过于复杂时打表找规律</p>
 <th>4</th>
 <th>5</th>
 <th>6</th>
-<th>...</th>
+<th>…</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td>SG</td>
 <td>2</td>
 <td>1</td>
@@ -451,7 +439,7 @@ SG 计算过于复杂时打表找规律</p>
 <td>3</td>
 <td>6</td>
 <td>5</td>
-<td>...</td>
+<td>…</td>
 </tr>
 </tbody>
 </table>
@@ -637,7 +625,7 @@ SG 计算过于复杂时打表找规律</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">SG函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Anti-SG 和 SJ 定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">Every-SG</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">Green Hackenbush</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">6.1.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">6.2.</span> <span class="nav-text">zero-move</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本思想"><span class="nav-number">1.</span> <span class="nav-text">基本思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sg函数"><span class="nav-number">2.</span> <span class="nav-text">SG函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#every-sg"><span class="nav-number">3.</span> <span class="nav-text">Every-SG</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#green-hackenbush"><span class="nav-number">4.</span> <span class="nav-text">Green Hackenbush</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">5.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解题思路"><span class="nav-number">5.1.</span> <span class="nav-text">解题思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zero-move"><span class="nav-number">5.2.</span> <span class="nav-text">zero-move</span></a></li></ol></li></ol></div>
             
 
           </div>

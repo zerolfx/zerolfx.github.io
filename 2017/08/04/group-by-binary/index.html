@@ -71,18 +71,18 @@
 
 
 
-<meta name="description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值) &amp;lt;!-- more --&amp;gt; 题解  如果固定右端点，扩展左端点，那么 gc">
+<meta name="description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值)">
 <meta name="keywords" content="HackerRank">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【题解】HackerRank - The Strange Function">
 <meta property="og:url" content="http://yoursite.com/2018/01/05/The-Strange-Function/index.html">
 <meta property="og:site_name" content="Zerol&#39;s Notes">
-<meta property="og:description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值) &amp;lt;!-- more --&amp;gt; 题解  如果固定右端点，扩展左端点，那么 gc">
+<meta property="og:description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值)">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-01-05T06:21:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【题解】HackerRank - The Strange Function">
-<meta name="twitter:description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值) &amp;lt;!-- more --&amp;gt; 题解  如果固定右端点，扩展左端点，那么 gc">
+<meta name="twitter:description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值)">
 
 
 
@@ -395,30 +395,29 @@
       
 
       
-        <h2>资料</h2>
+        <h2 id="资料">资料</h2>
 <p>具体见 2013 年集训队论文《浅谈数据结构题的几个非经典解法》（作者：许昊然）。</p>
-<h2>为什么</h2>
+<h2 id="为什么">为什么</h2>
 <ul>
 <li>题目要求支持修改和查询操作。</li>
 <li>但是你只有一种不支持修改的算法，往往是通过预处理来支持快速查询操作。</li>
 <li>如果直接使用这种算法，可能要预处理很慢却要常常进行，查询很快却没几个，时间复杂度分配很不合理。</li>
-<li>于是你想到，可以通过分块使时间复杂度变得均匀合理。就是把每 $\sqrt n$ 个修改操作（假设修改操作共 $n$ 个）分为一组，然后每次需要预处理的长度上限就变小了，作为代价，增加了查询的时间。</li>
+<li>于是你想到，可以通过分块使时间复杂度变得均匀合理。就是把每 <span class="math inline">\(\sqrt n\)</span> 个修改操作（假设修改操作共 <span class="math inline">\(n\)</span> 个）分为一组，然后每次需要预处理的长度上限就变小了，作为代价，增加了查询的时间。</li>
 <li>二进制分组是一种更为优秀的分组策略（具体和预处理复杂度和查询复杂度相关）。如果当前有 k 个修改操作，会按照 2 的幂将 k 分解从大到小的若干组。如果增加一个操作，分组的变化通过暴力删除和重建进行（当然如果可以合并的话那就只需要合并了）。(如 5 = 4 + 1, 6 = 4 + 2，从 5 增加到 6 就把原来那个大小为 1 的组删了，再将原来最后一个和新增加的那一个建一个大小为 2 的组)</li>
 <li>复杂度：
 <ul>
-<li>单次查询复杂度 $\times \log n$，毕竟最多只有 $\log n$ 组嘛。</li>
-<li>总的预处理复杂度是单次的 $\log n$ 倍，具体证明见论文。</li>
+<li>单次查询复杂度 <span class="math inline">\(\times \log n\)</span>，毕竟最多只有 <span class="math inline">\(\log n\)</span> 组嘛。</li>
+<li>总的预处理复杂度是单次的 <span class="math inline">\(\log n\)</span> 倍，具体证明见论文。</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<p>&lt;!-- more --&gt;</p>
-<h2>限制</h2>
+<a id="more"></a>
+<h2 id="限制">限制</h2>
 <ul>
 <li>如果这不是一道强制在线题，我大可以选择时间分治。</li>
 <li>如果有支持在线的算法或数据结构，我就没有必要用 log 的代价把在线换成离线。</li>
 <li>要求修改操作的贡献可以任意次序累加。</li>
 </ul>
-<h2>例题</h2>
+<h2 id="例题">例题</h2>
 <p>不存在的。这个算法想法很不错，不过很可能用不上。</p>
 
       
@@ -602,7 +601,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">资料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">为什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">限制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">例题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#资料"><span class="nav-number">1.</span> <span class="nav-text">资料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么"><span class="nav-number">2.</span> <span class="nav-text">为什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#限制"><span class="nav-number">3.</span> <span class="nav-text">限制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例题"><span class="nav-number">4.</span> <span class="nav-text">例题</span></a></li></ol></div>
             
 
           </div>

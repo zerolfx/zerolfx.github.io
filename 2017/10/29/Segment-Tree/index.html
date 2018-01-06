@@ -71,18 +71,18 @@
 
 
 
-<meta name="description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值) &amp;lt;!-- more --&amp;gt; 题解  如果固定右端点，扩展左端点，那么 gc">
+<meta name="description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值)">
 <meta name="keywords" content="HackerRank">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【题解】HackerRank - The Strange Function">
 <meta property="og:url" content="http://yoursite.com/2018/01/05/The-Strange-Function/index.html">
 <meta property="og:site_name" content="Zerol&#39;s Notes">
-<meta property="og:description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值) &amp;lt;!-- more --&amp;gt; 题解  如果固定右端点，扩展左端点，那么 gc">
+<meta property="og:description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值)">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-01-05T06:21:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【题解】HackerRank - The Strange Function">
-<meta name="twitter:description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值) &amp;lt;!-- more --&amp;gt; 题解  如果固定右端点，扩展左端点，那么 gc">
+<meta name="twitter:description" content="题目 https://www.hackerrank.com/contests/hourrank-25/challenges/the-strange-function 题意 对于给定的一列数，对于所有区间，求 f(l, r) 的最大值。 f(l, r) = (区间 gcd 绝对值) * (区间和 - 区间最大值)">
 
 
 
@@ -397,48 +397,20 @@
       
         <p>代码详见模板库。模板题 EOJ 3389-3393。</p>
 <ul>
-<li>
-<p>Q: 要不要把 n 补成 2 的幂？</p>
-</li>
-<li>
-<p>A: 这个无所谓，但如果要写成自底向上，那么还是需要的，否则无法直接定位叶节点。</p>
-</li>
-<li>
-<p>Q: pushdown 之后要不要立即 maintain？</p>
-</li>
-<li>
-<p>A: 不用立即 maintain，但迟早是要的。但是立即 maintain 很可能会重复 maintain，增加超时风险。</p>
-</li>
-<li>
-<p>Q:query 的时候要不要 pushdown？</p>
-</li>
-<li>
-<p>A: 如果不要的话，查询时应该把之前访问到的结点的标签的效果累加起来，并作为参数递归下去。如果要的话，代码会更加具有普适性（比如 treap 只能选择 pushdown 标签，因为结点之间相对位置会改变）。</p>
-</li>
-<li>
-<p>Q: maintain 的时候是否考虑当前结点的标签？</p>
-</li>
-<li>
-<p>A: 都可以。如果考虑了，那么查询的时候就不要考虑当前结点的标签了，反之亦然。</p>
-</li>
-<li>
-<p>Q: query 的时候先考虑 set 标签还是先考虑查询区间包含当前区间？</p>
-</li>
-<li>
-<p>A: 都可以，但是先考虑 set 会快一些。</p>
-</li>
-<li>
-<p>Q: 根节点是 0 还是 1？</p>
-</li>
-<li>
-<p>A: 都可以，但好像 1 比较符合人性。</p>
-</li>
-<li>
-<p>Q: 听说空间开三倍就够了？</p>
-</li>
-<li>
-<p>A: 那可能就 GG 了，实测 4 倍是必要的。</p>
-</li>
+<li>Q: 要不要把 n 补成 2 的幂？</li>
+<li><p>A: 这个无所谓，但如果要写成自底向上，那么还是需要的，否则无法直接定位叶节点。</p></li>
+<li>Q: pushdown 之后要不要立即 maintain？</li>
+<li><p>A: 不用立即 maintain，但迟早是要的。但是立即 maintain 很可能会重复 maintain，增加超时风险。</p></li>
+<li>Q:query 的时候要不要 pushdown？</li>
+<li><p>A: 如果不要的话，查询时应该把之前访问到的结点的标签的效果累加起来，并作为参数递归下去。如果要的话，代码会更加具有普适性（比如 treap 只能选择 pushdown 标签，因为结点之间相对位置会改变）。</p></li>
+<li>Q: maintain 的时候是否考虑当前结点的标签？</li>
+<li><p>A: 都可以。如果考虑了，那么查询的时候就不要考虑当前结点的标签了，反之亦然。</p></li>
+<li>Q: query 的时候先考虑 set 标签还是先考虑查询区间包含当前区间？</li>
+<li><p>A: 都可以，但是先考虑 set 会快一些。</p></li>
+<li>Q: 根节点是 0 还是 1？</li>
+<li><p>A: 都可以，但好像 1 比较符合人性。</p></li>
+<li>Q: 听说空间开三倍就够了？</li>
+<li><p>A: 那可能就 GG 了，实测 4 倍是必要的。</p></li>
 </ul>
 <p>其他注意事项：</p>
 <ul>
