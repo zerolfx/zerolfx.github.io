@@ -409,7 +409,10 @@ min\{step(u)\}, &amp; \text{$SG(v)=0$}  \\
 <p>图上的删边游戏，过于复杂，自行搜索。</p>
 <h2 id="题目">题目</h2>
 <h3 id="解题思路">解题思路</h3>
-<p>尽量将问题转换成 Nim 游戏计算 SG 和。 确定边界状态的 SG 值（不存在时为 -1） SG 计算过于复杂时打表找规律</p>
+<ul>
+<li><p>试图将问题转换成 Nim 游戏计算 SG 和，确定边界状态的 SG 值（不存在时为 -1）。</p></li>
+<li><p>SG 计算过于复杂时打表找规律，或者和自己玩一玩找到一种必胜策略并进行推广。</p></li>
+</ul>
 <h3 id="zero-move">zero-move</h3>
 <p>在 Nim 游戏的基础上增加一个规则，每一堆石子可以进行一次空操作（与玩家无关）。这道题看似同一次状态可以多次抵达，实则不然。同样多的石子，根据经历过空操作与否可以看做两个状态。<br>
 新的 SG 值：</p>
@@ -473,8 +476,8 @@ min\{step(u)\}, &amp; \text{$SG(v)=0$}  \\
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/06/17/cpp-tricks/" rel="prev" title="C++ 奇技淫巧">
-                C++ 奇技淫巧 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/07/02/Prime-XOR/" rel="prev" title="【题解】HackerRank - Prime XOR">
+                【题解】HackerRank - Prime XOR <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -556,7 +559,7 @@ min\{step(u)\}, &amp; \text{$SG(v)=0$}  \\
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">33</span>
+                    <span class="site-state-item-count">32</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
