@@ -116,7 +116,7 @@
 
 
 
-  <title>【题解】HackerRank - Project Euler | Zerol's Notes</title>
+  <title>DNS 污染解决方案 | Zerol's Notes</title>
   
 
 
@@ -304,7 +304,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/09/Project-Euler/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/19/DNS-cache-pollution/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zerol">
@@ -321,7 +321,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">【题解】HackerRank - Project Euler</h1>
+          <h1 class="post-title" itemprop="name headline">DNS 污染解决方案</h1>
         
 
         <div class="post-meta">
@@ -333,7 +333,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-09T14:28:17+08:00">2017-11-09</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-19T19:20:06+08:00">2018-01-19</time>
             
 
             
@@ -354,8 +354,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ACM/" itemprop="url" rel="index">
-                    <span itemprop="name">ACM</span>
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
                   </a>
                 </span>
 
@@ -391,29 +391,26 @@
       
 
       
-        <ul>
-<li>1: 简单容斥，注意求的是和。</li>
-<li>2: 暴力。因为斐波那契数的大小指数上升，所以数量不多。</li>
-<li>3: 根号内枚举。（当时脑抽写了 <code>Pollard Rho</code>， 复杂度 1/4 次方）</li>
-<li>4: 暴力 +　二分。（可能不二分也行）</li>
-<li>5: 考虑每个素数，把答案乘上 n 以内需要提供的最多的次数。</li>
-<li>6: 暴力 + 预处理。</li>
-<li>7: 素数筛。</li>
-<li>8: 暴力。</li>
-<li>9: 枚举 3000 以内 a, b。</li>
-<li>10: 素数筛，打表。</li>
-<li>11: 暴力枚举。</li>
-<li>12: 先处理处 1E6 内每个数的因子个数（埃氏筛），然后打表。</li>
-<li>13: 取前 15 位计算即可。 (0.999…) × 1000 &lt; 10000</li>
-<li>14: 模拟 +　记忆化。注意中间结果可能会比较大。</li>
-<li>15: 组合数预处理。</li>
-<li>16: 高精度。</li>
-<li>17: 无聊。随便找了份代码就交了。</li>
-<li>18: dp 入门。</li>
-<li>19:</li>
-<li><p>20:</p></li>
-<li><p>67: 同 18;</p></li>
+        <p>从 2017.9 开始，<a href="pixiv.net">P站</a>被墙。因为 DNS 污染的缘故，即便是有 SS 也无济于事。</p>
+<p>解决方案：要么换无污染 DNS，要么改 hosts。为了一劳永逸，我选择了前者。</p>
+<p>以下为具体过程 (on Arch Linux)：</p>
+<a id="more"></a>
+<h4 id="dns查询加密">DNS查询加密</h4>
+<ul>
+<li>安装 AUR 包 <code>dnscrypt-proxy-go</code></li>
+<li>启动<code>dnscrypt-proxy</code>系统服务，并设置开机自启。</li>
 </ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yaourt -S dnscrypt-proxy-go</span><br><span class="line">systemctl <span class="built_in">enable</span> dnscrypt-proxy</span><br><span class="line">systemctl start dnscrypt-proxy</span><br></pre></td></tr></table></figure>
+<h4 id="dns查询结果对比">DNS查询结果对比</h4>
+<p>原先的 DNS 查询结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">zerol@zerol-pc ~ &gt; drill pixiv.net @8.8.8.8</span><br><span class="line">;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, rcode: NOERROR, id: 20537</span><br><span class="line">;; flags: qr rd ra ; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0 </span><br><span class="line">;; QUESTION SECTION:</span><br><span class="line">;; pixiv.net.   IN      A</span><br><span class="line"></span><br><span class="line">;; ANSWER SECTION:</span><br><span class="line">pixiv.net.      125     IN      A       69.171.230.18</span><br><span class="line"></span><br><span class="line">;; AUTHORITY SECTION:</span><br><span class="line"></span><br><span class="line">;; ADDITIONAL SECTION:</span><br><span class="line"></span><br><span class="line">;; Query time: 30 msec</span><br><span class="line">;; SERVER: 8.8.8.8</span><br><span class="line">;; WHEN: Fri Jan 19 19:43:15 2018</span><br><span class="line">;; MSG SIZE  rcvd: 43</span><br></pre></td></tr></table></figure>
+<p>启动服务后的本地服务查询结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">zerol@zerol-pc ~ &gt; drill pixiv.net @127.0.0.1</span><br><span class="line">;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, rcode: NOERROR, id: 17857</span><br><span class="line">;; flags: qr rd ra ; QUERY: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: 0 </span><br><span class="line">;; QUESTION SECTION:</span><br><span class="line">;; pixiv.net.   IN      A</span><br><span class="line"></span><br><span class="line">;; ANSWER SECTION:</span><br><span class="line">pixiv.net.      240     IN      A       210.129.120.41</span><br><span class="line">pixiv.net.      240     IN      A       210.129.120.44</span><br><span class="line">pixiv.net.      240     IN      A       210.129.120.43</span><br><span class="line"></span><br><span class="line">;; AUTHORITY SECTION:</span><br><span class="line"></span><br><span class="line">;; ADDITIONAL SECTION:</span><br><span class="line"></span><br><span class="line">;; Query time: 0 msec</span><br><span class="line">;; SERVER: 127.0.0.1</span><br><span class="line">;; WHEN: Fri Jan 19 19:43:33 2018</span><br><span class="line">;; MSG SIZE  rcvd: 75</span><br></pre></td></tr></table></figure>
+<h4 id="修改-nameserver">修改 nameserver</h4>
+<p>在文件<code>/etc/resolvconf.conf</code>的末尾加上一行<code>name_servers=127.0.0.1</code>即可。</p>
+<h4 id="写在最后">写在最后</h4>
+<p>网上的解决方法都比较麻烦，而借助 arch 的 AUR 仓库，安装配置过程简单了许多。</p>
+<p>折腾了一通，到底还是为了 P站 啊。</p>
 
       
     </div>
@@ -429,12 +426,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/数学/" rel="tag"># 数学</a>
-          
-        </div>
-      
 
       
       
@@ -444,8 +435,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/01/Unique-Colors/" rel="next" title="【题解】HackerRank - Unique Colors">
-                <i class="fa fa-chevron-left"></i> 【题解】HackerRank - Unique Colors
+              <a href="/2018/01/10/Matrix/" rel="next" title="【题解】HarkerRank - Matrix">
+                <i class="fa fa-chevron-left"></i> 【题解】HarkerRank - Matrix
               </a>
             
           </div>
@@ -453,10 +444,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/12/Synchronous-Shopping/" rel="prev" title="【题解】HackerRank - synchronous-shopping">
-                【题解】HackerRank - synchronous-shopping <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -508,8 +495,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -583,6 +579,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#dns查询加密"><span class="nav-number">1.</span> <span class="nav-text">DNS查询加密</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dns查询结果对比"><span class="nav-number">2.</span> <span class="nav-text">DNS查询结果对比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改-nameserver"><span class="nav-number">3.</span> <span class="nav-text">修改 nameserver</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#写在最后"><span class="nav-number">4.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
