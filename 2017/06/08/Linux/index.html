@@ -489,7 +489,8 @@ crossover 16 有对多个版本的 QQ 的官方支持，建议购买正版，有
 <p>创建文件<code>～/.Xmodmap</code>，fcitx 会自动读取并应用 xmodmap 的设置 以下是我使用的配置文件，将<code>Caps_Lock</code>修改为<code>Ctrl</code>，并交换<code>`~</code> 和<code>Esc</code> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">remove Lock = Caps_Lock</span><br><span class="line">keysym Caps_Lock = Control_L</span><br><span class="line">add Control = Control_L</span><br><span class="line">keysym Escape = grave asciitilde grave asciitilde</span><br><span class="line">keysym grave = Escape</span><br></pre></td></tr></table></figure></p>
 <h3 id="鼠标侧键">鼠标侧键</h3>
 <p>对于拥有鼠标侧键的用户而言，将这些侧键映射为常用快捷键（如浏览器标签页的切换、虚拟桌面的切换）可以带来极大的便捷。<br>
-我使用的软件是 <a href="https://www.archlinux.org/packages/community/x86_64/xbindkeys/" target="_blank" rel="noopener">xbindkeys</a>，在<code>~/.xbindkeysrc</code>中修改配置，以下是我使用的配置 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 侧键切换虚拟桌面</span><br><span class="line">&quot;xte &apos;keydown Super_L&apos; &apos;key Tab&apos; &apos;keyup Super_L&apos;&quot;</span><br><span class="line">  b:8</span><br><span class="line"></span><br><span class="line">&quot;xte &apos;keydown Super_L&apos; &apos;key Tab&apos; &apos;keyup Super_L&apos;&quot;</span><br><span class="line">  b:9</span><br><span class="line"></span><br><span class="line">#  水平滚轮切换浏览器标签页，延迟是为了防止切换过快</span><br><span class="line">&quot;xte &apos;keydown Control_L&apos; &apos;usleep 200000&apos; &apos;key Tab&apos; &apos;keyup Control_L&apos;&quot;</span><br><span class="line">  b:7</span><br><span class="line"></span><br><span class="line">&quot;xte &apos;keydown Control_L&apos; &apos;keydown Shift_L&apos; &apos;usleep 200000&apos; &apos;key Tab&apos; &apos;keyup Shift_L&apos; &apos;keyup Control_L&apos;&quot;</span><br><span class="line">  b:6</span><br></pre></td></tr></table></figure></p>
+我使用的软件是 <a href="https://www.archlinux.org/packages/community/x86_64/xbindkeys/" target="_blank" rel="noopener">xbindkeys</a> &amp; <a href="https://www.archlinux.org/packages/community/x86_64/xautomation/" target="_blank" rel="noopener">xautomation</a>，在<code>~/.xbindkeysrc</code>中修改配置，以下是我使用的配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 侧键切换虚拟桌面</span><br><span class="line">&quot;xte &apos;keydown Super_L&apos; &apos;keydown Tab&apos; &apos;usleep 100000&apos; &apos;keyup Tab&apos; &apos;keyup Super_L&apos;&quot;</span><br><span class="line">  b:8</span><br><span class="line"></span><br><span class="line">&quot;xte &apos;keydown Super_L&apos; &apos;keydown Tab&apos; &apos;usleep 100000&apos; &apos;keyup Tab&apos; &apos;keyup Super_L&apos;&quot;</span><br><span class="line">  b:9</span><br><span class="line"></span><br><span class="line">#  水平滚轮切换浏览器标签页，延迟是为了防止切换过快</span><br><span class="line">&quot;xte &apos;keydown Control_L&apos; &apos;usleep 200000&apos; &apos;key Tab&apos; &apos;keyup Control_L&apos;&quot;</span><br><span class="line">  b:7</span><br><span class="line"></span><br><span class="line">&quot;xte &apos;keydown Control_L&apos; &apos;keydown Shift_L&apos; &apos;usleep 200000&apos; &apos;key Tab&apos; &apos;keyup Shift_L&apos; &apos;keyup Control_L&apos;&quot;</span><br><span class="line">  b:6</span><br></pre></td></tr></table></figure>
 <h3 id="文件同步">文件同步</h3>
 <p>建议使用坚果云，免费便利。Linux 下有客户端的网盘真的少。Dropbox 必须翻墙，不支持多文件夹同步。</p>
 <h3 id="终端提示符颜色">终端提示符颜色</h3>
@@ -628,7 +629,7 @@ crossover 16 有对多个版本的 QQ 的官方支持，建议购买正版，有
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">34</span>
+                    <span class="site-state-item-count">37</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -639,7 +640,7 @@ crossover 16 有对多个版本的 QQ 的官方支持，建议购买正版，有
                 
                 <div class="site-state-item site-state-categories">
                   <a href="/categories/index.html">
-                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
