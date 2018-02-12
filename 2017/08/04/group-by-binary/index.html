@@ -20,6 +20,9 @@
 
 
 
+
+
+
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 
@@ -46,21 +49,14 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=6.0.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
 
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=6.0.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=6.0.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=6.0.0">
-
-
-
-
-
-
-  <meta name="keywords" content="???" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=6.0.4">
 
 
 
@@ -68,17 +64,6 @@
 
 
 
-
-
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
-<meta property="og:site_name" content="Zerol&#39;s Notes">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-07T04:35:34.034Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
 
 
 
@@ -87,17 +72,13 @@
   var CONFIG = {
     root: '/',
     scheme: 'Gemini',
-    version: '6.0.0',
+    version: '6.0.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: false,
     fastclick: false,
     lazyload: false,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -109,31 +90,87 @@
 </script>
 
 
-
-  <link rel="canonical" href="http://yoursite.com/categories/"/>
-
+  
 
 
 
 
+  
+  <meta name="keywords" content="???" />
+
+
+<meta name="description" content="资料 具体见 2013 年集训队论文《浅谈数据结构题的几个非经典解法》（作者：许昊然）。 为什么  题目要求支持修改和查询操作。 但是你只有一种不支持修改的算法，往往是通过预处理来支持快速查询操作。 如果直接使用这种算法，可能要预处理很慢却要常常进行，查询很快却没几个，时间复杂度分配很不合理。 于是你想到，可以通过分块使时间复杂度变得均匀合理。就是把每 \(\sqrt n\) 个修改操作（假设修改">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法 - 二进制分组">
+<meta property="og:url" content="http://yoursite.com/2017/08/04/group-by-binary/index.html">
+<meta property="og:site_name" content="Zerol&#39;s Notes">
+<meta property="og:description" content="资料 具体见 2013 年集训队论文《浅谈数据结构题的几个非经典解法》（作者：许昊然）。 为什么  题目要求支持修改和查询操作。 但是你只有一种不支持修改的算法，往往是通过预处理来支持快速查询操作。 如果直接使用这种算法，可能要预处理很慢却要常常进行，查询很快却没几个，时间复杂度分配很不合理。 于是你想到，可以通过分块使时间复杂度变得均匀合理。就是把每 \(\sqrt n\) 个修改操作（假设修改">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-04T15:11:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="算法 - 二进制分组">
+<meta name="twitter:description" content="资料 具体见 2013 年集训队论文《浅谈数据结构题的几个非经典解法》（作者：许昊然）。 为什么  题目要求支持修改和查询操作。 但是你只有一种不支持修改的算法，往往是通过预处理来支持快速查询操作。 如果直接使用这种算法，可能要预处理很慢却要常常进行，查询很快却没几个，时间复杂度分配很不合理。 于是你想到，可以通过分块使时间复杂度变得均匀合理。就是把每 \(\sqrt n\) 个修改操作（假设修改">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/08/04/group-by-binary/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
   <title>算法 - 二进制分组 | Zerol's Notes</title>
   
 
 
 
 
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-100757043-1"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-100757043-1', 'auto');
-  ga('send', 'pageview');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-100757043-1');
 </script>
 
 
 
 
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
 
 </head>
 
@@ -182,57 +219,25 @@
         
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-
-            
-              首页
-            
-
-          </a>
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
         </li>
       
         
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-
-            
-              标签
-            
-
-          </a>
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
         </li>
       
         
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-
-            
-              分类
-            
-
-          </a>
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
         </li>
       
         
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-
-            
-              归档
-            
-
-          </a>
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
         </li>
       
 
@@ -242,10 +247,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
         </li>
       
     </ul>
@@ -264,7 +266,7 @@
     </span>
     <div class="local-search-input-wrapper">
       <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
+             placeholder="Searching..." spellcheck="false"
              type="text" id="local-search-input">
     </div>
   </div>
@@ -278,9 +280,15 @@
 </nav>
 
 
+  
+
+
 
  </div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
@@ -331,11 +339,12 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-04T12:35:44+08:00">2017-08-04</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-04T12:35:44+08:00">2017-08-04</time>
             
 
+            
             
 
             
@@ -350,14 +359,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithms/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithms</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a></span>
 
                 
                 
@@ -366,6 +371,17 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/04/group-by-binary/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/08/04/group-by-binary/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -418,6 +434,9 @@
 
       
     </div>
+
+    
+
     
     
     
@@ -477,8 +496,15 @@
           </div>
           
 
-
-          
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
 
   
 
@@ -505,10 +531,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
+            Overview
           </li>
         </ul>
       
@@ -532,8 +558,8 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">37</span>
-                    <span class="site-state-item-name">日志</span>
+                    <span class="site-state-item-count">41</span>
+                    <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
               
@@ -543,8 +569,18 @@
                 
                 <div class="site-state-item site-state-categories">
                   <a href="/categories/index.html">
-                    <span class="site-state-item-count">5</span>
-                    <span class="site-state-item-name">分类</span>
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
               
@@ -554,8 +590,40 @@
                 
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
-                    <span class="site-state-item-count">14</span>
-                    <span class="site-state-item-name">标签</span>
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
               
@@ -566,13 +634,12 @@
 
           
             <div class="links-of-author motion-element">
-                
-                  <span class="links-of-author-item">
-                    <a href="https://zerolin.gitbooks.io/template/content/" target="_blank" title="ACM 模板库">
-                      
-                        <i class="fa fa-fw fa-book"></i>ACM 模板库</a>
-                  </span>
-                
+              
+                <span class="links-of-author-item">
+                  <a href="https://zerolin.gitbooks.io/template/content/" target="_blank" title="ACM 模板库"><i class="fa fa-fw fa-book"></i>ACM 模板库</a>
+                  
+                </span>
+              
             </div>
           
 
@@ -582,6 +649,9 @@
           
           
 
+          
+            
+          
           
 
         </div>
@@ -629,7 +699,9 @@
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
@@ -637,12 +709,13 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a></div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a></div>
 
 
 
 
         
+
 
 
 
@@ -717,50 +790,65 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=6.0.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.4"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=6.0.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=6.0.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.4"></script>
 
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.0.0"></script>
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.4"></script>
 
 
 
   
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.0"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.4"></script>
 
 
 
   
 
 
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.4"></script>
+
+
+
   
+
+  
+    <script id="dsq-count-scr" src="https://zerolblog.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2017/08/04/group-by-binary/';
+        this.page.identifier = '2017/08/04/group-by-binary/';
+        this.page.title = '算法 - 二进制分组';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://zerolblog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
 
 
 
 
 	
-
-
-
-
-
-  
 
 
 
@@ -830,6 +918,8 @@
         .css('overflow', 'hidden');
       $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
 
+      
+
       $.ajax({
         url: path,
         dataType: isXml ? "xml" : "json",
@@ -863,6 +953,7 @@
                 var title = data.title.trim();
                 var titleInLowerCase = title.toLowerCase();
                 var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
                 var contentInLowerCase = content.toLowerCase();
                 var articleUrl = decodeURIComponent(data.url);
                 var indexOfTitle = [];
@@ -1113,27 +1204,39 @@
 
   
   
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
 
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
         for (i=0; i < all.length; i += 1) {
           all[i].SourceElement().parentNode.className += ' has-jax';
         }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
   
 
+
+  
+  
+
+  
+
+  
 
   
 
