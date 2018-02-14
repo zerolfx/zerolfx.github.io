@@ -487,7 +487,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
-                src="/images/illust_66436803_20171230_022825.jpg"
+                src="/images/alpha.png"
                 alt="zerol" />
             
               <p class="site-author-name" itemprop="name">zerol</p>
@@ -1150,5 +1150,36 @@
 
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?043bc6258f032a30b8ace680cb4006c1"></script><script>L2Dwidget.init({"model":"hijiki","position":"left"});</script></body>
+
+  
+<div id="hexo-helper-live2d">
+  <canvas id="live2dcanvas" width="400" height="360"></canvas>
+</div>
+<style>
+  #live2dcanvas{
+    position: fixed;
+    width: 200px;
+    height: 180px;
+    opacity:1;
+    left: 0px;
+    z-index: 999;
+    pointer-events: none;
+    bottom: 0px;
+  }
+</style>
+<script type="text/javascript" src="/live2d/device.min.js"></script>
+<script type="text/javascript">
+const loadScript = function loadScript(c,b){var a=document.createElement("script");a.type="text/javascript";"undefined"!=typeof b&&(a.readyState?a.onreadystatechange=function(){if("loaded"==a.readyState||"complete"==a.readyState)a.onreadystatechange=null,b()}:a.onload=function(){b()});a.src=c;document.body.appendChild(a)};
+(function(){
+  if((typeof(device) != 'undefined') && (device.mobile())){
+    var trElement = document.getElementById('hexo-helper-live2d');
+    trElement.parentNode.removeChild(trElement);
+    return;
+  }else
+    if (typeof(device) === 'undefined') console.error('Cannot find current-device script.');
+  loadScript("/live2d/script.js", function(){loadlive2d("live2dcanvas", "/live2d/assets/pio.model.json", 0.5);});
+})();
+</script>
+w
+</body>
 </html>
