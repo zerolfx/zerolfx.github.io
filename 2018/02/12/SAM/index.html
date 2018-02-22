@@ -107,7 +107,7 @@
 <meta property="og:description" content="写这篇文章的用意主要是记录一下我曾经学会过 SAM。 主要学习资料  http://wyfcyx.is-programmer.com/posts/76107.html （对我的帮助最大） http://www.cnblogs.com/Robert-Yuan/p/5187439.html （相当详细） 2012年noi冬令营陈立杰讲稿.ppt （始祖） hiho一下 127周 和 128周。（理论结">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/02/12/SAM/sam.png">
-<meta property="og:updated_time" content="2018-02-14T12:25:14.208Z">
+<meta property="og:updated_time" content="2018-02-15T07:31:51.433Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法 - 后缀自动机">
 <meta name="twitter:description" content="写这篇文章的用意主要是记录一下我曾经学会过 SAM。 主要学习资料  http://wyfcyx.is-programmer.com/posts/76107.html （对我的帮助最大） http://www.cnblogs.com/Robert-Yuan/p/5187439.html （相当详细） 2012年noi冬令营陈立杰讲稿.ppt （始祖） hiho一下 127周 和 128周。（理论结">
@@ -441,7 +441,7 @@
 <p>一些性质：</p>
 <ul>
 <li><p><span class="math inline">\(fa\)</span> 指针组成的是后缀树，当然是树了。<span class="math inline">\(tranc\)</span> 指针组成的是 DFA，也是 DAG，存在拓扑序。</p></li>
-<li><span class="math inline">\(tranc\)</span> 指针是 <span class="math inline">\(len\)</span> 增加，<span class="math inline">\(fa\)</span> 指针使 <span class="math inline">\(len\)</span> 减少。</li>
+<li><span class="math inline">\(tranc\)</span> 指针使 <span class="math inline">\(len\)</span> 增加，<span class="math inline">\(fa\)</span> 指针使 <span class="math inline">\(len\)</span> 减少。</li>
 <li>关键点（红色标记）自带一个 <span class="math inline">\(EndPos\)</span>，然后每个结点的 <span class="math inline">\(EndPos\)</span> 集合是自己和子节点的 <span class="math inline">\(EndPos\)</span> 集合的交集。</li>
 <li>关键点就是自动机的接受状态。</li>
 <li><span class="math inline">\(len\)</span> 的大小是父节点的 <span class="math inline">\(len\)</span> 加上父边压缩的字符数。</li>
@@ -565,7 +565,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1236,35 +1236,6 @@
   
 
 
-  
-<div id="hexo-helper-live2d">
-  <canvas id="live2dcanvas" width="400" height="360"></canvas>
-</div>
-<style>
-  #live2dcanvas{
-    position: fixed;
-    width: 200px;
-    height: 180px;
-    opacity:1;
-    left: 0px;
-    z-index: 999;
-    pointer-events: none;
-    bottom: 0px;
-  }
-</style>
-<script type="text/javascript" src="/live2d/device.min.js"></script>
-<script type="text/javascript">
-const loadScript = function loadScript(c,b){var a=document.createElement("script");a.type="text/javascript";"undefined"!=typeof b&&(a.readyState?a.onreadystatechange=function(){if("loaded"==a.readyState||"complete"==a.readyState)a.onreadystatechange=null,b()}:a.onload=function(){b()});a.src=c;document.body.appendChild(a)};
-(function(){
-  if((typeof(device) != 'undefined') && (device.mobile())){
-    var trElement = document.getElementById('hexo-helper-live2d');
-    trElement.parentNode.removeChild(trElement);
-    return;
-  }else
-    if (typeof(device) === 'undefined') console.error('Cannot find current-device script.');
-  loadScript("/live2d/script.js", function(){loadlive2d("live2dcanvas", "/live2d/assets/pio.model.json", 0.5);});
-})();
-</script>
-w
+  w
 </body>
 </html>

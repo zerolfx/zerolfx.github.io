@@ -309,6 +309,167 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/15/hiho-1419/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zerol">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/alpha.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zerol's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/15/hiho-1419/" itemprop="url">【题解】hihocoder - 1419 - 后缀数组四·重复旋律4</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-15T11:22:45+08:00">2018-02-15</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ACM/" itemprop="url" rel="index"><span itemprop="name">ACM</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/02/15/hiho-1419/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/02/15/hiho-1419/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="题目">题目</h2>
+<p>http://hihocoder.com/problemset/problem/1419</p>
+<h2 id="题意">题意</h2>
+<p>如果一个字符串是由某个长度为 <span class="math inline">\(l\)</span> 的字符串重复 <span class="math inline">\(k\)</span> 次得到的，那么称之为<span class="math inline">\((k,l)\)</span>-重复的。</p>
+<p>求一个字符串中 <span class="math inline">\(k\)</span> 最大的 <span class="math inline">\((k,l)\)</span> 重复的子串。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/02/15/hiho-1419/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/14/hiho-1465/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -920,7 +1081,7 @@
 <p>一些性质：</p>
 <ul>
 <li><p><span class="math inline">\(fa\)</span> 指针组成的是后缀树，当然是树了。<span class="math inline">\(tranc\)</span> 指针组成的是 DFA，也是 DAG，存在拓扑序。</p></li>
-<li><span class="math inline">\(tranc\)</span> 指针是 <span class="math inline">\(len\)</span> 增加，<span class="math inline">\(fa\)</span> 指针使 <span class="math inline">\(len\)</span> 减少。</li>
+<li><span class="math inline">\(tranc\)</span> 指针使 <span class="math inline">\(len\)</span> 增加，<span class="math inline">\(fa\)</span> 指针使 <span class="math inline">\(len\)</span> 减少。</li>
 <li>关键点（红色标记）自带一个 <span class="math inline">\(EndPos\)</span>，然后每个结点的 <span class="math inline">\(EndPos\)</span> 集合是自己和子节点的 <span class="math inline">\(EndPos\)</span> 集合的交集。</li>
 <li>关键点就是自动机的接受状态。</li>
 <li><span class="math inline">\(len\)</span> 的大小是父节点的 <span class="math inline">\(len\)</span> 加上父边压缩的字符数。</li>
@@ -1775,167 +1936,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/06/linearly-recurrent-sequence/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zerol">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/alpha.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zerol's Notes">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/06/linearly-recurrent-sequence/" itemprop="url">算法 - 齐次线性递推求解和优化</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-06T23:29:52+08:00">2018-02-06</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/02/06/linearly-recurrent-sequence/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/02/06/linearly-recurrent-sequence/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <ul>
-<li><span class="math inline">\(k\)</span> 项线性递推求第 <span class="math inline">\(n\)</span> 项的 <span class="math inline">\(O(k^2\log n)\)</span> 的算法。</li>
-<li>已知线性递推数列的前若干项，求递推式。</li>
-<li>结合以上两者可以由线性递推数列的起始若干项得到任意一项。</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/02/06/linearly-recurrent-sequence/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1987,7 +1987,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2659,35 +2659,6 @@
   
 
 
-  
-<div id="hexo-helper-live2d">
-  <canvas id="live2dcanvas" width="400" height="360"></canvas>
-</div>
-<style>
-  #live2dcanvas{
-    position: fixed;
-    width: 200px;
-    height: 180px;
-    opacity:1;
-    left: 0px;
-    z-index: 999;
-    pointer-events: none;
-    bottom: 0px;
-  }
-</style>
-<script type="text/javascript" src="/live2d/device.min.js"></script>
-<script type="text/javascript">
-const loadScript = function loadScript(c,b){var a=document.createElement("script");a.type="text/javascript";"undefined"!=typeof b&&(a.readyState?a.onreadystatechange=function(){if("loaded"==a.readyState||"complete"==a.readyState)a.onreadystatechange=null,b()}:a.onload=function(){b()});a.src=c;document.body.appendChild(a)};
-(function(){
-  if((typeof(device) != 'undefined') && (device.mobile())){
-    var trElement = document.getElementById('hexo-helper-live2d');
-    trElement.parentNode.removeChild(trElement);
-    return;
-  }else
-    if (typeof(device) === 'undefined') console.error('Cannot find current-device script.');
-  loadScript("/live2d/script.js", function(){loadlive2d("live2dcanvas", "/live2d/assets/pio.model.json", 0.5);});
-})();
-</script>
-w
+  w
 </body>
 </html>
