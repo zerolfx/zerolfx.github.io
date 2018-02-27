@@ -1080,10 +1080,10 @@
 <p><img src="/2018/02/12/SAM/sam.png"></p>
 <p>一些性质：</p>
 <ul>
-<li><p><span class="math inline">\(fa\)</span> 指针组成的是后缀树，当然是树了。<span class="math inline">\(tranc\)</span> 指针组成的是 DFA，也是 DAG，存在拓扑序。</p></li>
+<li><p><span class="math inline">\(fa\)</span> 指针组成的是后缀树，当然是树了。<span class="math inline">\(tranc\)</span> 指针组成的是 DFA，所以是一个有向无环图（DAG），存在拓扑序。</p></li>
 <li><span class="math inline">\(tranc\)</span> 指针使 <span class="math inline">\(len\)</span> 增加，<span class="math inline">\(fa\)</span> 指针使 <span class="math inline">\(len\)</span> 减少。</li>
-<li>关键点（红色标记）自带一个 <span class="math inline">\(EndPos\)</span>，然后每个结点的 <span class="math inline">\(EndPos\)</span> 集合是自己和子节点的 <span class="math inline">\(EndPos\)</span> 集合的交集。</li>
-<li>关键点就是自动机的接受状态。</li>
+<li>关键点（红色标记）自带一个 <span class="math inline">\(EndPos\)</span>，然后每个结点的 <span class="math inline">\(EndPos\)</span> 集合是自己和子节点的 <span class="math inline">\(EndPos\)</span> 集合的并集，且子节点以及本身的 <span class="math inline">\(EndPos\)</span> 集合之间没有交集。</li>
+<li>接受状态是 <span class="math inline">\(last\)</span> 状态到根的链上的所有状态。</li>
 <li><span class="math inline">\(len\)</span> 的大小是父节点的 <span class="math inline">\(len\)</span> 加上父边压缩的字符数。</li>
 <li><p><span class="math inline">\([len_{min},len_{max}]\)</span> 的区间大小是由 <span class="math inline">\(tranc\)</span> 转移过来的状态的区间大小之和。</p></li>
 </ul>
