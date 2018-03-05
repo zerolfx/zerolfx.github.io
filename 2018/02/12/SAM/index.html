@@ -107,7 +107,7 @@
 <meta property="og:description" content="写这篇文章的用意主要是记录一下我曾经学会过 SAM。 主要学习资料  http://wyfcyx.is-programmer.com/posts/76107.html （对我的帮助最大） http://www.cnblogs.com/Robert-Yuan/p/5187439.html （相当详细） 2012年noi冬令营陈立杰讲稿.ppt （始祖） hiho一下 127周 和 128周。（理论结">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2018/02/12/SAM/sam.png">
-<meta property="og:updated_time" content="2018-02-27T06:46:52.259Z">
+<meta property="og:updated_time" content="2018-03-05T09:51:51.309Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法 - 后缀自动机">
 <meta name="twitter:description" content="写这篇文章的用意主要是记录一下我曾经学会过 SAM。 主要学习资料  http://wyfcyx.is-programmer.com/posts/76107.html （对我的帮助最大） http://www.cnblogs.com/Robert-Yuan/p/5187439.html （相当详细） 2012年noi冬令营陈立杰讲稿.ppt （始祖） hiho一下 127周 和 128周。（理论结">
@@ -440,12 +440,19 @@
 <p><img src="/2018/02/12/SAM/sam.png"></p>
 <p>一些性质：</p>
 <ul>
-<li><p><span class="math inline">\(fa\)</span> 指针组成的是后缀树，当然是树了。<span class="math inline">\(tranc\)</span> 指针组成的是 DFA，所以是一个有向无环图（DAG），存在拓扑序。</p></li>
+<li><p><span class="math inline">\(fa\)</span> 指针组成的是反串的后缀树，当然是树了。<span class="math inline">\(tranc\)</span> 指针组成的是 DFA，所以是一个有向无环图（DAG），存在拓扑序。</p></li>
 <li><span class="math inline">\(tranc\)</span> 指针使 <span class="math inline">\(len\)</span> 增加，<span class="math inline">\(fa\)</span> 指针使 <span class="math inline">\(len\)</span> 减少。</li>
 <li>关键点（红色标记）自带一个 <span class="math inline">\(EndPos\)</span>，然后每个结点的 <span class="math inline">\(EndPos\)</span> 集合是自己和子节点的 <span class="math inline">\(EndPos\)</span> 集合的并集，且子节点以及本身的 <span class="math inline">\(EndPos\)</span> 集合之间没有交集。</li>
 <li>接受状态是 <span class="math inline">\(last\)</span> 状态到根的链上的所有状态。</li>
 <li><span class="math inline">\(len\)</span> 的大小是父节点的 <span class="math inline">\(len\)</span> 加上父边压缩的字符数。</li>
 <li><p><span class="math inline">\([len_{min},len_{max}]\)</span> 的区间大小是由 <span class="math inline">\(tranc\)</span> 转移过来的状态的区间大小之和。</p></li>
+</ul>
+<p>一些套路：</p>
+<ul>
+<li>如果要快速找到一个子串对应的状态，可以在后缀树上倍增。比如要找 [l, r] 的子串，那么找到 [1, r] 逆序的所在的关键点，然后往上爬 l - 1 个长度。</li>
+<li>如果要进行多串匹配的话，不妨使用广义后缀自动机，往往会简单一些。</li>
+<li>如果可以离线，可以用树上启发式合并得到每个点的 EndPos 集合。</li>
+<li>如果要维护 EndPos 相关的信息，来一发 LCT。</li>
 </ul>
 
       
@@ -565,7 +572,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-count">49</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -637,7 +644,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">19</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
