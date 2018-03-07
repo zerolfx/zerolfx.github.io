@@ -96,28 +96,28 @@
 
 
   
-  <meta name="keywords" content="动态规划,HackerRank," />
+  <meta name="keywords" content="LCT,线段树分治,可回滚并查集," />
 
 
-<meta name="description" content="题目 https://www.hackerrank.com/challenges/fair-cut 题意 给 n 个数，分成 k 和 n - k 两组，使得两个组之间任意数对之差的绝对值之和最小。">
-<meta name="keywords" content="动态规划,HackerRank">
+<meta name="description" content="题目 https://loj.ac/problem/121 题意 略">
+<meta name="keywords" content="LCT,线段树分治,可回滚并查集">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【题解】HackerRank - Fair Cut">
-<meta property="og:url" content="http://yoursite.com/2017/07/02/Fair-Cut/index.html">
+<meta property="og:title" content="【题解】LOJ-121-「离线可过」动态图连通性">
+<meta property="og:url" content="http://yoursite.com/2018/03/06/LOJ-121/index.html">
 <meta property="og:site_name" content="Zerol&#39;s Notes">
-<meta property="og:description" content="题目 https://www.hackerrank.com/challenges/fair-cut 题意 给 n 个数，分成 k 和 n - k 两组，使得两个组之间任意数对之差的绝对值之和最小。">
+<meta property="og:description" content="题目 https://loj.ac/problem/121 题意 略">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-07-08T13:13:09.000Z">
+<meta property="og:updated_time" content="2018-03-07T02:00:28.095Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【题解】HackerRank - Fair Cut">
-<meta name="twitter:description" content="题目 https://www.hackerrank.com/challenges/fair-cut 题意 给 n 个数，分成 k 和 n - k 两组，使得两个组之间任意数对之差的绝对值之和最小。">
+<meta name="twitter:title" content="【题解】LOJ-121-「离线可过」动态图连通性">
+<meta name="twitter:description" content="题目 https://loj.ac/problem/121 题意 略">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/07/02/Fair-Cut/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/06/LOJ-121/"/>
 
 
 
@@ -126,7 +126,7 @@
     sidebar: "",
   };
 </script>
-  <title>【题解】HackerRank - Fair Cut | Zerol's Notes</title>
+  <title>【题解】LOJ-121-「离线可过」动态图连通性 | Zerol's Notes</title>
   
 
 
@@ -313,7 +313,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/02/Fair-Cut/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/06/LOJ-121/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zerol">
@@ -330,7 +330,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">【题解】HackerRank - Fair Cut</h1>
+          <h1 class="post-title" itemprop="name headline">【题解】LOJ-121-「离线可过」动态图连通性</h1>
         
 
         <div class="post-meta">
@@ -342,7 +342,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-02T22:58:19+08:00">2017-07-02</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-06T23:56:31+08:00">2018-03-06</time>
             
 
             
@@ -378,9 +378,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/07/02/Fair-Cut/#comments" itemprop="discussionUrl">
+                <a href="/2018/03/06/LOJ-121/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/07/02/Fair-Cut/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/03/06/LOJ-121/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -409,17 +409,17 @@
 
       
         <h2 id="题目">题目</h2>
-<p>https://www.hackerrank.com/challenges/fair-cut</p>
+<p>https://loj.ac/problem/121</p>
 <h2 id="题意">题意</h2>
-<p>给 n 个数，分成 k 和 n - k 两组，使得两个组之间任意数对之差的绝对值之和最小。 <a id="more"></a></p>
+<p>略</p>
+<a id="more"></a>
 <h2 id="题解">题解</h2>
+<h4 id="线段树分治">线段树分治</h4>
 <ul>
-<li>将问题转化为对于两组数每组内部元素两两之差的绝对值之和的和最大</li>
-<li>排个序把绝对值去了</li>
-<li>对于一组有 k 个元素有序的数，两两之差之和的值为 Sum[a[i] * (2i + k - 1), {i, 1, k}]</li>
-<li>dp[i][j] 表示第一组取 i 个数，第二组取 j 个数 （可以开成滚动数组）</li>
+<li>计算出每条边出现的时间区间，拆分到线段树上的若干个结点中。然后在线段树上跑 dfs，回答叶子节点上的询问。</li>
 </ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FOR(i, x, y) for (remove_const<span class="meta-string">&lt;decltype(y)&gt;::type i = (x), _##i = (y); i &lt; _##i; ++i)</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FORD(i, x, y) for (remove_const<span class="meta-string">&lt;decltype(x)&gt;::type i = (x), _##i = (y); i &gt; _##i; --i)</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">3000</span> + <span class="number">5</span>;</span><br><span class="line">LL dp[maxn][maxn], n, k, a[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; k;</span><br><span class="line">    FOR(i, <span class="number">0</span>, n) <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">    sort(a, a + n);</span><br><span class="line">    FOR(i, <span class="number">0</span>, k + <span class="number">1</span>)</span><br><span class="line">        FOR(j, <span class="number">0</span>, n - k + <span class="number">1</span>) &#123;</span><br><span class="line">            dp[i][j] = (i || j) ? <span class="number">-1E18</span> : <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span> (i) dp[i][j] = max(dp[i - <span class="number">1</span>][j] + a[i + j - <span class="number">1</span>] * (<span class="number">2</span> * i - k - <span class="number">1</span>), dp[i][j]);</span><br><span class="line">            <span class="keyword">if</span> (j) dp[i][j] = max(dp[i][j - <span class="number">1</span>] + a[i + j - <span class="number">1</span>] * (<span class="number">2</span> * j - (n - k) - <span class="number">1</span>), dp[i][j]);</span><br><span class="line">        &#125;</span><br><span class="line">    LL ans = -dp[k][n - k];</span><br><span class="line">    FOR(i, <span class="number">0</span>, n) ans += a[i] * (<span class="number">2</span> * i - n + <span class="number">1</span>);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>代码</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> LL = <span class="keyword">long</span> <span class="keyword">long</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FOR(i, x, y) for (decay<span class="meta-string">&lt;decltype(y)&gt;::type i = (x), _##i = (y); i &lt; _##i; ++i)</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FORD(i, x, y) for (decay<span class="meta-string">&lt;decltype(x)&gt;::type i = (x), _##i = (y); i &gt; _##i; --i)</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> zerol</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> dbg(args...) do &#123; cout <span class="meta-string">&lt;&lt; "\033[32;1m" &lt;&lt; #args &lt;&lt; " -&gt; "; err(args); &#125; while (0)</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> dbg(...)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">err</span><span class="params">()</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"\033[39;0m"</span> &lt;&lt; <span class="built_in">endl</span>; &#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">template</span>&lt;<span class="keyword">typename</span>...&gt; <span class="class"><span class="keyword">class</span> <span class="title">T</span>, <span class="title">typename</span> <span class="title">t</span>, <span class="title">typename</span>... <span class="title">Args</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">void</span> <span class="title">err</span>(<span class="title">T</span>&lt;t&gt; <span class="title">a</span>, <span class="title">Args</span>... <span class="title">args</span>) &#123;</span> <span class="keyword">for</span> (<span class="keyword">auto</span> x: a) <span class="built_in">cout</span> &lt;&lt; x &lt;&lt; <span class="string">' '</span>; err(args...); &#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... Args&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">err</span><span class="params">(T a, Args... args)</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="string">' '</span>; err(args...); &#125;</span><br><span class="line"><span class="comment">// -----------------------------------------------------------------------------</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">5E3</span> + <span class="number">100</span>, maxm = <span class="number">5E5</span> + <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> uf &#123;</span><br><span class="line">    <span class="keyword">int</span> fa[maxn], sz[maxn];</span><br><span class="line">    <span class="keyword">int</span> undo[maxn], top;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123; <span class="built_in">memset</span>(fa, <span class="number">-1</span>, <span class="keyword">sizeof</span> fa); <span class="built_in">memset</span>(sz, <span class="number">0</span>, <span class="keyword">sizeof</span> sz); top = <span class="number">0</span>; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findset</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; <span class="keyword">while</span> (fa[x] != <span class="number">-1</span>) x = fa[x]; <span class="keyword">return</span> x; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">join</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">        x = findset(x); y = findset(y);</span><br><span class="line">        <span class="keyword">if</span> (x == y) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span> (sz[x] &gt; sz[y]) swap(x, y);</span><br><span class="line">        undo[top++] = x;</span><br><span class="line">        fa[x] = y;</span><br><span class="line">        sz[y] += sz[x] + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">checkpoint</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> top; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">rewind</span><span class="params">(<span class="keyword">int</span> t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (top &gt; t) &#123;</span><br><span class="line">            <span class="keyword">int</span> x = undo[--top];</span><br><span class="line">            sz[fa[x]] -= sz[x] + <span class="number">1</span>;</span><br><span class="line">            fa[x] = <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Query</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> tp, u, v, l, r;</span><br><span class="line">&#125; q[maxm &lt;&lt; <span class="number">1</span>];</span><br><span class="line"><span class="built_in">vector</span>&lt;Query*&gt; qs;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; ans;</span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;Query*&gt; node[maxm &lt;&lt; <span class="number">2</span>];</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mid ((l + r) &gt;&gt; 1)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lson o * 2, l, mid</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rson o * 2 + 1, mid + 1, r</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ins</span><span class="params">(Query*&amp; q, <span class="keyword">int</span> o, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (q-&gt;l &gt; r || l &gt; q-&gt;r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">if</span> (q-&gt;l &lt;= l &amp;&amp; r &lt;= q-&gt;r) &#123; node[o].push_back(q); <span class="keyword">return</span>; &#125;</span><br><span class="line">    ins(q, lson); ins(q, rson);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">go</span><span class="params">(<span class="keyword">int</span> o, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (l &gt; r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> checkpoint = uf::checkpoint();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; q: node[o]) <span class="keyword">if</span> (q-&gt;tp != <span class="number">2</span>) uf::join(q-&gt;u, q-&gt;v);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; q: node[o])</span><br><span class="line">        <span class="keyword">if</span> (q-&gt;tp == <span class="number">2</span>) ans.push_back(uf::findset(q-&gt;u) == uf::findset(q-&gt;v));</span><br><span class="line">    <span class="keyword">if</span> (l &lt; r) &#123; go(lson); go(rson); &#125;</span><br><span class="line">    uf::rewind(checkpoint);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    uf::init();</span><br><span class="line">    <span class="keyword">int</span> n, m;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">int</span> clk = <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">map</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;, <span class="keyword">int</span>&gt; mp;</span><br><span class="line">    FOR (i, <span class="number">0</span>, m) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;q[i].tp, &amp;q[i].u, &amp;q[i].v);</span><br><span class="line">        <span class="keyword">if</span> (q[i].tp == <span class="number">2</span>) &#123; q[i].l = q[i].r = clk; qs.push_back(&amp;q[i]); <span class="keyword">continue</span>; &#125;</span><br><span class="line">        ++clk;</span><br><span class="line">        <span class="keyword">if</span> (q[i].u &gt; q[i].v) swap(q[i].u, q[i].v);</span><br><span class="line">        <span class="keyword">if</span> (q[i].tp == <span class="number">0</span>) mp.insert(&#123;&#123;q[i].u, q[i].v&#125;, clk&#125;);</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">auto</span> it = mp.find(&#123;q[i].u, q[i].v&#125;);</span><br><span class="line">            assert(it != mp.end());</span><br><span class="line">            q[i].l = it-&gt;second; q[i].r = clk - <span class="number">1</span>;</span><br><span class="line">            mp.erase(it);</span><br><span class="line">            qs.push_back(&amp;q[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">vector</span>&lt;Query&gt; ex;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; x: mp) &#123;</span><br><span class="line">        q[m] = &#123;<span class="number">1</span>, x.first.first, x.first.second, x.second, clk&#125;;</span><br><span class="line">        qs.push_back(&amp;q[m++]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; q: qs) ins(q, <span class="number">1</span>, <span class="number">1</span>, clk);</span><br><span class="line">    go(<span class="number">1</span>, <span class="number">1</span>, clk);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> x: ans) <span class="built_in">puts</span>(x ? <span class="string">"Y"</span> : <span class="string">"N"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -440,9 +440,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/动态规划/" rel="tag"># 动态规划</a>
+            <a href="/tags/LCT/" rel="tag"># LCT</a>
           
-            <a href="/tags/HackerRank/" rel="tag"># HackerRank</a>
+            <a href="/tags/线段树分治/" rel="tag"># 线段树分治</a>
+          
+            <a href="/tags/可回滚并查集/" rel="tag"># 可回滚并查集</a>
           
         </div>
       
@@ -455,8 +457,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/02/Decibinary-Numbers/" rel="next" title="【题解】HackerRank - Decibinary Numbers">
-                <i class="fa fa-chevron-left"></i> 【题解】HackerRank - Decibinary Numbers
+              <a href="/2018/03/05/HDU-6054/" rel="next" title="【题解】HDU-6054-String and String">
+                <i class="fa fa-chevron-left"></i> 【题解】HDU-6054-String and String
               </a>
             
           </div>
@@ -464,10 +466,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/03/Sherlock-s-Array-Merging-Algorithm/" rel="prev" title="【题解】HackerRank - Sherlock's Array Merging Algorithm">
-                【题解】HackerRank - Sherlock's Array Merging Algorithm <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -682,7 +680,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题意"><span class="nav-number">2.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">3.</span> <span class="nav-text">题解</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题意"><span class="nav-number">2.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">3.</span> <span class="nav-text">题解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#线段树分治"><span class="nav-number">3.0.1.</span> <span class="nav-text">线段树分治</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -843,9 +841,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://yoursite.com/2017/07/02/Fair-Cut/';
-        this.page.identifier = '2017/07/02/Fair-Cut/';
-        this.page.title = '【题解】HackerRank - Fair Cut';
+        this.page.url = 'http://yoursite.com/2018/03/06/LOJ-121/';
+        this.page.identifier = '2018/03/06/LOJ-121/';
+        this.page.title = '【题解】LOJ-121-「离线可过」动态图连通性';
       };
       function loadComments () {
         var d = document, s = d.createElement('script');
