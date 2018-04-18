@@ -101,14 +101,14 @@
 
 <meta name="description" content="若干年后，回首如今曾为 ACM 奋斗的自己，一定不会后悔。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ACM 速成 Project">
+<meta property="og:title" content="ACM 速成计划">
 <meta property="og:url" content="http://yoursite.com/2018/04/15/ACM-never-regret/index.html">
 <meta property="og:site_name" content="Zerol&#39;s Notes">
 <meta property="og:description" content="若干年后，回首如今曾为 ACM 奋斗的自己，一定不会后悔。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-16T06:56:45.707Z">
+<meta property="og:updated_time" content="2018-04-18T11:14:23.145Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ACM 速成 Project">
+<meta name="twitter:title" content="ACM 速成计划">
 <meta name="twitter:description" content="若干年后，回首如今曾为 ACM 奋斗的自己，一定不会后悔。">
 
 
@@ -125,7 +125,7 @@
     sidebar: "",
   };
 </script>
-  <title>ACM 速成 Project | Zerol's Notes</title>
+  <title>ACM 速成计划 | Zerol's Notes</title>
   
 
 
@@ -329,7 +329,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ACM 速成 Project</h1>
+          <h1 class="post-title" itemprop="name headline">ACM 速成计划</h1>
         
 
         <div class="post-meta">
@@ -427,9 +427,7 @@
 </ul>
 <h2 id="简单-dp">简单 DP</h2>
 <ul>
-<li><p>最大子序列和 https://www.luogu.org/problemnew/show/P1115</p>
-<p>给一份代码</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n; <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">int</span> ans = -INF, s = <span class="number">0</span>;</span><br><span class="line">    FOR (i, <span class="number">0</span>, n) &#123;</span><br><span class="line">        <span class="keyword">int</span> t; <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;t);</span><br><span class="line">        s = max(t, s + t); <span class="comment">// equal to: s = max(s, 0) + t;</span></span><br><span class="line">        ans = max(ans, s);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>最大子序列和 https://www.luogu.org/problemnew/show/P1115</p></li>
 <li><p>超经典的数字金字塔</p>
 <p>DP = 记忆化搜索，有些时候记忆化搜索会来得方便一些（主要是符合直觉，便于理解）。</p>
 <p>给一份记忆化搜索的代码</p>
@@ -451,6 +449,7 @@
 <p>《算法竞赛入门经典》Page.274</p>
 <p>LIS 最长上升子序列 （从 <span class="math inline">\(n^2\)</span> 优化到 <span class="math inline">\(n \log n\)</span>）</p>
 <ul>
+<li>https://acm.ecnu.edu.cn/problem/3549/</li>
 <li>https://www.luogu.org/problemnew/show/P1091</li>
 <li>https://www.luogu.org/problemnew/show/P1439</li>
 </ul>
@@ -494,12 +493,22 @@
 <h2 id="二分图匹配">二分图匹配</h2>
 <p>套板子，做些题。关键在于要看出这道题能用二分图匹配做。</p>
 <h2 id="网络流">网络流</h2>
+<p>同理二分图匹配，难点在于看出一道题能用网络流，以及如何建图。</p>
 <h1 id="part-3-数据结构">Part 3: 数据结构</h1>
+<p>一开始，把数据结构本身写对都很困难，但是熟练了之后，就成为了其他算法题中肯定正确的一部分。</p>
 <h2 id="并查集">并查集</h2>
+<p>并查集本身并不难，关键在于信息的维护。</p>
+<ul>
+<li>只需要会一道题：食物链 https://www.luogu.org/problemnew/show/P2024</li>
+</ul>
 <h2 id="线段树">线段树</h2>
+<ul>
+<li>模板 https://acm.ecnu.edu.cn/problem/3393/</li>
+</ul>
 <h2 id="st-表">ST 表</h2>
 <h2 id="树状数组">树状数组</h2>
 <h2 id="平衡树">平衡树</h2>
+<p>只需要会一种：无旋 Treap。</p>
 <h1 id="part-3.5-图论-数据结构">Part 3.5: 图论 + 数据结构</h1>
 <h2 id="树链剖分">树链剖分</h2>
 <h2 id="lca-rmq倍增">LCA (RMQ/倍增)</h2>
@@ -509,6 +518,8 @@
 <p>有些题看起来是字符串，但其实是 DP。</p>
 <h1 id="part-6-计算几何">Part 6: 计算几何</h1>
 <p>这个不会也罢。</p>
+<h1 id="part-7-其他">Part 7: 其他</h1>
+<h2 id="莫队">莫队</h2>
 
       
     </div>
@@ -789,7 +800,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#part-1-动态规划"><span class="nav-number">2.</span> <span class="nav-text">Part 1: 动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#背包问题"><span class="nav-number">2.1.</span> <span class="nav-text">背包问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单-dp"><span class="nav-number">2.2.</span> <span class="nav-text">简单 DP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不那么简单的-dp"><span class="nav-number">2.3.</span> <span class="nav-text">不那么简单的 DP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dp"><span class="nav-number">2.4.</span> <span class="nav-text">DP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#序列问题"><span class="nav-number">2.4.1.</span> <span class="nav-text">序列问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#区间-dp"><span class="nav-number">2.4.2.</span> <span class="nav-text">区间 DP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#树形-dp"><span class="nav-number">2.4.3.</span> <span class="nav-text">树形 DP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数位-dp"><span class="nav-number">2.4.4.</span> <span class="nav-text">数位 DP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#状压-dp"><span class="nav-number">2.4.5.</span> <span class="nav-text">状压 DP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插头-dp-轮廓线-dp"><span class="nav-number">2.4.6.</span> <span class="nav-text">插头 DP / 轮廓线 DP</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#part-2-图论"><span class="nav-number">3.</span> <span class="nav-text">Part 2: 图论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#最短路"><span class="nav-number">3.1.</span> <span class="nav-text">最短路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二分图匹配"><span class="nav-number">3.2.</span> <span class="nav-text">二分图匹配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络流"><span class="nav-number">3.3.</span> <span class="nav-text">网络流</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#part-3-数据结构"><span class="nav-number">4.</span> <span class="nav-text">Part 3: 数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#并查集"><span class="nav-number">4.1.</span> <span class="nav-text">并查集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线段树"><span class="nav-number">4.2.</span> <span class="nav-text">线段树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#st-表"><span class="nav-number">4.3.</span> <span class="nav-text">ST 表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#树状数组"><span class="nav-number">4.4.</span> <span class="nav-text">树状数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#平衡树"><span class="nav-number">4.5.</span> <span class="nav-text">平衡树</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#part-3.5-图论-数据结构"><span class="nav-number">5.</span> <span class="nav-text">Part 3.5: 图论 + 数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#树链剖分"><span class="nav-number">5.1.</span> <span class="nav-text">树链剖分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lca-rmq倍增"><span class="nav-number">5.2.</span> <span class="nav-text">LCA (RMQ/倍增)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成树"><span class="nav-number">5.3.</span> <span class="nav-text">生成树</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#part-4-数学"><span class="nav-number">6.</span> <span class="nav-text">Part 4: 数学</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#part-5-字符串"><span class="nav-number">7.</span> <span class="nav-text">Part 5: 字符串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#part-6-计算几何"><span class="nav-number">8.</span> <span class="nav-text">Part 6: 计算几何</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#part-1-动态规划"><span class="nav-number">2.</span> <span class="nav-text">Part 1: 动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#背包问题"><span class="nav-number">2.1.</span> <span class="nav-text">背包问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单-dp"><span class="nav-number">2.2.</span> <span class="nav-text">简单 DP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不那么简单的-dp"><span class="nav-number">2.3.</span> <span class="nav-text">不那么简单的 DP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dp"><span class="nav-number">2.4.</span> <span class="nav-text">DP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#序列问题"><span class="nav-number">2.4.1.</span> <span class="nav-text">序列问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#区间-dp"><span class="nav-number">2.4.2.</span> <span class="nav-text">区间 DP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#树形-dp"><span class="nav-number">2.4.3.</span> <span class="nav-text">树形 DP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数位-dp"><span class="nav-number">2.4.4.</span> <span class="nav-text">数位 DP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#状压-dp"><span class="nav-number">2.4.5.</span> <span class="nav-text">状压 DP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插头-dp-轮廓线-dp"><span class="nav-number">2.4.6.</span> <span class="nav-text">插头 DP / 轮廓线 DP</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#part-2-图论"><span class="nav-number">3.</span> <span class="nav-text">Part 2: 图论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#最短路"><span class="nav-number">3.1.</span> <span class="nav-text">最短路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二分图匹配"><span class="nav-number">3.2.</span> <span class="nav-text">二分图匹配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络流"><span class="nav-number">3.3.</span> <span class="nav-text">网络流</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#part-3-数据结构"><span class="nav-number">4.</span> <span class="nav-text">Part 3: 数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#并查集"><span class="nav-number">4.1.</span> <span class="nav-text">并查集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线段树"><span class="nav-number">4.2.</span> <span class="nav-text">线段树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#st-表"><span class="nav-number">4.3.</span> <span class="nav-text">ST 表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#树状数组"><span class="nav-number">4.4.</span> <span class="nav-text">树状数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#平衡树"><span class="nav-number">4.5.</span> <span class="nav-text">平衡树</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#part-3.5-图论-数据结构"><span class="nav-number">5.</span> <span class="nav-text">Part 3.5: 图论 + 数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#树链剖分"><span class="nav-number">5.1.</span> <span class="nav-text">树链剖分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lca-rmq倍增"><span class="nav-number">5.2.</span> <span class="nav-text">LCA (RMQ/倍增)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成树"><span class="nav-number">5.3.</span> <span class="nav-text">生成树</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#part-4-数学"><span class="nav-number">6.</span> <span class="nav-text">Part 4: 数学</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#part-5-字符串"><span class="nav-number">7.</span> <span class="nav-text">Part 5: 字符串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#part-6-计算几何"><span class="nav-number">8.</span> <span class="nav-text">Part 6: 计算几何</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#part-7-其他"><span class="nav-number">9.</span> <span class="nav-text">Part 7: 其他</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#莫队"><span class="nav-number">9.1.</span> <span class="nav-text">莫队</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -952,7 +963,7 @@
       var disqus_config = function () {
         this.page.url = 'http://yoursite.com/2018/04/15/ACM-never-regret/';
         this.page.identifier = '2018/04/15/ACM-never-regret/';
-        this.page.title = 'ACM 速成 Project';
+        this.page.title = 'ACM 速成计划';
       };
       function loadComments () {
         var d = document, s = d.createElement('script');
