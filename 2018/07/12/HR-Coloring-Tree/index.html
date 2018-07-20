@@ -96,28 +96,28 @@
 
 
   
-  <meta name="keywords" content="动态规划,HackerRank," />
+  <meta name="keywords" content="莫队," />
 
 
-<meta name="description" content="题目 https://www.hackerrank.com/challenges/prime-xor 题意 给 n 个介于 3500 和 4500 之间的数，求不同子集（可以包含重复元素）的总数，使得子集异或和是质数。">
-<meta name="keywords" content="动态规划,HackerRank">
+<meta name="description" content="题目 https://www.hackerrank.com/challenges/coloring-tree/problem 题意 询问子树结点中的出现过的颜色总数。">
+<meta name="keywords" content="莫队">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【题解】HackerRank - Prime XOR">
-<meta property="og:url" content="https://zerol.me/2017/07/02/Prime-XOR/index.html">
+<meta property="og:title" content="【题解】HackerRank-Coloring Tree">
+<meta property="og:url" content="https://zerol.me/2018/07/12/HR-Coloring-Tree/index.html">
 <meta property="og:site_name" content="Zerol&#39;s Notes">
-<meta property="og:description" content="题目 https://www.hackerrank.com/challenges/prime-xor 题意 给 n 个介于 3500 和 4500 之间的数，求不同子集（可以包含重复元素）的总数，使得子集异或和是质数。">
+<meta property="og:description" content="题目 https://www.hackerrank.com/challenges/coloring-tree/problem 题意 询问子树结点中的出现过的颜色总数。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-07-08T13:13:21.000Z">
+<meta property="og:updated_time" content="2018-07-12T13:56:52.232Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【题解】HackerRank - Prime XOR">
-<meta name="twitter:description" content="题目 https://www.hackerrank.com/challenges/prime-xor 题意 给 n 个介于 3500 和 4500 之间的数，求不同子集（可以包含重复元素）的总数，使得子集异或和是质数。">
+<meta name="twitter:title" content="【题解】HackerRank-Coloring Tree">
+<meta name="twitter:description" content="题目 https://www.hackerrank.com/challenges/coloring-tree/problem 题意 询问子树结点中的出现过的颜色总数。">
 
 
 
 
 
 
-  <link rel="canonical" href="https://zerol.me/2017/07/02/Prime-XOR/"/>
+  <link rel="canonical" href="https://zerol.me/2018/07/12/HR-Coloring-Tree/"/>
 
 
 
@@ -126,7 +126,7 @@
     sidebar: "",
   };
 </script>
-  <title>【题解】HackerRank - Prime XOR | Zerol's Notes</title>
+  <title>【题解】HackerRank-Coloring Tree | Zerol's Notes</title>
   
 
 
@@ -313,7 +313,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zerol.me/2017/07/02/Prime-XOR/">
+    <link itemprop="mainEntityOfPage" href="https://zerol.me/2018/07/12/HR-Coloring-Tree/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zerol">
@@ -330,7 +330,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">【题解】HackerRank - Prime XOR</h1>
+          <h1 class="post-title" itemprop="name headline">【题解】HackerRank-Coloring Tree</h1>
         
 
         <div class="post-meta">
@@ -342,7 +342,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-02T10:49:42+08:00">2017-07-02</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-12T21:46:26+08:00">2018-07-12</time>
             
 
             
@@ -378,9 +378,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/07/02/Prime-XOR/#comments" itemprop="discussionUrl">
+                <a href="/2018/07/12/HR-Coloring-Tree/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/07/02/Prime-XOR/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/07/12/HR-Coloring-Tree/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -409,18 +409,23 @@
 
       
         <h2 id="题目">题目</h2>
-<p>https://www.hackerrank.com/challenges/prime-xor</p>
+<p>https://www.hackerrank.com/challenges/coloring-tree/problem</p>
 <h2 id="题意">题意</h2>
-<p>给 n 个介于 3500 和 4500 之间的数，求不同子集（可以包含重复元素）的总数，使得子集异或和是质数。 <a id="more"></a></p>
+<p>询问子树结点中的出现过的颜色总数。</p>
+<a id="more"></a>
 <h2 id="题解">题解</h2>
-<p>异或和的范围在 0～8191 之间，虽然 n 很大，但是每一个数的范围很小，因此可以依次处理 3500～4500 之间的每一个数。</p>
-<p>dp[i][k] = dp[i - 1][k] * (a[i] / 2 + 1) + dp[i - 1][k ^ v[i]] * ((a[i] + 1) / 2)</p>
 <ul>
-<li>dp[i][k]表示前 i 个数异或和为 k 的方案数</li>
-<li>a[i]记录 n 个数中 i 出现的次数，(a[i] / 2 + 1) 表示取偶数个，((a[i] + 1) / 2) 表示取奇数个</li>
-<li>v[i]表示第 i 个数的值</li>
+<li>dfs 序，转化为数列上的区间询问问题。</li>
+<li>莫队无脑搞一搞。</li>
 </ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FOR(i, x, y) for (__typeof(y) i = (x), _##i = (y); i &lt; _##i; ++i)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FORD(i, x, y) for (__typeof(x) i = (x), _##i = (y); i &gt; _##i; --i)</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MOD = <span class="number">1E9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">8192</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">bool</span> p[maxn];</span><br><span class="line"><span class="keyword">int</span> t, a[<span class="number">5000</span>], T, n, u;</span><br><span class="line">LL dp[<span class="number">2</span>][maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; maxn; ++i)</span><br><span class="line">        <span class="keyword">if</span> (!p[i])</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + i; j &lt; maxn; j += i)</span><br><span class="line">                p[j] = <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;T);</span><br><span class="line">    <span class="keyword">while</span> (T--) &#123;</span><br><span class="line">        <span class="built_in">memset</span>(dp, <span class="number">0</span>, <span class="keyword">sizeof</span> dp); u = <span class="number">0</span>; dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="built_in">memset</span>(a, <span class="number">0</span>, <span class="keyword">sizeof</span> a);</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">        FOR(i, <span class="number">0</span>, n) &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;t);</span><br><span class="line">            ++a[t];</span><br><span class="line">        &#125;</span><br><span class="line">        FOR(i, <span class="number">3500</span>, <span class="number">4501</span>)</span><br><span class="line">            <span class="keyword">if</span> (a[i]) &#123;</span><br><span class="line">                u ^= <span class="number">1</span>;</span><br><span class="line">                FOR(j, <span class="number">0</span>, <span class="number">8192</span>)</span><br><span class="line">                    dp[u][j] = ((<span class="number">1</span> + a[i] / <span class="number">2</span>) * dp[u ^ <span class="number">1</span>][j] + (a[i] + <span class="number">1</span>) / <span class="number">2</span> * dp[u ^ <span class="number">1</span>][j ^ i]) % MOD;</span><br><span class="line">            &#125;</span><br><span class="line">        LL ans = <span class="number">0</span>;</span><br><span class="line">        FOR(i, <span class="number">2</span>, <span class="number">8192</span>)</span><br><span class="line">            <span class="keyword">if</span> (!p[i]) ans += dp[u][i];</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, ans % MOD);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>代码</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="另解">另解</h3>
+<ul>
+<li>询问 [l, r] 也就是考虑 [1, r] 中每个颜色最后的出现位置，有多少在 [l, r] 中。</li>
+<li>依次考虑数列中的每个数（当前考虑到第 k 个数），维护每个位置是否是该颜色最后一次出现，回答 r=k 的所有询问。</li>
+<li>复杂度：相比起用莫队的 <span class="math inline">\(O(n^{1.5})\)</span>，这种解法 <span class="math inline">\(O(n\log n)\)</span>。</li>
+</ul>
 
       
     </div>
@@ -441,9 +446,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/动态规划/" rel="tag"># 动态规划</a>
-          
-            <a href="/tags/HackerRank/" rel="tag"># HackerRank</a>
+            <a href="/tags/莫队/" rel="tag"># 莫队</a>
           
         </div>
       
@@ -456,8 +459,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/09/Algorithms-Game-Theory/" rel="next" title="算法 - 博弈问题">
-                <i class="fa fa-chevron-left"></i> 算法 - 博弈问题
+              <a href="/2018/07/06/HR-BST-maintenance/" rel="next" title="【题解】HackerRank-BST maintenance">
+                <i class="fa fa-chevron-left"></i> 【题解】HackerRank-BST maintenance
               </a>
             
           </div>
@@ -465,10 +468,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/02/Decibinary-Numbers/" rel="prev" title="【题解】HackerRank - Decibinary Numbers">
-                【题解】HackerRank - Decibinary Numbers <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -733,7 +732,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题意"><span class="nav-number">2.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">3.</span> <span class="nav-text">题解</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题意"><span class="nav-number">2.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">3.</span> <span class="nav-text">题解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#另解"><span class="nav-number">3.1.</span> <span class="nav-text">另解</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -894,9 +893,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'https://zerol.me/2017/07/02/Prime-XOR/';
-        this.page.identifier = '2017/07/02/Prime-XOR/';
-        this.page.title = '【题解】HackerRank - Prime XOR';
+        this.page.url = 'https://zerol.me/2018/07/12/HR-Coloring-Tree/';
+        this.page.identifier = '2018/07/12/HR-Coloring-Tree/';
+        this.page.title = '【题解】HackerRank-Coloring Tree';
       };
       function loadComments () {
         var d = document, s = d.createElement('script');
