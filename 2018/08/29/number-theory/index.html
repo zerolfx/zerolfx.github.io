@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="Zerol&#39;s Notes">
 <meta property="og:description" content="数论也是很重要的！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-29T12:00:10.365Z">
+<meta property="og:updated_time" content="2018-08-29T15:53:51.996Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法 - ACM 数论大礼包">
 <meta name="twitter:description" content="数论也是很重要的！">
@@ -469,7 +469,7 @@ g(1)S(n)&amp;=&amp;\sum_{i=1}^n (f*g)(i)-\sum_{i= 1}^{n}\sum_{d|i,d&lt;i}f(d)g(\
 <h2 id="min_25-筛">Min_25 筛</h2>
 <p>如果问 Min_25 筛能否完全替代洲阁筛，那么答案是——是的。</p>
 <p>求 <span class="math inline">\(\sum_{i=1}^n f(i)\)</span>，其中 <span class="math inline">\(f\)</span> 是一个积性函数，而且 <span class="math inline">\(f(p)\)</span> 是一个关于素数 <span class="math inline">\(p\)</span> 的低阶多项式。</p>
-<p>考虑像线性筛一样枚举 <span class="math inline">\(i\)</span> 的最小素因子：（公式中的 <span class="math inline">\(p\)</span> 为素数，<span class="math inline">\(p_i\)</span> 为第 <span class="math inline">\(i\)</span> 个素数） <span class="math display">\[
+<p>考虑像线性筛一样枚举 <span class="math inline">\(i\)</span> 的最小素因子：（公式中的 <span class="math inline">\(p\)</span> 为素数，<span class="math inline">\(p_i\)</span> 为第 <span class="math inline">\(i\)</span> 个素数，下标从 <span class="math inline">\(0\)</span> 开始） <span class="math display">\[
 \begin{eqnarray}
 \sum_{i=1}^n f(i)&amp;=&amp;1+
 \sum_{\substack{2 \le p \le n}}
@@ -483,15 +483,16 @@ f(x) \\
 \end{eqnarray}
 \]</span> 令 <span class="math display">\[
 g_{n,k}=\sum_{\substack{2\le x\le n \\ x \text{ 不含 } \le p_k \text{ 的素因子}}} f(x)
-\]</span> 那么最后要求的就是 <span class="math inline">\(g_{n,0}+1​\)</span>，根据之前的式子，有 <span class="math display">\[
+\]</span> 那么最后要求的就是 <span class="math inline">\(g_{n,-1}+1\)</span>，根据之前的式子，有 <span class="math display">\[
 \begin{eqnarray}
 g_{n,k}&amp;=&amp;\sum_{\substack{2\le x\le n \\ x \text{ 不含 } \le p_k \text{ 的素因子}}} f(x) \\
 &amp;=&amp;
 \sum_{\substack{p_k \lt p_i \le \sqrt n \\ e \ge 1,p_i^e \le n}}
-f(p^e) (1+\sum_{\substack{2\le x\le \lfloor \frac{n}{p_i^e} \rfloor \\x \text{ 不含 } \le p_i \text{ 的素因子} }})
-+ \sum_{p_k \lt p_i\le n} f(p_i) \\
+f(p_i^e) (1+\sum_{\substack{2\le x\le \lfloor \frac{n}{p_i^e} \rfloor \\x \text{ 不含 } \le p_i \text{ 的素因子} }})
++ \sum_{\sqrt n \lt p_i\le n} f(p_i) \\
 &amp;=&amp;
-\sum_{\substack{p_k \lt p_i \le \sqrt n \\ e \ge 1,p_i^e \le n}} f(p^e)(1+g_{\lfloor \frac{n}{p_i^e} \rfloor,i})
+\sum_{p_k \lt p_i \le \sqrt n}(-f(p_i)+
+\sum_{ e \ge 1,p_i^e \le n}f(p_i^e)(1+g_{\lfloor \frac{n}{p_i^e} \rfloor,i}))
 + \sum_{p_k \lt p_i\le n} f(p_i) \\
 \end{eqnarray}
 \]</span> 为了求出 <span class="math inline">\(\sum_{p_k \lt p_i\le n} f(p_i)\)</span>，需要处理出 <span class="math inline">\(f(p_i)\)</span> 的前缀和。由于 <span class="math inline">\(f(p_i)\)</span> 是关于 <span class="math inline">\(p_i\)</span> 的低阶多项式，那么 <span class="math inline">\(f(p_i)\)</span> 可以表示为完全积性函数 <span class="math inline">\(f&#39;(p_i)=p_i^\alpha\)</span> 的合成，可以对于每一项分别计算后合成。</p>
