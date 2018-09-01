@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="Zerol&#39;s Notes">
 <meta property="og:description" content="数论也是很重要的！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-29T16:00:56.244Z">
+<meta property="og:updated_time" content="2018-08-30T12:30:12.466Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法 - ACM 数论大礼包">
 <meta name="twitter:description" content="数论也是很重要的！">
@@ -495,7 +495,7 @@ f(p_i^e) (1+\sum_{\substack{2\le x\le \lfloor \frac{n}{p_i^e} \rfloor \\x \text{
 \sum_{ e \ge 1,p_i^e \le n}f(p_i^e)(1+g_{\lfloor \frac{n}{p_i^e} \rfloor,i}))
 + \sum_{p_k \lt p_i\le n} f(p_i) \\
 \end{eqnarray}
-\]</span> 为了求出 <span class="math inline">\(\sum_{p_k \lt p_i\le n} f(p_i)\)</span>，需要处理出 <span class="math inline">\(f(p_i)\)</span> 的前缀和。由于 <span class="math inline">\(f(p_i)\)</span> 是关于 <span class="math inline">\(p_i\)</span> 的低阶多项式，那么 <span class="math inline">\(f(p_i)\)</span> 可以表示为完全积性函数 <span class="math inline">\(f&#39;(p_i)=p_i^\alpha\)</span> 的合成，可以对于每一项分别计算后合成。</p>
+\]</span> 为了求出 <span class="math inline">\(\sum_{p_k \lt p_i\le n} f(p_i)\)</span>，需要处理出 <span class="math inline">\(f(p_i)\)</span> 的前缀和。由于 <span class="math inline">\(f(p_i)\)</span> 是关于 <span class="math inline">\(p_i\)</span> 的低阶多项式，那么 <span class="math inline">\(f(p_i)\)</span> 可以表示为完全积性函数 <span class="math inline">\(f&#39;(p_i)=p_i^\alpha\)</span> 的倍数的和，可以对于每一项分别计算后合成。</p>
 <p>令 <span class="math display">\[
 h_{n,k}=\sum_{\substack{i=2 \\ i \text{ 为素数或不含 } \le p_k \text{ 的素因子}}}^n f&#39;(i)
 \]</span></p>
@@ -562,6 +562,10 @@ h_{n,k}&amp;=&amp;h_{n,k-1}- \sum_{\substack{i=2 \\ i \text{ 为合数且最小�
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/01/HR-How-Many-Substrings/" rel="prev" title="【题解】HackerRank-How Many Substrings">
+                【题解】HackerRank-How Many Substrings <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -649,7 +653,7 @@ h_{n,k}&amp;=&amp;h_{n,k-1}- \sum_{\substack{i=2 \\ i \text{ 为合数且最小�
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">83</span>
+                    <span class="site-state-item-count">84</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
