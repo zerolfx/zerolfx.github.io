@@ -101,14 +101,14 @@
 
 <meta name="description" content="\(k\) 项线性递推求第 \(n\) 项的 \(O(k^2\log n)\) 的算法。 已知线性递推数列的前若干项，求递推式。 结合以上两者可以由线性递推数列的起始若干项得到任意一项。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="算法 - 齐次线性递推求解和优化">
+<meta property="og:title" content="算法 - 齐次线性递推求解和优化及 BM 算法">
 <meta property="og:url" content="https://zerol.me/2018/02/06/linearly-recurrent-sequence/index.html">
 <meta property="og:site_name" content="Zerol&#39;s Notes">
 <meta property="og:description" content="\(k\) 项线性递推求第 \(n\) 项的 \(O(k^2\log n)\) 的算法。 已知线性递推数列的前若干项，求递推式。 结合以上两者可以由线性递推数列的起始若干项得到任意一项。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-13T13:48:45.152Z">
+<meta property="og:updated_time" content="2018-09-16T01:15:13.938Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="算法 - 齐次线性递推求解和优化">
+<meta name="twitter:title" content="算法 - 齐次线性递推求解和优化及 BM 算法">
 <meta name="twitter:description" content="\(k\) 项线性递推求第 \(n\) 项的 \(O(k^2\log n)\) 的算法。 已知线性递推数列的前若干项，求递推式。 结合以上两者可以由线性递推数列的起始若干项得到任意一项。">
 
 
@@ -125,7 +125,7 @@
     sidebar: "",
   };
 </script>
-  <title>算法 - 齐次线性递推求解和优化 | Zerol's Notes</title>
+  <title>算法 - 齐次线性递推求解和优化及 BM 算法 | Zerol's Notes</title>
   
 
 
@@ -329,7 +329,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">算法 - 齐次线性递推求解和优化</h1>
+          <h1 class="post-title" itemprop="name headline">算法 - 齐次线性递推求解和优化及 BM 算法</h1>
         
 
         <div class="post-meta">
@@ -463,7 +463,7 @@
 <p>复杂度 <span class="math inline">\(O(k^2\log n)\)</span>，用 FFT 或 NTT+CRT 可以优化到 <span class="math inline">\(O(k\log k \log n)\)</span>。</p>
 <h4 id="补充">补充</h4>
 <p>代码量差不多，但效率更差的矩阵快速幂的方法就没有用了吗？如果是双递推（<span class="math inline">\(\{a_n\}\)</span> 的递推式中有 <span class="math inline">\(\{b_n\}\)</span>， <span class="math inline">\(\{b_n\}\)</span> 的递推式中有 <span class="math inline">\(\{a_n\}\)</span> ）之类的，可能还是要借助矩阵来做。</p>
-<h3 id="berlekamp-massey-算法求递推式">Berlekamp-Massey 算法求递推式</h3>
+<h3 id="berlekamp-massey-bm-算法求递推式">Berlekamp-Massey (BM) 算法求递推式</h3>
 <p>已知 <span class="math inline">\(x_0,x_1,\dots,x_{m}\)</span>，求递推式 <span class="math inline">\(x_n=a_1x_{n-1}+a_2x_{n-2}+\dots+a_kx_{n-k}\)</span> 在满足数列的同时，<span class="math inline">\(k\)</span> 尽可能小。</p>
 <p>总体思路就是依次考虑每一项，如果发现与当前递推式矛盾则进行修正，同时保证递推项数 <span class="math inline">\(k\)</span> 尽可能小。</p>
 <p>记 <span class="math inline">\(f(n)=-\lambda^n+a_1\lambda^{n-1}+a_2\lambda^{n-2}+\dots+a_k\lambda^{n-k}(n\ge k)\)</span> （含义与上同），目标就是使 <span class="math inline">\(\forall n\in[k,m],f(n) =0\)</span> 。</p>
@@ -601,7 +601,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">84</span>
+                    <span class="site-state-item-count">85</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -787,7 +787,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵快速幂"><span class="nav-number">1.</span> <span class="nav-text">矩阵快速幂</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特征多项式"><span class="nav-number">2.</span> <span class="nav-text">特征多项式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#这部分可略过"><span class="nav-number">2.1.</span> <span class="nav-text">这部分可略过</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正文"><span class="nav-number">2.2.</span> <span class="nav-text">正文</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#补充"><span class="nav-number">2.3.</span> <span class="nav-text">补充</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#berlekamp-massey-算法求递推式"><span class="nav-number">3.</span> <span class="nav-text">Berlekamp-Massey 算法求递推式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写在最后"><span class="nav-number">4.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵快速幂"><span class="nav-number">1.</span> <span class="nav-text">矩阵快速幂</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特征多项式"><span class="nav-number">2.</span> <span class="nav-text">特征多项式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#这部分可略过"><span class="nav-number">2.1.</span> <span class="nav-text">这部分可略过</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正文"><span class="nav-number">2.2.</span> <span class="nav-text">正文</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#补充"><span class="nav-number">2.3.</span> <span class="nav-text">补充</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#berlekamp-massey-bm-算法求递推式"><span class="nav-number">3.</span> <span class="nav-text">Berlekamp-Massey (BM) 算法求递推式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写在最后"><span class="nav-number">4.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
             
 
           </div>
@@ -950,7 +950,7 @@
       var disqus_config = function () {
         this.page.url = 'https://zerol.me/2018/02/06/linearly-recurrent-sequence/';
         this.page.identifier = '2018/02/06/linearly-recurrent-sequence/';
-        this.page.title = '算法 - 齐次线性递推求解和优化';
+        this.page.title = '算法 - 齐次线性递推求解和优化及 BM 算法';
       };
       function loadComments () {
         var d = document, s = d.createElement('script');

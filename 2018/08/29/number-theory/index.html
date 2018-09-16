@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="Zerol&#39;s Notes">
 <meta property="og:description" content="数论也是很重要的！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-30T12:30:12.466Z">
+<meta property="og:updated_time" content="2018-09-10T00:21:23.857Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法 - ACM 数论大礼包">
 <meta name="twitter:description" content="数论也是很重要的！">
@@ -518,6 +518,23 @@ h_{n,k}&amp;=&amp;h_{n,k-1}- \sum_{\substack{i=2 \\ i \text{ 为合数且最小�
 <li>计算 <span class="math inline">\(g\)</span> 的过程中不记忆化（或者说不计算所有可能用到的值）效果会更好。</li>
 <li>计算 <span class="math inline">\(h\)</span> 的复杂度 <span class="math inline">\(O(\frac{n^\frac{3}{4}}{\log n})\)</span>，<span class="math inline">\(g\)</span> 的复杂度 <span class="math inline">\(O(玄学)\)</span> ，但是在正常的数据范围内（如 <span class="math inline">\(10^{13}\)</span> 内），还是优于 <span class="math inline">\(h\)</span> 的。更加详细的复杂度证明还是参考论文吧。</li>
 </ul>
+<h2 id="一些积性函数求前缀和的例子">一些积性函数求前缀和的例子</h2>
+<h3 id="snsum_i1n-mui"><span class="math inline">\(S(n)=\sum_{i=1}^n \mu(i)\)</span></h3>
+<p>使用杜教筛，配的积性函数是 <span class="math inline">\(1 *\mu =\epsilon\)</span>。那么由 <span class="math inline">\([n=1]=\sum_{d|n} \mu(d)\)</span>，得到 <span class="math inline">\(\mu(n)=[n=1]-\sum_{d|n,d&lt;n}\mu(d)\)</span>。 <span class="math display">\[
+\begin{eqnarray}
+S(n) &amp;=&amp; \sum_{i=1}^n \mu(i) \\
+&amp;=&amp; 1 - \sum_{i=1}^n \sum_{d|i,d&lt;i} \mu(d) \\
+&amp;=&amp; 1 - \sum_{t=2}^n S(\lfloor \frac n t \rfloor)
+\end{eqnarray}
+\]</span></p>
+<h3 id="snsum_i1n-mu2i"><span class="math inline">\(S(n)=\sum_{i=1}^n \mu^2(i)\)</span></h3>
+<p>利用恒等式 <span class="math inline">\(\mu^2(n)=\sum_{d^2|n} \mu(d)\)</span>（证明只需对 <span class="math inline">\(n\)</span> 有无平方因子分别验证），对式子进行变形计算。 <span class="math display">\[
+\begin{eqnarray}
+S(n)&amp;=&amp;\sum_{i=1}^n \mu^2(i) \\
+&amp;=&amp; \sum_{i=1}^n \sum_{d^2|n} \mu(d) \\
+&amp;=&amp; \sum_{d=1}^\sqrt n \lfloor \frac n {d^2} \rfloor \mu(d)
+\end{eqnarray}
+\]</span></p>
 <h2 id="参考资料">参考资料</h2>
 <ul>
 <li><a href="https://blog.csdn.net/skywalkert/article/details/50500009" target="_blank" rel="noopener">浅谈一类积性函数的前缀和</a></li>
@@ -653,7 +670,7 @@ h_{n,k}&amp;=&amp;h_{n,k-1}- \sum_{\substack{i=2 \\ i \text{ 为合数且最小�
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">84</span>
+                    <span class="site-state-item-count">85</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -839,7 +856,7 @@ h_{n,k}&amp;=&amp;h_{n,k-1}- \sum_{\substack{i=2 \\ i \text{ 为合数且最小�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性筛"><span class="nav-number">1.</span> <span class="nav-text">线性筛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#狄利克雷卷积"><span class="nav-number">2.</span> <span class="nav-text">狄利克雷卷积</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些积性函数"><span class="nav-number">3.</span> <span class="nav-text">一些积性函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#莫比乌斯反演"><span class="nav-number">4.</span> <span class="nav-text">莫比乌斯反演</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#形式1"><span class="nav-number">4.1.</span> <span class="nav-text">形式1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#形式2"><span class="nav-number">4.2.</span> <span class="nav-text">形式2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#杜教筛"><span class="nav-number">5.</span> <span class="nav-text">杜教筛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#min_25-筛"><span class="nav-number">6.</span> <span class="nav-text">Min_25 筛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">7.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性筛"><span class="nav-number">1.</span> <span class="nav-text">线性筛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#狄利克雷卷积"><span class="nav-number">2.</span> <span class="nav-text">狄利克雷卷积</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些积性函数"><span class="nav-number">3.</span> <span class="nav-text">一些积性函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#莫比乌斯反演"><span class="nav-number">4.</span> <span class="nav-text">莫比乌斯反演</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#形式1"><span class="nav-number">4.1.</span> <span class="nav-text">形式1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#形式2"><span class="nav-number">4.2.</span> <span class="nav-text">形式2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#杜教筛"><span class="nav-number">5.</span> <span class="nav-text">杜教筛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#min_25-筛"><span class="nav-number">6.</span> <span class="nav-text">Min_25 筛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些积性函数求前缀和的例子"><span class="nav-number">7.</span> <span class="nav-text">一些积性函数求前缀和的例子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#snsum_i1n-mui"><span class="nav-number">7.1.</span> <span class="nav-text">\(S(n)=\sum_{i=1}^n \mu(i)\)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#snsum_i1n-mu2i"><span class="nav-number">7.2.</span> <span class="nav-text">\(S(n)=\sum_{i=1}^n \mu^2(i)\)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">8.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
 
           </div>

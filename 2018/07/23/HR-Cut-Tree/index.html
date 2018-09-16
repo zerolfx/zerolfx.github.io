@@ -107,7 +107,7 @@
 <meta property="og:site_name" content="Zerol&#39;s Notes">
 <meta property="og:description" content="题目 https://www.hackerrank.com/challenges/cuttree/problem 题意 求树 T 的子树（联通块） T’ 的个数 ，满足 T 与 T - T’ 之间至多有 K 条边相连。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-17T13:14:01.193Z">
+<meta property="og:updated_time" content="2018-09-04T09:56:28.227Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【题解】HackerRank-Cut Tree">
 <meta name="twitter:description" content="题目 https://www.hackerrank.com/challenges/cuttree/problem 题意 求树 T 的子树（联通块） T’ 的个数 ，满足 T 与 T - T’ 之间至多有 K 条边相连。">
@@ -417,6 +417,7 @@
 <ul>
 <li>树形 dp</li>
 <li><span class="math inline">\(f[u][k]\)</span> 表示结点 <span class="math inline">\(u\)</span> 为根的子树 T 中以 <span class="math inline">\(u\)</span> 为根的 T’ 个数，满足 T 与 T - T’ 之间至多有 k 条边相连。</li>
+<li>把一个儿子 <span class="math inline">\(v\)</span> 纳入考虑的时候，选择 <span class="math inline">\(v\)</span> 的话就做一次背包，不选的话会增加一条相邻的边。</li>
 <li>最后枚举 T’ 的 LCA，如果不是根的话要额外多一条连向 LCA 的父亲。</li>
 </ul>
 <p>代码</p>
@@ -556,7 +557,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">84</span>
+                    <span class="site-state-item-count">85</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
