@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=6.0.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=6.0.4">
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.0.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+  <meta name="keywords" content="???" />
+
+
+<meta name="description" content="题目 https://www.hackerrank.com/challenges/pseudo-isomorphic-substrings/problem 题意 对于一个字符串的每个前缀，求不同构的子串个数。 两个串同构定义为可以通过字符的双射变成相同的串。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【题解】HackerRank-Pseudo-Isomorphic Substrings">
+<meta property="og:url" content="https://zerol.me/2018/09/17/HR-Pseudo-Isomorphic-Substrings/index.html">
+<meta property="og:site_name" content="Zerol&#39;s Notes">
+<meta property="og:description" content="题目 https://www.hackerrank.com/challenges/pseudo-isomorphic-substrings/problem 题意 对于一个字符串的每个前缀，求不同构的子串个数。 两个串同构定义为可以通过字符的双射变成相同的串。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-17T10:06:35.866Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【题解】HackerRank-Pseudo-Isomorphic Substrings">
+<meta name="twitter:description" content="题目 https://www.hackerrank.com/challenges/pseudo-isomorphic-substrings/problem 题意 对于一个字符串的每个前缀，求不同构的子串个数。 两个串同构定义为可以通过字符的双射变成相同的串。">
+
+
+
+
+
+
+  <link rel="canonical" href="https://zerol.me/2018/09/17/HR-Pseudo-Isomorphic-Substrings/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+  <title>【题解】HackerRank-Pseudo-Isomorphic Substrings | Zerol's Notes</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-100757043-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-100757043-1');
+</script>
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zerol's Notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zerol.me/2018/09/17/HR-Pseudo-Isomorphic-Substrings/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zerol">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/alpha.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zerol's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【题解】HackerRank-Pseudo-Isomorphic Substrings</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-17T00:28:41+08:00">2018-09-17</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ACM/" itemprop="url" rel="index"><span itemprop="name">ACM</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/09/17/HR-Pseudo-Isomorphic-Substrings/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/09/17/HR-Pseudo-Isomorphic-Substrings/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="题目">题目</h2>
+<p>https://www.hackerrank.com/challenges/pseudo-isomorphic-substrings/problem</p>
+<h2 id="题意">题意</h2>
+<p>对于一个字符串的每个前缀，求不同构的子串个数。</p>
+<p>两个串同构定义为可以通过字符的双射变成相同的串。</p>
+<a id="more"></a>
+<h2 id="题解">题解</h2>
+<h3 id="解法-1">解法 1</h3>
+<ul>
+<li>将原串翻转，改为求解每个后缀。</li>
+<li>考虑每个串的最小表示法（也就是用与之同构的字典序最小的串表示），如果我能快速比较两个串最小表示的字典序大小，以及求出两个串最小表示的 LCP，那么我可以往 SET 里依次插入每一个后缀，维护后缀长度和减最小表示字典序相邻的串的最小表示的 LCP 之和，那么就成功维护了答案。</li>
+<li>对于每一种字母建后缀数组（把所有其他字符当成一样的），对于一个串，考虑每一个字母的字典序，小的应该映射成 a，次小的为 b，以此类推。可以用排序求出每个后缀到其最小表示的映射关系。（这个映射关系也可以扫一遍维护。）</li>
+<li>两个串最小表示的 LCP 就是对映射后为 a-z 的字母串分别求 LCP 然后取 min。而有了 LCP 和映射关系，也能方便比较两个串的字典序（只需要比较最小表示第一个不同的字符映射后的字符）。</li>
+<li>复杂度 <span class="math inline">\(\mathrm{O}(26n\log (26n)+26n\log n)\)</span>，需要一些常数优化技巧。</li>
+</ul>
+<p>代码（其实我还有一份后缀自动机的代码，但是常数和空间都大了那么一点，没法 AC）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> LL = <span class="keyword">long</span> <span class="keyword">long</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FOR(i, x, y) for (decay<span class="meta-string">&lt;decltype(y)&gt;::type i = (x), _##i = (y); i &lt; _##i; ++i)</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FORD(i, x, y) for (decay<span class="meta-string">&lt;decltype(x)&gt;::type i = (x), _##i = (y); i &gt; _##i; --i)</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> zerol</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> dbg(args...) do &#123; cout <span class="meta-string">&lt;&lt; "\033[34;1m" &lt;&lt; #args &lt;&lt; " -&gt; "; err(args); &#125; while (0)</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> dbg(...)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">err</span><span class="params">()</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"\033[39;0m"</span> &lt;&lt; <span class="built_in">endl</span>; &#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">template</span>&lt;<span class="keyword">typename</span>...&gt; <span class="class"><span class="keyword">class</span> <span class="title">T</span>, <span class="title">typename</span> <span class="title">t</span>, <span class="title">typename</span>... <span class="title">Args</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">void</span> <span class="title">err</span>(<span class="title">T</span>&lt;t&gt; <span class="title">a</span>, <span class="title">Args</span>... <span class="title">args</span>) &#123;</span> <span class="keyword">for</span> (<span class="keyword">auto</span> x: a) <span class="built_in">cout</span> &lt;&lt; x &lt;&lt; <span class="string">' '</span>; err(args...); &#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... Args&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">err</span><span class="params">(T a, Args... args)</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="string">' '</span>; err(args...); &#125;</span><br><span class="line"><span class="comment">// ----------------------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// len = str.len + 1, rk [0..len-1] -&gt; [1..len], sa/ht [1..len]</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">size_t</span> size&gt;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SuffixArray</span> &#123;</span></span><br><span class="line">    <span class="keyword">bool</span> type[size &lt;&lt; <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">int</span> bucket[size], bucket1[size];</span><br><span class="line">    <span class="keyword">int</span> sa[size], rk[size], ht[size];</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">isLMS</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> i, <span class="keyword">const</span> <span class="keyword">bool</span> *type)</span> </span>&#123; <span class="keyword">return</span> i &gt; <span class="number">0</span> &amp;&amp; type[i] &amp;&amp; !type[i - <span class="number">1</span>]; &#125;</span><br><span class="line">    <span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class">    <span class="title">inline</span> <span class="title">void</span> <span class="title">inducedSort</span>(<span class="title">T</span> <span class="title">s</span>, <span class="title">int</span> *<span class="title">sa</span>, <span class="title">const</span> <span class="title">int</span> <span class="title">len</span>, <span class="title">const</span> <span class="title">int</span> <span class="title">sigma</span>, <span class="title">const</span> <span class="title">int</span> <span class="title">bucketSize</span>, <span class="title">bool</span> *<span class="title">type</span>, <span class="title">int</span> *<span class="title">bucket</span>, <span class="title">int</span> *<span class="title">cntbuf</span>, <span class="title">int</span> *<span class="title">p</span>) &#123;</span></span><br><span class="line">        <span class="built_in">memset</span>(bucket, <span class="number">0</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>) * sigma);</span><br><span class="line">        <span class="built_in">memset</span>(sa, <span class="number">-1</span>, <span class="keyword">sizeof</span>(<span class="keyword">int</span>) * len);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) bucket[s[i]]++;</span><br><span class="line">        cntbuf[<span class="number">0</span>] = bucket[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; sigma; i++) cntbuf[i] = cntbuf[i - <span class="number">1</span>] + bucket[i];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = bucketSize - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) sa[--cntbuf[s[p[i]]]] = p[i];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; sigma; i++) cntbuf[i] = cntbuf[i - <span class="number">1</span>] + bucket[i - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) <span class="keyword">if</span> (sa[i] &gt; <span class="number">0</span> &amp;&amp; !type[sa[i] - <span class="number">1</span>]) sa[cntbuf[s[sa[i] - <span class="number">1</span>]]++] = sa[i] - <span class="number">1</span>;</span><br><span class="line">        cntbuf[<span class="number">0</span>] = bucket[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; sigma; i++) cntbuf[i] = cntbuf[i - <span class="number">1</span>] + bucket[i];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = len - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) <span class="keyword">if</span> (sa[i] &gt; <span class="number">0</span> &amp;&amp; type[sa[i] - <span class="number">1</span>]) sa[--cntbuf[s[sa[i] - <span class="number">1</span>]]] = sa[i] - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">sais</span><span class="params">(T s, <span class="keyword">int</span> *sa, <span class="keyword">int</span> len, <span class="keyword">bool</span> *type, <span class="keyword">int</span> *bucket, <span class="keyword">int</span> *bucket1, <span class="keyword">int</span> sigma)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i, j, bucketSize = <span class="number">0</span>, cnt = <span class="number">0</span>, p = <span class="number">-1</span>, x, *cntbuf = bucket + sigma;</span><br><span class="line">        type[len - <span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (i = len - <span class="number">2</span>; i &gt;= <span class="number">0</span>; i--) type[i] = s[i] &lt; s[i + <span class="number">1</span>] || (s[i] == s[i + <span class="number">1</span>] &amp;&amp; type[i + <span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt; len; i++) <span class="keyword">if</span> (type[i] &amp;&amp; !type[i - <span class="number">1</span>]) bucket1[bucketSize++] = i;</span><br><span class="line">        inducedSort(s, sa, len, sigma, bucketSize, type, bucket, cntbuf, bucket1);</span><br><span class="line">        <span class="keyword">for</span> (i = bucketSize = <span class="number">0</span>; i &lt; len; i++) <span class="keyword">if</span> (isLMS(sa[i], type)) sa[bucketSize++] = sa[i];</span><br><span class="line">        <span class="keyword">for</span> (i = bucketSize; i &lt; len; i++) sa[i] = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; bucketSize; i++) &#123;</span><br><span class="line">            x = sa[i];</span><br><span class="line">            <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; len; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (p == <span class="number">-1</span> || s[x + j] != s[p + j] || type[x + j] != type[p + j]) &#123; cnt++, p = x; <span class="keyword">break</span>; &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (j &gt; <span class="number">0</span> &amp;&amp; (isLMS(x + j, type) || isLMS(p + j, type))) <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            x = (~x &amp; <span class="number">1</span> ? x &gt;&gt; <span class="number">1</span> : x - <span class="number">1</span> &gt;&gt; <span class="number">1</span>), sa[bucketSize + x] = cnt - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (i = j = len - <span class="number">1</span>; i &gt;= bucketSize; i--) <span class="keyword">if</span> (sa[i] &gt;= <span class="number">0</span>) sa[j--] = sa[i];</span><br><span class="line">        <span class="keyword">int</span> *s1 = sa + len - bucketSize, *bucket2 = bucket1 + bucketSize;</span><br><span class="line">        <span class="keyword">if</span> (cnt &lt; bucketSize) sais(s1, sa, bucketSize, type + len, bucket, bucket1 + bucketSize, cnt);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; bucketSize; i++) sa[s1[i]] = i;</span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; bucketSize; i++) bucket2[i] = bucket1[sa[i]];</span><br><span class="line">        inducedSort(s, sa, len, sigma, bucketSize, type, bucket, cntbuf, bucket2);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">getHeight</span><span class="params">(T s, <span class="keyword">const</span> <span class="keyword">int</span> len, <span class="keyword">const</span> <span class="keyword">int</span> *sa)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, k = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (rk[i] == <span class="number">0</span>) k = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (k &gt; <span class="number">0</span>) k--;</span><br><span class="line">                <span class="keyword">int</span> j = sa[rk[i] - <span class="number">1</span>];</span><br><span class="line">                <span class="keyword">while</span> (i + k &lt; len &amp;&amp; j + k &lt; len &amp;&amp; s[i + k] == s[j + k]) k++;</span><br><span class="line">            &#125;</span><br><span class="line">            ht[rk[i]] = k;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class">    <span class="title">inline</span> <span class="title">void</span> <span class="title">init</span>(<span class="title">T</span> <span class="title">s</span>, <span class="title">int</span> <span class="title">len</span>, <span class="title">int</span> <span class="title">sigma</span>) &#123;</span></span><br><span class="line">        sais(s, sa, ++len, type, bucket, bucket1, sigma);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len; i++) rk[sa[i]] = i;</span><br><span class="line">        getHeight(s, len, sa);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1E5</span> + <span class="number">100</span>, M = <span class="number">26E5</span> + <span class="number">100</span>;</span><br><span class="line"><span class="keyword">int</span> a[M];</span><br><span class="line"><span class="keyword">char</span> s[N];</span><br><span class="line">SuffixArray&lt;M&gt; sa;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">P</span> &#123;</span> <span class="keyword">int</span> p, c; &#125;;</span><br><span class="line">P rp[N][<span class="number">26</span>];</span><br><span class="line"><span class="keyword">int</span> mp[N][<span class="number">26</span>];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">RMQ</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> f[<span class="number">22</span>][M];</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">highbit</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; <span class="keyword">return</span> <span class="number">31</span> - __builtin_clz(x); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span>* v, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        FOR (i, <span class="number">0</span>, n) f[<span class="number">0</span>][i] = v[i];</span><br><span class="line">        FOR (x, <span class="number">1</span>, highbit(n) + <span class="number">1</span>)</span><br><span class="line">            FOR (i, <span class="number">0</span>, n - (<span class="number">1</span> &lt;&lt; x) + <span class="number">1</span>)</span><br><span class="line">                f[x][i] = min(f[x - <span class="number">1</span>][i], f[x - <span class="number">1</span>][i + (<span class="number">1</span> &lt;&lt; (x - <span class="number">1</span>))]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">get_min</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (l &gt; r) swap(l, r);</span><br><span class="line">        <span class="keyword">int</span> t = highbit(r - ++l + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> min(f[t][l], f[t][r - (<span class="number">1</span> &lt;&lt; t) + <span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; rmq;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lcp</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ret = N;</span><br><span class="line">    FOR (i, <span class="number">0</span>, <span class="number">26</span>) ret = min(ret, rmq.get_min(rp[a][i].p, rp[b][i].p));</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> ll;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> lcp)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (a + lcp &gt;= ll || b + lcp &gt;= ll) <span class="keyword">return</span> a &gt; b;</span><br><span class="line">    <span class="keyword">return</span> mp[a][s[a + lcp] - <span class="string">'a'</span>] &lt; mp[b][s[b + lcp] - <span class="string">'a'</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">CMP</span> &#123;</span> <span class="function"><span class="keyword">bool</span> <span class="title">operator</span><span class="params">()</span> <span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>&amp; a, <span class="keyword">const</span> <span class="keyword">int</span>&amp; b)</span></span>&#123; <span class="keyword">return</span> cmp(a, b, lcp(a, b)); &#125;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> zerol</span></span><br><span class="line">    freopen(<span class="string">"in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>, s);</span><br><span class="line">    ll = <span class="built_in">strlen</span>(s);</span><br><span class="line">    reverse(s, s + ll);</span><br><span class="line">    <span class="keyword">int</span> pp = <span class="number">0</span>;</span><br><span class="line">    FOR (c, <span class="number">0</span>, <span class="number">26</span>) &#123;</span><br><span class="line">        FOR (i, <span class="number">0</span>, ll) &#123;</span><br><span class="line">            <span class="keyword">int</span> cc = s[i] - <span class="string">'a'</span>;</span><br><span class="line">            rp[i][c] = &#123;pp, c&#125;;</span><br><span class="line">            a[pp++] = cc == c ? <span class="number">1</span> : <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        a[pp++] = <span class="number">3</span> + c;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    sa.init(a, pp, <span class="number">30</span>);</span><br><span class="line">    FOR (i, <span class="number">0</span>, ll) FOR (c, <span class="number">0</span>, <span class="number">26</span>) rp[i][c].p = sa.rk[rp[i][c].p];</span><br><span class="line">    rmq.init(sa.ht, pp + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    FOR (i, <span class="number">0</span>, ll) &#123;</span><br><span class="line">        sort(rp[i], rp[i] + <span class="number">26</span>, [](<span class="keyword">const</span> P&amp; a, <span class="keyword">const</span> P&amp; b) &#123;</span><br><span class="line">            <span class="keyword">return</span> a.p &lt; b.p;</span><br><span class="line">        &#125;);</span><br><span class="line">        FOR (j, <span class="number">0</span>, <span class="number">26</span>) mp[i][rp[i][j].c] = j;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">set</span>&lt;<span class="keyword">int</span>, CMP&gt; S;</span><br><span class="line">    LL ans = <span class="number">0</span>;</span><br><span class="line">    FORD (i, ll - <span class="number">1</span>, <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="keyword">auto</span> it = S.insert(i).first;</span><br><span class="line">        ans += ll - i;</span><br><span class="line">        <span class="keyword">if</span> (it == S.begin()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (it != --S.end())</span><br><span class="line">                ans -= lcp(i, *++it);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (it == --S.end()) &#123;</span><br><span class="line">            ans -= lcp(i, *--it);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">auto</span> l = it, r = it;</span><br><span class="line">            --l; ++r;</span><br><span class="line">            ans += lcp(*l, *r);</span><br><span class="line">            ans -= lcp(i, *l) + lcp(i, *r);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, ans);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="解法-2">解法 2</h3>
+<ul>
+<li>该解法复杂度过高，肯定无法 AC。</li>
+<li>对于一个串，把它每一个字母替换成该位置和该字母上一次出现的位置之差，如果一个字母是第一次出现，那么就标记为 -1。这样就可以比较两个字符串是否同构了。</li>
+<li>和上一个解法类似，需要比较后缀字典序和求后缀 LCP。</li>
+<li>用哈希求 LCP。可以在 <span class="math inline">\(\mathrm{O}(26)\)</span> 的时间内求出一个串的哈希值。</li>
+<li>总复杂度 <span class="math inline">\(O(26n\log^2n)\)</span>。</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/13/HR-Find-Strings/" rel="next" title="【题解】HackerRank-Find Strings">
+                <i class="fa fa-chevron-left"></i> 【题解】HackerRank-Find Strings
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/18/HR-Letter-Islands/" rel="prev" title="【题解】HackerRank-Letter Islands">
+                【题解】HackerRank-Letter Islands <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/alpha.png"
+                alt="zerol" />
+            
+              <p class="site-author-name" itemprop="name">zerol</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">87</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">38</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/zerolfx/template" target="_blank" title="ACM 模板库"><i class="fa fa-fw fa-book"></i>ACM 模板库</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://acm.ecnu.edu.cn/wiki/index.php?title=ECNU_Foreigners_(2018)" target="_blank" title="训练记录"><i class="fa fa-fw fa-tasks"></i>训练记录</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.jxtxzzw.com" title="jxtxzzw" target="_blank">jxtxzzw</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://godweiyang.com/" title="godweiyang" target="_blank">godweiyang</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://cubercsl.cn/" title="cubercsl" target="_blank">cubercsl</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/xiejiadong/" title="xiejiadong" target="_blank">xiejiadong</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题意"><span class="nav-number">2.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">3.</span> <span class="nav-text">题解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解法-1"><span class="nav-number">3.1.</span> <span class="nav-text">解法 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解法-2"><span class="nav-number">3.2.</span> <span class="nav-text">解法 2</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zerol</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.4"></script>
+
+
+
+  
+
+  
+    <script id="dsq-count-scr" src="https://zerolblog.disqus.com/count.js" async></script>
+  
+
+  
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.url = 'https://zerol.me/2018/09/17/HR-Pseudo-Isomorphic-Substrings/';
+        this.page.identifier = '2018/09/17/HR-Pseudo-Isomorphic-Substrings/';
+        this.page.title = '【题解】HackerRank-Pseudo-Isomorphic Substrings';
+      };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://zerolblog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  w
+</body>
+</html>
