@@ -107,7 +107,8 @@
 <meta property="og:description" content="写这篇文章的用意主要是记录一下我曾经学会过 SAM。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://zerol.me/2018/02/12/SAM/sam.png">
-<meta property="og:updated_time" content="2018-04-01T13:29:52.325Z">
+<meta property="og:image" content="https://zerol.me/2018/02/12/SAM/pam.jpg">
+<meta property="og:updated_time" content="2018-09-18T16:12:56.630Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法 - 后缀自动机 &amp; 回文自动机">
 <meta name="twitter:description" content="写这篇文章的用意主要是记录一下我曾经学会过 SAM。">
@@ -460,12 +461,14 @@
 <li>为了某个状态具体的字符串内容，可以记录 <span class="math inline">\(EndPos\)</span> 中的某一个元素。</li>
 </ul>
 <h2 id="回文自动机">回文自动机</h2>
-<p>随便找一些网上的资料看看就会了。</p>
+<p>相比后缀自动机，还是简单不少的。</p>
+<p><img src="/2018/02/12/SAM/pam.jpg"></p>
 <p>与后缀自动机的一些不同：</p>
 <ul>
 <li>一个结点只表示一个回文串，这个特性会带来极大的方便。</li>
 <li>对于 <span class="math inline">\(tranc\)</span> 边来说，奇数和偶数都是树的形式。</li>
 <li>多了一个 <span class="math inline">\(num\)</span> 表示状态对应的回文串的后缀中回文串的个数（以 <span class="math inline">\(fa\)</span> 为边的树的深度）。</li>
+<li><span class="math inline">\(tranc\)</span> 边很可能比 <span class="math inline">\(fa\)</span> 边有用。</li>
 </ul>
 <p>与后缀自动机的一些相同：</p>
 <ul>
@@ -599,7 +602,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">87</span>
+                    <span class="site-state-item-count">88</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
