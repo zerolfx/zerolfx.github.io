@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="Zerol&#39;s Notes">
 <meta property="og:description" content="数论也是很重要的！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-10T00:21:23.857Z">
+<meta property="og:updated_time" content="2018-10-08T15:37:56.067Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法 - ACM 数论大礼包">
 <meta name="twitter:description" content="数论也是很重要的！">
@@ -440,11 +440,11 @@ g=f*1 \\
 \]</span></p>
 <h3 id="形式2">形式2</h3>
 <p><span class="math display">\[
-f(n)=\sum_{n|d}g(d) \Leftrightarrow g(n)=\sum_{n|d} \mu(d) f(\frac{d}{n})
+f(n)=\sum_{n|d}g(d) \Leftrightarrow g(n)=\sum_{n|d} \mu(\frac{d}{n}) f(d)
 \]</span></p>
 <p>简单证明 <span class="math display">\[
 \begin{eqnarray}
-\sum_{n|d} \mu(d) f(\frac{d}{n}) &amp;=&amp; \sum_{n|d} \mu(\frac{d}{n}) f(d) \\
+\sum_{n|d} \mu(\frac{d}{n}) f(d) 
 &amp;=&amp; \sum_{n|d}\mu(\frac{d}{n}) \sum_{d|t}g(t) \\
 &amp;=&amp; \sum_{n|t}g(t) \sum_{x|\frac{t}{n}}\mu(x) \\
 &amp;=&amp; \sum_{n|t}g(t)[n=t] \\
@@ -535,6 +535,23 @@ S(n)&amp;=&amp;\sum_{i=1}^n \mu^2(i) \\
 &amp;=&amp; \sum_{d=1}^\sqrt n \lfloor \frac n {d^2} \rfloor \mu(d)
 \end{eqnarray}
 \]</span></p>
+<p><span class="math inline">\(S(n)=\sum_{i=1}^n \varphi(i)\)</span></p>
+<h2 id="离散对数与原根">离散对数与原根</h2>
+<p>暂且不讨论 <span class="math inline">\(p\)</span> 为合数的情况。</p>
+<h3 id="离散对数">离散对数</h3>
+<p>已知 <span class="math inline">\(a, b, p\)</span>，定义 <span class="math inline">\(a^x \equiv b \pmod p\)</span> 的解为 <span class="math inline">\(\log_a b\)</span>。</p>
+<h4 id="bsgs">BSGS</h4>
+<p>设 <span class="math inline">\(m = \lceil \sqrt p \rceil\)</span>，那么对于解 <span class="math inline">\(x\)</span> 一定能表示成 <span class="math inline">\(im+j\ (j &lt; m)\)</span>。根据费马小定理，如果有解（<span class="math inline">\(p\)</span> 为素数时一定有），那么 <span class="math inline">\(x \bmod (p-1)\)</span> 一定也是解，所以令 <span class="math inline">\(x &lt; p-1\)</span>。</p>
+<p>那么只需要求 <span class="math inline">\(a^{im} \equiv b \cdot a^{-j} \pmod p\)</span> 的解，等式两边取值个数不超过 <span class="math inline">\(m\)</span>，中间相遇即可。</p>
+<h3 id="原根">原根</h3>
+<p>在<span class="math inline">\((a,m)=1\)</span>时，定义 <span class="math inline">\(a\)</span> 对模 <span class="math inline">\(m\)</span> 的指数 <span class="math inline">\(\delta m(a)\)</span> 为使 <span class="math inline">\(a^d\equiv 1 \pmod m\)</span>成立的最小的正整数 <span class="math inline">\(d\)</span>。若 <span class="math inline">\(\delta m(a) = \varphi (m)\)</span>，则称 <span class="math inline">\(a\)</span> 是模 <span class="math inline">\(m\)</span> 的原根。</p>
+<p>模 <span class="math inline">\(m\)</span> 有原根的充要条件是 <span class="math inline">\(m=2,4,p^n,2p^n\)</span>，其中 <span class="math inline">\(p\)</span> 是奇素数，<span class="math inline">\(n\)</span> 是任意正整数。原根个数为 <span class="math inline">\(\varphi(\varphi(m))\)</span>。</p>
+<p>如果 <span class="math inline">\(g\)</span> 是模 <span class="math inline">\(p\)</span> 的一个原根，那么所有原根可以表示为 <span class="math inline">\(\{g^k | (k,p-1)=1\}\)</span>。</p>
+<h3 id="指标">指标</h3>
+<p>对于模 <span class="math inline">\(p\)</span> 的原根 <span class="math inline">\(g\)</span>，定义 <span class="math inline">\(I(a)\)</span> 为使得 <span class="math inline">\(g^d \equiv a \pmod m\)</span> 成立的最小的 <span class="math inline">\(d\)</span>。 <span class="math display">\[
+I(ab) \equiv I(a) + I(b) \pmod {p-1} \\
+I(a^k) \equiv kI(a) \pmod {p-1}
+\]</span></p>
 <h2 id="参考资料">参考资料</h2>
 <ul>
 <li><a href="https://blog.csdn.net/skywalkert/article/details/50500009" target="_blank" rel="noopener">浅谈一类积性函数的前缀和</a></li>
@@ -542,6 +559,9 @@ S(n)&amp;=&amp;\sum_{i=1}^n \mu^2(i) \\
 <li><a href="https://blog.csdn.net/zltjohn/article/details/79703503" target="_blank" rel="noopener">[min25筛学习小记]LOJ6053</a></li>
 <li><a href="https://blog.csdn.net/qq_33229466/article/details/79679027" target="_blank" rel="noopener">Min_25筛学习小记</a></li>
 <li>国家集训队 2018 论文《一些特殊的数论函数求和问题》 朱震霆</li>
+<li>https://zh.wikipedia.org/wiki/%E5%8E%9F%E6%A0%B9</li>
+<li>https://zh.wikipedia.org/wiki/%E7%A6%BB%E6%95%A3%E5%AF%B9%E6%95%B0</li>
+<li>http://nanoape.is-programmer.com/posts/192658.html</li>
 </ul>
 
       
@@ -670,7 +690,7 @@ S(n)&amp;=&amp;\sum_{i=1}^n \mu^2(i) \\
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">93</span>
+                    <span class="site-state-item-count">96</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -786,7 +806,11 @@ S(n)&amp;=&amp;\sum_{i=1}^n \mu^2(i) \\
                     
                       
                     
-                    <span class="site-state-item-count">41</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">43</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -862,7 +886,7 @@ S(n)&amp;=&amp;\sum_{i=1}^n \mu^2(i) \\
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性筛"><span class="nav-number">1.</span> <span class="nav-text">线性筛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#狄利克雷卷积"><span class="nav-number">2.</span> <span class="nav-text">狄利克雷卷积</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些积性函数"><span class="nav-number">3.</span> <span class="nav-text">一些积性函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#莫比乌斯反演"><span class="nav-number">4.</span> <span class="nav-text">莫比乌斯反演</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#形式1"><span class="nav-number">4.1.</span> <span class="nav-text">形式1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#形式2"><span class="nav-number">4.2.</span> <span class="nav-text">形式2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#杜教筛"><span class="nav-number">5.</span> <span class="nav-text">杜教筛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#min_25-筛"><span class="nav-number">6.</span> <span class="nav-text">Min_25 筛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些积性函数求前缀和的例子"><span class="nav-number">7.</span> <span class="nav-text">一些积性函数求前缀和的例子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#snsum_i1n-mui"><span class="nav-number">7.1.</span> <span class="nav-text">\(S(n)=\sum_{i=1}^n \mu(i)\)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#snsum_i1n-mu2i"><span class="nav-number">7.2.</span> <span class="nav-text">\(S(n)=\sum_{i=1}^n \mu^2(i)\)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">8.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性筛"><span class="nav-number">1.</span> <span class="nav-text">线性筛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#狄利克雷卷积"><span class="nav-number">2.</span> <span class="nav-text">狄利克雷卷积</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些积性函数"><span class="nav-number">3.</span> <span class="nav-text">一些积性函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#莫比乌斯反演"><span class="nav-number">4.</span> <span class="nav-text">莫比乌斯反演</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#形式1"><span class="nav-number">4.1.</span> <span class="nav-text">形式1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#形式2"><span class="nav-number">4.2.</span> <span class="nav-text">形式2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#杜教筛"><span class="nav-number">5.</span> <span class="nav-text">杜教筛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#min_25-筛"><span class="nav-number">6.</span> <span class="nav-text">Min_25 筛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些积性函数求前缀和的例子"><span class="nav-number">7.</span> <span class="nav-text">一些积性函数求前缀和的例子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#snsum_i1n-mui"><span class="nav-number">7.1.</span> <span class="nav-text">\(S(n)=\sum_{i=1}^n \mu(i)\)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#snsum_i1n-mu2i"><span class="nav-number">7.2.</span> <span class="nav-text">\(S(n)=\sum_{i=1}^n \mu^2(i)\)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#离散对数与原根"><span class="nav-number">8.</span> <span class="nav-text">离散对数与原根</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#离散对数"><span class="nav-number">8.1.</span> <span class="nav-text">离散对数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#bsgs"><span class="nav-number">8.1.1.</span> <span class="nav-text">BSGS</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原根"><span class="nav-number">8.2.</span> <span class="nav-text">原根</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指标"><span class="nav-number">8.3.</span> <span class="nav-text">指标</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">9.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
 
           </div>
