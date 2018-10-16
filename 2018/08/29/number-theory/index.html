@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="Zerol&#39;s Notes">
 <meta property="og:description" content="数论也是很重要的！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-08T15:37:56.067Z">
+<meta property="og:updated_time" content="2018-10-16T10:49:03.162Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法 - ACM 数论大礼包">
 <meta name="twitter:description" content="数论也是很重要的！">
@@ -535,9 +535,27 @@ S(n)&amp;=&amp;\sum_{i=1}^n \mu^2(i) \\
 &amp;=&amp; \sum_{d=1}^\sqrt n \lfloor \frac n {d^2} \rfloor \mu(d)
 \end{eqnarray}
 \]</span></p>
-<p><span class="math inline">\(S(n)=\sum_{i=1}^n \varphi(i)\)</span></p>
+<h3 id="snsum_i1nsum_j1m-gcdij"><span class="math inline">\(S(n)=\sum_{i=1}^n\sum_{j=1}^m gcd(i,j)\)</span></h3>
+<p><span class="math display">\[
+\begin{eqnarray}
+S(n) &amp;=&amp; \sum_{i=1}^n \sum_{j=1}^m gcd(i, j) \\
+&amp;=&amp; \sum_{i=1}^n \sum_{j=1}^m \sum_{d|gcd(i,j)} \varphi(d) \\
+&amp;=&amp; \sum_{d|i} \sum_{d|j} \varphi(d) \\
+&amp;=&amp; \sum_{d} \varphi(d) \lfloor \frac nd \rfloor \lfloor \frac md \rfloor 
+\end{eqnarray}
+\]</span></p>
+<h3 id="snsum_i1n-sum_j1n-gcd2i-j"><span class="math inline">\(S(n)=\sum_{i=1}^n \sum_{j=1}^n gcd^2(i, j)\)</span></h3>
+<p><span class="math display">\[
+\begin{eqnarray}
+S(n) &amp;=&amp; \sum_{i=1}^n \sum_{j=1}^n gcd^2(i, j) \\
+&amp;=&amp; \sum_{d} d^2 \sum_{i=1}^{\lfloor \frac nd \rfloor} \sum_{j=1}^{\lfloor \frac nd \rfloor} [i\perp j] \\
+&amp;=&amp; \sum_{d} d^2 \sum_{t} \mu(t) \lfloor \frac n{dt} \rfloor ^2 \\
+&amp;\overset{x=dt}{=}&amp; \sum_{x} \lfloor \frac nx \rfloor ^ 2 \sum_{d|x} d^2 \mu(\frac tx)
+\end{eqnarray}
+\]</span></p>
+<p>其中 <span class="math inline">\(id^2*\mu\)</span> 是积性函数，复杂度 <span class="math inline">\(O(n)\)</span></p>
 <h2 id="离散对数与原根">离散对数与原根</h2>
-<p>暂且不讨论 <span class="math inline">\(p\)</span> 为合数的情况。</p>
+<p>暂且不讨论 <span class="math inline">\(p​\)</span> 为合数的情况。</p>
 <h3 id="离散对数">离散对数</h3>
 <p>已知 <span class="math inline">\(a, b, p\)</span>，定义 <span class="math inline">\(a^x \equiv b \pmod p\)</span> 的解为 <span class="math inline">\(\log_a b\)</span>。</p>
 <h4 id="bsgs">BSGS</h4>
@@ -690,7 +708,7 @@ I(a^k) \equiv kI(a) \pmod {p-1}
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">102</span>
+                    <span class="site-state-item-count">103</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -894,7 +912,7 @@ I(a^k) \equiv kI(a) \pmod {p-1}
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性筛"><span class="nav-number">1.</span> <span class="nav-text">线性筛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#狄利克雷卷积"><span class="nav-number">2.</span> <span class="nav-text">狄利克雷卷积</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些积性函数"><span class="nav-number">3.</span> <span class="nav-text">一些积性函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#莫比乌斯反演"><span class="nav-number">4.</span> <span class="nav-text">莫比乌斯反演</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#形式1"><span class="nav-number">4.1.</span> <span class="nav-text">形式1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#形式2"><span class="nav-number">4.2.</span> <span class="nav-text">形式2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#杜教筛"><span class="nav-number">5.</span> <span class="nav-text">杜教筛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#min_25-筛"><span class="nav-number">6.</span> <span class="nav-text">Min_25 筛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些积性函数求前缀和的例子"><span class="nav-number">7.</span> <span class="nav-text">一些积性函数求前缀和的例子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#snsum_i1n-mui"><span class="nav-number">7.1.</span> <span class="nav-text">\(S(n)=\sum_{i=1}^n \mu(i)\)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#snsum_i1n-mu2i"><span class="nav-number">7.2.</span> <span class="nav-text">\(S(n)=\sum_{i=1}^n \mu^2(i)\)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#离散对数与原根"><span class="nav-number">8.</span> <span class="nav-text">离散对数与原根</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#离散对数"><span class="nav-number">8.1.</span> <span class="nav-text">离散对数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#bsgs"><span class="nav-number">8.1.1.</span> <span class="nav-text">BSGS</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原根"><span class="nav-number">8.2.</span> <span class="nav-text">原根</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指标"><span class="nav-number">8.3.</span> <span class="nav-text">指标</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">9.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性筛"><span class="nav-number">1.</span> <span class="nav-text">线性筛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#狄利克雷卷积"><span class="nav-number">2.</span> <span class="nav-text">狄利克雷卷积</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些积性函数"><span class="nav-number">3.</span> <span class="nav-text">一些积性函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#莫比乌斯反演"><span class="nav-number">4.</span> <span class="nav-text">莫比乌斯反演</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#形式1"><span class="nav-number">4.1.</span> <span class="nav-text">形式1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#形式2"><span class="nav-number">4.2.</span> <span class="nav-text">形式2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#杜教筛"><span class="nav-number">5.</span> <span class="nav-text">杜教筛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#min_25-筛"><span class="nav-number">6.</span> <span class="nav-text">Min_25 筛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些积性函数求前缀和的例子"><span class="nav-number">7.</span> <span class="nav-text">一些积性函数求前缀和的例子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#snsum_i1n-mui"><span class="nav-number">7.1.</span> <span class="nav-text">\(S(n)=\sum_{i=1}^n \mu(i)\)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#snsum_i1n-mu2i"><span class="nav-number">7.2.</span> <span class="nav-text">\(S(n)=\sum_{i=1}^n \mu^2(i)\)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#snsum_i1nsum_j1m-gcdij"><span class="nav-number">7.3.</span> <span class="nav-text">\(S(n)=\sum_{i=1}^n\sum_{j=1}^m gcd(i,j)\)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#snsum_i1n-sum_j1n-gcd2i-j"><span class="nav-number">7.4.</span> <span class="nav-text">\(S(n)=\sum_{i=1}^n \sum_{j=1}^n gcd^2(i, j)\)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#离散对数与原根"><span class="nav-number">8.</span> <span class="nav-text">离散对数与原根</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#离散对数"><span class="nav-number">8.1.</span> <span class="nav-text">离散对数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#bsgs"><span class="nav-number">8.1.1.</span> <span class="nav-text">BSGS</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原根"><span class="nav-number">8.2.</span> <span class="nav-text">原根</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指标"><span class="nav-number">8.3.</span> <span class="nav-text">指标</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">9.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
 
           </div>
