@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://zerol.me/2019/03/06/ear-decomposition/</loc>
+    
+    <lastmod>2019-03-06T10:51:27.816Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://zerol.me/2018/10/22/dominator-tree/</loc>
+    
+    <lastmod>2019-03-06T10:09:05.897Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://zerol.me/2019/02/03/learn-haskell/</loc>
     
-    <lastmod>2019-02-05T12:06:26.967Z</lastmod>
+    <lastmod>2019-02-11T04:01:23.414Z</lastmod>
     
   </url>
   
@@ -47,13 +61,6 @@
     <loc>https://zerol.me/2018/10/23/51nod-2004/</loc>
     
     <lastmod>2018-10-23T14:14:39.759Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://zerol.me/2018/10/22/dominator-tree/</loc>
-    
-    <lastmod>2018-10-23T11:06:15.251Z</lastmod>
     
   </url>
   
