@@ -309,6 +309,164 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zerol.me/2017/11/19/detective-fiction/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zerol">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/alpha.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zerol's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/19/detective-fiction/" itemprop="url">推理小说</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-19T11:47:06+08:00">2017-11-19</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/杂文/" itemprop="url" rel="index"><span itemprop="name">杂文</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/19/detective-fiction/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/11/19/detective-fiction/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>记录一下阅读推理小说后的感想，由于好些都记不清了，顺便重读一下。</p>
+<p>另外，由于这篇文章是给自己看的，所以完全不会避讳剧透。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/19/detective-fiction/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zerol.me/2017/11/17/Demanding-Money/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1225,19 +1383,19 @@
           
             <p>代码详见模板库。模板题 EOJ 3389-3393。</p>
 <ul>
-<li>Q: 要不要把 n 补成 2 的幂？</li>
+<li><p>Q: 要不要把 n 补成 2 的幂？</p></li>
 <li><p>A: 这个无所谓，但如果要写成自底向上，那么还是需要的，否则无法直接定位叶节点。</p></li>
-<li>Q: pushdown 之后要不要立即 maintain？</li>
+<li><p>Q: pushdown 之后要不要立即 maintain？</p></li>
 <li><p>A: 不用立即 maintain，但迟早是要的。但是立即 maintain 很可能会重复 maintain，增加超时风险。</p></li>
-<li>Q:query 的时候要不要 pushdown？</li>
+<li><p>Q:query 的时候要不要 pushdown？</p></li>
 <li><p>A: 如果不要的话，查询时应该把之前访问到的结点的标签的效果累加起来，并作为参数递归下去。如果要的话，代码会更加具有普适性（比如 treap 只能选择 pushdown 标签，因为结点之间相对位置会改变）。</p></li>
-<li>Q: maintain 的时候是否考虑当前结点的标签？</li>
+<li><p>Q: maintain 的时候是否考虑当前结点的标签？</p></li>
 <li><p>A: 都可以。如果考虑了，那么查询的时候就不要考虑当前结点的标签了，反之亦然。</p></li>
-<li>Q: query 的时候先考虑 set 标签还是先考虑查询区间包含当前区间？</li>
+<li><p>Q: query 的时候先考虑 set 标签还是先考虑查询区间包含当前区间？</p></li>
 <li><p>A: 都可以，但是先考虑 set 会快一些。</p></li>
-<li>Q: 根节点是 0 还是 1？</li>
+<li><p>Q: 根节点是 0 还是 1？</p></li>
 <li><p>A: 都可以，但好像 1 比较符合人性。</p></li>
-<li>Q: 听说空间开三倍就够了？</li>
+<li><p>Q: 听说空间开三倍就够了？</p></li>
 <li><p>A: 那可能就 GG 了，实测 4 倍是必要的。</p></li>
 </ul>
 <p>其他注意事项：</p>
@@ -1787,166 +1945,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zerol.me/2017/07/20/Recurrent-on-a-Tree/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zerol">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/alpha.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zerol's Notes">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/20/Recurrent-on-a-Tree/" itemprop="url">【题解】HackerRank - Recurrent on a Tree</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-20T22:43:11+08:00">2017-07-20</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ACM/" itemprop="url" rel="index"><span itemprop="name">ACM</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/07/20/Recurrent-on-a-Tree/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/07/20/Recurrent-on-a-Tree/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="题目">题目</h2>
-<p>https://www.hackerrank.com/contests/w34/challenges/recurrent-on-tree</p>
-<h2 id="题意">题意</h2>
-<p>给一棵树，每个点有一个值。求任意两个顶点（可以相同）路径上的值的和经过 f 函数后的和。f(x) 是斐波那契数列第 x 项。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/20/Recurrent-on-a-Tree/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1998,7 +1996,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">111</span>
+                    <span class="site-state-item-count">112</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

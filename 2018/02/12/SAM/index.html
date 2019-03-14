@@ -415,14 +415,14 @@
 <h2 id="后缀自动机">后缀自动机</h2>
 <h3 id="主要学习资料">主要学习资料</h3>
 <ul>
-<li>http://wyfcyx.is-programmer.com/posts/76107.html （对我的帮助最大）</li>
-<li>http://www.cnblogs.com/Robert-Yuan/p/5187439.html （相当详细）</li>
-<li>2012年noi冬令营陈立杰讲稿.ppt （始祖）</li>
-<li>hiho一下 <a href="http://hihocoder.com/contest/hiho127/" target="_blank" rel="noopener">127周</a> 和 <a href="http://hihocoder.com/contest/hiho128/" target="_blank" rel="noopener">128周</a>。（理论结合实践）</li>
-<li>https://chrt.github.io/2017/04/21/suffix-automaton/ （看到这个我觉得我不用再写这篇文章了）</li>
+<li><p>http://wyfcyx.is-programmer.com/posts/76107.html （对我的帮助最大）</p></li>
+<li><p>http://www.cnblogs.com/Robert-Yuan/p/5187439.html （相当详细）</p></li>
+<li><p>2012年noi冬令营陈立杰讲稿.ppt （始祖）</p></li>
+<li><p>hiho一下 <a href="http://hihocoder.com/contest/hiho127/" target="_blank" rel="noopener">127周</a> 和 <a href="http://hihocoder.com/contest/hiho128/" target="_blank" rel="noopener">128周</a>。（理论结合实践）</p></li>
+<li><p>https://chrt.github.io/2017/04/21/suffix-automaton/ （看到这个我觉得我不用再写这篇文章了）</p></li>
 <li><p>https://zhuanlan.zhihu.com/p/25948077 （复杂度“证明”）</p></li>
-<li>SAM 是一种确定有限状态自动机 (DFA)，它能够接受所有字符串的所有后缀。</li>
-<li>重要的信息有 <span class="math inline">\(tranc(x, c)\)</span> 和 <span class="math inline">\(fa(x)\)</span>，有两种理解方式：
+<li><p>SAM 是一种确定有限状态自动机 (DFA)，它能够接受所有字符串的所有后缀。</p></li>
+<li><p>重要的信息有 <span class="math inline">\(tranc(x, c)\)</span> 和 <span class="math inline">\(fa(x)\)</span>，有两种理解方式：</p>
 <ul>
 <li>自动机形态
 <ul>
@@ -435,19 +435,19 @@
 <li><span class="math inline">\(tranc(x,c)\)</span> 是 <span class="math inline">\(x\)</span> 对应的后缀在首部增加字符 <span class="math inline">\(c\)</span> 后所形成的后缀在树中对应的结点</li>
 </ul></li>
 </ul></li>
-<li>无论那种理解方式，反正可以互相转换。鉴于后缀树更为直观、简洁，那么就以这种方式来描述。</li>
-<li>对于一个字符串 <span class="math inline">\(s(|s|=n)\)</span>，建立它的后缀 trie，就形成了它的后缀树，但这样效率和空间都很糟糕。如果对 trie 中的单链进行压缩，那么可以证明，结点个数是 <span class="math inline">\(O(n)\)</span> 的。（证明：借用虚树复杂的证明，<span class="math inline">\(n\)</span> 个叶节点都是关键点，而关键点两两之间的 LCA 不超过 <span class="math inline">\(n-1\)</span>，所以总的结点数不超过 <span class="math inline">\(2n-1\)</span> 个。）</li>
-<li>接下来的关键是如何在线性时间内构造一棵压缩后的后缀树。</li>
+<li><p>无论那种理解方式，反正可以互相转换。鉴于后缀树更为直观、简洁，那么就以这种方式来描述。</p></li>
+<li><p>对于一个字符串 <span class="math inline">\(s(|s|=n)\)</span>，建立它的后缀 trie，就形成了它的后缀树，但这样效率和空间都很糟糕。如果对 trie 中的单链进行压缩，那么可以证明，结点个数是 <span class="math inline">\(O(n)\)</span> 的。（证明：借用虚树复杂的证明，<span class="math inline">\(n\)</span> 个叶节点都是关键点，而关键点两两之间的 LCA 不超过 <span class="math inline">\(n-1\)</span>，所以总的结点数不超过 <span class="math inline">\(2n-1\)</span> 个。）</p></li>
+<li><p>接下来的关键是如何在线性时间内构造一棵压缩后的后缀树。</p></li>
 <li><p>先给张图，未完待续。</p></li>
 </ul>
 <p><img src="/2018/02/12/SAM/sam.png"></p>
 <h3 id="一些性质">一些性质</h3>
 <ul>
 <li><p><span class="math inline">\(fa\)</span> 指针组成的是反串的后缀树，当然是树了。<span class="math inline">\(tranc\)</span> 指针组成的是 DFA，所以是一个有向无环图（DAG），存在拓扑序。</p></li>
-<li><span class="math inline">\(tranc\)</span> 指针使 <span class="math inline">\(len\)</span> 增加，<span class="math inline">\(fa\)</span> 指针使 <span class="math inline">\(len\)</span> 减少。</li>
-<li>关键点（红色标记）自带一个 <span class="math inline">\(EndPos\)</span>，然后每个结点的 <span class="math inline">\(EndPos\)</span> 集合是自己和子节点的 <span class="math inline">\(EndPos\)</span> 集合的并集，且子节点以及本身的 <span class="math inline">\(EndPos\)</span> 集合之间没有交集。</li>
-<li>接受状态是 <span class="math inline">\(last\)</span> 状态到根的链上的所有状态。</li>
-<li><span class="math inline">\(len\)</span> 的大小是父节点的 <span class="math inline">\(len\)</span> 加上父边压缩的字符数。</li>
+<li><p><span class="math inline">\(tranc\)</span> 指针使 <span class="math inline">\(len\)</span> 增加，<span class="math inline">\(fa\)</span> 指针使 <span class="math inline">\(len\)</span> 减少。</p></li>
+<li><p>关键点（红色标记）自带一个 <span class="math inline">\(EndPos\)</span>，然后每个结点的 <span class="math inline">\(EndPos\)</span> 集合是自己和子节点的 <span class="math inline">\(EndPos\)</span> 集合的并集，且子节点以及本身的 <span class="math inline">\(EndPos\)</span> 集合之间没有交集。</p></li>
+<li><p>接受状态是 <span class="math inline">\(last\)</span> 状态到根的链上的所有状态。</p></li>
+<li><p><span class="math inline">\(len\)</span> 的大小是父节点的 <span class="math inline">\(len\)</span> 加上父边压缩的字符数。</p></li>
 <li><p><span class="math inline">\([len_{min},len_{max}]\)</span> 的区间大小是由 <span class="math inline">\(tranc\)</span> 转移过来的状态的区间大小之和。</p></li>
 </ul>
 <h3 id="一些套路">一些套路</h3>
@@ -602,7 +602,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">111</span>
+                    <span class="site-state-item-count">112</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

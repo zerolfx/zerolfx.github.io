@@ -414,12 +414,12 @@
 <a id="more"></a>
 <h2 id="题解">题解</h2>
 <ul>
-<li>考虑每个数的贡献，如果一个数在区间内出现了多次，那么只记第一次有贡献。</li>
-<li>考虑每个数，对于长度为 w 的区间，当区间左端点在 [l, r] 之间时产生了贡献。</li>
-<li>设 last[p] 为上一个与 p 这个位置上的数相同的数的位置</li>
-<li>l[p] = max{last[p] + 1, p - w + 1}, r[p] = min{p, n - w + 1}</li>
-<li>令 r[p] = p，最后把多算的减掉（长度为 1 ~ w - 1 的后缀的不同数的个数之和）。</li>
-<li>p 的贡献为 r[p] - l[p] + 1 = min{p - last[p], w}，只要预处理 p - last[p] 并进行排序再求前缀和就行了。</li>
+<li><p>考虑每个数的贡献，如果一个数在区间内出现了多次，那么只记第一次有贡献。</p></li>
+<li><p>考虑每个数，对于长度为 w 的区间，当区间左端点在 [l, r] 之间时产生了贡献。</p></li>
+<li><p>设 last[p] 为上一个与 p 这个位置上的数相同的数的位置</p></li>
+<li><p>l[p] = max{last[p] + 1, p - w + 1}, r[p] = min{p, n - w + 1}</p></li>
+<li><p>令 r[p] = p，最后把多算的减掉（长度为 1 ~ w - 1 的后缀的不同数的个数之和）。</p></li>
+<li><p>p 的贡献为 r[p] - l[p] + 1 = min{p - last[p], w}，只要预处理 p - last[p] 并进行排序再求前缀和就行了。</p></li>
 <li><p>如果采用基数排序，那么可以省一个 log。</p></li>
 <li><p>看了看别人的题解，好像多为 dp，但是算法本质是一样的。</p></li>
 </ul>
@@ -552,7 +552,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">111</span>
+                    <span class="site-state-item-count">112</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

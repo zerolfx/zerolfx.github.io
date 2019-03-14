@@ -96,28 +96,27 @@
 
 
   
-  <meta name="keywords" content="博弈,哈希,非确定," />
+  <meta name="keywords" content="???" />
 
 
-<meta name="description" content="题目 https://www.hackerrank.com/challenges/number-game-on-a-tree/problem 题意 给一棵树，求有多少结点的有序对使得先手必胜。 对于一个有序点对，在路径上的边权集上玩一个游戏，轮流移除一个数字，要求比不超过之前移除的所有数字，无法操作者为败者。">
-<meta name="keywords" content="博弈,哈希,非确定">
+<meta name="description" content="系统休眠是个好东西，首先它不需要耗电，其次如果双系统切换的话，睡眠无法保存工作环境。 启用休眠功能的大致步骤如下：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【题解】HackerRank-Number Game on a Tree">
-<meta property="og:url" content="https://zerol.me/2018/07/05/HR-Number-Game-on-a-Tree/index.html">
+<meta property="og:title" content="Linux (Arch, Manjaro, KDE) Hibernate">
+<meta property="og:url" content="https://zerol.me/2019/03/14/Linux-hibernate/index.html">
 <meta property="og:site_name" content="Zerol&#39;s Notes">
-<meta property="og:description" content="题目 https://www.hackerrank.com/challenges/number-game-on-a-tree/problem 题意 给一棵树，求有多少结点的有序对使得先手必胜。 对于一个有序点对，在路径上的边权集上玩一个游戏，轮流移除一个数字，要求比不超过之前移除的所有数字，无法操作者为败者。">
+<meta property="og:description" content="系统休眠是个好东西，首先它不需要耗电，其次如果双系统切换的话，睡眠无法保存工作环境。 启用休眠功能的大致步骤如下：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-06T12:02:43.644Z">
+<meta property="og:updated_time" content="2019-03-14T11:56:56.337Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【题解】HackerRank-Number Game on a Tree">
-<meta name="twitter:description" content="题目 https://www.hackerrank.com/challenges/number-game-on-a-tree/problem 题意 给一棵树，求有多少结点的有序对使得先手必胜。 对于一个有序点对，在路径上的边权集上玩一个游戏，轮流移除一个数字，要求比不超过之前移除的所有数字，无法操作者为败者。">
+<meta name="twitter:title" content="Linux (Arch, Manjaro, KDE) Hibernate">
+<meta name="twitter:description" content="系统休眠是个好东西，首先它不需要耗电，其次如果双系统切换的话，睡眠无法保存工作环境。 启用休眠功能的大致步骤如下：">
 
 
 
 
 
 
-  <link rel="canonical" href="https://zerol.me/2018/07/05/HR-Number-Game-on-a-Tree/"/>
+  <link rel="canonical" href="https://zerol.me/2019/03/14/Linux-hibernate/"/>
 
 
 
@@ -126,7 +125,7 @@
     sidebar: "",
   };
 </script>
-  <title>【题解】HackerRank-Number Game on a Tree | Zerol's Notes</title>
+  <title>Linux (Arch, Manjaro, KDE) Hibernate | Zerol's Notes</title>
   
 
 
@@ -313,7 +312,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zerol.me/2018/07/05/HR-Number-Game-on-a-Tree/">
+    <link itemprop="mainEntityOfPage" href="https://zerol.me/2019/03/14/Linux-hibernate/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zerol">
@@ -330,7 +329,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">【题解】HackerRank-Number Game on a Tree</h1>
+          <h1 class="post-title" itemprop="name headline">Linux (Arch, Manjaro, KDE) Hibernate</h1>
         
 
         <div class="post-meta">
@@ -342,7 +341,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-05T20:31:22+08:00">2018-07-05</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-14T15:43:07+08:00">2019-03-14</time>
             
 
             
@@ -363,7 +362,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ACM/" itemprop="url" rel="index"><span itemprop="name">ACM</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a></span>
 
                 
                 
@@ -378,9 +377,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/07/05/HR-Number-Game-on-a-Tree/#comments" itemprop="discussionUrl">
+                <a href="/2019/03/14/Linux-hibernate/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/07/05/HR-Number-Game-on-a-Tree/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2019/03/14/Linux-hibernate/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -408,25 +407,23 @@
       
 
       
-        <h2 id="题目">题目</h2>
-<p>https://www.hackerrank.com/challenges/number-game-on-a-tree/problem</p>
-<h2 id="题意">题意</h2>
-<p>给一棵树，求有多少结点的有序对使得先手必胜。</p>
-<p>对于一个有序点对，在路径上的边权集上玩一个游戏，轮流移除一个数字，要求比不超过之前移除的所有数字，无法操作者为败者。</p>
+        <p>系统休眠是个好东西，首先它不需要耗电，其次如果双系统切换的话，睡眠无法保存工作环境。</p>
+<p>启用休眠功能的大致步骤如下：</p>
 <a id="more"></a>
-<h2 id="题解">题解</h2>
-<ul>
-<li>首先考虑这个博弈问题：
-<ul>
-<li>如果最小的数只有奇数个那么先手必胜。</li>
-<li>推广一下，如果最小的数有偶数个，但是次小的有奇数个，那么先手必胜。</li>
-<li>所以只要存在一个数字出现了奇数次，那么先手拿最小的出现奇数次的数字就能必胜。</li>
-</ul></li>
-<li>如果数字范围很小的话，可以把这个数对 2 取幂，那么问题就转化为了求异或和为零的路径数量了。这个问题可以通过求出每个点到根的路径异或和来很方便地求出。</li>
-<li>数字范围比较大，那么就在模意义下计算，为了安全起见，取两个模数。</li>
-</ul>
-<p>代码</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> LL = <span class="keyword">long</span> <span class="keyword">long</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FOR(i, x, y) for (decay<span class="meta-string">&lt;decltype(y)&gt;::type i = (x), _##i = (y); i &lt; _##i; ++i)</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FORD(i, x, y) for (decay<span class="meta-string">&lt;decltype(x)&gt;::type i = (x), _##i = (y); i &gt; _##i; --i)</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> zerol</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> dbg(args...) do &#123; cout <span class="meta-string">&lt;&lt; "\033[32;1m" &lt;&lt; #args &lt;&lt; " -&gt; "; err(args); &#125; while (0)</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> dbg(...)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">err</span><span class="params">()</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"\033[39;0m"</span> &lt;&lt; <span class="built_in">endl</span>; &#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">template</span>&lt;<span class="keyword">typename</span>...&gt; <span class="class"><span class="keyword">class</span> <span class="title">T</span>, <span class="title">typename</span> <span class="title">t</span>, <span class="title">typename</span>... <span class="title">Args</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">void</span> <span class="title">err</span>(<span class="title">T</span>&lt;t&gt; <span class="title">a</span>, <span class="title">Args</span>... <span class="title">args</span>) &#123;</span> <span class="keyword">for</span> (<span class="keyword">auto</span> x: a) <span class="built_in">cout</span> &lt;&lt; x &lt;&lt; <span class="string">' '</span>; err(args...); &#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... Args&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">err</span><span class="params">(T a, Args... args)</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="string">' '</span>; err(args...); &#125;</span><br><span class="line"><span class="comment">// -----------------------------------------------------------------------------</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">5E5</span> + <span class="number">100</span>;</span><br><span class="line"><span class="keyword">const</span> LL M1 = <span class="number">921997837</span>, M2 = <span class="number">988244353</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">E</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> to, w;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">vector</span>&lt;E&gt; G[N];</span><br><span class="line"><span class="built_in">map</span>&lt;pair&lt;LL, LL&gt;, LL&gt; mp;</span><br><span class="line"></span><br><span class="line"><span class="function">LL <span class="title">p2</span><span class="params">(LL x, LL m)</span> </span>&#123;</span><br><span class="line">    LL ret = <span class="number">1</span>, t = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">for</span> (; x; x &gt;&gt;= <span class="number">1</span>, t = t * t % m)</span><br><span class="line">        <span class="keyword">if</span> (x &amp; <span class="number">1</span>) ret = ret * t % m;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> fa, LL m1, LL m2)</span> </span>&#123;</span><br><span class="line">    mp[&#123;m1, m2&#125;]++;</span><br><span class="line">    <span class="keyword">for</span> (E&amp; e: G[u]) &#123;</span><br><span class="line">        <span class="keyword">int</span> v = e.to;</span><br><span class="line">        <span class="keyword">if</span> (v == fa) <span class="keyword">continue</span>;</span><br><span class="line">        dfs(v, u, m1 ^ p2(e.w, M1), m2 ^ p2(e.w, M2));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> LL <span class="title">C2</span><span class="params">(LL x)</span> </span>&#123; <span class="keyword">return</span> x * (x - <span class="number">1</span>) / <span class="number">2</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T; <span class="built_in">cin</span> &gt;&gt; T;</span><br><span class="line">    <span class="keyword">while</span> (T--) &#123;</span><br><span class="line">        <span class="keyword">int</span> n; <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">        mp.clear();</span><br><span class="line">        FOR (i, <span class="number">1</span>, n + <span class="number">1</span>) G[i].clear();</span><br><span class="line">        FOR (_, <span class="number">1</span>, n) &#123;</span><br><span class="line">            <span class="keyword">int</span> u, v, w; <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;u, &amp;v, &amp;w);</span><br><span class="line">            G[u].push_back(&#123;v, w&#125;);</span><br><span class="line">            G[v].push_back(&#123;u, w&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        dfs(<span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">        LL ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; x: mp)</span><br><span class="line">            ans += C2(x.second);</span><br><span class="line">        ans = C2(n) - ans;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="swap-空间">SWAP 空间</h2>
+<p>如果在安装系统的时候有独立的 swap 分区，那就太方便了，直接就跳过这步。我当初没有创建 swap 分区的原因是要省空间，而且希望能够方便得调节 swap 的大小。</p>
+<p><del>过程参考 https://wiki.archlinux.org/index.php/swap#systemd-swap</del></p>
+<p><del>总之，就是安装 <code>systemd-swap</code>，修改配置文件进行大小设置以及启用，随后用 <code>systemctl</code> 来运行/设置开机启动 <code>systemd-swap</code> 服务。</del></p>
+<p>由于 <code>systemd</code> 是动态分配 swap 文件的，可能每次使用的文件位置都不一样，不符合需求，所以就不用了。如果你需要的是一块可大可小的 swap 空间，那么 <code>systemd</code> 是个不错的选择。</p>
+<p>过程参考 https://linuxize.com/post/create-a-linux-swap-file/ 就按照这个创建一个 swap file 吧。</p>
+<h2 id="配置休眠">配置休眠</h2>
+<p>参考 https://wiki.archlinux.org/index.php/Uswsusp</p>
+<p>安装 <code>uswsusp</code>，修改配置文件中的 <code>resume device</code> 以及 <code>resume offset</code> （如果 swap 是文件的话需要修改），随后在 <code>/etc/mkinitcpio.conf</code> 中加入 <code>uresume</code>，最后重新生成 <code>initramfs</code>，命令如 <code>mkinitcpio -p linux419</code>（其中预设文件在 <code>/etc/mkinitcpio.d</code> 中）。</p>
+<h2 id="使用休眠">使用休眠</h2>
+<p>现在要使用的话运行 <code>s2disk</code> 就行了。</p>
+<p>然后参考 https://wiki.archlinux.org/index.php/Uswsusp#With_systemd 修改默认行为，就可以愉快地使用 KDE 菜单中的小雪花来进行愉快的休眠了。</p>
+<h2 id="题外话">题外话</h2>
+<p>可以发现从休眠中启动之后，所有内存被交换出去了，然后随着使用，swap 的占用越来越小，但最后还是会残留，可见有一部分原本的内存在很长时间内都不会被使用到。</p>
 
       
     </div>
@@ -445,16 +442,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/博弈/" rel="tag"># 博弈</a>
-          
-            <a href="/tags/哈希/" rel="tag"># 哈希</a>
-          
-            <a href="/tags/非确定/" rel="tag"># 非确定</a>
-          
-        </div>
-      
 
       
       
@@ -464,8 +451,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/27/HR-Cyclical-Queries/" rel="next" title="【题解】HackerRank-Cyclical Queries">
-                <i class="fa fa-chevron-left"></i> 【题解】HackerRank-Cyclical Queries
+              <a href="/2019/03/09/WF2012-Fibonacci-Words/" rel="next" title="【题解】WF2012-Fibonacci Words">
+                <i class="fa fa-chevron-left"></i> 【题解】WF2012-Fibonacci Words
               </a>
             
           </div>
@@ -473,10 +460,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/06/HR-BST-maintenance/" rel="prev" title="【题解】HackerRank-BST maintenance">
-                【题解】HackerRank-BST maintenance <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -782,7 +765,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题意"><span class="nav-number">2.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">3.</span> <span class="nav-text">题解</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#swap-空间"><span class="nav-number">1.</span> <span class="nav-text">SWAP 空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置休眠"><span class="nav-number">2.</span> <span class="nav-text">配置休眠</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用休眠"><span class="nav-number">3.</span> <span class="nav-text">使用休眠</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题外话"><span class="nav-number">4.</span> <span class="nav-text">题外话</span></a></li></ol></div>
             
 
           </div>
@@ -943,9 +926,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'https://zerol.me/2018/07/05/HR-Number-Game-on-a-Tree/';
-        this.page.identifier = '2018/07/05/HR-Number-Game-on-a-Tree/';
-        this.page.title = '【题解】HackerRank-Number Game on a Tree';
+        this.page.url = 'https://zerol.me/2019/03/14/Linux-hibernate/';
+        this.page.identifier = '2019/03/14/Linux-hibernate/';
+        this.page.title = 'Linux (Arch, Manjaro, KDE) Hibernate';
       };
       function loadComments () {
         var d = document, s = d.createElement('script');
