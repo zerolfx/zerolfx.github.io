@@ -107,7 +107,7 @@
 <meta property="og:site_name" content="Zerol&#39;s Notes">
 <meta property="og:description" content="题目 http://acm.ecnu.edu.cn/problem/3437/ 题意 有点复杂，请自行读题。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-08T04:00:16.000Z">
+<meta property="og:updated_time" content="2019-04-04T05:32:24.509Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【题解】EOJ - 卡车运输 (kamion)">
 <meta name="twitter:description" content="题目 http://acm.ecnu.edu.cn/problem/3437/ 题意 有点复杂，请自行读题。">
@@ -424,7 +424,7 @@
 <p><span class="math display">\[gg[i][j][k]=\displaystyle \sum_{t=1}^n \sum_{k&#39;=0}^{k} f[i][t][k&#39;] \times empty[t][j][k-k&#39;]+empty[i][j][k]\]</span></p></li>
 <li><p><span class="math inline">\(h[i][j][k]​\)</span> 从 <span class="math inline">\(i​\)</span> 到 <span class="math inline">\(j​\)</span> 走 <span class="math inline">\(k​\)</span> 步且一开始为空的方案数（由 1、3 两种路以及 f 组成）</p>
 <p><span class="math display">\[h[i][j][k]=\displaystyle \sum_{t=1}^n \sum_{k&#39;=0}^{k} h[i][t][k&#39;] \times f[t][j][k-k&#39;] + \sum_{t \stackrel{type 1/3}{\longrightarrow}  j}h[i][t][k-1]\]</span></p></li>
-<li><p>由于只要求不超过 k 步，那么最后的答案为 <span class="math inline">\(\sum\_{k=0}^K h[1][n][k]\)</span>，复杂度 <span class="math inline">\(O(n^5)\)</span>，由于我用的是邻接矩阵而非邻接表，所以常数会大一些。</p></li>
+<li><p>由于只要求不超过 k 步，那么最后的答案为 <span class="math inline">\(\sum_{k=0}^K h[1][n][k]\)</span>，复杂度 <span class="math inline">\(O(n^5)​\)</span>，由于我用的是邻接矩阵而非邻接表，所以常数会大一些。</p></li>
 <li><p>搞了那么多状态转移方程，到底有什么必要呢？很遗憾，很可能是做复杂了。</p></li>
 <li><p>这样做为什么是对的呢？由于转移的时候是枚举 中转站，所以必须保证对于特定的一种方案，只可能在某个特定的点作为中转站时被累加。</p></li>
 </ul>
