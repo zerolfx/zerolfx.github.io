@@ -98,7 +98,7 @@
 </script>
 
   <meta name="description" content="题目 https://www.hackerrank.com/challenges/newyear-game 题意 给一列数，A 和 B 轮流取，如果每个人取的数之和之差的绝对值被 3 整除，则 B 赢，反之 A 赢。">
-<meta name="keywords" content="动态规划,HackerRank,博弈">
+<meta name="keywords" content="博弈,动态规划,HackerRank">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【题解】HackerRank - New Year Game">
 <meta property="og:url" content="https://zerol.me/2017/07/10/New-Year-Game/index.html">
@@ -528,11 +528,11 @@
         
         <div class="post-tags">
           
+            <a href="/tags/博弈/" rel="tag"># 博弈</a>
+          
             <a href="/tags/动态规划/" rel="tag"># 动态规划</a>
           
             <a href="/tags/HackerRank/" rel="tag"># HackerRank</a>
-          
-            <a href="/tags/博弈/" rel="tag"># 博弈</a>
           
         </div>
       
@@ -1037,6 +1037,53 @@
   
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+    
   
 
 

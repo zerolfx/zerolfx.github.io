@@ -98,7 +98,7 @@
 </script>
 
   <meta name="description" content="题目 https://loj.ac/problem/2001 https://www.luogu.org/problemnew/show/P3703 题意 略。">
-<meta name="keywords" content="线段树,树链剖分,LCT">
+<meta name="keywords" content="树链剖分,线段树,LCT">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LOJ-2001-Luogu-3703-BZOJ-4817-「SDOI2017」树点涂色">
 <meta property="og:url" content="https://zerol.me/2018/04/12/LOJ-2001/index.html">
@@ -516,9 +516,9 @@
         
         <div class="post-tags">
           
-            <a href="/tags/线段树/" rel="tag"># 线段树</a>
-          
             <a href="/tags/树链剖分/" rel="tag"># 树链剖分</a>
+          
+            <a href="/tags/线段树/" rel="tag"># 线段树</a>
           
             <a href="/tags/LCT/" rel="tag"># LCT</a>
           
@@ -1025,6 +1025,53 @@
   
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+    
   
 
 

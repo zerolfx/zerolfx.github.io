@@ -98,7 +98,7 @@
 </script>
 
   <meta name="description" content="题目 https://www.lydsy.com/JudgeOnline/problem.php?id=4316 题意 求仙人掌上的最大独立集。">
-<meta name="keywords" content="仙人掌,圆方树">
+<meta name="keywords" content="圆方树,仙人掌">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【题解】BZOJ-4316-小C的独立集">
 <meta property="og:url" content="https://zerol.me/2018/10/13/BZOJ-4316/index.html">
@@ -514,9 +514,9 @@
         
         <div class="post-tags">
           
-            <a href="/tags/仙人掌/" rel="tag"># 仙人掌</a>
-          
             <a href="/tags/圆方树/" rel="tag"># 圆方树</a>
+          
+            <a href="/tags/仙人掌/" rel="tag"># 仙人掌</a>
           
         </div>
       
@@ -1021,6 +1021,53 @@
   
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+    
   
 
 
