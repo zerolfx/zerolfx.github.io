@@ -2,14 +2,23 @@
 
 
 
+
+
+
+
+
+
+
+
+
   
 
 
 <html class="theme-next gemini use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 
 
@@ -23,8 +32,11 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=7.2.0">
 
 
 
@@ -32,51 +44,42 @@
 
 
 
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
 
 
 
 
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
 
 
 
 
 
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=6.0.4" rel="stylesheet" type="text/css" />
-
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=6.0.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=6.0.4">
-
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Gemini',
-    version: '6.0.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
     fancybox: false,
-    fastclick: false,
+    mediumzoom: false,
     lazyload: false,
+    pangu: false,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
@@ -85,21 +88,16 @@
       indexName: '',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
     }
   };
 </script>
 
-
-  
-
-
-
-
-  
-  <meta name="keywords" content="???" />
-
-
-<meta property="og:type" content="website">
+  <meta property="og:type" content="website">
 <meta property="og:title" content="Zerol&#39;s Notes">
 <meta property="og:url" content="https://zerol.me/page/6/index.html">
 <meta property="og:site_name" content="Zerol&#39;s Notes">
@@ -111,30 +109,38 @@
 
 
 
+  
+  
+  <link rel="canonical" href="https://zerol.me/page/6/">
 
-  <link rel="canonical" href="https://zerol.me/page/6/"/>
 
 
-
-<script type="text/javascript" id="page.configurations">
+<script id="page.configurations">
   CONFIG.page = {
     sidebar: "",
   };
 </script>
+
+  
   <title>Zerol's Notes</title>
   
 
 
 
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-100757043-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100757043-1"></script>
+  <script>
+    var host = window.location.hostname;
+    if (host !== "localhost" || !true) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-100757043-1');
+    }
+  </script>
 
-  gtag('config', 'UA-100757043-1');
-</script>
+
+
 
 
 
@@ -142,35 +148,33 @@
 
 
   <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
 
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
   </style>
 </noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -181,25 +185,24 @@
   page-home">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"> <div class="site-brand-wrapper">
-  <div class="site-meta ">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Zerol's Notes</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
+    
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -207,47 +210,90 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home">
 
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
       
         <li class="menu-item menu-item-search">
           
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
         </li>
       
     </ul>
+  
+
   
 
   
@@ -262,9 +308,7 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="Searching..." spellcheck="false"
-             type="text" id="local-search-input">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -277,11 +321,8 @@
 </nav>
 
 
-  
 
-
-
- </div>
+</div>
     </header>
 
     
@@ -290,6 +331,10 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
+          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -304,20 +349,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zerol.me/2018/06/04/HDU-5306/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zerol">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/alpha.png">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Zerol's Notes">
     </span>
 
@@ -328,32 +373,44 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/06/04/HDU-5306/" itemprop="url">【题解】HDU-5306-Gorgeous Sequence</a></h1>
+                
+                <a href="/2018/06/04/HDU-5306/" class="post-title-link" itemprop="url">【题解】HDU-5306-Gorgeous Sequence</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
-          <span class="post-time">
-            
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-04T23:32:42+08:00">2018-06-04</time>
-            
 
-            
-            
+              
+                
+              
 
-            
-          </span>
+              <time title="Created: 2018-06-04 23:32:42 / Modified: 23:35:31" itemprop="dateCreated datePublished" datetime="2018-06-04T23:32:42+08:00">2018-06-04</time>
+            </span>
+          
 
           
-            <span class="post-category" >
             
-              <span class="post-meta-divider">|</span>
+
             
+          
+
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
@@ -361,7 +418,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ACM/" itemprop="url" rel="index"><span itemprop="name">ACM</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/ACM/" itemprop="url" rel="index"><span itemprop="name">ACM</span></a></span>
 
                 
                 
@@ -371,14 +428,16 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
+            
+              
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
                 <a href="/2018/06/04/HDU-5306/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/06/04/HDU-5306/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/06/04/HDU-5306/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -387,6 +446,11 @@
           
           
 
+          
+
+          
+
+          <br>
           
 
           
@@ -412,11 +476,13 @@
 <h2 id="题意">题意</h2>
 <p>区间取 min，区间查询最大值，区间求和。</p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/06/04/HDU-5306/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/06/04/HDU-5306/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -425,11 +491,16 @@
     
 
     
+
+    
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -464,20 +535,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zerol.me/2018/06/03/EOJ-102/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zerol">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/alpha.png">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Zerol's Notes">
     </span>
 
@@ -488,32 +559,44 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/06/03/EOJ-102/" itemprop="url">【题解】EOJ-102-发工资</a></h1>
+                
+                <a href="/2018/06/03/EOJ-102/" class="post-title-link" itemprop="url">【题解】EOJ-102-发工资</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
-          <span class="post-time">
-            
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-03T22:26:52+08:00">2018-06-03</time>
-            
 
-            
-            
+              
+                
+              
 
-            
-          </span>
+              <time title="Created: 2018-06-03 22:26:52 / Modified: 22:44:27" itemprop="dateCreated datePublished" datetime="2018-06-03T22:26:52+08:00">2018-06-03</time>
+            </span>
+          
 
           
-            <span class="post-category" >
             
-              <span class="post-meta-divider">|</span>
+
             
+          
+
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
@@ -521,7 +604,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ACM/" itemprop="url" rel="index"><span itemprop="name">ACM</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/ACM/" itemprop="url" rel="index"><span itemprop="name">ACM</span></a></span>
 
                 
                 
@@ -531,14 +614,16 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
+            
+              
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
                 <a href="/2018/06/03/EOJ-102/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/06/03/EOJ-102/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/06/03/EOJ-102/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -547,6 +632,11 @@
           
           
 
+          
+
+          
+
+          <br>
           
 
           
@@ -572,11 +662,13 @@
 <h2 id="题意">题意</h2>
 <p>自行读题。</p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/06/03/EOJ-102/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/06/03/EOJ-102/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -585,11 +677,16 @@
     
 
     
+
+    
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -624,20 +721,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zerol.me/2018/05/30/Luogu-2495/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zerol">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/alpha.png">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Zerol's Notes">
     </span>
 
@@ -648,32 +745,44 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/30/Luogu-2495/" itemprop="url">【题解】BZOJ-2286-Luogu-2495-[SDOI2011]消耗战</a></h1>
+                
+                <a href="/2018/05/30/Luogu-2495/" class="post-title-link" itemprop="url">【题解】BZOJ-2286-Luogu-2495-[SDOI2011]消耗战</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
-          <span class="post-time">
-            
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-30T00:18:45+08:00">2018-05-30</time>
-            
 
-            
-            
+              
+                
+              
 
-            
-          </span>
+              <time title="Created: 2018-05-30 00:18:45 / Modified: 00:34:21" itemprop="dateCreated datePublished" datetime="2018-05-30T00:18:45+08:00">2018-05-30</time>
+            </span>
+          
 
           
-            <span class="post-category" >
             
-              <span class="post-meta-divider">|</span>
+
             
+          
+
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
@@ -681,7 +790,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ACM/" itemprop="url" rel="index"><span itemprop="name">ACM</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/ACM/" itemprop="url" rel="index"><span itemprop="name">ACM</span></a></span>
 
                 
                 
@@ -691,14 +800,16 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
+            
+              
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
                 <a href="/2018/05/30/Luogu-2495/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/05/30/Luogu-2495/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/05/30/Luogu-2495/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -707,6 +818,11 @@
           
           
 
+          
+
+          
+
+          <br>
           
 
           
@@ -732,11 +848,13 @@
 <h2 id="题意">题意</h2>
 <p>给一棵有边权的树，每次询问一些点，切除若干条边权和最小的边，使得这些点与根不连通。</p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/05/30/Luogu-2495/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/05/30/Luogu-2495/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -745,11 +863,16 @@
     
 
     
+
+    
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -784,20 +907,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zerol.me/2018/05/30/Luogu-3233/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zerol">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/alpha.png">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Zerol's Notes">
     </span>
 
@@ -808,32 +931,44 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/30/Luogu-3233/" itemprop="url">【题解】BZOJ-3572-Luogu-3233-LOJ-2206-[Hnoi2014]世界树</a></h1>
+                
+                <a href="/2018/05/30/Luogu-3233/" class="post-title-link" itemprop="url">【题解】BZOJ-3572-Luogu-3233-LOJ-2206-[Hnoi2014]世界树</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
-          <span class="post-time">
-            
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-30T00:00:15+08:00">2018-05-30</time>
-            
 
-            
-            
+              
+                
+              
 
-            
-          </span>
+              <time title="Created: 2018-05-30 00:00:15 / Modified: 00:41:37" itemprop="dateCreated datePublished" datetime="2018-05-30T00:00:15+08:00">2018-05-30</time>
+            </span>
+          
 
           
-            <span class="post-category" >
             
-              <span class="post-meta-divider">|</span>
+
             
+          
+
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
@@ -841,7 +976,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ACM/" itemprop="url" rel="index"><span itemprop="name">ACM</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/ACM/" itemprop="url" rel="index"><span itemprop="name">ACM</span></a></span>
 
                 
                 
@@ -851,14 +986,16 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
+            
+              
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
                 <a href="/2018/05/30/Luogu-3233/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/05/30/Luogu-3233/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/05/30/Luogu-3233/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -867,6 +1004,11 @@
           
           
 
+          
+
+          
+
+          <br>
           
 
           
@@ -893,11 +1035,13 @@
 <h2 id="题意">题意</h2>
 <p>每次询问一些点，求对于询问中的每一个点，求树上相对于询问中的其他点到这个点距离最近的点的数量。</p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/05/30/Luogu-3233/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/05/30/Luogu-3233/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -906,11 +1050,16 @@
     
 
     
+
+    
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -945,20 +1094,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zerol.me/2018/05/18/EBC5/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zerol">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/alpha.png">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Zerol's Notes">
     </span>
 
@@ -969,32 +1118,54 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/18/EBC5/" itemprop="url">EBC5</a></h1>
+                
+                <a href="/2018/05/18/EBC5/" class="post-title-link" itemprop="url">EBC5</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
-          <span class="post-time">
-            
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-18T00:18:25+08:00">2018-05-18</time>
-            
 
-            
-            
+              
+                
+              
 
-            
-          </span>
+              <time title="Created: 2018-05-18 00:18:25" itemprop="dateCreated datePublished" datetime="2018-05-18T00:18:25+08:00">2018-05-18</time>
+            </span>
+          
 
           
-            <span class="post-category" >
             
-              <span class="post-meta-divider">|</span>
+
             
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-06-03 23:35:48" itemprop="dateModified" datetime="2018-06-03T23:35:48+08:00">2018-06-03</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
@@ -1002,7 +1173,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/杂文/" itemprop="url" rel="index"><span itemprop="name">杂文</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/杂文/" itemprop="url" rel="index"><span itemprop="name">杂文</span></a></span>
 
                 
                 
@@ -1012,14 +1183,16 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
+            
+              
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
                 <a href="/2018/05/18/EBC5/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/05/18/EBC5/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/05/18/EBC5/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1028,6 +1201,11 @@
           
           
 
+          
+
+          
+
+          <br>
           
 
           
@@ -1050,11 +1228,13 @@
         
           <p>EBC5 网络电台，十年前的我有幸与你相遇。</p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/05/18/EBC5/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/05/18/EBC5/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -1063,11 +1243,16 @@
     
 
     
+
+    
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -1102,20 +1287,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zerol.me/2018/05/16/CF-GYM-Deep-Purple/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zerol">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/alpha.png">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Zerol's Notes">
     </span>
 
@@ -1126,32 +1311,54 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/16/CF-GYM-Deep-Purple/" itemprop="url">【题解】CF-GYM-Deep Purple</a></h1>
+                
+                <a href="/2018/05/16/CF-GYM-Deep-Purple/" class="post-title-link" itemprop="url">【题解】CF-GYM-Deep Purple</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
-          <span class="post-time">
-            
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-16T18:15:14+08:00">2018-05-16</time>
-            
 
-            
-            
+              
+                
+              
 
-            
-          </span>
+              <time title="Created: 2018-05-16 18:15:14" itemprop="dateCreated datePublished" datetime="2018-05-16T18:15:14+08:00">2018-05-16</time>
+            </span>
+          
 
           
-            <span class="post-category" >
             
-              <span class="post-meta-divider">|</span>
+
             
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-10-15 12:57:30" itemprop="dateModified" datetime="2018-10-15T12:57:30+08:00">2018-10-15</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
@@ -1159,7 +1366,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ACM/" itemprop="url" rel="index"><span itemprop="name">ACM</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/ACM/" itemprop="url" rel="index"><span itemprop="name">ACM</span></a></span>
 
                 
                 
@@ -1169,14 +1376,16 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
+            
+              
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
                 <a href="/2018/05/16/CF-GYM-Deep-Purple/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/05/16/CF-GYM-Deep-Purple/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/05/16/CF-GYM-Deep-Purple/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1185,6 +1394,11 @@
           
           
 
+          
+
+          
+
+          <br>
           
 
           
@@ -1210,11 +1424,13 @@
 <h2 id="题意">题意</h2>
 <p>给一个字符串 <span class="math inline">\(s\)</span>，对于每一个 <span class="math inline">\([l, r]\)</span> 的询问，求最大的 <span class="math inline">\(k(k\leqslant r-l)\)</span> 使得 <span class="math inline">\(s[l\cdots l+k] = s[r-k \cdots r]=t\)</span>。</p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/05/16/CF-GYM-Deep-Purple/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/05/16/CF-GYM-Deep-Purple/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -1223,11 +1439,16 @@
     
 
     
+
+    
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -1262,20 +1483,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zerol.me/2018/05/10/HR-Pair-Sum/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zerol">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/alpha.png">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Zerol's Notes">
     </span>
 
@@ -1286,32 +1507,44 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/10/HR-Pair-Sum/" itemprop="url">【题解】HackerRank-Pair Sum</a></h1>
+                
+                <a href="/2018/05/10/HR-Pair-Sum/" class="post-title-link" itemprop="url">【题解】HackerRank-Pair Sum</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
-          <span class="post-time">
-            
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-10T14:17:07+08:00">2018-05-10</time>
-            
 
-            
-            
+              
+                
+              
 
-            
-          </span>
+              <time title="Created: 2018-05-10 14:17:07 / Modified: 23:47:45" itemprop="dateCreated datePublished" datetime="2018-05-10T14:17:07+08:00">2018-05-10</time>
+            </span>
+          
 
           
-            <span class="post-category" >
             
-              <span class="post-meta-divider">|</span>
+
             
+          
+
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
@@ -1319,7 +1552,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ACM/" itemprop="url" rel="index"><span itemprop="name">ACM</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/ACM/" itemprop="url" rel="index"><span itemprop="name">ACM</span></a></span>
 
                 
                 
@@ -1329,14 +1562,16 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
+            
+              
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
                 <a href="/2018/05/10/HR-Pair-Sum/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/05/10/HR-Pair-Sum/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/05/10/HR-Pair-Sum/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1345,6 +1580,11 @@
           
           
 
+          
+
+          
+
+          <br>
           
 
           
@@ -1370,11 +1610,13 @@
 <h2 id="题意">题意</h2>
 <p>给定一个数列，对于所有区间，求区间内两两之积之和的最大值。</p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/05/10/HR-Pair-Sum/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/05/10/HR-Pair-Sum/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -1383,11 +1625,16 @@
     
 
     
+
+    
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -1422,20 +1669,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zerol.me/2018/05/09/HDU-3842/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zerol">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/alpha.png">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Zerol's Notes">
     </span>
 
@@ -1446,32 +1693,54 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/09/HDU-3842/" itemprop="url">【题解】HDU-3842-Machine Works</a></h1>
+                
+                <a href="/2018/05/09/HDU-3842/" class="post-title-link" itemprop="url">【题解】HDU-3842-Machine Works</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
-          <span class="post-time">
-            
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-09T17:27:20+08:00">2018-05-09</time>
-            
 
-            
-            
+              
+                
+              
 
-            
-          </span>
+              <time title="Created: 2018-05-09 17:27:20" itemprop="dateCreated datePublished" datetime="2018-05-09T17:27:20+08:00">2018-05-09</time>
+            </span>
+          
 
           
-            <span class="post-category" >
             
-              <span class="post-meta-divider">|</span>
+
             
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-07-19 17:39:50" itemprop="dateModified" datetime="2018-07-19T17:39:50+08:00">2018-07-19</time>
+              </span>
+            
+          
+
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
@@ -1479,7 +1748,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ACM/" itemprop="url" rel="index"><span itemprop="name">ACM</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/ACM/" itemprop="url" rel="index"><span itemprop="name">ACM</span></a></span>
 
                 
                 
@@ -1489,14 +1758,16 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
+            
+              
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
                 <a href="/2018/05/09/HDU-3842/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/05/09/HDU-3842/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/05/09/HDU-3842/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1505,6 +1776,11 @@
           
           
 
+          
+
+          
+
+          <br>
           
 
           
@@ -1531,11 +1807,13 @@
 <h2 id="题意">题意</h2>
 <p><span class="math inline">\(D​\)</span> 天，初始资金 <span class="math inline">\(C​\)</span>，<span class="math inline">\(n​\)</span> 台机器，最多持有一台机器。每台仅能够在 <span class="math inline">\(D_i​\)</span> 天购买，价格 <span class="math inline">\(P_i​\)</span>，可以在之后任意一天以 <span class="math inline">\(R_i​\)</span> 卖出，从购入次日起每天产生 <span class="math inline">\(G_i​\)</span> 的收益，卖出当天无法获得收益，但是可以立刻购入另一台机器。在 <span class="math inline">\(D+1​\)</span> 天卖出手中机器并结账。</p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/05/09/HDU-3842/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/05/09/HDU-3842/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -1544,11 +1822,16 @@
     
 
     
+
+    
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -1583,20 +1866,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zerol.me/2018/05/07/BZOJ-4845/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zerol">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/alpha.png">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Zerol's Notes">
     </span>
 
@@ -1607,32 +1890,44 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/07/BZOJ-4845/" itemprop="url">【题解】BZOJ-4845-[Neerc2016]Game on Graph</a></h1>
+                
+                <a href="/2018/05/07/BZOJ-4845/" class="post-title-link" itemprop="url">【题解】BZOJ-4845-[Neerc2016]Game on Graph</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
-          <span class="post-time">
-            
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-07T00:45:48+08:00">2018-05-07</time>
-            
 
-            
-            
+              
+                
+              
 
-            
-          </span>
+              <time title="Created: 2018-05-07 00:45:48 / Modified: 00:59:52" itemprop="dateCreated datePublished" datetime="2018-05-07T00:45:48+08:00">2018-05-07</time>
+            </span>
+          
 
           
-            <span class="post-category" >
             
-              <span class="post-meta-divider">|</span>
+
             
+          
+
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
@@ -1640,7 +1935,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ACM/" itemprop="url" rel="index"><span itemprop="name">ACM</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/ACM/" itemprop="url" rel="index"><span itemprop="name">ACM</span></a></span>
 
                 
                 
@@ -1650,14 +1945,16 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
+            
+              
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
                 <a href="/2018/05/07/BZOJ-4845/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/05/07/BZOJ-4845/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/05/07/BZOJ-4845/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1666,6 +1963,11 @@
           
           
 
+          
+
+          
+
+          <br>
           
 
           
@@ -1691,11 +1993,13 @@
 <h2 id="题意">题意</h2>
 <p>给一个有向图，在某个顶点上有一颗棋子，双方轮流移动棋子，当棋子无法移动时判负。对 Alice 来说，平&gt;赢&gt;输，对 Bob 来说，赢&gt;输&gt;平。求对于棋子的所有初始位置和先后手，最终的胜负情况。</p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/05/07/BZOJ-4845/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/05/07/BZOJ-4845/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -1704,11 +2008,16 @@
     
 
     
+
+    
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -1743,20 +2052,20 @@
 
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zerol.me/2018/05/06/HR-Costly-Intervals/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zerol">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/alpha.png">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Zerol's Notes">
     </span>
 
@@ -1767,32 +2076,44 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/06/HR-Costly-Intervals/" itemprop="url">【题解】HackerRank-Costly Intervals</a></h1>
+                
+                <a href="/2018/05/06/HR-Costly-Intervals/" class="post-title-link" itemprop="url">【题解】HackerRank-Costly Intervals</a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
-          <span class="post-time">
-            
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-06T21:14:37+08:00">2018-05-06</time>
-            
 
-            
-            
+              
+                
+              
 
-            
-          </span>
+              <time title="Created: 2018-05-06 21:14:37 / Modified: 21:15:48" itemprop="dateCreated datePublished" datetime="2018-05-06T21:14:37+08:00">2018-05-06</time>
+            </span>
+          
 
           
-            <span class="post-category" >
             
-              <span class="post-meta-divider">|</span>
+
             
+          
+
+          
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
@@ -1800,7 +2121,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ACM/" itemprop="url" rel="index"><span itemprop="name">ACM</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/ACM/" itemprop="url" rel="index"><span itemprop="name">ACM</span></a></span>
 
                 
                 
@@ -1810,14 +2131,16 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
+            
+              
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
                 <a href="/2018/05/06/HR-Costly-Intervals/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/05/06/HR-Costly-Intervals/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/05/06/HR-Costly-Intervals/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1826,6 +2149,11 @@
           
           
 
+          
+
+          
+
+          <br>
           
 
           
@@ -1851,11 +2179,13 @@
 <h2 id="题意">题意</h2>
 <p>给一个数列，对于其中的每一个数，求出包含它的最大区间的长度，使得该区间的区间 OR-AND-MAX+MIN 超过给定的常数 K。</p>
           <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/05/06/HR-Costly-Intervals/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/05/06/HR-Costly-Intervals/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
           <!--/noindex-->
         
       
@@ -1864,11 +2194,16 @@
     
 
     
+
+    
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -1897,7 +2232,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1918,245 +2253,261 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
 
       
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image"
-                src="/images/alpha.png"
-                alt="zerol" />
-            
-              <p class="site-author-name" itemprop="name">zerol</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
+
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+  
+    <img class="site-author-image" itemprop="image" src="/images/alpha.png" alt="zerol">
+  
+  <p class="site-author-name" itemprop="name">zerol</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+
+
+  <nav class="site-state motion-element">
+    
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">119</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-name">tags</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+
+
+
+
+  <div class="links-of-author motion-element">
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/zerolfx/template" title="ACM 模板库 &rarr; https://github.com/zerolfx/template" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>ACM 模板库</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://acm.ecnu.edu.cn/wiki/index.php?title=ECNU_Foreigners_(2018)" title="训练记录 &rarr; https://acm.ecnu.edu.cn/wiki/index.php?title=ECNU_Foreigners_(2018)" rel="noopener" target="_blank"><i class="fa fa-fw fa-tasks"></i>训练记录</a>
+      </span>
+    
+  </div>
+
+
+
+
+
+
+  <div class="links-of-blogroll motion-element links-of-blogroll-block">
+    <div class="links-of-blogroll-title">
+      <i class="fa  fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://www.jxtxzzw.com" title="https://www.jxtxzzw.com" rel="noopener" target="_blank">jxtxzzw</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="http://godweiyang.com/" title="http://godweiyang.com/" rel="noopener" target="_blank">godweiyang</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="http://cubercsl.cn/" title="http://cubercsl.cn/" rel="noopener" target="_blank">cubercsl</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="http://xiejiadong.com/" title="http://xiejiadong.com/" rel="noopener" target="_blank">xiejiadong</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.csdn.net/calabash_boy" title="https://blog.csdn.net/calabash_boy" rel="noopener" target="_blank">calabash_boy</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="http://dengtesla.com" title="http://dengtesla.com" rel="noopener" target="_blank">D-Tesla</a>
+        </li>
+      
+    </ul>
+  </div>
+
 
           
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">119</span>
-                    <span class="site-state-item-name">posts</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">6</span>
-                    <span class="site-state-item-name">categories</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">51</span>
-                    <span class="site-state-item-name">tags</span>
-                  </a>
-                </div>
-              
-            </nav>
           
-
-          
-
-          
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  <a href="https://github.com/zerolfx/template" target="_blank" title="ACM 模板库"><i class="fa fa-fw fa-book"></i>ACM 模板库</a>
-                  
-                </span>
-              
-                <span class="links-of-author-item">
-                  <a href="https://acm.ecnu.edu.cn/wiki/index.php?title=ECNU_Foreigners_(2018)" target="_blank" title="训练记录"><i class="fa fa-fw fa-tasks"></i>训练记录</a>
-                  
-                </span>
-              
-            </div>
-          
-
-          
-          
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-block">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-link"></i>
-                Links
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://www.jxtxzzw.com" title="jxtxzzw" target="_blank">jxtxzzw</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://godweiyang.com/" title="godweiyang" target="_blank">godweiyang</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://cubercsl.cn/" title="cubercsl" target="_blank">cubercsl</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://xiejiadong.com/" title="xiejiadong" target="_blank">xiejiadong</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://blog.csdn.net/calabash_boy" title="calabash_boy" target="_blank">calabash_boy</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://dengtesla.com" title="D-Tesla" target="_blank">D-Tesla</a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-
-          
-            
-          
-          
-
         </div>
-      </section>
+      </div>
 
       
 
@@ -2164,6 +2515,7 @@
 
     </div>
   </aside>
+  <div id="sidebar-dimmer"></div>
 
 
         
@@ -2173,7 +2525,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
+  <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">zerol</span>
@@ -2184,9 +2536,7 @@
 </div>
 
 
-
-
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a></div>
 
 
 
@@ -2194,7 +2544,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a></div>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
 
 
 
@@ -2221,11 +2571,15 @@
 
     
 
+    
+
+    
+
   </div>
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -2246,7 +2600,8 @@
 
 
 
-
+  
+  
 
 
 
@@ -2257,27 +2612,20 @@
 
 
   
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
 
-  
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=6.0.4"></script>
+  <script src="/js/utils.js?v=7.2.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=6.0.4"></script>
+  <script src="/js/motion.js?v=7.2.0"></script>
 
 
 
@@ -2285,43 +2633,53 @@
   
 
 
-  <script type="text/javascript" src="/js/src/affix.js?v=6.0.4"></script>
+  <script src="/js/affix.js?v=7.2.0"></script>
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.4"></script>
-
-
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.4"></script>
-
-
-
-  
-
-  
-    <script id="dsq-count-scr" src="https://zerolblog.disqus.com/count.js" async></script>
-  
-
-  
-
-
-
-
-
-	
-
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
 
 
 
 
   
 
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
 
 
+  
+  
+
+  
+  
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+
+  
 
 
 
@@ -2332,8 +2690,30 @@
 
 
   
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://zerolblog.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
 
-  <script type="text/javascript">
+
+
+
+
+
+
+
+
+
+
+
+
+  <script>
     // Popup Window;
     var isfetched = false;
     var isXml = true;
@@ -2419,7 +2799,7 @@
                 var content = data.content.trim().replace(/<[^>]+>/g,"");
                 
                 var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
                 var indexOfTitle = [];
                 var indexOfContent = [];
                 // only match articles with not empty titles
@@ -2588,9 +2968,9 @@
               })
             };
             if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
             } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
             } else {
               resultItems.sort(function (resultLeft, resultRight) {
                 if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
@@ -2657,78 +3037,36 @@
 
 
 
-  
 
-  
 
-  
 
-  
-  
 
-  
-  
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  
 
-  
-    
-      <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-    });
+
+
+
+
+<script>
+// GET RESPONSIVE HEIGHT PASSED FROM IFRAME
+
+window.addEventListener("message", function(e) {
+  var data = e.data;
+  if ((typeof data === 'string') && (data.indexOf('ciu_embed') > -1)) {
+    var featureID = data.split(':')[1];
+    var height = data.split(':')[2];
+    $(`iframe[data-feature=${featureID}]`).height(parseInt(height) + 30);
+  }
+}, false);
 </script>
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-    
-  
+
+
+
+
 
 
   
-  
 
-  
-
-  
-
-  
-
-  
-
-
-  w
 </body>
 </html>
