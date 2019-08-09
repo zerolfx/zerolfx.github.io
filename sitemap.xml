@@ -2,16 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://zerol.me/2019/06/27/OnePlus-7-Pro/</loc>
+    <loc>https://zerol.me/2019/03/16/recollection-of-algorithm-competition/</loc>
     
-    <lastmod>2019-07-26T03:18:11.390Z</lastmod>
+    <lastmod>2019-08-09T06:28:43.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://zerol.me/2019/03/14/HHKB/</loc>
+    
+    <lastmod>2019-08-09T06:26:59.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://zerol.me/2017/11/09/Project-Euler/</loc>
+    
+    <lastmod>2019-08-09T06:22:25.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://zerol.me/2019/07/24/Cloud-Storage-For-Linux/</loc>
     
-    <lastmod>2019-07-24T12:02:30.671Z</lastmod>
+    <lastmod>2019-08-09T06:16:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://zerol.me/2019/06/27/OnePlus-7-Pro/</loc>
+    
+    <lastmod>2019-07-26T03:18:11.390Z</lastmod>
     
   </url>
   
@@ -33,20 +54,6 @@
     <loc>https://zerol.me/2019/02/03/learn-haskell/</loc>
     
     <lastmod>2019-06-26T16:30:26.821Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://zerol.me/2019/03/16/recollection-of-algorithm-competition/</loc>
-    
-    <lastmod>2019-06-26T16:29:43.168Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://zerol.me/2019/03/14/HHKB/</loc>
-    
-    <lastmod>2019-04-16T17:18:39.314Z</lastmod>
     
   </url>
   
@@ -124,13 +131,6 @@
     <loc>https://zerol.me/2017/06/08/Linux/</loc>
     
     <lastmod>2018-11-21T00:29:00.831Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://zerol.me/2017/11/09/Project-Euler/</loc>
-    
-    <lastmod>2018-10-25T11:28:15.382Z</lastmod>
     
   </url>
   

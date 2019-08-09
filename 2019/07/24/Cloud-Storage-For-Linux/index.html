@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="Zerol&#39;s Notes">
 <meta property="og:description" content="对于 Linux 用户来说，由于用户群体相当小，作为软件开发商，往往不愿意支持或者滞后支持 Linux。对于网盘来说更是如此，网上的测评都是站在 Windows 或者 Mac 用户的角度，而对于 Linux 用户，网盘客户端的功能是否丰富（正常）才是考量的重点。 由于这篇文章的时效性较强，请留意发布时间。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-24T12:02:30.671Z">
+<meta property="og:updated_time" content="2019-08-09T06:16:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="同步网盘测评 for Linux">
 <meta name="twitter:description" content="对于 Linux 用户来说，由于用户群体相当小，作为软件开发商，往往不愿意支持或者滞后支持 Linux。对于网盘来说更是如此，网上的测评都是站在 Windows 或者 Mac 用户的角度，而对于 Linux 用户，网盘客户端的功能是否丰富（正常）才是考量的重点。 由于这篇文章的时效性较强，请留意发布时间。">
@@ -400,13 +400,23 @@
                 
               
 
-              <time title="Created: 2019-07-24 19:59:14 / Modified: 20:02:30" itemprop="dateCreated datePublished" datetime="2019-07-24T19:59:14+08:00">2019-07-24</time>
+              <time title="Created: 2019-07-24 19:59:14" itemprop="dateCreated datePublished" datetime="2019-07-24T19:59:14+08:00">2019-07-24</time>
             </span>
           
 
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-08-09 14:16:44" itemprop="dateModified" datetime="2019-08-09T14:16:44+08:00">2019-08-09</time>
+              </span>
             
           
 
@@ -490,14 +500,24 @@
 <p>不考虑项：</p>
 <ul>
 <li>速度：对于网盘，尤其是收费网盘，速度都不会成为问题。在这里顺便批评一下百度网盘，给了免费用户大量的空间，又不限制流量，只能以限速这种极度降低用户体验的方式来保证服务的健康。</li>
+<li>文件历史：这个功能大家都有了，通常为 30 天，也够了，不是吗？有些网盘提供了通过支付额外费用或者升级更加高级的套餐来延长历史记录的时间，但是我相信多数用户是不考虑这个需求的，所以姑且就不考虑了。</li>
+<li>加密：有本地加密的需求的可能也不多吧，至于端到端加密，我相信都有这个功能的，再普通也有 HTTPS。</li>
 </ul>
 <hr>
 <p>写到这里已经有些长了，直接说结论，Linux 下最佳网盘给 pCloud。</p>
 <h4 id="onedrive">OneDrive</h4>
-<p>没有官方 Linux 客户端，没有正常的第三方客户端。如果你去搜索 "OneDrive linux"，你会看到那个支持无数网盘的万能客户端 Expandrive，然而根本无法使用，一直提示挂载中，和 Arch AUR 仓库下若干个月前的评论描述的症状一模一样。</p>
-<h3 id="google-drive">Google Drive</h3>
-<p>有一个巨大的优势</p>
-<p>未完待续</p>
+<p>没有官方 Linux 客户端，没有正常的第三方客户端。如果你去搜索 "OneDrive linux"，你会看到那个支持无数网盘的万能客户端 Expandrive，然而根本无法使用，一直提示挂载中，和 Arch AUR 仓库下若干个月前的评论描述的症状一模一样。优点是如果不考虑 Linux 的话，其实是非常好的选择，因为包含在 Office 365 中，而且套餐选择丰富。</p>
+<h4 id="google-drive">Google Drive</h4>
+<p>好处是套餐比较丰富，集成也不错，Web 端有一些插件，而且支持云存储的软件也往往会考虑 Google Drive。它有着许多第三方客户端，考虑到便利性，首先忽略 CLI，比较好用的是 insync，买断制付费软件，在有活动的时候比较便宜，听说曾经白送过，所以想立即入手的话可能不大爽。现在 insync3 在 beta 测试中，其中 3 表示 Python3，而之前是 Python2。听说对许多功能进行了改进，同时还支持了 OneDrive，无疑是一个好消息，但新版本是否好用，我也没有尝试过，所以就稍微谈一下旧版本。多文件夹分别同步还是通过链接实现，但是相比起手动用软链接实现，它自带的更为方便，比如能够把本地和云端的文件夹合并。上传是多线程的，因此效率还是相当不错的。同时还支持忽略文件，支持通配符是肯定的，但是在我的使用过程中有问题，出现了大量需要手动操作的失败事件，而我根本不可能一个个点过来，在重新安装并未解决问题之后，我放弃了它。</p>
+<h4 id="dropbox">DropBox</h4>
+<p>又爱又恨，如果不看 Linux，Dropbox 无疑是将网盘做到了极致，扮演者引领者的角色。但是 Smart 同步在 Linux 上的缺失令 Linux 用户大失所望，甚至在官网的宣传中也没有注明 Linux 不可用。不过原生客户端在更新频率还是稳定性上都表现得相当不错，而且和文件管理器的整合也很棒（指文件左下角的状态图标）。</p>
+<p>另外我想再谈一下 Dropbox 套餐，只有一种容量 2T，月付十刀。站在 Dropbox 的角度考虑，如果增加了容量更少价格更便宜的套餐，想必会导致营收的下降，毕竟我相信多数人并不需要 2T。</p>
+<h4 id="mega">Mega</h4>
+<p>Mega 盘大概还是听说过的吧，在浏览器中的体验也和别的网盘不大一样，挺不错的。本地客户端我也尝试过，但是忘记为什么放弃了。有缘再更。</p>
+<h4 id="pcloud">pCloud</h4>
+<p>目前的选择，之前从未听说过。</p>
+<p>在 Windows 和 Linux 上的原生客户端体验一致，支持多文件夹同步，虚拟挂载，按规则忽略文件/目录。对我来说比较重要的功能已经有了，虽然在 Linux 上文件管理器的集成不行，还有一个缺点就是不支持软件内设置 proxy，而且也不走系统代理，所以我在 Linux 上用了 proxychains，Windows 上用了 proxifier。国内能访问，但是速度极慢。</p>
+<p>关于虚拟挂载，区别在本地和云端的界限不是文件，而是二进制。对于一个文件，保存在本地的可能只有一部分，好处就是我可以直接用本地播放器看高清视频，而其实是视频流。</p>
 
       
     </div>
@@ -519,6 +539,30 @@
     
     
 
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>zerol</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    
+    <a href="https://zerol.me/2019/07/24/Cloud-Storage-For-Linux/" title="同步网盘测评 for Linux">https://zerol.me/2019/07/24/Cloud-Storage-For-Linux/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
@@ -862,7 +906,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#onedrive"><span class="nav-number">1.</span> <span class="nav-text">OneDrive</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#google-drive"><span class="nav-number"></span> <span class="nav-text">Google Drive</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#onedrive"><span class="nav-number">1.</span> <span class="nav-text">OneDrive</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#google-drive"><span class="nav-number">2.</span> <span class="nav-text">Google Drive</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dropbox"><span class="nav-number">3.</span> <span class="nav-text">DropBox</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mega"><span class="nav-number">4.</span> <span class="nav-text">Mega</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pcloud"><span class="nav-number">5.</span> <span class="nav-text">pCloud</span></a></li></ol></div>
             
 
           </div>
