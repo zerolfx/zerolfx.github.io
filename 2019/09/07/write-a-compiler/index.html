@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="Zerol&#39;s Notes">
 <meta property="og:description" content="关于学校中的作业，我向来是不屑于写博客的。这一次，我决定尝试一下，而且恐怕之后也不会再有了。 另外呢，这篇文章对各位同学而言，可能并没有什么参考价值，至于为何，你很快就会明白了。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-08T14:27:13.437Z">
+<meta property="og:updated_time" content="2019-09-10T03:09:41.043Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从零开始写一个 CX 编译器（作业）">
 <meta name="twitter:description" content="关于学校中的作业，我向来是不屑于写博客的。这一次，我决定尝试一下，而且恐怕之后也不会再有了。 另外呢，这篇文章对各位同学而言，可能并没有什么参考价值，至于为何，你很快就会明白了。">
@@ -415,7 +415,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-09-08 22:27:13" itemprop="dateModified" datetime="2019-09-08T22:27:13+08:00">2019-09-08</time>
+                <time title="Modified: 2019-09-10 11:09:41" itemprop="dateModified" datetime="2019-09-10T11:09:41+08:00">2019-09-10</time>
               </span>
             
           
@@ -555,7 +555,8 @@
 <ul>
 <li>甜到腻的语法糖，虽然有人不喜欢这个，但是我太喜欢了</li>
 <li>自由的运算符重载（此处 diss 一下 Java）</li>
-<li>强大的模式匹配（通常与 FP 一同出现）正适合用来处理 AST</li>
+<li>强大的类型系统</li>
+<li>好用的模式匹配（通常与 FP 一同出现）正适合用来处理 AST</li>
 </ul>
 <p>使用的库为 <a href="https://github.com/scala/scala-parser-combinators/" target="_blank" rel="noopener">scala-parser-combinators</a>，理由如下：</p>
 <ul>
@@ -597,6 +598,9 @@
 <p>最后完成一些测试，总不能每次修改代码后测试 <code>1 + 2</code> 能不能正常解析吧？</p>
 <p>用的库是 <code>ScalaTest</code>，部分测试代码如下。以前只知道单元测试和 TDD（测试驱动开发），却不知道还有 BDD（行为驱动开发），而这个库属于 BDD。具体差别可以自行搜索。</p>
 <figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ExprSpec</span> <span class="keyword">extends</span> <span class="title">FlatSpec</span> </span>&#123;</span><br><span class="line">  behavior of <span class="string">"Expr parser"</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">val</span> parser = <span class="keyword">new</span> <span class="type">CXParser</span></span><br><span class="line"></span><br><span class="line">  it should <span class="string">"parse 1 + 2"</span> in &#123;</span><br><span class="line">    parser.parseAll(parser.expression, <span class="string">"1 + 2"</span>) <span class="keyword">match</span> &#123;</span><br><span class="line">      <span class="keyword">case</span> parser.<span class="type">Success</span>(r, _) =&gt; assert(r == <span class="type">BinaryOp</span>(<span class="string">"+"</span>, <span class="type">Num</span>(<span class="number">1</span>), <span class="type">Num</span>(<span class="number">2</span>)))</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然而可以发现有大量重复代码，所以重构一下，把几个基本运算重新组合一下，并顺利通过测试。</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">build_binary_op_expr</span></span>(old_expr: <span class="type">PackratParser</span>[<span class="type">Expr</span>], op: <span class="type">Parser</span>[<span class="type">String</span>]): <span class="type">PackratParser</span>[<span class="type">Expr</span>] = &#123;</span><br><span class="line">    <span class="keyword">lazy</span> <span class="keyword">val</span> new_expr: <span class="type">PackratParser</span>[<span class="type">Expr</span>] =</span><br><span class="line">      new_expr ~ op ~ old_expr ^^ &#123; <span class="keyword">case</span> a ~ op ~ b =&gt; <span class="type">BinaryOp</span>(op, a, b) &#125; |</span><br><span class="line">        old_expr</span><br><span class="line">    new_expr</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">lazy</span> <span class="keyword">val</span> constant_expression: <span class="type">PackratParser</span>[<span class="type">Expr</span>] = <span class="type">List</span>[<span class="type">Parser</span>[<span class="type">String</span>]](</span><br><span class="line">    <span class="string">"*"</span> | <span class="string">"/"</span> | <span class="string">"%"</span>,</span><br><span class="line">    <span class="string">"+"</span> | <span class="string">"-"</span>,</span><br><span class="line">    <span class="string">"&lt;"</span> | <span class="string">"&gt;"</span> | <span class="string">"&lt;="</span> | <span class="string">"&gt;="</span>,</span><br><span class="line">    <span class="string">"=="</span> | <span class="string">"!="</span>,</span><br><span class="line">    <span class="string">"&amp;&amp;"</span>,</span><br><span class="line">    <span class="string">"||"</span>).foldLeft(cast_expression)(build_binary_op_expr)</span><br></pre></td></tr></table></figure>
+<h2 id="section"></h2>
 
       
     </div>
@@ -987,7 +991,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#作业要求"><span class="nav-number">1.</span> <span class="nav-text">作业要求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#惯用的词法"><span class="nav-number">1.1.</span> <span class="nav-text">惯用的词法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语法和语义"><span class="nav-number">1.2.</span> <span class="nav-text">语法和语义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#评分规则"><span class="nav-number">1.3.</span> <span class="nav-text">评分规则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#决策"><span class="nav-number">2.</span> <span class="nav-text">决策</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从表达式开始"><span class="nav-number">3.</span> <span class="nav-text">从表达式开始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更完善的表达式"><span class="nav-number">4.</span> <span class="nav-text">更完善的表达式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#作业要求"><span class="nav-number">1.</span> <span class="nav-text">作业要求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#惯用的词法"><span class="nav-number">1.1.</span> <span class="nav-text">惯用的词法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语法和语义"><span class="nav-number">1.2.</span> <span class="nav-text">语法和语义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#评分规则"><span class="nav-number">1.3.</span> <span class="nav-text">评分规则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#决策"><span class="nav-number">2.</span> <span class="nav-text">决策</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从表达式开始"><span class="nav-number">3.</span> <span class="nav-text">从表达式开始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更完善的表达式"><span class="nav-number">4.</span> <span class="nav-text">更完善的表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#section"><span class="nav-number">5.</span> <span class="nav-text"></span></a></li></ol></div>
             
 
           </div>
