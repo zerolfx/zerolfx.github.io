@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="Zerol&#39;s Notes">
 <meta property="og:description" content="数论也是很重要的！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-16T10:49:03.162Z">
+<meta property="og:updated_time" content="2019-09-13T02:29:51.384Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法 - ACM 数论大礼包">
 <meta name="twitter:description" content="数论也是很重要的！">
@@ -415,7 +415,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-10-16 18:49:03" itemprop="dateModified" datetime="2018-10-16T18:49:03+08:00">2018-10-16</time>
+                <time title="Modified: 2019-09-13 10:29:51" itemprop="dateModified" datetime="2019-09-13T10:29:51+08:00">2019-09-13</time>
               </span>
             
           
@@ -586,7 +586,7 @@ h_{n,k}&amp;=&amp;h_{n,k-1}- \sum_{\substack{i=2 \\ i \text{ 为合数且最小�
 <li><span class="math inline">\(p_k^2&gt;n\)</span> 时有 <span class="math inline">\(h_{n,k}=h_{n,k-1}\)</span></li>
 <li>需要的 <span class="math inline">\(h_{n,k}\)</span> 以及 <span class="math inline">\(g_{n,k}\)</span> 中的 <span class="math inline">\(n\)</span> 的取值不会太多（<span class="math inline">\(\lfloor \frac{n}{ab} \rfloor = \lfloor \frac{\lfloor \frac{n}{a} \rfloor}{b} \rfloor\)</span>，<span class="math inline">\(\lfloor \frac{n}{i} \rfloor\)</span> 取值个数不超过 <span class="math inline">\(2\sqrt n\)</span>）</li>
 <li><span class="math inline">\(n\)</span> 需要离散化</li>
-<li>只需要计算到 <span class="math inline">\(k=\sqrt n\)</span> 就能获得 <span class="math inline">\(f&#39;(p_i)\)</span> 的前缀和</li>
+<li>只需要计算到 <span class="math inline">\(p_k=\sqrt n\)</span> 就能获得 <span class="math inline">\(f&#39;(p_i)\)</span> 的前缀和</li>
 <li><span class="math inline">\(\sum_{i=0}^{k-1} f&#39;(p_i)\)</span> 可以在筛素数的时候顺便处理出来</li>
 <li><span class="math inline">\(h_{\_,k}\)</span> 只会由 <span class="math inline">\(h_{\_,k-1}\)</span> 转移而来，按 <span class="math inline">\(n\)</span> 从大到小转移即可。</li>
 <li>计算 <span class="math inline">\(g\)</span> 的过程中不记忆化（或者说不计算所有可能用到的值）效果会更好。</li>
@@ -629,7 +629,7 @@ S(n) &amp;=&amp; \sum_{i=1}^n \sum_{j=1}^n gcd^2(i, j) \\
 \]</span></p>
 <p>其中 <span class="math inline">\(id^2*\mu\)</span> 是积性函数，复杂度 <span class="math inline">\(O(n)\)</span></p>
 <h2 id="离散对数与原根">离散对数与原根</h2>
-<p>暂且不讨论 <span class="math inline">\(p​\)</span> 为合数的情况。</p>
+<p>暂且不讨论 <span class="math inline">\(p\)</span> 为合数的情况。</p>
 <h3 id="离散对数">离散对数</h3>
 <p>已知 <span class="math inline">\(a, b, p\)</span>，定义 <span class="math inline">\(a^x \equiv b \pmod p\)</span> 的解为 <span class="math inline">\(\log_a b\)</span>。</p>
 <h4 id="bsgs">BSGS</h4>
