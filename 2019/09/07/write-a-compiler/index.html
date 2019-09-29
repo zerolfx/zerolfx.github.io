@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="Zerol&#39;s Notes">
 <meta property="og:description" content="关于学校中的作业，我向来是不屑于写博客的。这一次，我决定尝试一下，而且恐怕之后也不会再有了。 另外呢，这篇文章对各位同学而言，可能并没有什么参考价值，至于为何，你很快就会明白了。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-27T12:01:53.324Z">
+<meta property="og:updated_time" content="2019-09-29T07:54:22.154Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从零开始写一个 CX 编译器（编译原理作业）">
 <meta name="twitter:description" content="关于学校中的作业，我向来是不屑于写博客的。这一次，我决定尝试一下，而且恐怕之后也不会再有了。 另外呢，这篇文章对各位同学而言，可能并没有什么参考价值，至于为何，你很快就会明白了。">
@@ -415,7 +415,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-09-27 20:01:53" itemprop="dateModified" datetime="2019-09-27T20:01:53+08:00">2019-09-27</time>
+                <time title="Modified: 2019-09-29 15:54:22" itemprop="dateModified" datetime="2019-09-29T15:54:22+08:00">2019-09-29</time>
               </span>
             
           
@@ -557,7 +557,7 @@
 <p>然而网上的代码往往原地解释执行或者编译成 ASM，和作业要求不符。</p>
 <p>所以目标可以分解为</p>
 <ol type="1">
-<li>写一个 Parser 把代码转成 AST</li>
+<li>写一个 Parser 把代码转成 AST （或者先转成 token 序列，然后再转成 AST）</li>
 <li>把 AST 翻译为 P-Code</li>
 <li>写一个 P-Code 虚拟机</li>
 </ol>
@@ -646,6 +646,21 @@
 <h2 id="p-code-虚拟机">P-Code 虚拟机</h2>
 <p>本来这里我用 Scala 翻译了一下提供的 Pascal 代码中的 P-Code 解释器的部分，但是由于我更换了 P-Code 所以这部分删掉了。</p>
 <p><a href="http://fots.ua.ac.be/~pvgorp/professional/teaching/compiler1LIC/pMachine/" target="_blank" rel="noopener">这里</a>是新的 P-Code 的链接，包含了指令的说明，实现的说明，实现的源码及二进制文件。</p>
+<p>注：没有提供 Linux 下的二进制文件，但是直接 <code>make</code> 会有错误，需要对源码稍加修改。具体如下：</p>
+<ul>
+<li><code>pmachine.l</code> 的最上方增加一行 <code>%option noyywrap</code></li>
+<li><code>instruction.h</code> 增加一行 <code>class Instruction;</code></li>
+<li><code>stackmachine.h</code> 增加一行 <code>class StackMachine;</code></li>
+</ul>
+<p>对于提供的 P-Machine 指令说明，我补充一下几个指针的含义，另外<a href="https://en.wikipedia.org/wiki/P-code_machine#UCSD_p-Machine" target="_blank" rel="noopener">这里</a>也许能给你一些启发：</p>
+<ul>
+<li>SP: 栈指针</li>
+<li>PC: 当前指令指针</li>
+<li>MP: 动态链，也就是当前活跃栈帧的起点</li>
+<li>EP: Extreme Pointer，当前栈的最高可能位置，换句话说，就是这个函数调用过程中，栈指针的最大的可能位置，有助于检测栈溢出。</li>
+<li>NP: 堆指针</li>
+</ul>
+<p>Compiler Design: Virtual Machines 的第二章对于理解 P-Machine 很有帮助，强烈推荐！</p>
 
       
     </div>
