@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://zerol.me/2019/12/14/shanbay-JS-reverse-engineering/</loc>
+    
+    <lastmod>2019-12-14T02:01:57.333Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://zerol.me/2019/09/07/write-a-compiler/</loc>
     
     <lastmod>2019-12-02T04:11:53.174Z</lastmod>
