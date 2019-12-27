@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://zerol.me/2019/03/16/recollection-of-algorithm-competition/</loc>
+    
+    <lastmod>2019-12-27T10:09:42.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://zerol.me/2019/12/14/shanbay-JS-reverse-engineering/</loc>
     
     <lastmod>2019-12-14T02:39:35.442Z</lastmod>
@@ -68,13 +75,6 @@
     <loc>https://zerol.me/2019/09/06/TuSimple-OpenDay/</loc>
     
     <lastmod>2019-09-27T11:56:19.657Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://zerol.me/2019/03/16/recollection-of-algorithm-competition/</loc>
-    
-    <lastmod>2019-09-16T05:43:09.000Z</lastmod>
     
   </url>
   
