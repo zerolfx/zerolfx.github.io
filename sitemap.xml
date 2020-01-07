@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://zerol.me/2019/07/24/Cloud-Storage-For-Linux/</loc>
+    
+    <lastmod>2020-01-07T01:46:22.622Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://zerol.me/2017/11/19/detective-fiction/</loc>
     
-    <lastmod>2019-12-30T10:15:39.602Z</lastmod>
+    <lastmod>2020-01-03T11:36:47.000Z</lastmod>
     
   </url>
   
@@ -96,13 +103,6 @@
     <loc>https://zerol.me/2017/11/09/Project-Euler/</loc>
     
     <lastmod>2019-08-09T06:22:25.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://zerol.me/2019/07/24/Cloud-Storage-For-Linux/</loc>
-    
-    <lastmod>2019-08-09T06:16:44.000Z</lastmod>
     
   </url>
   
