@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=7.2.0">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    }
+  };
+</script>
+
+  <meta name="description" content="双向搜索其实也写过好多次了，但是以前一直没意识到自己写的双向 Dijkstra 是假的，然后看了看网上的中文博客，前几个也都是假的，所以就写了这篇文章，不过也没人看就是了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="双向 BFS Dijkstra A*">
+<meta property="og:url" content="https://zerol.me/2020/03/31/Bidirectional-BFS-Dijkstra-A-star/index.html">
+<meta property="og:site_name" content="Zerol&#39;s Notes">
+<meta property="og:description" content="双向搜索其实也写过好多次了，但是以前一直没意识到自己写的双向 Dijkstra 是假的，然后看了看网上的中文博客，前几个也都是假的，所以就写了这篇文章，不过也没人看就是了。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-03-31T05:04:31.078Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="双向 BFS Dijkstra A*">
+<meta name="twitter:description" content="双向搜索其实也写过好多次了，但是以前一直没意识到自己写的双向 Dijkstra 是假的，然后看了看网上的中文博客，前几个也都是假的，所以就写了这篇文章，不过也没人看就是了。">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://zerol.me/2020/03/31/Bidirectional-BFS-Dijkstra-A-star/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  
+  <title>双向 BFS Dijkstra A* | Zerol's Notes</title>
+  
+
+
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100757043-1"></script>
+  <script>
+    var host = window.location.hostname;
+    if (host !== "localhost" || !true) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-100757043-1');
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zerol's Notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zerol.me/2020/03/31/Bidirectional-BFS-Dijkstra-A-star/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zerol">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/alpha.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zerol's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">双向 BFS Dijkstra A*
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-03-31 10:04:53 / Modified: 13:04:31" itemprop="dateCreated datePublished" datetime="2020-03-31T10:04:53+08:00">2020-03-31</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2020/03/31/Bidirectional-BFS-Dijkstra-A-star/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/03/31/Bidirectional-BFS-Dijkstra-A-star/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>双向搜索其实也写过好多次了，但是以前一直没意识到自己写的双向 Dijkstra 是假的，然后看了看网上的中文博客，前几个也都是假的，所以就写了这篇文章，不过也没人看就是了。</p>
+<a id="more"></a>
+<p>前置知识：BFS, Dijkstra, A*</p>
+<h2 id="双向-bfs-搜索">双向 BFS 搜索</h2>
+<p>双向 BFS 其实是相当符合直觉的，从起点和终点出发，每次扩展其中一边，直到两边同时访问了一个节点就终止了，答案就是从起点到公共点再到终点的一条路径。</p>
+<h2 id="双向-dijkstra-搜索">双向 Dijkstra 搜索</h2>
+<h3 id="反例">反例</h3>
+<p>以前我以为双向 Dijkstra 类似于 BFS，只要两边相遇了就可以终止了，但其实并非如此。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">S   1   A   1   B   1   C   1   T</span><br><span class="line">o-------o-------o-------o-------o</span><br><span class="line">        |               |</span><br><span class="line">        +---------------+</span><br><span class="line">               1.5</span><br></pre></td></tr></table></figure>
+<p>上图是一个简单的反例，假设正反交替扩展，那么顺序就是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">S -&gt; A</span><br><span class="line">T -&gt; C</span><br><span class="line">A -&gt; B</span><br><span class="line">C -&gt; B</span><br></pre></td></tr></table></figure>
+<p>在四次迭代后就相遇了，然是得到的却不是最短路径。</p>
+<h3 id="终止条件">终止条件</h3>
+<p>设图 <span class="math inline">\(G\)</span> 的起点和终点分别为 <span class="math inline">\(s\)</span> 和 <span class="math inline">\(t\)</span>，边权为 <span class="math inline">\(w\)</span>，搜索过程中所有点到起点和终点的距离为 <span class="math inline">\(d_s\)</span> 和 <span class="math inline">\(d_t\)</span>（如果不可达则为 <span class="math inline">\(\infty\)</span>）。</p>
+<ul>
+<li>初始化 <span class="math inline">\(\mu \leftarrow \infty\)</span></li>
+<li>在扩展起点 <span class="math inline">\(s\)</span> 那一侧时，设扩展的边是 <span class="math inline">\((u,v)\)</span>，那么令 <span class="math inline">\(\mu \leftarrow \min\{\mu, d_s(u)+d_t(v)+w(u,v)\}\)</span></li>
+<li>与之类似的，在扩展起点 <span class="math inline">\(t\)</span> 那一侧时，设扩展的边是 <span class="math inline">\(u \Rightarrow v\)</span>，那么令 <span class="math inline">\(\mu \leftarrow \min\{\mu, d_t(u)+d_s(v)+w(u,v)\}\)</span></li>
+</ul>
+<p>终止条件为 <span class="math inline">\(top_s + top_t \ge \mu\)</span>，其中 <span class="math inline">\(top_s\)</span> 和 <span class="math inline">\(top_t\)</span> 为维护的两个最小堆的堆顶元素距离，也就是两侧即将扩展的下一个点的距离之和要大于目前的最优值。</p>
+<p>最后答案就是 <span class="math inline">\(\mu\)</span> 所对应的那条路径。</p>
+<h3 id="简易证明">简易证明</h3>
+<p>反证法：</p>
+<ol type="1">
+<li>设有一条 <span class="math inline">\(s-t\)</span> 之间比 <span class="math inline">\(\mu\)</span> 更短的路径 <span class="math inline">\(P\)</span>。</li>
+<li>那么肯定存在一条边 <span class="math inline">\((u, v)\)</span> 使得 <span class="math inline">\(d_s(u) &lt; top_s\)</span> 和 <span class="math inline">\(d_t(u) &lt; top_t\)</span> 同时成立。（或许不那么显然，我的想法是，把 <span class="math inline">\(P\)</span> 经过的边的边权从起点到终点一个个加起来，肯定有一瞬间导致边权和从 <span class="math inline">\(&lt; top_s\)</span> 跳变到 <span class="math inline">\(\ge top_s\)</span>，那条边就是要找的符合条件的 <span class="math inline">\((u,v)\)</span>。）</li>
+<li>然而这样的路径已经被考虑过了，所以 <span class="math inline">\(P\)</span> 不存在。（更详细一些就是，<span class="math inline">\(u\)</span> 和 <span class="math inline">\(v\)</span> 都被扩展过了，后被扩展的那个点肯定在枚举到 <span class="math inline">\((u, v)\)</span> 这条边时把路径 <span class="math inline">\(P\)</span> 和最优值比较过了。）</li>
+</ol>
+<h2 id="a-搜索单向">A* 搜索（单向）</h2>
+<p>在理解双向 A* 之前，需要明白 A* 的正确性从何而来。</p>
+<p>设 <span class="math inline">\(\pi(u)\)</span> 为启发式函数，就是估计的 <span class="math inline">\(d(u, t)\)</span>。（其实就是 <span class="math inline">\(f(u) = g(u) + h(u)\)</span> 里的 <span class="math inline">\(h(u)\)</span>），设修改过的边权 (reduced cost) <span class="math inline">\(w_\pi(u, v) = w(u, v) - \pi(u) + \pi(v)\)</span>。</p>
+<p>那么 A* 搜索等价于在这个边权修改过的图上进行 Dijkstra：</p>
+<ul>
+<li><p>对于 Dijkstra，是按照修改后的从起点出发的路径长度从小到大访问：</p>
+<p><span class="math inline">\(dist_\pi(s, u) = dist(s, u) - \pi(s) + \pi(u)\)</span></p></li>
+<li><p>对于 A*，是按照 <span class="math inline">\(key(u)=dist(s,u) + \pi(u)\)</span> 从小到大的顺序访问</p></li>
+<li><p>两者就差一个常数 <span class="math inline">\(\pi(s)\)</span></p></li>
+</ul>
+<p>当然，要保证 A* 能找到最优解，需要保证启发式函数是 feasible 的，也就是修改过的边权非负 <span class="math inline">\(w_\pi(u,v) \ge 0\)</span>。</p>
+<p>当 <span class="math inline">\(\pi\)</span> 是 feasible 且 <span class="math inline">\(\pi(t)=0\)</span> 时，<span class="math inline">\(\pi(u)\)</span> 是 <span class="math inline">\(dist(u,t)\)</span> 的下界：</p>
+<ul>
+<li>在修改边权后的图上，对于从 <span class="math inline">\(u\)</span> 到 <span class="math inline">\(t\)</span> 的最短路，有：
+<ul>
+<li><span class="math inline">\(dist_\pi(u, t) \ge 0\)</span> 。由于 feasible，每条边都非负，所以累加后也非负。</li>
+<li><span class="math inline">\(dist_\pi(u, t)= dist(u,t) -\pi(u) + \pi(t)=dist(u,t)-\pi(u)\)</span>。（根据修改后的边权的定义）</li>
+<li>联立可以得到 <span class="math inline">\(\pi(u) \le dist(v,t)\)</span>。</li>
+</ul></li>
+</ul>
+<h2 id="双向-a-搜索">双向 A* 搜索</h2>
+<h3 id="一致性">一致性</h3>
+<p>设 <span class="math inline">\(\pi_s(u)\)</span> 和 <span class="math inline">\(\pi_t(u)\)</span> 是对 <span class="math inline">\(dist(s,u)\)</span> 和 <span class="math inline">\(dist(u, t)\)</span> 的估计。</p>
+<p>对于同一条边 <span class="math inline">\((u,v)\)</span> 在正反图中的 reduced cost 如果一致的话，就认为是 consistent 的： <span class="math display">\[
+w_\pi(u,v)=w(u,v) - \pi_t(u) + \pi_t(v) = w(v,u) - \pi_s(v)+\pi_s(u) = w_\pi(v,u) \\
+\pi_s(u)+\pi_t(u) = \pi_s(v)+\pi_t(v)
+\]</span> 也就是说 $_s(u) + _t(u) = $ 常数。</p>
+<p>通常来说，随便掏出两个 feasible 的启发式函数（比如欧氏距离，曼哈顿距离），很可能不是 consistent 的。 <span class="math display">\[
+\pi&#39;_s(u)=\frac 12 (\pi_s(u)-\pi_t(u)+\pi_t(s)) \\
+\pi&#39;_t(u)=\frac 12 (\pi_t(u)-\pi_s(u)+\pi_s(s))
+\]</span> 通过变换，获得了一个 feasible 且 consistent 的启发式函数 <span class="math inline">\(\pi&#39;\)</span>，还满足 <span class="math inline">\(\pi&#39;_s(s) =\pi&#39;_t(t)=0\)</span>。尽管如此，相比起 <span class="math inline">\(\pi\)</span>，<span class="math inline">\(\pi&#39;\)</span> 是一个更差的估计。</p>
+<h3 id="终止条件-1">终止条件</h3>
+<p>大概就是在修改过的图（也就是可以当成 Dijkstra 的图）上考虑 Dijkstra 的终止条件的证明。</p>
+<p>正向的访问过的最长的路径（修改后） + 反向的访问过的最长的路径（修改后）≥ 最优的路径（修改后）</p>
+<p><span class="math inline">\(\mu\)</span> 仍旧定义为最优路径（未修改）。</p>
+<ul>
+<li>正向最长路径（修改后）：<span class="math inline">\(dist_\pi(s,u)=d_s(u) - \pi_t(s) + \pi_t(u)=top_s - \pi_t(s)\)</span></li>
+<li>反向最长路径（修改后）：<span class="math inline">\(dist_\pi(u,t)=d_t(u) - \pi_s(u) + \pi_s(t)=top_t - \pi_s(t)\)</span></li>
+<li>最优路径（修改后）：<span class="math inline">\(\mu -\pi_s(s) + \pi_s(t)\)</span></li>
+</ul>
+<p>那么就是 <span class="math display">\[
+[top_s - \pi_t(s)] + [top_s - \pi_s(t)] \ge [\mu -\pi_s(s) + \pi_s(t)]
+\]</span> 利用 <span class="math inline">\(\pi_s(s)=0\)</span> 和 <span class="math inline">\(\pi_t(s) = \pi_s(t)\)</span>，有 <span class="math display">\[
+top_s + top_t \ge \mu + \pi_t(s)
+\]</span></p>
+<h2 id="写在最后">写在最后</h2>
+<p>用正确的终止条件可能会大幅影响效率，而使用错误的终止条件只会以极其微小的概率无法得到最优解。（这是在实际的地图上测试的感受，如果特意构造的数据，错误的算法必定会有错误的结果。）</p>
+<h2 id="参考">参考</h2>
+<p>主要是这个 <a href="Bi%20Directional%20A%20Star%20-%20Slides.pdf">PDF</a>，顺便加上了一点自己的理解。</p>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>zerol</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    
+    <a href="https://zerol.me/2020/03/31/Bidirectional-BFS-Dijkstra-A-star/" title="双向 BFS Dijkstra A*">https://zerol.me/2020/03/31/Bidirectional-BFS-Dijkstra-A-star/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/30/HiWifi-B70-Breed-Padavan/" rel="next" title="极路由4增强版(B70) 刷入 Breed 和 Padavan 老毛子固件">
+                <i class="fa fa-chevron-left"></i> 极路由4增强版(B70) 刷入 Breed 和 Padavan 老毛子固件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+  
+    <img class="site-author-image" itemprop="image" src="/images/alpha.png" alt="zerol">
+  
+  <p class="site-author-name" itemprop="name">zerol</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+
+
+  <nav class="site-state motion-element">
+    
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">129</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-name">tags</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+
+
+
+
+  <div class="links-of-author motion-element">
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/zerolfx/template" title="ACM 模板库 &rarr; https://github.com/zerolfx/template" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>ACM 模板库</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://acm.ecnu.edu.cn/wiki/index.php?title=ECNU_Foreigners_(2018)" title="训练记录 &rarr; https://acm.ecnu.edu.cn/wiki/index.php?title=ECNU_Foreigners_(2018)" rel="noopener" target="_blank"><i class="fa fa-fw fa-tasks"></i>训练记录</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:z@zerol.me" title="E-Mail &rarr; mailto:z@zerol.me"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+
+
+
+
+  <div class="links-of-blogroll motion-element links-of-blogroll-block">
+    <div class="links-of-blogroll-title">
+      <i class="fa  fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://www.jxtxzzw.com" title="https://www.jxtxzzw.com" rel="noopener" target="_blank">jxtxzzw</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="http://www.secrul.cn/" title="http://www.secrul.cn/" rel="noopener" target="_blank">secrul</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://www.rooobin.top/" title="https://www.rooobin.top/" rel="noopener" target="_blank">rooobin</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="http://cubercsl.cn/" title="http://cubercsl.cn/" rel="noopener" target="_blank">cubercsl</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="http://xiejiadong.com/" title="http://xiejiadong.com/" rel="noopener" target="_blank">xiejiadong</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.csdn.net/calabash_boy" title="https://blog.csdn.net/calabash_boy" rel="noopener" target="_blank">calabash_boy</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="http://dengtesla.com" title="http://dengtesla.com" rel="noopener" target="_blank">D-Tesla</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="http://fuckgfw.org" title="http://fuckgfw.org" rel="noopener" target="_blank">Minty_He</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="http://godweiyang.com/" title="http://godweiyang.com/" rel="noopener" target="_blank">godweiyang</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+          
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#双向-bfs-搜索"><span class="nav-number">1.</span> <span class="nav-text">双向 BFS 搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#双向-dijkstra-搜索"><span class="nav-number">2.</span> <span class="nav-text">双向 Dijkstra 搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#反例"><span class="nav-number">2.1.</span> <span class="nav-text">反例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#终止条件"><span class="nav-number">2.2.</span> <span class="nav-text">终止条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简易证明"><span class="nav-number">2.3.</span> <span class="nav-text">简易证明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#a-搜索单向"><span class="nav-number">3.</span> <span class="nav-text">A* 搜索（单向）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#双向-a-搜索"><span class="nav-number">4.</span> <span class="nav-text">双向 A* 搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一致性"><span class="nav-number">4.1.</span> <span class="nav-text">一致性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#终止条件-1"><span class="nav-number">4.2.</span> <span class="nav-text">终止条件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写在最后"><span class="nav-number">5.</span> <span class="nav-text">写在最后</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zerol</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+    
+  
+
+
+
+
+
+
+
+
+
+  
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://zerolblog.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://zerol.me/2020/03/31/Bidirectional-BFS-Dijkstra-A-star/";
+    this.page.identifier = "2020/03/31/Bidirectional-BFS-Dijkstra-A-star/";
+    this.page.title = '双向 BFS Dijkstra A*';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://zerolblog.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    window.addEventListener('load', loadComments, false);
+  
+</script>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// GET RESPONSIVE HEIGHT PASSED FROM IFRAME
+
+window.addEventListener("message", function(e) {
+  var data = e.data;
+  if ((typeof data === 'string') && (data.indexOf('ciu_embed') > -1)) {
+    var featureID = data.split(':')[1];
+    var height = data.split(':')[2];
+    $(`iframe[data-feature=${featureID}]`).height(parseInt(height) + 30);
+  }
+}, false);
+</script>
+
+
+
+
+
+
+
+
+  
+
+</body>
+</html>
