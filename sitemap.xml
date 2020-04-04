@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://zerol.me/2019/02/03/learn-haskell/</loc>
+    
+    <lastmod>2020-04-03T07:39:03.697Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://zerol.me/2020/03/31/Bidirectional-BFS-Dijkstra-A-star/</loc>
     
     <lastmod>2020-03-31T05:04:31.078Z</lastmod>
@@ -138,13 +145,6 @@
     <loc>https://zerol.me/2018/07/07/myself/</loc>
     
     <lastmod>2019-07-24T11:58:02.929Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://zerol.me/2019/02/03/learn-haskell/</loc>
-    
-    <lastmod>2019-06-26T16:30:26.821Z</lastmod>
     
   </url>
   
