@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=7.2.0">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2">
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    }
+  };
+</script>
+
+  <meta name="description" content="前言 之所以写这份攻略，是因为我觉得这个游戏相当不错，但是中文的攻略极少（仅有的也大多过时），可能对于一些不愿查阅英文 Wiki 的玩家制造了无形的障碍，于是尝试着写一下攻略，希望对大家有所帮助。 作者：zerol，阿初酱 注：本文同步发布在 zerol 的博客和 Steam 中本游戏的指南中，禁止其他形式的一切转载。（Upd: Steam 指南排版太麻烦，弃坑了。） 注：本攻略写于 2020.3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《ASTRONEER 异星旅人》攻略">
+<meta property="og:url" content="https://zerol.me/2020/04/05/ASTRONEER-Guide/index.html">
+<meta property="og:site_name" content="Zerol&#39;s Notes">
+<meta property="og:description" content="前言 之所以写这份攻略，是因为我觉得这个游戏相当不错，但是中文的攻略极少（仅有的也大多过时），可能对于一些不愿查阅英文 Wiki 的玩家制造了无形的障碍，于是尝试着写一下攻略，希望对大家有所帮助。 作者：zerol，阿初酱 注：本文同步发布在 zerol 的博客和 Steam 中本游戏的指南中，禁止其他形式的一切转载。（Upd: Steam 指南排版太麻烦，弃坑了。） 注：本攻略写于 2020.3">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-04-05T06:20:29.884Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《ASTRONEER 异星旅人》攻略">
+<meta name="twitter:description" content="前言 之所以写这份攻略，是因为我觉得这个游戏相当不错，但是中文的攻略极少（仅有的也大多过时），可能对于一些不愿查阅英文 Wiki 的玩家制造了无形的障碍，于是尝试着写一下攻略，希望对大家有所帮助。 作者：zerol，阿初酱 注：本文同步发布在 zerol 的博客和 Steam 中本游戏的指南中，禁止其他形式的一切转载。（Upd: Steam 指南排版太麻烦，弃坑了。） 注：本攻略写于 2020.3">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://zerol.me/2020/04/05/ASTRONEER-Guide/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  
+  <title>《ASTRONEER 异星旅人》攻略 | Zerol's Notes</title>
+  
+
+
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100757043-1"></script>
+  <script>
+    var host = window.location.hostname;
+    if (host !== "localhost" || !true) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-100757043-1');
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zerol's Notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zerol.me/2020/04/05/ASTRONEER-Guide/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zerol">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/alpha.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zerol's Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">《ASTRONEER 异星旅人》攻略
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-04-05 14:06:11 / Modified: 14:20:29" itemprop="dateCreated datePublished" datetime="2020-04-05T14:06:11+08:00">2020-04-05</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/攻略/" itemprop="url" rel="index"><span itemprop="name">攻略</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2020/04/05/ASTRONEER-Guide/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/04/05/ASTRONEER-Guide/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言">前言</h2>
+<p>之所以写这份攻略，是因为我觉得这个游戏相当不错，但是中文的攻略极少（仅有的也大多过时），可能对于一些不愿查阅英文 Wiki 的玩家制造了无形的障碍，于是尝试着写一下攻略，希望对大家有所帮助。</p>
+<p>作者：zerol，阿初酱</p>
+<p>注：本文同步发布在 zerol 的博客和 Steam 中本游戏的指南中，禁止其他形式的一切转载。（Upd: Steam 指南排版太麻烦，弃坑了。）</p>
+<p>注：本攻略写于 2020.3，请注意其时效性（这个游戏已经有约 4 年的历史了，开发商的持续更新很良心）</p>
+<a id="more"></a>
+<h2 id="通用建议">通用建议</h2>
+<ul>
+<li>按 Esc 中左上角有一栏是异星百科，可供随时查阅，对于新手教程有不少补充。</li>
+<li>多存档以及多复制存档进行备份，可以避免不少悲剧。</li>
+<li>按住 Ctrl 键使用地形工具可以形成角度固定的面（需要背包中有小罐），在挖通向地底的通道时尤为有用。</li>
+<li>电源插头所表示的信息，简单来说有红色就是供小于求，黄色的多少表示供求比例（占总体一半时供求平衡）。</li>
+<li>EXO Dynamics 研究援助是四棱锥形的箱子，可以获取研究样本或者研究物品（和所在星球有关），箱子有两类：有电源标识的需要提供足够的点一段时间即可开启（不同星球上的箱子所需要的电可能不同），有资源表示的放入图示对应资源方可开启（资源是该星球上可以直接获取的，有些获取后可能需要加工）。</li>
+<li>EXO 任务平台是与一个已经结束的活动相关，所以现在只会有“没有可用任务”的提示。</li>
+<li>最适合用来放物品的是中型存储，放置在别的东西上面时可以按 F 展平，配合存储柱或者平台，效果极佳。</li>
+<li>在大型漫游车头，建议同时放上钻取力度和铺路机，并在车身上放上装土用的中罐，开车出门再也不用担心掉在坑里了。</li>
+<li>工作灯，小型太阳能和风力发电，小型打印机都可以用来充当延长线（即延长电线，将物品放在中间，两端连接电线即可）。</li>
+<li>探测器扫描仪可以用来发现每隔星球上的一个现实中也存在的探测器（有趣的是，按照游戏中的星球顺序，所能发现的探测器的发射时间是从近到远）。</li>
+<li>本游戏没有云存档，存档路径位于 <code>%LocalAppData%\Astro</code> （直接复制路径到资源管理器打开即可）。 接近星球核心的地方可以找到太空元素，只能用来研究，虽然每一个能提供 1000 字节数，但是研究速度很慢，至少需要 25min 的时间。</li>
+<li>不依靠其他物品就能获得氧气的地方称为无限，比如各个星球的地心和世界的尽头。 地形工具或者漫游车上的钻头的圈都能够显示当前的土占罐子容量的比例。 遭遇过的一些 bug（可能有些 bug 只会在多人模式遇到）：
+<ul>
+<li>从传送门的台子上往下走时有概率突然死亡，目前无解。<a href="https://www.reddit.com/r/Astroneer/comments/c3ipny/dying_at_gateways_glitch/" target="_blank" rel="noopener">Reddit 上的讨论</a></li>
+<li>多人游戏中，如果遇到有玩家地形工具消失的情况，可以用自杀解决问题。<a href="https://www.reddit.com/r/Astroneer/comments/c420j1/friends_terrain_tool_completely_disappeared/" target="_blank" rel="noopener">Reddit 上的讨论</a></li>
+<li>好友无法加入，房主检查菜单中合作那一项是否能看到 steam 好友列表，如果不能就重启游戏/steam/电脑吧。</li>
+</ul></li>
+</ul>
+<h2 id="最初的星球">最初的星球</h2>
+<p>降落在一个荒无人烟的星球上，所有的一切充满了未知。</p>
+<ul>
+<li>希尔瓦星球的研究样本固然丰富（尤其是森林中的树干上），但是其他星球的研究样本可能包含数倍的字节数，所以字节数够用就好。</li>
+<li>工作灯是下洞必备道具，初期有铜之后不妨做一个（铜在地表的石头山上）。</li>
+<li>可以用土壤离心机用土来兑换一些物品，通常拿来换化合物，树脂和石墨（以后可以从别的星球获得大量石墨，不过化合物和树脂还是很划算的）。</li>
+<li>打包器非常有用，可以将研究物品和大型残骸打包后放入背包，带回家研究和粉碎。</li>
+<li>氧气瓶是出门能用到的好东西，可以存储少量氧气并且能反复使用，将石英熔炼成一个玻璃即可在背包制作，石英（粉色柱状水晶）可以在地下洞穴大量挖到。</li>
+</ul>
+<h2 id="崭新的机遇">崭新的机遇</h2>
+<p>走出安逸的居所，去往更广袤的宇宙吧。</p>
+<ul>
+<li>根据想解锁的的科技，去往别的星球获取资源，推荐的顺序当然是从易到难了。</li>
+<li>出门前记得带好打包后的平台，发电装置（根据星球特性和喜好从太阳能，风力，火力中选择），用于制作平台的树脂，用于制造拴绳的化合物，用于制造打包器的石墨，最重要的是带下一个信标到着陆点附近放下，这样下次访问的时候便于降落在同一个地方。</li>
+<li>对于难度较大的星球，提前在地形工具上安装好钻取模式以免产生挖不动资源的尴尬情况。</li>
+<li>关于气体，中期必要的也就只有用来炼钢的氩气了，初始的星球上能够获取氮气和氢气，氦气是用于合成终极材料纳米碳合金的必要材料，其他气体必要程度并不高。</li>
+<li>是时候改造一下家园了。推荐使用 超大型平台C 来放各种装置，旁边的两个三级接口可以各放两个展平的中型存储。存放物品的话，可以用 大型筒仓B，并在上面放满中型存储。</li>
+<li>EXO 交易平台和破碎机配合使用，破碎机可以粉碎一定大小以内的物品和碎片，并转化为金属碎料（其实就是垃圾），可以在交易平台中兑换物品。用泥土兑换碎片效率最高的方法是用土换粘土 (1:3)，炼成陶瓷后制作钻取模式1，然后粉碎成金属碎料 (2:1)，综合之后就是一罐土换 1.5 个金属碎料。（其实还有利用率更高的方式，但是操作太过繁琐，综合时间效率后很不划算。）</li>
+<li>每个星球都有化合物、有机物、树脂、石英、石墨、黏土、红土、铵、太空元素，所以当家园附近资源濒临枯竭时就去其他星球获取这些资源吧。</li>
+</ul>
+<h2 id="世界的尽头">世界的尽头</h2>
+<p>在拥有了所能拥有的一切之后，开始思考神是否存在于这个世界？ 以下内容包含剧透，请谨慎食用：</p>
+<ul>
+<li>在每个星球上，有六个闸门仓 (Gateway Chamber)，它们的位置在星球的两极以及赤道上等间距的四个位置（对于卫星，只有两个闸门仓，在赤道上对立的两侧）。两极可以通过指南针来找到，赤道可以看空中的银河以及其他行星的运行轨迹来确定。到达后可以用足够多的电持续一段时间来解锁，解锁后可以凝视奇石 (Odd Stone) 通过闸门传送网 (Gateway Fast Travel Network) 在同一个星球的已解锁的闸门仓之间传送。</li>
+<li>当解锁了一个星球上的所有闸门仓之后，就可以去往星球的核心进入闸门引擎 (Gateway Engine)，注意不要将车开得过于接近核心，会因为重力难以动弹。在核心内部不会消耗氧气，用上面图标所示资源解锁后，会生成该星球独有的几何三联画 (Geometric Triptych)（可以反复生成），放到另一面（头顶）后会出现奇石。</li>
+<li>当解锁过一个闸门引擎后，在乘坐飞船升空后会在太阳旁边有一个额外的星球（即未知的卫星）可供选择，将星球收集来的几何三联画放入对应的位置后，就能传送到对应的星球。当所有星球都解锁后，游戏就正式通关了。</li>
+</ul>
+<h2 id="题外话">题外话</h2>
+<ul>
+<li>以前交易平台不是单向的，可以把联铵换成金属碎料。</li>
+<li>以前可以在交易平台飞走前把材料拿下来，然后就无限资源了（想当白嫖怪？）。</li>
+<li>联铵式喷气背包是可以飞出所在星球的，所以想看宇宙就自己飞嘛（说不定可以直接飞到别的星球只要你联铵够多，当然不能就当我没说）。</li>
+<li>以前的太空元素的研究速度并没有受到限制，于是自始至终都不用为字节数发愁。</li>
+<li>世界的尽头位于太阳上方，飞船会停在周围的斜坡顶端，把飞船往斜坡边缘卡就能给扔出去（本来是有层保护壁的），然后飞船会掉到太阳上（去哪了也不知道，目前没有解决办法）。</li>
+</ul>
+<h2 id="参考和补充">参考和补充</h2>
+<p><a href="https://astroneer.gamepedia.com/Astroneer_Wiki" target="_blank" rel="noopener">https://astroneer.gamepedia.com/Astroneer_Wiki</a> 感谢 Wiki 的维护者提供了与游戏相关的详实而准确的信息，为本文提供了大量参考。</p>
+<p>Wiki 中一些重要的页面：</p>
+<ul>
+<li>不同星球闸门仓所需的电流 <a href="https://astroneer.gamepedia.com/Gateway_Chamber#Power_Requirements" target="_blank" rel="noopener">https://astroneer.gamepedia.com/Gateway_Chamber#Power_Requirements</a></li>
+<li>不同星球闸门引擎所需的资源 <a href="https://astroneer.gamepedia.com/Gateway_Engine#Planets" target="_blank" rel="noopener">https://astroneer.gamepedia.com/Gateway_Engine#Planets</a></li>
+<li>所有资源在星球上的分布 <a href="https://astroneer.gamepedia.com/Resources#Resources" target="_blank" rel="noopener">https://astroneer.gamepedia.com/Resources#Resources</a></li>
+<li>所有用电器和发电装置所能消耗或产生的电流 <a href="https://astroneer.gamepedia.com/Power" target="_blank" rel="noopener">https://astroneer.gamepedia.com/Power</a></li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>zerol</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    
+    <a href="https://zerol.me/2020/04/05/ASTRONEER-Guide/" title="《ASTRONEER 异星旅人》攻略">https://zerol.me/2020/04/05/ASTRONEER-Guide/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/31/Bidirectional-BFS-Dijkstra-A-star/" rel="next" title="双向 BFS Dijkstra A*">
+                <i class="fa fa-chevron-left"></i> 双向 BFS Dijkstra A*
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+  
+    <img class="site-author-image" itemprop="image" src="/images/alpha.png" alt="zerol">
+  
+  <p class="site-author-name" itemprop="name">zerol</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+
+
+  <nav class="site-state motion-element">
+    
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">130</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">categories</span>
+        </a>
+      </div>
+    
+
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-name">tags</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+
+
+
+
+  <div class="links-of-author motion-element">
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://github.com/zerolfx/template" title="ACM 模板库 &rarr; https://github.com/zerolfx/template" rel="noopener" target="_blank"><i class="fa fa-fw fa-book"></i>ACM 模板库</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="https://acm.ecnu.edu.cn/wiki/index.php?title=ECNU_Foreigners_(2018)" title="训练记录 &rarr; https://acm.ecnu.edu.cn/wiki/index.php?title=ECNU_Foreigners_(2018)" rel="noopener" target="_blank"><i class="fa fa-fw fa-tasks"></i>训练记录</a>
+      </span>
+    
+      <span class="links-of-author-item">
+      
+      
+        
+      
+      
+        
+      
+        <a href="mailto:z@zerol.me" title="E-Mail &rarr; mailto:z@zerol.me"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+    
+  </div>
+
+
+
+
+
+
+  <div class="links-of-blogroll motion-element links-of-blogroll-block">
+    <div class="links-of-blogroll-title">
+      <i class="fa  fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://www.jxtxzzw.com" title="https://www.jxtxzzw.com" rel="noopener" target="_blank">jxtxzzw</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="http://www.secrul.cn/" title="http://www.secrul.cn/" rel="noopener" target="_blank">secrul</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://www.rooobin.top/" title="https://www.rooobin.top/" rel="noopener" target="_blank">rooobin</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="http://cubercsl.cn/" title="http://cubercsl.cn/" rel="noopener" target="_blank">cubercsl</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="http://xiejiadong.com/" title="http://xiejiadong.com/" rel="noopener" target="_blank">xiejiadong</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.csdn.net/calabash_boy" title="https://blog.csdn.net/calabash_boy" rel="noopener" target="_blank">calabash_boy</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="http://dengtesla.com" title="http://dengtesla.com" rel="noopener" target="_blank">D-Tesla</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="http://fuckgfw.org" title="http://fuckgfw.org" rel="noopener" target="_blank">Minty_He</a>
+        </li>
+      
+        <li class="links-of-blogroll-item">
+          <a href="http://godweiyang.com/" title="http://godweiyang.com/" rel="noopener" target="_blank">godweiyang</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+          
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通用建议"><span class="nav-number">2.</span> <span class="nav-text">通用建议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最初的星球"><span class="nav-number">3.</span> <span class="nav-text">最初的星球</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#崭新的机遇"><span class="nav-number">4.</span> <span class="nav-text">崭新的机遇</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#世界的尽头"><span class="nav-number">5.</span> <span class="nav-text">世界的尽头</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题外话"><span class="nav-number">6.</span> <span class="nav-text">题外话</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考和补充"><span class="nav-number">7.</span> <span class="nav-text">参考和补充</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zerol</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+    
+  
+
+
+
+
+
+
+
+
+
+  
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://zerolblog.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://zerol.me/2020/04/05/ASTRONEER-Guide/";
+    this.page.identifier = "2020/04/05/ASTRONEER-Guide/";
+    this.page.title = '《ASTRONEER 异星旅人》攻略';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://zerolblog.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    window.addEventListener('load', loadComments, false);
+  
+</script>
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// GET RESPONSIVE HEIGHT PASSED FROM IFRAME
+
+window.addEventListener("message", function(e) {
+  var data = e.data;
+  if ((typeof data === 'string') && (data.indexOf('ciu_embed') > -1)) {
+    var featureID = data.split(':')[1];
+    var height = data.split(':')[2];
+    $(`iframe[data-feature=${featureID}]`).height(parseInt(height) + 30);
+  }
+}, false);
+</script>
+
+
+
+
+
+
+
+
+  
+
+</body>
+</html>
