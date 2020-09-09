@@ -1,81 +1,127 @@
 /* global NexT, CONFIG */
 
-$(document).ready(function() {
+NexT.boot = {};
 
-  /**
-   * Register JS handlers by condition option.
-   * Need to add config option in Front-End at 'layout/_partials/head.swig' file.
-   */
-  CONFIG.fancybox && NexT.utils.wrapImageWithFancyBox();
-  CONFIG.mediumzoom && window.mediumZoom('.post-body img');
-  CONFIG.lazyload && window.lozad('.post-body img').observe();
-  CONFIG.pangu && window.pangu.spacingPage();
+NexT.boot.registerEvents = function() {
 
-  CONFIG.copycode.enable && NexT.utils.registerCopyCode();
-  CONFIG.tabs && NexT.utils.registerTabsTag();
-  NexT.utils.registerESCKeyEvent();
-  CONFIG.back2top.enable && NexT.utils.registerBackToTop();
-  NexT.utils.embeddedVideoTransformer();
+  NexT.utils.registerScrollPercent();
+  NexT.utils.registerCanIUseTag();
 
   // Mobile top menu bar.
-  $('.site-nav-toggle button').on('click', function() {
-    var $siteNav = $('.site-nav');
-    var ON_CLASS_NAME = 'site-nav-on';
-    var isSiteNavOn = $siteNav.hasClass(ON_CLASS_NAME);
-    var animateAction = isSiteNavOn ? 'slideUp' : 'slideDown';
-    var animateCallback = isSiteNavOn ? 'removeClass' : 'addClass';
+  document.querySelector('.site-nav-toggle .toggle').addEventListener('click', event => {
+    event.currentTarget.classList.toggle('toggle-close');
+    const siteNav = document.querySelector('.site-nav');
+    if (!siteNav) return;
+    const animateAction = document.body.classList.contains('site-nav-on');
+    const height = NexT.utils.getComputedStyle(siteNav);
+    siteNav.style.height = animateAction ? height : 0;
+    const toggle = () => document.body.classList.toggle('site-nav-on');
+    const begin = () => {
+      siteNav.style.overflow = 'hidden';
+    };
+    const complete = () => {
+      siteNav.style.overflow = '';
+      siteNav.style.height = '';
+    };
+    window.anime(Object.assign({
+      targets : siteNav,
+      duration: 200,
+      height  : animateAction ? [height, 0] : [0, height],
+      easing  : 'linear'
+    }, animateAction ? {
+      begin,
+      complete: () => {
+        complete();
+        toggle();
+      }
+    } : {
+      begin: () => {
+        begin();
+        toggle();
+      },
+      complete
+    }));
+  });
 
-    $siteNav.stop()[animateAction]('fast', function() {
-      $siteNav[animateCallback](ON_CLASS_NAME);
+  const duration = 200;
+  document.querySelectorAll('.sidebar-nav li').forEach((element, index) => {
+    element.addEventListener('click', () => {
+      if (element.matches('.sidebar-toc-active .sidebar-nav-toc, .sidebar-overview-active .sidebar-nav-overview')) return;
+      const sidebar = document.querySelector('.sidebar-inner');
+      const panel = document.querySelectorAll('.sidebar-panel');
+      const activeClassName = ['sidebar-toc-active', 'sidebar-overview-active'];
+
+      window.anime({
+        duration,
+        targets   : panel[1 - index],
+        easing    : 'linear',
+        opacity   : 0,
+        translateY: [0, -20],
+        complete  : () => {
+          // Prevent adding TOC to Overview if Overview was selected when close & open sidebar.
+          sidebar.classList.replace(activeClassName[1 - index], activeClassName[index]);
+          window.anime({
+            duration,
+            targets   : panel[index],
+            easing    : 'linear',
+            opacity   : [0, 1],
+            translateY: [-20, 0]
+          });
+        }
+      });
     });
   });
 
+  window.addEventListener('resize', NexT.utils.initSidebarDimension);
+
+  window.addEventListener('hashchange', () => {
+    const tHash = location.hash;
+    if (tHash !== '' && !tHash.match(/%\S{2}/)) {
+      const target = document.querySelector(`.tabs ul.nav-tabs li a[href="${tHash}"]`);
+      target && target.click();
+    }
+  });
+};
+
+NexT.boot.refresh = function() {
+
   /**
-   * Init Sidebar & TOC inner dimensions on all pages and for all schemes.
-   * Need for Sidebar/TOC inner scrolling if content taller then viewport.
+   * Register JS handlers by condition option.
+   * Need to add config option in Front-End at 'scripts/helpers/next-config.js' file.
    */
-  function updateSidebarHeight(height) {
-    height = height || 'auto';
-    $('.site-overview, .post-toc').css('max-height', height);
-  }
+  CONFIG.prism && window.Prism.highlightAll();
+  CONFIG.fancybox && NexT.utils.wrapImageWithFancyBox();
+  CONFIG.mediumzoom && window.mediumZoom('.post-body :not(a) > img, .post-body > img', {
+    background: 'var(--content-bg-color)'
+  });
+  CONFIG.lazyload && window.lozad('.post-body img').observe();
+  CONFIG.pangu && window.pangu.spacingPage();
 
-  function initSidebarDimension() {
-    var updateSidebarHeightTimer;
+  CONFIG.exturl && NexT.utils.registerExtURL();
+  NexT.utils.registerCopyCode();
+  NexT.utils.registerTabsTag();
+  NexT.utils.registerActiveMenuItem();
+  NexT.utils.registerLangSelect();
+  NexT.utils.registerSidebarTOC();
+  NexT.utils.wrapTableWithBox();
+  NexT.utils.registerVideoIframe();
+};
 
-    $(window).on('resize', function() {
-      updateSidebarHeightTimer && clearTimeout(updateSidebarHeightTimer);
-
-      updateSidebarHeightTimer = setTimeout(function() {
-        var sidebarWrapperHeight = document.body.clientHeight - NexT.utils.getSidebarSchemePadding();
-
-        updateSidebarHeight(sidebarWrapperHeight);
-      }, 0);
-    });
-
-    // Initialize Sidebar & TOC Width.
-    var scrollbarWidth = NexT.utils.getScrollbarWidth();
-    if ($('.site-overview-wrap').height() > (document.body.clientHeight - NexT.utils.getSidebarSchemePadding())) {
-      $('.site-overview').css('width', 'calc(100% + ' + scrollbarWidth + 'px)');
-    }
-    if ($('.post-toc-wrap').height() > (document.body.clientHeight - NexT.utils.getSidebarSchemePadding())) {
-      $('.post-toc').css('width', 'calc(100% + ' + scrollbarWidth + 'px)');
-    }
-
-    // Initialize Sidebar & TOC Height.
-    updateSidebarHeight(document.body.clientHeight - NexT.utils.getSidebarSchemePadding());
-  }
-  initSidebarDimension();
-
-  function wrapTable() {
-    $('table').not('.gist table').wrap('<div class="table-container"></div>');
-  }
-  wrapTable();
-
+NexT.boot.motion = function() {
   // Define Motion Sequence & Bootstrap Motion.
-  CONFIG.motion.enable && NexT.motion.integrator
-    .add(NexT.motion.middleWares.logo)
-    .add(NexT.motion.middleWares.menu)
-    .add(NexT.motion.middleWares.postList)
-    .add(NexT.motion.middleWares.sidebar)
-    .bootstrap();
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .add(NexT.motion.middleWares.header)
+      .add(NexT.motion.middleWares.postList)
+      .add(NexT.motion.middleWares.sidebar)
+      .add(NexT.motion.middleWares.footer)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  NexT.boot.registerEvents();
+  NexT.boot.refresh();
+  NexT.boot.motion();
 });
