@@ -414,7 +414,7 @@
 <li>文件历史：这个功能大家都有了，通常为 30 天，也够了，不是吗？有些网盘提供了通过支付额外费用或者升级更加高级的套餐来延长历史记录的时间，但是我相信多数用户是不考虑这个需求的，所以姑且就不考虑了。</li>
 <li>加密：有本地加密的需求的可能也不多吧，至于端到端加密，我相信都有这个功能的，再普通也有 HTTPS。</li>
 </ul>
-<hr>
+<hr />
 <p>写到这里已经有些长了，直接说结论，Linux 下最佳网盘给 pCloud。</p>
 <h4 id="onedrive">OneDrive</h4>
 <p>没有官方 Linux 客户端，没有正常的第三方客户端。如果你去搜索 "OneDrive linux"，你会看到那个支持无数网盘的万能客户端 Expandrive，然而根本无法使用，一直提示挂载中，和 Arch AUR 仓库下若干个月前的评论描述的症状一模一样。优点是如果不考虑 Linux 的话，其实是非常好的选择，因为包含在 Office 365 中，而且套餐选择丰富。</p>
@@ -548,6 +548,50 @@
   
 
   
+      <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.0/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

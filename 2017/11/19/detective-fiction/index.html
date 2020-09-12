@@ -442,7 +442,7 @@
 <ul>
 <li>故事中的故事——灼热鸟，以及西崎的故事。病态的爱。</li>
 <li>杉下的家庭。</li>
-<li>成濑和杉下。“真厉害。” “快救救我。” “衷心感谢你。”<br>
+<li>成濑和杉下。“真厉害。” “快救救我。” “衷心感谢你。”<br />
 </li>
 <li>奈央子和西崎。</li>
 <li>安腾和杉下。“如果我紧紧抓住他的衣襟，他就能带我飞向高处。”</li>
@@ -671,7 +671,7 @@
 <li>文中有一些作者对推理的理解以及推理和数学的类比，还是有一些黑色幽默的成分。（有些还挺有启发的，比如解的唯一性啦，平凡解的使用啦，伏线的回收啦）</li>
 <li>作为难得一读的国产推理作品，没想到最大的感受是，自己大学阶段没参加推理社的遗憾。(Sad)</li>
 </ul>
-<hr>
+<hr />
 <h3 id="弹丸论破-v3">弹丸论破 V3</h3>
 <p>弹丸毋庸置疑是以推理为卖点，同时让玩家自己扮演侦探寻找线索，当然还有最激动人心的审判环节。忘记说了，副标题可是自相残杀的学园生活，暴风雪山庄的模式还是很具有吸引力的。</p>
 <p>与前两作（弹丸1, 2）相比，更加优秀。</p>
@@ -681,7 +681,7 @@
 <li><p>附带的额外游戏可玩性更高。</p></li>
 </ul>
 <p>这是游戏，而非推理小说。可能相较于合理性，更希望给出让读者大吃一惊的结果，同时还要照顾故事的主线。</p>
-<hr>
+<hr />
 <p>什么是推理小说？</p>
 <p>谜小说，书中给出了谜题，但并非立即解答。</p>
 <p>我希望以此对于推理小说做一个较为宽泛的定义。</p>
@@ -803,6 +803,50 @@
   
 
   
+      <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.0/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

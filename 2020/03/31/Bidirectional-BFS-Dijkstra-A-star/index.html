@@ -30,7 +30,7 @@
 <meta property="og:description" content="双向搜索其实也写过好多次了，但是以前一直没意识到自己写的双向 Dijkstra 是假的，然后看了看网上的中文博客，前几个也都是假的，所以就写了这篇文章，不过也没人看就是了。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-03-31T02:04:53.000Z">
-<meta property="article:modified_time" content="2020-03-31T05:04:31.000Z">
+<meta property="article:modified_time" content="2020-09-12T09:11:22.115Z">
 <meta property="article:author" content="zerol">
 <meta name="twitter:card" content="summary">
 
@@ -348,10 +348,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2020-03-31 10:04:53 / Modified: 13:04:31" itemprop="dateCreated datePublished" datetime="2020-03-31T10:04:53+08:00">2020-03-31</time>
+      <time title="Created: 2020-03-31 10:04:53" itemprop="dateCreated datePublished" datetime="2020-03-31T10:04:53+08:00">2020-03-31</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2020-09-12 17:11:22" itemprop="dateModified" datetime="2020-09-12T17:11:22+08:00">2020-09-12</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -462,7 +468,7 @@ top_s + top_t \ge \mu + \pi_t(s)
 <h2 id="写在最后">写在最后</h2>
 <p>用正确的终止条件可能会大幅影响效率，而使用错误的终止条件只会以极其微小的概率无法得到最优解。（这是在实际的地图上测试的感受，如果特意构造的数据，错误的算法必定会有错误的结果。）</p>
 <h2 id="参考">参考</h2>
-<p>主要是这个 <a href="Bi%20Directional%20A%20Star%20-%20Slides.pdf">PDF</a>，顺便加上了一点自己的理解。</p>
+<p>主要是这个 <a href="/2020/03/31/Bidirectional-BFS-Dijkstra-A-star/Bi%20Directional%20A%20Star%20-%20Slides.pdf">PDF</a>，顺便加上了一点自己的理解。</p>
 
     </div>
 
@@ -581,6 +587,50 @@ top_s + top_t \ge \mu + \pi_t(s)
   
 
   
+      <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.0/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

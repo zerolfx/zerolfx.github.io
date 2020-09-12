@@ -804,7 +804,7 @@
           <h2 id="题目">题目</h2>
 <p>https://www.hackerrank.com/challenges/johnland/problem</p>
 <h2 id="题意">题意</h2>
-<p>给一个联通的无向图，求所有点对之间的最小距离和。其中每条边的距离都是 2 的幂且互不相同。</p>
+<p>给一个联通的无向图，求所有点对之间的最小距离和。其中每条边的距离都是 2 的幂且互不相同。
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2018/01/07/Roads-in-HackerLand/#more" rel="contents">
@@ -1413,6 +1413,50 @@
   
 
   
+      <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.0/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

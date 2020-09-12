@@ -415,7 +415,7 @@ min\{step(u)\}, &amp; \text{$SG(v)=0$}  \\
 <li><p>SG 计算过于复杂时打表找规律，或者和自己玩一玩找到一种必胜策略并进行推广。</p></li>
 </ul>
 <h3 id="zero-move">zero-move</h3>
-<p>在 Nim 游戏的基础上增加一个规则，每一堆石子可以进行一次空操作（与玩家无关）。这道题看似同一次状态可以多次抵达，实则不然。同样多的石子，根据经历过空操作与否可以看做两个状态。<br>
+<p>在 Nim 游戏的基础上增加一个规则，每一堆石子可以进行一次空操作（与玩家无关）。这道题看似同一次状态可以多次抵达，实则不然。同样多的石子，根据经历过空操作与否可以看做两个状态。<br />
 新的 SG 值：</p>
 <table>
 <thead>
@@ -561,6 +561,50 @@ min\{step(u)\}, &amp; \text{$SG(v)=0$}  \\
   
 
   
+      <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.0/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

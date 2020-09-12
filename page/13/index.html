@@ -505,7 +505,7 @@
           <h2 id="题目">题目</h2>
 <p>https://www.hackerrank.com/challenges/counting-on-a-tree</p>
 <h2 id="题意">题意</h2>
-<p>给一棵树，树上的每一个点都有一个数字，询问对于给定的两条树上路径，有多少对不同的且分别属于两条路径的点满足对应数字相等。</p>
+<p>给一棵树，树上的每一个点都有一个数字，询问对于给定的两条树上路径，有多少对不同的且分别属于两条路径的点满足对应数字相等。
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/10/28/Counting-On-a-Tree/#more" rel="contents">
@@ -716,7 +716,7 @@
           <h2 id="题目">题目</h2>
 <p>https://www.hackerrank.com/challenges/newyear-game</p>
 <h2 id="题意">题意</h2>
-<p>给一列数，A 和 B 轮流取，如果每个人取的数之和之差的绝对值被 3 整除，则 B 赢，反之 A 赢。</p>
+<p>给一列数，A 和 B 轮流取，如果每个人取的数之和之差的绝对值被 3 整除，则 B 赢，反之 A 赢。
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/07/10/New-Year-Game/#more" rel="contents">
@@ -813,7 +813,7 @@
           <h2 id="题目">题目</h2>
 <p>https://www.hackerrank.com/challenges/summing-pieces</p>
 <h2 id="题意">题意</h2>
-<p>给定一列数，分割成任意多段，某一种分法的值为每一段的数字和和段长之积之和，求所有方案的值的总和。</p>
+<p>给定一列数，分割成任意多段，某一种分法的值为每一段的数字和和段长之积之和，求所有方案的值的总和。
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/07/12/Summing-Pieces/#more" rel="contents">
@@ -918,7 +918,7 @@
 <h2 id="题解">题解</h2>
 <ul>
 <li>每一列的数在原数列中是连续且单调增的</li>
-<li>每一列数的个数是单调减的</li></ul>
+<li>每一列数的个数是单调减的
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/07/03/Sherlock-s-Array-Merging-Algorithm/#more" rel="contents">
@@ -1021,7 +1021,7 @@
           <h2 id="题目">题目</h2>
 <p>https://www.hackerrank.com/challenges/prime-xor</p>
 <h2 id="题意">题意</h2>
-<p>给 n 个介于 3500 和 4500 之间的数，求不同子集（可以包含重复元素）的总数，使得子集异或和是质数。</p>
+<p>给 n 个介于 3500 和 4500 之间的数，求不同子集（可以包含重复元素）的总数，使得子集异或和是质数。
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/07/02/Prime-XOR/#more" rel="contents">
@@ -1124,7 +1124,7 @@
           <h2 id="题目">题目</h2>
 <p>https://www.hackerrank.com/challenges/fair-cut</p>
 <h2 id="题意">题意</h2>
-<p>给 n 个数，分成 k 和 n - k 两组，使得两个组之间任意数对之差的绝对值之和最小。</p>
+<p>给 n 个数，分成 k 和 n - k 两组，使得两个组之间任意数对之差的绝对值之和最小。
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/07/02/Fair-Cut/#more" rel="contents">
@@ -1227,7 +1227,7 @@
           <h2 id="题目">题目</h2>
 <p>https://www.hackerrank.com/challenges/prime-xor</p>
 <h2 id="题意">题意</h2>
-<p>定义一种新的数值表示方法，每一位权值和二进制一样，但是每一位都可以是 0～9。问第 k 大的数是几（如果表示的数值一样大的话，再看做十进制比较）。</p>
+<p>定义一种新的数值表示方法，每一位权值和二进制一样，但是每一位都可以是 0～9。问第 k 大的数是几（如果表示的数值一样大的话，再看做十进制比较）。
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/07/02/Decibinary-Numbers/#more" rel="contents">
@@ -1330,7 +1330,7 @@
           <h2 id="题目">题目</h2>
 <p>https://www.hackerrank.com/challenges/yet-another-minimax-problem</p>
 <h2 id="题意">题意</h2>
-<p>给出 n 个整数，求一个排列使得相邻两数的异或值的最大值最小，输出该值。</p>
+<p>给出 n 个整数，求一个排列使得相邻两数的异或值的最大值最小，输出该值。
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/07/03/Yet-Another-Minimax-Problem/#more" rel="contents">
@@ -1443,6 +1443,50 @@
   
 
   
+      <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.0/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

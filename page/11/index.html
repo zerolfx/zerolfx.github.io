@@ -487,7 +487,7 @@
           <h2 id="题目">题目</h2>
 <p>https://www.hackerrank.com/contests/w36/challenges/cut-a-strip</p>
 <h2 id="题意">题意</h2>
-<p>给一个矩阵，可以将其中大小 <span class="math inline">\(1\times x ~(1\leq x\le k)\)</span> （纵横均可）变成 0，求操作后最大子矩阵和。</p>
+<p>给一个矩阵，可以将其中大小 <span class="math inline">\(1\times x ~(1\leq x\le k)\)</span> （纵横均可）变成 0，求操作后最大子矩阵和。
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2018/02/09/Cut-a-Strip/#more" rel="contents">
@@ -590,7 +590,7 @@
           <h2 id="题目">题目</h2>
 <p>https://www.hackerrank.com/challenges/beautiful-path/problem</p>
 <h2 id="题意">题意</h2>
-<p>求起点到终点的一条路径，使得边权 or 最小。</p>
+<p>求起点到终点的一条路径，使得边权 or 最小。
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/11/13/Minimum-Penalty-Path/#more" rel="contents">
@@ -882,7 +882,7 @@
           <h2 id="题目">题目</h2>
 <p>https://www.hackerrank.com/challenges/matrix/problem</p>
 <h2 id="题意">题意</h2>
-<p>在一棵有边权的树上，要求去掉一些边，使得给定的若干个点之间两两不连通，求这些边的最小边权和。</p>
+<p>在一棵有边权的树上，要求去掉一些边，使得给定的若干个点之间两两不连通，求这些边的最小边权和。
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2018/01/10/Matrix/#more" rel="contents">
@@ -985,7 +985,7 @@
           <h2 id="题目">题目</h2>
 <p>https://www.hackerrank.com/challenges/brick-tiling/problem</p>
 <h2 id="题意">题意</h2>
-<p>给定一个有若干个障碍的棋盘，求用 2*3 的 L 型砖头填满的方案数。</p>
+<p>给定一个有若干个障碍的棋盘，求用 2*3 的 L 型砖头填满的方案数。
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/12/07/Brick-Tiling/#more" rel="contents">
@@ -1088,7 +1088,7 @@
           <h2 id="基本思想">基本思想</h2>
 <p>游戏可以等效为一个有向图，每一个状态相当于图中的一个节点，而可能的状态转移是图中的边。如果必胜态的后继中存在必败态，而必败态的后继全是必胜态。</p>
 <h2 id="sg函数">SG函数</h2>
-<p><span class="math display">\[ SG(u) = mex\{ SG(v)|u \to v \} \]</span> 函数值为 0 代表必败态，不为 0 代表必胜态。（也就是说，0 只能转移到非 0，而非 0 一定能转移到 0。） 一个组合游戏的 SG 和等于所有子游戏的异或和。</p>
+<p><span class="math display">\[ SG(u) = mex\{ SG(v)|u \to v \} \]</span> 函数值为 0 代表必败态，不为 0 代表必胜态。（也就是说，0 只能转移到非 0，而非 0 一定能转移到 0。） 一个组合游戏的 SG 和等于所有子游戏的异或和。
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/06/09/Algorithms-Game-Theory/#more" rel="contents">
@@ -1395,6 +1395,50 @@
   
 
   
+      <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.0/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
