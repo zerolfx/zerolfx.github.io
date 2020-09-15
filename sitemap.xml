@@ -970,13 +970,6 @@
   </url>
   
   <url>
-    <loc>https://zerol.me/tags/dp/</loc>
-    <lastmod>2020-09-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://zerol.me/tags/%E6%94%AF%E9%85%8D%E6%A0%91/</loc>
     <lastmod>2020-09-15</lastmod>
     <changefreq>daily</changefreq>
@@ -992,6 +985,13 @@
   
   <url>
     <loc>https://zerol.me/tags/%E6%8C%81%E4%B9%85%E5%8C%96%E7%BA%BF%E6%AE%B5%E6%A0%91/</loc>
+    <lastmod>2020-09-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://zerol.me/tags/dp/</loc>
     <lastmod>2020-09-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1068,14 +1068,14 @@
   </url>
   
   <url>
-    <loc>https://zerol.me/tags/%E5%90%8E%E7%BC%80%E8%87%AA%E5%8A%A8%E6%9C%BA/</loc>
+    <loc>https://zerol.me/tags/Tarjan/</loc>
     <lastmod>2020-09-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://zerol.me/tags/Tarjan/</loc>
+    <loc>https://zerol.me/tags/%E5%90%8E%E7%BC%80%E8%87%AA%E5%8A%A8%E6%9C%BA/</loc>
     <lastmod>2020-09-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
