@@ -212,7 +212,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#fwt"><span class="nav-number">1.</span> <span class="nav-text">FWT</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8"><span class="nav-number">1.1.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B"><span class="nav-number">1.2.</span> <span class="nav-text">开始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.3.</span> <span class="nav-text">实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#fft"><span class="nav-number">2.</span> <span class="nav-text">FFT</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8-1"><span class="nav-number">2.1.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B-1"><span class="nav-number">2.2.</span> <span class="nav-text">开始</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dft"><span class="nav-number">2.2.1.</span> <span class="nav-text">DFT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#idft"><span class="nav-number">2.2.2.</span> <span class="nav-text">IDFT</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0-1"><span class="nav-number">2.3.</span> <span class="nav-text">实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ntt"><span class="nav-number">3.</span> <span class="nav-text">NTT</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8E%E8%AE%B0"><span class="nav-number">4.</span> <span class="nav-text">后记</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#FWT"><span class="nav-number">1.</span> <span class="nav-text">FWT</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8"><span class="nav-number">1.1.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B"><span class="nav-number">1.2.</span> <span class="nav-text">开始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.3.</span> <span class="nav-text">实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#FFT"><span class="nav-number">2.</span> <span class="nav-text">FFT</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8-1"><span class="nav-number">2.1.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%A7%8B-1"><span class="nav-number">2.2.</span> <span class="nav-text">开始</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DFT"><span class="nav-number">2.2.1.</span> <span class="nav-text">DFT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IDFT"><span class="nav-number">2.2.2.</span> <span class="nav-text">IDFT</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0-1"><span class="nav-number">2.3.</span> <span class="nav-text">实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NTT"><span class="nav-number">3.</span> <span class="nav-text">NTT</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8E%E8%AE%B0"><span class="nav-number">4.</span> <span class="nav-text">后记</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -394,81 +394,48 @@
     <div class="post-body" itemprop="articleBody">
         <p>反正是用来卷的。</p>
 <a id="more"></a>
-<h1 id="fwt">FWT</h1>
-<h2 id="作用">作用</h2>
-<p>用于求 <span class="math inline">\(C[k]=\sum_{g(i,j)=k} A[i] \cdot B[j]\)</span>，其中 <span class="math inline">\(g(i,j)\)</span> 是一个按位做一个二元运算的函数。</p>
-<h2 id="开始">开始</h2>
-<p>记 <span class="math inline">\(C=f(A,B)\)</span>，<span class="math inline">\(A=A_0::A_1\)</span>，其中 <span class="math inline">\(::\)</span> 表示连接， <span class="math inline">\(A_0,A_1\)</span> 分别表示 A 的前一半和后一半（首位分别为 0, 1）。</p>
-<p>拿 g 为 XOR 为例： <span class="math display">\[
-C_0 = f(A_0, B_0) + f(A_1, B_1) \\
-C_1 = f(A_0, B_1) + f(A_1, B_0) \\
-C_0 + C_1 = f(A_0, B_0) + f(A_1, B_1)+f(A_0, B_1) + f(A_1, B_0)=f(A_0+B_0,A_1+B_1) \\
-C_0 - C_1 = f(A_0, B_0) + f(A_1, B_1)-f(A_0, B_1) - f(A_1, B_0)=f(A_0-B_0,A_1-B_1) \\
-(C_0 + C_1) :: (C_0 - C_1) = f(A_0+B_0,A_1+B_1)::f(A_0-B_0,A_1-B_1)
-\]</span> 拿 g 为 OR 为例： <span class="math display">\[
-C_0 = f(A_0, B_0) \\
-C_1 = f(A_0, B_1) + f(A_1, B_0) + f(A_1, B_1) \\
-C_0 = f(A_0, B_0) \\
-C_0 + C_1 = f(A_0, B_0) + f(A_0, B_1) + f(A_1, B_0) + f(A_1, B_1)=f(A_0+B_0,A_1+B_1) \\
-C_0::(C_0 + C_1) = f(A_0, B_0)::f(A_0+B_0,A_1+B_1)
-\]</span> 我们递归地定义 <span class="math inline">\(fwt\)</span> 函数，边界为 <span class="math inline">\(fwt(a)=a\)</span>。</p>
-<p>对于 XOR，<span class="math inline">\(fwt(A)=fwt(A_0::A_1)=fwt(A_0+A_1)::fwt(A_0-A_1)\)</span>。</p>
-<p>对于 OR，<span class="math inline">\(fwt(A)=fwt(A_0::A_1)=fwt(A_0)::fwt(A_0+A_1)\)</span>。</p>
-<p>利用之前推出的等式，可以归纳证明 <span class="math inline">\(fwt(C)=fwt(A) \circ fwt(B)\)</span>，其中 <span class="math inline">\(\circ\)</span> 为对应位相乘。</p>
-<p>那么 <span class="math inline">\(C=fwt^{-1}(fwt(A)\circ fwt(B))\)</span>，至此 <span class="math inline">\(fwt\)</span> 完成了。</p>
-<p>以 XOR 为例简单证明，设 <span class="math inline">\(A,B,C\)</span> 中的元素个数为 <span class="math inline">\(n\)</span>。</p>
-<p><span class="math inline">\(n=1\)</span> 时显然成立。</p>
-<p>若 <span class="math inline">\(n=k\)</span> 时成立，即对于 <span class="math inline">\(C=f(A,B)\)</span> 有 <span class="math inline">\(fwt(C)=fwt(A) \circ fwt(B)\)</span>。</p>
-<p><span class="math inline">\(n=2k\)</span> 时 <span class="math display">\[
-\begin{eqnarray}
-&amp;&amp;fwt(A)\circ fwt(B) \\
-&amp;=&amp;fwt(A_0::A_1)\circ fwt(B_0::B_1) \\
-&amp;=&amp;(fwt(A_0+A_1)::fwt(A_0-A_1))\circ(fwt(B_0+B_1)::fwt(B_0-B_1))  \\
-&amp;=&amp; (fwt(A_0+A_1) \circ fwt(B_0+B_1)) :: (fwt(A_0-A_1) \circ fwt(B_0-B_1)) \\
-&amp;=&amp; fwt(f(A_0+A_1,B_0+B_1))::fwt(f(A_0-A_1,B_0-B_1)) \\
-&amp;=&amp; fwt(C_0+C_1)::fwt(C_0-C_1) \\
-&amp;=&amp; fwt(C_0::C_1) \\
-&amp;=&amp; fwt(C)
-\end{eqnarray}
-\]</span></p>
-<h2 id="实现">实现</h2>
-<ul>
-<li>如果这个运算 g 不满足交换律，你会发现类似 <span class="math inline">\(fwt(C)=fwt(A) \circ fwt&#39;(B)\)</span> 的式子，一种方法就是多写一个函数，或者把 A 或 B 取反，那么 g 就满足交换律了。</li>
+
+<h1 id="FWT"><a href="#FWT" class="headerlink" title="FWT"></a>FWT</h1><h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>用于求 $C[k]=\sum_{g(i,j)=k} A[i] \cdot B[j]$，其中 $g(i,j)$ 是一个按位做一个二元运算的函数。</p>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p>记 $C=f(A,B)$，$A=A_0::A_1$，其中 $::$ 表示连接， $A_0,A_1$ 分别表示 A 的前一半和后一半（首位分别为 0, 1）。</p>
+<p>拿 g 为 XOR 为例：<br>$$<br>C_0 = f(A_0, B_0) + f(A_1, B_1) \<br>C_1 = f(A_0, B_1) + f(A_1, B_0) \<br>C_0 + C_1 = f(A_0, B_0) + f(A_1, B_1)+f(A_0, B_1) + f(A_1, B_0)=f(A_0+B_0,A_1+B_1) \<br>C_0 - C_1 = f(A_0, B_0) + f(A_1, B_1)-f(A_0, B_1) - f(A_1, B_0)=f(A_0-B_0,A_1-B_1) \<br>(C_0 + C_1) :: (C_0 - C_1) = f(A_0+B_0,A_1+B_1)::f(A_0-B_0,A_1-B_1)<br>$$<br>拿 g 为 OR 为例：<br>$$<br>C_0 = f(A_0, B_0) \<br>C_1 = f(A_0, B_1) + f(A_1, B_0) + f(A_1, B_1) \<br>C_0 = f(A_0, B_0) \<br>C_0 + C_1 = f(A_0, B_0) + f(A_0, B_1) + f(A_1, B_0) + f(A_1, B_1)=f(A_0+B_0,A_1+B_1) \<br>C_0::(C_0 + C_1) = f(A_0, B_0)::f(A_0+B_0,A_1+B_1)<br>$$<br>我们递归地定义 $fwt$ 函数，边界为 $fwt(a)=a$。</p>
+<p>对于 XOR，$fwt(A)=fwt(A_0::A_1)=fwt(A_0+A_1)::fwt(A_0-A_1)$。</p>
+<p>对于 OR，$fwt(A)=fwt(A_0::A_1)=fwt(A_0)::fwt(A_0+A_1)$。</p>
+<p>利用之前推出的等式，可以归纳证明 $fwt(C)=fwt(A) \circ fwt(B)$，其中 $\circ$ 为对应位相乘。</p>
+<p>那么 $C=fwt^{-1}(fwt(A)\circ fwt(B))$，至此 $fwt$ 完成了。</p>
+<p>以 XOR 为例简单证明，设 $A,B,C$ 中的元素个数为 $n$。</p>
+<p>$n=1$ 时显然成立。</p>
+<p>若 $n=k$ 时成立，即对于 $C=f(A,B)$ 有 $fwt(C)=fwt(A) \circ fwt(B)$。</p>
+<p>$n=2k$ 时<br>$$<br>\begin{eqnarray}<br>&amp;&amp;fwt(A)\circ fwt(B) \<br>&amp;=&amp;fwt(A_0::A_1)\circ fwt(B_0::B_1) \<br>&amp;=&amp;(fwt(A_0+A_1)::fwt(A_0-A_1))\circ(fwt(B_0+B_1)::fwt(B_0-B_1))  \<br>&amp;=&amp; (fwt(A_0+A_1) \circ fwt(B_0+B_1)) :: (fwt(A_0-A_1) \circ fwt(B_0-B_1)) \<br>&amp;=&amp; fwt(f(A_0+A_1,B_0+B_1))::fwt(f(A_0-A_1,B_0-B_1)) \<br>&amp;=&amp; fwt(C_0+C_1)::fwt(C_0-C_1) \<br>&amp;=&amp; fwt(C_0::C_1) \<br>&amp;=&amp; fwt(C)<br>\end{eqnarray}<br>$$</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><ul>
+<li>如果这个运算 g 不满足交换律，你会发现类似 $fwt(C)=fwt(A) \circ fwt’(B)$ 的式子，一种方法就是多写一个函数，或者把 A 或 B 取反，那么 g 就满足交换律了。</li>
 <li>FWT 可以简单地写成非递归的形式。</li>
-<li>对于 XOR，有 <span class="math inline">\(fwt^{-1}(A)=fwt(A)/n\)</span>，因为每递归一层就会差 2 倍。</li>
+<li>对于 XOR，有 $fwt^{-1}(A)=fwt(A)/n$，因为每递归一层就会差 2 倍。</li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fwt</span><span class="params">(LL a[], <span class="keyword">int</span> n, T f)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> d = <span class="number">1</span>; d &lt; n; d *= <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, t = d * <span class="number">2</span>; i &lt; n; i += t)</span><br><span class="line">            FOR (j, <span class="number">0</span>, d)</span><br><span class="line">                 f(a[i + j], a[i + j + d]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">XOR</span> <span class="params">(LL&amp; a, LL&amp; b)</span> </span>&#123;</span><br><span class="line">    LL x = a, y = b;</span><br><span class="line">    a = (x + y) % MOD;</span><br><span class="line">    b = (x - y + MOD) % MOD;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="fft">FFT</h1>
-<h2 id="作用-1">作用</h2>
-<p>已知 <span class="math inline">\(A,B \in \mathbb R[X]\)</span>，求 <span class="math inline">\(C=A\cdot B\)</span>（多项式乘法）。</p>
-<p>设 <span class="math inline">\(\deg(P)=n\)</span>，选取 <span class="math inline">\(n+1\)</span> 个不同的 <span class="math inline">\(x_i\)</span>，得到该多项式的一个点值表示 <span class="math inline">\(\{(x_i,P(x_i))\}\)</span>，而一个 <span class="math inline">\(n+1\)</span> 个点值表示能唯一确定一个不超过 <span class="math inline">\(n\)</span> 次的多项式。</p>
-<p>如果能够获得 <span class="math inline">\(A,B\)</span> 的点值表示法（对于同样的 <span class="math inline">\(x_i\)</span>），那么可以在线性时间内求出 <span class="math inline">\(C\)</span> 的点值表示法。</p>
+
+<h1 id="FFT"><a href="#FFT" class="headerlink" title="FFT"></a>FFT</h1><h2 id="作用-1"><a href="#作用-1" class="headerlink" title="作用"></a>作用</h2><p>已知 $A,B \in \mathbb R[X]$，求 $C=A\cdot B$（多项式乘法）。</p>
+<p>设 $\deg(P)=n$，选取 $n+1$ 个不同的 $x_i$，得到该多项式的一个点值表示 ${(x_i,P(x_i))}$，而一个 $n+1$ 个点值表示能唯一确定一个不超过 $n$ 次的多项式。</p>
+<p>如果能够获得 $A,B$ 的点值表示法（对于同样的 $x_i$），那么可以在线性时间内求出 $C$ 的点值表示法。</p>
 <p>而 FFT 正是用于加速这个过程。</p>
-<h2 id="开始-1">开始</h2>
-<h3 id="dft">DFT</h3>
-<p>为方便计算，设 <span class="math inline">\(\deg(A)=2^r - 1=N-1, A(x)=\displaystyle \sum_{i=0}^{N-1} a_i x^i\)</span>。</p>
-<p>选取的 <span class="math inline">\(N\)</span> 个 <span class="math inline">\(x_k\)</span> 为 <span class="math inline">\(N\)</span> 次单位根，即 <span class="math inline">\(\omega_n^k=e^{\frac{2\pi ki}{n}}\)</span>。</p>
-<p>现在要求 <span class="math inline">\(F(k)=A(x_k)=A(\omega_n^k)=\sum_n a_i \omega_n^{ki}\)</span>，求奇偶项分别求和，设 <span class="math inline">\(n=2t\)</span>，得到 <span class="math inline">\(F(k)=\sum_t a_{2t}\omega_{t}^{kt}+\omega_n^k \sum_ta_{2t+1}\omega_{t}^{kt}=F_{even}(k)+\omega_n^k F_{odd}(k)\)</span>。</p>
-<p>对于奇数项和偶数项，分别求出 <span class="math inline">\(F_{even}\)</span> 和 <span class="math inline">\(F_{odd}\)</span>，但是由于项数只有一半，所以直接获得的只有前 <span class="math inline">\(t\)</span> 个点。由于 <span class="math inline">\(t\)</span> 是 <span class="math inline">\(w_t^k\)</span> 的周期且有 <span class="math inline">\(\omega_n^k+\omega_n^{k+t}=0\)</span>，所以有 <span class="math inline">\(F(k+t)=F_{even}(k)-\omega_n^k F_{odd}(k)\)</span>。</p>
+<h2 id="开始-1"><a href="#开始-1" class="headerlink" title="开始"></a>开始</h2><h3 id="DFT"><a href="#DFT" class="headerlink" title="DFT"></a>DFT</h3><p>为方便计算，设 $\deg(A)=2^r - 1=N-1, A(x)=\displaystyle \sum_{i=0}^{N-1} a_i x^i$。</p>
+<p>选取的 $N$ 个 $x_k$ 为 $N$ 次单位根，即 $\omega_n^k=e^{\frac{2\pi ki}{n}}$。</p>
+<p>现在要求 $F(k)=A(x_k)=A(\omega_n^k)=\sum_n a_i \omega_n^{ki}$，求奇偶项分别求和，设 $n=2t$，得到 $F(k)=\sum_t a_{2t}\omega_{t}^{kt}+\omega_n^k \sum_ta_{2t+1}\omega_{t}^{kt}=F_{even}(k)+\omega_n^k F_{odd}(k)$。</p>
+<p>对于奇数项和偶数项，分别求出 $F_{even}$ 和 $F_{odd}$，但是由于项数只有一半，所以直接获得的只有前 $t$ 个点。由于 $t$ 是 $w_t^k$ 的周期且有 $\omega_n^k+\omega_n^{k+t}=0$，所以有 $F(k+t)=F_{even}(k)-\omega_n^k F_{odd}(k)$。</p>
 <p>至此 DFT 完成了。</p>
-<h3 id="idft">IDFT</h3>
-<p>但是为了求出 <span class="math inline">\(C\)</span>，还需要一个 DFT 的逆变换 IDFT。</p>
-<p>考虑 DFT 的过程，设矩阵 <span class="math inline">\(M_{ij}=\omega_n^{ij}\)</span>，那么 <span class="math inline">\(DFT(\vec{a})=M \cdot \vec{a}\)</span></p>
-<p>现在需要求 <span class="math inline">\(IDFT(DFT(\vec{a}))=\vec{a} = M^{-1} \cdot DFT(\vec{a})\)</span>。</p>
-<p>设 <span class="math inline">\(M^{-1}=M&#39;\)</span>，那么有 <span class="math inline">\(M&#39;_{ij}=\frac{1}{n}\omega_n^{-ij}\)</span>。</p>
-<p>所以只需要对 <span class="math inline">\(DFT\)</span> 算法稍作改动就得到了 <span class="math inline">\(IDFT\)</span>。</p>
+<h3 id="IDFT"><a href="#IDFT" class="headerlink" title="IDFT"></a>IDFT</h3><p>但是为了求出 $C$，还需要一个 DFT 的逆变换 IDFT。</p>
+<p>考虑 DFT 的过程，设矩阵 $M_{ij}=\omega_n^{ij}$，那么 $DFT(\vec{a})=M \cdot \vec{a}$</p>
+<p>现在需要求 $IDFT(DFT(\vec{a}))=\vec{a} = M^{-1} \cdot DFT(\vec{a})$。</p>
+<p>设 $M^{-1}=M’$，那么有 $M’_{ij}=\frac{1}{n}\omega_n^{-ij}$。</p>
+<p>所以只需要对 $DFT$ 算法稍作改动就得到了 $IDFT$。</p>
 <p>至此 FFT 完成了。</p>
-<h2 id="实现-1">实现</h2>
-<ul>
+<h2 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h2><ul>
 <li>DFT 由于要奇偶分别递归，要写成非递归形式可能有些困难。目标是把初始向量重新排列之后变成左右递归而不是奇偶递归，以方便自底向上（其实就是把递归的依据从下标的末尾换成首位），这部分怎么写炫酷就怎么写。</li>
 </ul>
-<h1 id="ntt">NTT</h1>
-<p>与 FFT 唯一的不同是多项式是模意义下的。（<span class="math inline">\(\mathbb{Z}_m[X]\)</span>）</p>
+<h1 id="NTT"><a href="#NTT" class="headerlink" title="NTT"></a>NTT</h1><p>与 FFT 唯一的不同是多项式是模意义下的。（$\mathbb{Z}_m[X]$）</p>
 <p>此时需要单位根的替代品，原根，但同时对模数提出了一些要求。</p>
 <p>但实现方法和 FFT 是一致的。</p>
 <p>此处暂略。</p>
-<h1 id="后记">后记</h1>
-<p>鉴于网上的一些资料不够直观/简洁，于是按自己的思路另外写了一份。</p>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>鉴于网上的一些资料不够直观/简洁，于是按自己的思路另外写了一份。</p>
 
     </div>
 

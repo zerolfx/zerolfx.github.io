@@ -22,12 +22,12 @@
     var CONFIG = {"hostname":"zerol.me","root":"/","scheme":"Gemini","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
 
-  <meta name="description" content="代码详见模板库。模板题 EOJ 3389-3393。  Q: 要不要把 n 补成 2 的幂？ A: 这个无所谓，但如果要写成自底向上，那么还是需要的，否则无法直接定位叶节点。 Q: pushdown 之后要不要立即 maintain？ A: 不用立即 maintain，但迟早是要的。但是立即 maintain 很可能会重复 maintain，增加超时风险。 Q:query 的时候要不要 pushd">
+  <meta name="description" content="代码详见模板库。模板题 EOJ 3389-3393。  Q: 要不要把 n 补成 2 的幂？  A: 这个无所谓，但如果要写成自底向上，那么还是需要的，否则无法直接定位叶节点。  Q: pushdown 之后要不要立即 maintain？  A: 不用立即 maintain，但迟早是要的。但是立即 maintain 很可能会重复 maintain，增加超时风险。  Q:query 的时候要不要 p">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法 - 线段树">
 <meta property="og:url" content="https://zerol.me/2017/10/29/Segment-Tree/index.html">
 <meta property="og:site_name" content="Zerol&#39;s Notes">
-<meta property="og:description" content="代码详见模板库。模板题 EOJ 3389-3393。  Q: 要不要把 n 补成 2 的幂？ A: 这个无所谓，但如果要写成自底向上，那么还是需要的，否则无法直接定位叶节点。 Q: pushdown 之后要不要立即 maintain？ A: 不用立即 maintain，但迟早是要的。但是立即 maintain 很可能会重复 maintain，增加超时风险。 Q:query 的时候要不要 pushd">
+<meta property="og:description" content="代码详见模板库。模板题 EOJ 3389-3393。  Q: 要不要把 n 补成 2 的幂？  A: 这个无所谓，但如果要写成自底向上，那么还是需要的，否则无法直接定位叶节点。  Q: pushdown 之后要不要立即 maintain？  A: 不用立即 maintain，但迟早是要的。但是立即 maintain 很可能会重复 maintain，增加超时风险。  Q:query 的时候要不要 p">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2017-10-29T14:59:56.000Z">
 <meta property="article:modified_time" content="2017-10-30T02:54:18.000Z">
@@ -393,20 +393,34 @@
     <div class="post-body" itemprop="articleBody">
         <p>代码详见模板库。模板题 EOJ 3389-3393。</p>
 <ul>
-<li><p>Q: 要不要把 n 补成 2 的幂？</p></li>
-<li><p>A: 这个无所谓，但如果要写成自底向上，那么还是需要的，否则无法直接定位叶节点。</p></li>
-<li><p>Q: pushdown 之后要不要立即 maintain？</p></li>
-<li><p>A: 不用立即 maintain，但迟早是要的。但是立即 maintain 很可能会重复 maintain，增加超时风险。</p></li>
-<li><p>Q:query 的时候要不要 pushdown？</p></li>
-<li><p>A: 如果不要的话，查询时应该把之前访问到的结点的标签的效果累加起来，并作为参数递归下去。如果要的话，代码会更加具有普适性（比如 treap 只能选择 pushdown 标签，因为结点之间相对位置会改变）。</p></li>
-<li><p>Q: maintain 的时候是否考虑当前结点的标签？</p></li>
-<li><p>A: 都可以。如果考虑了，那么查询的时候就不要考虑当前结点的标签了，反之亦然。</p></li>
-<li><p>Q: query 的时候先考虑 set 标签还是先考虑查询区间包含当前区间？</p></li>
-<li><p>A: 都可以，但是先考虑 set 会快一些。</p></li>
-<li><p>Q: 根节点是 0 还是 1？</p></li>
-<li><p>A: 都可以，但好像 1 比较符合人性。</p></li>
-<li><p>Q: 听说空间开三倍就够了？</p></li>
-<li><p>A: 那可能就 GG 了，实测 4 倍是必要的。</p></li>
+<li><p>Q: 要不要把 n 补成 2 的幂？</p>
+</li>
+<li><p>A: 这个无所谓，但如果要写成自底向上，那么还是需要的，否则无法直接定位叶节点。</p>
+</li>
+<li><p>Q: pushdown 之后要不要立即 maintain？</p>
+</li>
+<li><p>A: 不用立即 maintain，但迟早是要的。但是立即 maintain 很可能会重复 maintain，增加超时风险。</p>
+</li>
+<li><p>Q:query 的时候要不要 pushdown？</p>
+</li>
+<li><p>A: 如果不要的话，查询时应该把之前访问到的结点的标签的效果累加起来，并作为参数递归下去。如果要的话，代码会更加具有普适性（比如 treap 只能选择 pushdown 标签，因为结点之间相对位置会改变）。</p>
+</li>
+<li><p>Q: maintain 的时候是否考虑当前结点的标签？</p>
+</li>
+<li><p>A: 都可以。如果考虑了，那么查询的时候就不要考虑当前结点的标签了，反之亦然。</p>
+</li>
+<li><p>Q: query 的时候先考虑 set 标签还是先考虑查询区间包含当前区间？</p>
+</li>
+<li><p>A: 都可以，但是先考虑 set 会快一些。</p>
+</li>
+<li><p>Q: 根节点是 0 还是 1？</p>
+</li>
+<li><p>A: 都可以，但好像 1 比较符合人性。</p>
+</li>
+<li><p>Q: 听说空间开三倍就够了？</p>
+</li>
+<li><p>A: 那可能就 GG 了，实测 4 倍是必要的。</p>
+</li>
 </ul>
 <p>其他注意事项：</p>
 <ul>

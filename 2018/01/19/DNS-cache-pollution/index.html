@@ -212,7 +212,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#update"><span class="nav-number">1.</span> <span class="nav-text">update</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#dns%E6%9F%A5%E8%AF%A2%E5%8A%A0%E5%AF%86"><span class="nav-number">1.1.</span> <span class="nav-text">DNS查询加密</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dns%E6%9F%A5%E8%AF%A2%E7%BB%93%E6%9E%9C%E5%AF%B9%E6%AF%94"><span class="nav-number">1.2.</span> <span class="nav-text">DNS查询结果对比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9-nameserver"><span class="nav-number">1.3.</span> <span class="nav-text">修改 nameserver</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="nav-number">1.4.</span> <span class="nav-text">写在最后</span></a></li></ol></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#update"><span class="nav-number">1.</span> <span class="nav-text">update</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DNS%E6%9F%A5%E8%AF%A2%E5%8A%A0%E5%AF%86"><span class="nav-number">1.1.</span> <span class="nav-text">DNS查询加密</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DNS%E6%9F%A5%E8%AF%A2%E7%BB%93%E6%9E%9C%E5%AF%B9%E6%AF%94"><span class="nav-number">1.2.</span> <span class="nav-text">DNS查询结果对比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9-nameserver"><span class="nav-number">1.3.</span> <span class="nav-text">修改 nameserver</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="nav-number">1.4.</span> <span class="nav-text">写在最后</span></a></li></ol></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -396,24 +396,23 @@
 <p>解决方案：要么换无污染 DNS，要么改 hosts。为了一劳永逸，我选择了前者。</p>
 <p>以下为具体过程 (on Arch Linux)：</p>
 <a id="more"></a>
-<h3 id="update">update</h3>
-<p>2018.3 挂 SS 可以上 p站 了。</p>
+
+<h3 id="update"><a href="#update" class="headerlink" title="update"></a>update</h3><p>2018.3 挂 SS 可以上 p站 了。</p>
 <p>dnscrypt 太慢了，建议仅在需要时开启。</p>
-<h4 id="dns查询加密">DNS查询加密</h4>
-<ul>
+<h4 id="DNS查询加密"><a href="#DNS查询加密" class="headerlink" title="DNS查询加密"></a>DNS查询加密</h4><ul>
 <li>安装 AUR 包 <code>dnscrypt-proxy-go</code></li>
 <li>启动<code>dnscrypt-proxy</code>系统服务，并设置开机自启。</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yaourt -S dnscrypt-proxy-go</span><br><span class="line">systemctl <span class="built_in">enable</span> dnscrypt-proxy</span><br><span class="line">systemctl start dnscrypt-proxy</span><br></pre></td></tr></table></figure>
-<h4 id="dns查询结果对比">DNS查询结果对比</h4>
-<p>原先的 DNS 查询结果：</p>
+
+<h4 id="DNS查询结果对比"><a href="#DNS查询结果对比" class="headerlink" title="DNS查询结果对比"></a>DNS查询结果对比</h4><p>原先的 DNS 查询结果：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">zerol@zerol-pc ~ &gt; drill pixiv.net @8.8.8.8</span><br><span class="line">;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, rcode: NOERROR, id: 20537</span><br><span class="line">;; flags: qr rd ra ; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0 </span><br><span class="line">;; QUESTION SECTION:</span><br><span class="line">;; pixiv.net.   IN      A</span><br><span class="line"></span><br><span class="line">;; ANSWER SECTION:</span><br><span class="line">pixiv.net.      125     IN      A       69.171.230.18</span><br><span class="line"></span><br><span class="line">;; AUTHORITY SECTION:</span><br><span class="line"></span><br><span class="line">;; ADDITIONAL SECTION:</span><br><span class="line"></span><br><span class="line">;; Query time: 30 msec</span><br><span class="line">;; SERVER: 8.8.8.8</span><br><span class="line">;; WHEN: Fri Jan 19 19:43:15 2018</span><br><span class="line">;; MSG SIZE  rcvd: 43</span><br></pre></td></tr></table></figure>
+
 <p>启动服务后的本地服务查询结果：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">zerol@zerol-pc ~ &gt; drill pixiv.net @127.0.0.1</span><br><span class="line">;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, rcode: NOERROR, id: 17857</span><br><span class="line">;; flags: qr rd ra ; QUERY: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: 0 </span><br><span class="line">;; QUESTION SECTION:</span><br><span class="line">;; pixiv.net.   IN      A</span><br><span class="line"></span><br><span class="line">;; ANSWER SECTION:</span><br><span class="line">pixiv.net.      240     IN      A       210.129.120.41</span><br><span class="line">pixiv.net.      240     IN      A       210.129.120.44</span><br><span class="line">pixiv.net.      240     IN      A       210.129.120.43</span><br><span class="line"></span><br><span class="line">;; AUTHORITY SECTION:</span><br><span class="line"></span><br><span class="line">;; ADDITIONAL SECTION:</span><br><span class="line"></span><br><span class="line">;; Query time: 0 msec</span><br><span class="line">;; SERVER: 127.0.0.1</span><br><span class="line">;; WHEN: Fri Jan 19 19:43:33 2018</span><br><span class="line">;; MSG SIZE  rcvd: 75</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h4 id="修改-nameserver">修改 nameserver</h4>
-<p>在文件<code>/etc/resolvconf.conf</code>的末尾加上一行<code>name_servers=127.0.0.1</code>即可。</p>
-<h4 id="写在最后">写在最后</h4>
-<p>网上的解决方法都比较麻烦，而借助 arch 的 AUR 仓库，安装配置过程简单了许多。</p>
+
+<h4 id="修改-nameserver"><a href="#修改-nameserver" class="headerlink" title="修改 nameserver"></a>修改 nameserver</h4><p>在文件<code>/etc/resolvconf.conf</code>的末尾加上一行<code>name_servers=127.0.0.1</code>即可。</p>
+<h4 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h4><p>网上的解决方法都比较麻烦，而借助 arch 的 AUR 仓库，安装配置过程简单了许多。</p>
 <p>折腾了一通，到底还是为了 P站 啊。</p>
 
     </div>

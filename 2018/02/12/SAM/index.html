@@ -397,68 +397,68 @@
     <div class="post-body" itemprop="articleBody">
         <p>写这篇文章的用意主要是记录一下我曾经学会过 SAM。</p>
 <a id="more"></a>
-<h2 id="后缀自动机">后缀自动机</h2>
-<h3 id="主要学习资料">主要学习资料</h3>
-<ul>
-<li><p>http://wyfcyx.is-programmer.com/posts/76107.html （对我的帮助最大）</p></li>
-<li><p>http://www.cnblogs.com/Robert-Yuan/p/5187439.html （相当详细）</p></li>
-<li><p>2012年noi冬令营陈立杰讲稿.ppt （始祖）</p></li>
-<li><p>hiho一下 <a target="_blank" rel="noopener" href="http://hihocoder.com/contest/hiho127/">127周</a> 和 <a target="_blank" rel="noopener" href="http://hihocoder.com/contest/hiho128/">128周</a>。（理论结合实践）</p></li>
-<li><p>https://chrt.github.io/2017/04/21/suffix-automaton/ （看到这个我觉得我不用再写这篇文章了）</p></li>
-<li><p>https://zhuanlan.zhihu.com/p/25948077 （复杂度“证明”）</p></li>
-<li><p>SAM 是一种确定有限状态自动机 (DFA)，它能够接受所有字符串的所有后缀。</p></li>
-<li><p>重要的信息有 <span class="math inline">\(tranc(x, c)\)</span> 和 <span class="math inline">\(fa(x)\)</span>，有两种理解方式：</p>
-<ul>
-<li>自动机形态
-<ul>
-<li><span class="math inline">\(tranc(x,c)\)</span> 为状态 <span class="math inline">\(x\)</span> 接受字符 <span class="math inline">\(c\)</span> 后到达的状态</li>
-<li><span class="math inline">\(fa(x)\)</span> 是 <span class="math inline">\(right(x)\)</span> 的超集中最小的所对应的状态</li>
-</ul></li>
-<li>后缀树形态（逆序）
-<ul>
-<li><span class="math inline">\(fa(x)\)</span> 是 <span class="math inline">\(x\)</span> 的父节点</li>
-<li><span class="math inline">\(tranc(x,c)\)</span> 是 <span class="math inline">\(x\)</span> 对应的后缀在首部增加字符 <span class="math inline">\(c\)</span> 后所形成的后缀在树中对应的结点</li>
-</ul></li>
-</ul></li>
-<li><p>无论那种理解方式，反正可以互相转换。鉴于后缀树更为直观、简洁，那么就以这种方式来描述。</p></li>
-<li><p>对于一个字符串 <span class="math inline">\(s(|s|=n)\)</span>，建立它的后缀 trie，就形成了它的后缀树，但这样效率和空间都很糟糕。如果对 trie 中的单链进行压缩，那么可以证明，结点个数是 <span class="math inline">\(O(n)\)</span> 的。（证明：借用虚树复杂的证明，<span class="math inline">\(n\)</span> 个叶节点都是关键点，而关键点两两之间的 LCA 不超过 <span class="math inline">\(n-1\)</span>，所以总的结点数不超过 <span class="math inline">\(2n-1\)</span> 个。）</p></li>
-<li><p>接下来的关键是如何在线性时间内构造一棵压缩后的后缀树。</p></li>
-<li><p>先给张图，未完待续。</p></li>
+
+<h2 id="后缀自动机"><a href="#后缀自动机" class="headerlink" title="后缀自动机"></a>后缀自动机</h2><h3 id="主要学习资料"><a href="#主要学习资料" class="headerlink" title="主要学习资料"></a>主要学习资料</h3><ul>
+<li><a target="_blank" rel="noopener" href="http://wyfcyx.is-programmer.com/posts/76107.html">http://wyfcyx.is-programmer.com/posts/76107.html</a> （对我的帮助最大）</li>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/Robert-Yuan/p/5187439.html">http://www.cnblogs.com/Robert-Yuan/p/5187439.html</a> （相当详细）</li>
+<li>2012年noi冬令营陈立杰讲稿.ppt （始祖）</li>
+<li>hiho一下 <a target="_blank" rel="noopener" href="http://hihocoder.com/contest/hiho127/">127周</a> 和 <a target="_blank" rel="noopener" href="http://hihocoder.com/contest/hiho128/">128周</a>。（理论结合实践）</li>
+<li><a target="_blank" rel="noopener" href="https://chrt.github.io/2017/04/21/suffix-automaton/">https://chrt.github.io/2017/04/21/suffix-automaton/</a> （看到这个我觉得我不用再写这篇文章了）</li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/25948077">https://zhuanlan.zhihu.com/p/25948077</a> （复杂度“证明”）</li>
 </ul>
-<p><img src="/2018/02/12/SAM/sam.png" /></p>
-<h3 id="一些性质">一些性质</h3>
 <ul>
-<li><p><span class="math inline">\(fa\)</span> 指针组成的是反串的后缀树，当然是树了。<span class="math inline">\(tranc\)</span> 指针组成的是 DFA，所以是一个有向无环图（DAG），存在拓扑序。</p></li>
-<li><p><span class="math inline">\(tranc\)</span> 指针使 <span class="math inline">\(len\)</span> 增加，<span class="math inline">\(fa\)</span> 指针使 <span class="math inline">\(len\)</span> 减少。</p></li>
-<li><p>关键点（红色标记）自带一个 <span class="math inline">\(EndPos\)</span>，然后每个结点的 <span class="math inline">\(EndPos\)</span> 集合是自己和子节点的 <span class="math inline">\(EndPos\)</span> 集合的并集，且子节点以及本身的 <span class="math inline">\(EndPos\)</span> 集合之间没有交集。</p></li>
-<li><p>接受状态是 <span class="math inline">\(last\)</span> 状态到根的链上的所有状态。</p></li>
-<li><p><span class="math inline">\(len\)</span> 的大小是父节点的 <span class="math inline">\(len\)</span> 加上父边压缩的字符数。</p></li>
-<li><p><span class="math inline">\([len_{min},len_{max}]\)</span> 的区间大小是由 <span class="math inline">\(tranc\)</span> 转移过来的状态的区间大小之和。</p></li>
+<li>SAM 是一种确定有限状态自动机 (DFA)，它能够接受所有字符串的所有后缀。</li>
+<li>重要的信息有 $tranc(x, c)$ 和 $fa(x)$，有两种理解方式：<ul>
+<li>自动机形态<ul>
+<li>$tranc(x,c)$ 为状态 $x$ 接受字符 $c$ 后到达的状态</li>
+<li>$fa(x)$ 是 $right(x)$ 的超集中最小的所对应的状态</li>
 </ul>
-<h3 id="一些套路">一些套路</h3>
+</li>
+<li>后缀树形态（逆序）<ul>
+<li>$fa(x)$ 是 $x$ 的父节点</li>
+<li>$tranc(x,c)$ 是 $x$ 对应的后缀在首部增加字符 $c$ 后所形成的后缀在树中对应的结点</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>无论那种理解方式，反正可以互相转换。鉴于后缀树更为直观、简洁，那么就以这种方式来描述。</li>
+<li>对于一个字符串 $s(|s|=n)$，建立它的后缀 trie，就形成了它的后缀树，但这样效率和空间都很糟糕。如果对 trie 中的单链进行压缩，那么可以证明，结点个数是 $O(n)$ 的。（证明：借用虚树复杂的证明，$n$ 个叶节点都是关键点，而关键点两两之间的 LCA 不超过 $n-1$，所以总的结点数不超过 $2n-1$ 个。）</li>
+<li>接下来的关键是如何在线性时间内构造一棵压缩后的后缀树。</li>
+<li>先给张图，未完待续。</li>
+</ul>
+<p><img src="/2018/02/12/SAM/sam.png"></p>
+<h3 id="一些性质"><a href="#一些性质" class="headerlink" title="一些性质"></a>一些性质</h3><ul>
+<li>$fa$ 指针组成的是反串的后缀树，当然是树了。$tranc$ 指针组成的是 DFA，所以是一个有向无环图（DAG），存在拓扑序。</li>
+</ul>
 <ul>
+<li>$tranc$ 指针使 $len$ 增加，$fa$ 指针使 $len$ 减少。</li>
+<li>关键点（红色标记）自带一个 $EndPos$，然后每个结点的 $EndPos$ 集合是自己和子节点的 $EndPos$ 集合的并集，且子节点以及本身的 $EndPos$ 集合之间没有交集。</li>
+<li>接受状态是 $last$ 状态到根的链上的所有状态。</li>
+<li>$len$ 的大小是父节点的 $len$ 加上父边压缩的字符数。</li>
+<li>$[len_{min},len_{max}]$ 的区间大小是由 $tranc$ 转移过来的状态的区间大小之和。</li>
+</ul>
+<h3 id="一些套路"><a href="#一些套路" class="headerlink" title="一些套路"></a>一些套路</h3><ul>
 <li>如果要快速找到一个子串对应的状态，可以在后缀树上倍增。比如要找 [l, r] 的子串，那么找到 [1, r] 逆序的所在的关键点，然后往上爬 l - 1 个长度。</li>
-<li><span class="math inline">\(cnt\)</span> 表示该状态的 <span class="math inline">\(EndPos\)</span> 集合的大小，可以在建完自动机后累加得到。</li>
+<li>$cnt$ 表示该状态的 $EndPos$ 集合的大小，可以在建完自动机后累加得到。</li>
 <li>如果要进行多串匹配的话，不妨使用广义后缀自动机，往往会简单一些。</li>
 <li>如果可以离线，可以用树上启发式合并得到每个点的 EndPos 集合。</li>
 <li>如果要维护 EndPos 相关的信息，来一发 LCT。</li>
-<li>获取拓扑序可以按照 <span class="math inline">\(len\)</span> 进行基数排序。</li>
-<li>为了某个状态具体的字符串内容，可以记录 <span class="math inline">\(EndPos\)</span> 中的某一个元素。</li>
+<li>获取拓扑序可以按照 $len$ 进行基数排序。</li>
+<li>为了某个状态具体的字符串内容，可以记录 $EndPos$ 中的某一个元素。</li>
 </ul>
-<h2 id="回文自动机">回文自动机</h2>
-<p>相比后缀自动机，还是简单不少的。</p>
-<p><img src="/2018/02/12/SAM/pam.jpg" /></p>
+<h2 id="回文自动机"><a href="#回文自动机" class="headerlink" title="回文自动机"></a>回文自动机</h2><p>相比后缀自动机，还是简单不少的。</p>
+<p><img src="/2018/02/12/SAM/pam.jpg"></p>
 <p>与后缀自动机的一些不同：</p>
 <ul>
 <li>一个结点只表示一个回文串，这个特性会带来极大的方便。</li>
-<li>对于 <span class="math inline">\(tranc\)</span> 边来说，奇数和偶数都是树的形式。</li>
-<li>多了一个 <span class="math inline">\(num\)</span> 表示状态对应的回文串的后缀中回文串的个数（以 <span class="math inline">\(fa\)</span> 为边的树的深度）。</li>
-<li><span class="math inline">\(tranc\)</span> 边很可能比 <span class="math inline">\(fa\)</span> 边有用。</li>
+<li>对于 $tranc$ 边来说，奇数和偶数都是树的形式。</li>
+<li>多了一个 $num$ 表示状态对应的回文串的后缀中回文串的个数（以 $fa$ 为边的树的深度）。</li>
+<li>$tranc$ 边很可能比 $fa$ 边有用。</li>
 </ul>
 <p>与后缀自动机的一些相同：</p>
 <ul>
-<li><span class="math inline">\(fa\)</span> 指针使 <span class="math inline">\(len\)</span> 减少。</li>
-<li><span class="math inline">\(cnt\)</span> 的含义和计算方法相同。</li>
+<li>$fa$ 指针使 $len$ 减少。</li>
+<li>$cnt$ 的含义和计算方法相同。</li>
 </ul>
 
     </div>

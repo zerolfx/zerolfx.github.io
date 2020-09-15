@@ -22,12 +22,12 @@
     var CONFIG = {"hostname":"zerol.me","root":"/","scheme":"Gemini","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
 
-  <meta name="description" content="这篇文章的主要目的是记录我在使用 Linux 的过程中遇到的坑和相应的解决方案，次要目的是帮助读者快速构建一个舒适的 Linux 使用环境。后文的描述基于 Arch Linux 和 KDE 的方案，大部分也适用于 Kubuntu 用户。 UPDATE 2018.11  关于 QQ 的安装和使用，现在有两个选择，其一是 Crossover （中国区定价也不贵，如果想省钱可以找 15 的 crack）">
+  <meta name="description" content="这篇文章的主要目的是记录我在使用 Linux 的过程中遇到的坑和相应的解决方案，次要目的是帮助读者快速构建一个舒适的 Linux 使用环境。后文的描述基于 Arch Linux 和 KDE 的方案，大部分也适用于 Kubuntu 用户。 UPDATE 2018.11 关于 QQ 的安装和使用，现在有两个选择，其一是 Crossover （中国区定价也不贵，如果想省钱可以找 15 的 crack），">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Arch Linux - 大型攻略">
 <meta property="og:url" content="https://zerol.me/2017/06/08/Linux/index.html">
 <meta property="og:site_name" content="Zerol&#39;s Notes">
-<meta property="og:description" content="这篇文章的主要目的是记录我在使用 Linux 的过程中遇到的坑和相应的解决方案，次要目的是帮助读者快速构建一个舒适的 Linux 使用环境。后文的描述基于 Arch Linux 和 KDE 的方案，大部分也适用于 Kubuntu 用户。 UPDATE 2018.11  关于 QQ 的安装和使用，现在有两个选择，其一是 Crossover （中国区定价也不贵，如果想省钱可以找 15 的 crack）">
+<meta property="og:description" content="这篇文章的主要目的是记录我在使用 Linux 的过程中遇到的坑和相应的解决方案，次要目的是帮助读者快速构建一个舒适的 Linux 使用环境。后文的描述基于 Arch Linux 和 KDE 的方案，大部分也适用于 Kubuntu 用户。 UPDATE 2018.11 关于 QQ 的安装和使用，现在有两个选择，其一是 Crossover （中国区定价也不贵，如果想省钱可以找 15 的 crack），">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2017-06-08T12:26:18.000Z">
 <meta property="article:modified_time" content="2020-05-04T10:48:51.000Z">
@@ -212,7 +212,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#update-2018.11"><span class="nav-number">1.</span> <span class="nav-text">UPDATE 2018.11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#update-2017.10"><span class="nav-number">2.</span> <span class="nav-text">UPDATE 2017.10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%91%E8%A1%8C%E7%89%88%E7%9A%84%E9%80%89%E6%8B%A9"><span class="nav-number">3.</span> <span class="nav-text">发行版的选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E7%9A%84%E9%80%89%E6%8B%A9"><span class="nav-number">4.</span> <span class="nav-text">桌面环境的选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6"><span class="nav-number">5.</span> <span class="nav-text">常用软件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#qq%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-number">5.1.</span> <span class="nav-text">QQ的安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#atom%E7%9B%B8%E5%85%B3"><span class="nav-number">5.2.</span> <span class="nav-text">Atom相关</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#apm"><span class="nav-number">5.2.1.</span> <span class="nav-text">apm</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%8C%E9%9D%A2%E6%8E%A7%E4%BB%B6"><span class="nav-number">6.</span> <span class="nav-text">桌面控件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%9D%E5%A4%96"><span class="nav-number">6.1.</span> <span class="nav-text">额外</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%93%E7%94%A8%E6%80%A7"><span class="nav-number">7.</span> <span class="nav-text">易用性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%89%E9%94%AE%E6%98%A0%E5%B0%84"><span class="nav-number">7.1.</span> <span class="nav-text">按键映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8C%E6%AD%A5"><span class="nav-number">7.2.</span> <span class="nav-text">文件同步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%88%E7%AB%AF%E6%8F%90%E7%A4%BA%E7%AC%A6%E9%A2%9C%E8%89%B2"><span class="nav-number">7.3.</span> <span class="nav-text">终端提示符颜色</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="nav-number">7.3.1.</span> <span class="nav-text">参考文章</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tips"><span class="nav-number">8.</span> <span class="nav-text">Tips</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#UPDATE-2018-11"><span class="nav-number">1.</span> <span class="nav-text">UPDATE 2018.11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UPDATE-2017-10"><span class="nav-number">2.</span> <span class="nav-text">UPDATE 2017.10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%91%E8%A1%8C%E7%89%88%E7%9A%84%E9%80%89%E6%8B%A9"><span class="nav-number">3.</span> <span class="nav-text">发行版的选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">4.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83%E7%9A%84%E9%80%89%E6%8B%A9"><span class="nav-number">5.</span> <span class="nav-text">桌面环境的选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6"><span class="nav-number">6.</span> <span class="nav-text">常用软件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#QQ%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-number">6.1.</span> <span class="nav-text">QQ的安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Atom%E7%9B%B8%E5%85%B3"><span class="nav-number">6.2.</span> <span class="nav-text">Atom相关</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#apm"><span class="nav-number">6.2.1.</span> <span class="nav-text">apm</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6"><span class="nav-number">6.2.2.</span> <span class="nav-text">插件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%8C%E9%9D%A2%E6%8E%A7%E4%BB%B6"><span class="nav-number">7.</span> <span class="nav-text">桌面控件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%9D%E5%A4%96"><span class="nav-number">7.1.</span> <span class="nav-text">额外</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%93%E7%94%A8%E6%80%A7"><span class="nav-number">8.</span> <span class="nav-text">易用性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%89%E9%94%AE%E6%98%A0%E5%B0%84"><span class="nav-number">8.1.</span> <span class="nav-text">按键映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%BC%A0%E6%A0%87%E4%BE%A7%E9%94%AE"><span class="nav-number">8.2.</span> <span class="nav-text">鼠标侧键</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%90%8C%E6%AD%A5"><span class="nav-number">8.3.</span> <span class="nav-text">文件同步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%88%E7%AB%AF%E6%8F%90%E7%A4%BA%E7%AC%A6%E9%A2%9C%E8%89%B2"><span class="nav-number">8.4.</span> <span class="nav-text">终端提示符颜色</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="nav-number">8.4.1.</span> <span class="nav-text">参考文章</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A6%E6%8E%A7%E6%9D%BF%E6%89%8B%E5%8A%BF"><span class="nav-number">8.5.</span> <span class="nav-text">触控板手势</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tips"><span class="nav-number">9.</span> <span class="nav-text">Tips</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -393,19 +393,16 @@
     
     <div class="post-body" itemprop="articleBody">
         <p>这篇文章的主要目的是记录我在使用 Linux 的过程中遇到的坑和相应的解决方案，次要目的是帮助读者快速构建一个舒适的 Linux 使用环境。后文的描述基于 Arch Linux 和 KDE 的方案，大部分也适用于 Kubuntu 用户。</p>
-<h2 id="update-2018.11">UPDATE 2018.11</h2>
-<ul>
+<h2 id="UPDATE-2018-11"><a href="#UPDATE-2018-11" class="headerlink" title="UPDATE 2018.11"></a>UPDATE 2018.11</h2><ul>
 <li>关于 QQ 的安装和使用，现在有两个选择，其一是 Crossover （中国区定价也不贵，如果想省钱可以找 15 的 crack），其二是 AppImage 封装好的 wine-QQ（<a target="_blank" rel="noopener" href="https://github.com/askme765cs/Wine-QQ-TIM">github</a>）。</li>
 <li>一年来也遇到了一些影响使用的 bug，每一次更新都无法预料体验究竟变好了还是变差了。</li>
 <li>已经成为 KDE 的脑残粉了，美观、功能强大、内置应用体验一致，已经不能奢求更多了。</li>
 </ul>
-<h2 id="update-2017.10">UPDATE 2017.10</h2>
-<ul>
+<h2 id="UPDATE-2017-10"><a href="#UPDATE-2017-10" class="headerlink" title="UPDATE 2017.10"></a>UPDATE 2017.10</h2><ul>
 <li>重装了系统，现在选择了基于 arch 的发行版 majaro（桌面环境还是 KDE），安装确实方便挺多，也称得上是开箱即用。</li>
 <li>这两个月 <code>shadowsocks-qt5</code> 的最新版本很不好用，估计是依赖的问题（github 上 issue 不断）。所以还是选择了 <code>shadowsocks-libev</code> 命令行版本，配合 <code>polipo</code> socks5 转 HTTP 代理（其实不怎么用得到）。</li>
 </ul>
-<h2 id="发行版的选择">发行版的选择</h2>
-<p>起初我选择的是 Ubuntu，其主要原因有如下几点：</p>
+<h2 id="发行版的选择"><a href="#发行版的选择" class="headerlink" title="发行版的选择"></a>发行版的选择</h2><p>起初我选择的是 Ubuntu，其主要原因有如下几点：</p>
 <ul>
 <li>用户的基数大，遇到问题能够方便得找到相应的解决方案</li>
 <li>“网易云音乐”、“搜狗输入法”等应用提供的安装包是 Deb 包（ Ubuntu 可以直接安装，而 Debian 家族以外的发行版无法直接使用）</li>
@@ -414,31 +411,30 @@
 <ul>
 <li>官方仓库和用户软件仓库（AUR）提供了我想要的全部，包括上文中的“网易云音乐”和“搜狗输入法”。</li>
 <li>拥有官方 Wiki，对于解决实际问题和学习 Linux 很有帮助</li>
-<li>没有预装可有可无的软件包，用户拥有更大的选择余地 <a id="more"></a> ## 安装 由于 Arch 的安装是在 CLI（命令行）下进行的，对于新用户可能有些困难。而在官方 Wiki 和网上教程的帮助下，完成安装应该也不成问题。</li>
+<li>没有预装可有可无的软件包，用户拥有更大的选择余地<a id="more"></a>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2>由于 Arch 的安装是在 CLI（命令行）下进行的，对于新用户可能有些困难。而在官方 Wiki 和网上教程的帮助下，完成安装应该也不成问题。</li>
 </ul>
-<h2 id="桌面环境的选择">桌面环境的选择</h2>
-<p>在尝试过许多桌面环境后，我体会到了 KDE 的可贵。</p>
+<h2 id="桌面环境的选择"><a href="#桌面环境的选择" class="headerlink" title="桌面环境的选择"></a>桌面环境的选择</h2><p>在尝试过许多桌面环境后，我体会到了 KDE 的可贵。</p>
 <ul>
-<li>可定制性远强于其他桌面环境。
-<ul>
+<li>可定制性远强于其他桌面环境。<ul>
 <li>有许多桌面控件可供选用（后文会有介绍）算法—— 博弈</li>
 <li>可以很方便得修改 panel 的样式，于是我可以很轻松地将桌面从 Win10 风格切换至 OS X 风格。</li>
 <li>可以在系统设置中修改动画效果</li>
 <li>提供了虚拟桌面（Virtual desktops）和活动（Activities）的功能</li>
 <li>可以修改主题、图标、窗口样式，而且默认主题十分美观</li>
-</ul></li>
+</ul>
+</li>
 <li>系统设置丰富 （有些东西没法通过图形界面设置的话就只能通过命令行或者修改配置文件来达到目的，十分不便）</li>
 <li>有些集成的软件十分好用，比如文件管理器 dolphin，终端 konsole，便签 Knotes，快捷搜索 Lancelot（当然无论是什么桌面环境这些应用都可以做相应的替换，但是原生不容易出问题，体验也更为一致）。</li>
-<li>缺点
-<ul>
+<li>缺点<ul>
 <li>集成了一些无用的软件，虽然可以在安装时进行筛选</li>
 <li>设置中播放设备的选择太过繁琐</li>
 <li>难以名状的 Bug，这个似乎很难避免，只要数量不多频率不高问题不大还是可以忍受一些的</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 <p>KDE 的安装也十分便捷，参照 Wiki 即可，配合 SDDM 风味更佳。</p>
-<h2 id="常用软件">常用软件</h2>
-<p>以下均为包名，可以直接安装（有些属于 AUR）</p>
+<h2 id="常用软件"><a href="#常用软件" class="headerlink" title="常用软件"></a>常用软件</h2><p>以下均为包名，可以直接安装（有些属于 AUR）</p>
 <ul>
 <li>base-devel</li>
 <li>chromium / firefox / google-chrome 浏览器三选一</li>
@@ -461,17 +457,17 @@
 <li><a target="_blank" rel="noopener" href="https://tiebamma.github.io/InstallTutorial/">Mathematica</a> 数学计算</li>
 <li><a target="_blank" rel="noopener" href="https://www.jetbrains.com/">Jetbrains</a> IDE (可以通过 AUR 安装)</li>
 </ul>
-<h3 id="qq的安装">QQ的安装</h3>
-<p>解决方案：crossover 16 或 deepin-QQ with crossover 15 <a target="_blank" rel="noopener" href="https://www.findhao.net/easycoding/1748">参考链接</a><br />
-crossover 16 有对多个版本的 QQ 的官方支持，建议购买正版，有试用期。<br />
-备选方案：crossover 15 的 crack 对 16 同样有效，需要的人自己找。<br />
-另：如果发现许多字变为方块，那么安装 crossover 中的 QQ 2012，期间安装的一些依赖可以解决这个问题。</p>
-<h3 id="atom相关">Atom相关</h3>
-<p>项目的开发我还是建议使用 IDE，要让编辑器能拥有 IDE 的功能可能需要花大量的精力来改造。</p>
-<h4 id="apm">apm</h4>
-<p>Atom 的包管理器 apm 其实就是 npm，于是我们可以通过类似的方法为其设置镜像来加快下载速度。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm set registry https:&#x2F;&#x2F;registry.npm.taobao.org</span><br><span class="line">apm config set registry https:&#x2F;&#x2F;registry.npm.taobao.org</span><br></pre></td></tr></table></figure> #### 插件 + linter + linter-gcc + file-icons + platformio-ide-terminal 这个好像也不怎么好用，推荐一发下拉式终端 <a target="_blank" rel="noopener" href="https://www.archlinux.org/packages/community/x86_64/yakuake/">yakuake</a></p>
-<h2 id="桌面控件">桌面控件</h2>
-<ul>
+<h3 id="QQ的安装"><a href="#QQ的安装" class="headerlink" title="QQ的安装"></a>QQ的安装</h3><p>解决方案：crossover 16 或 deepin-QQ with crossover 15 <a target="_blank" rel="noopener" href="https://www.findhao.net/easycoding/1748">参考链接</a><br>crossover 16 有对多个版本的 QQ 的官方支持，建议购买正版，有试用期。<br>备选方案：crossover 15 的 crack 对 16 同样有效，需要的人自己找。<br>另：如果发现许多字变为方块，那么安装 crossover 中的 QQ 2012，期间安装的一些依赖可以解决这个问题。</p>
+<h3 id="Atom相关"><a href="#Atom相关" class="headerlink" title="Atom相关"></a>Atom相关</h3><p>项目的开发我还是建议使用 IDE，要让编辑器能拥有 IDE 的功能可能需要花大量的精力来改造。</p>
+<h4 id="apm"><a href="#apm" class="headerlink" title="apm"></a>apm</h4><p>Atom 的包管理器 apm 其实就是 npm，于是我们可以通过类似的方法为其设置镜像来加快下载速度。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm set registry https:&#x2F;&#x2F;registry.npm.taobao.org</span><br><span class="line">apm config set registry https:&#x2F;&#x2F;registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<h4 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h4><ul>
+<li>linter</li>
+<li>linter-gcc</li>
+<li>file-icons</li>
+<li>platformio-ide-terminal 这个好像也不怎么好用，推荐一发下拉式终端 <a target="_blank" rel="noopener" href="https://www.archlinux.org/packages/community/x86_64/yakuake/">yakuake</a></li>
+</ul>
+<h2 id="桌面控件"><a href="#桌面控件" class="headerlink" title="桌面控件"></a>桌面控件</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://store.kde.org/p/998916">Redshift Control</a> 控制 redshift</li>
 <li><a target="_blank" rel="noopener" href="https://store.kde.org/p/998895">Netspeed Widget</a> 网速监控</li>
 <li><a target="_blank" rel="noopener" href="https://store.kde.org/p/998901">Event Calendar</a> 带天气和倒计时的日历，可以和谷歌日历同步日程</li>
@@ -479,27 +475,22 @@ crossover 16 有对多个版本的 QQ 的官方支持，建议购买正版，有
 <li><a target="_blank" rel="noopener" href="https://store.kde.org/p/998909">PlayBar2</a> 播放控制</li>
 <li><a target="_blank" rel="noopener" href="https://github.com/psifidotos/Latte-Dock">Latte Dock</a> 美观好用的 dock</li>
 </ul>
-<h3 id="额外">额外</h3>
-<ul>
+<h3 id="额外"><a href="#额外" class="headerlink" title="额外"></a>额外</h3><ul>
 <li><a target="_blank" rel="noopener" href="https://github.com/martenjj/wallpaperswitch">Wallpaper Switcher</a> 不同虚拟桌面可以设置不同壁纸的特性作为 bug 在某一个版本后消失了，但许多用户认为这是一个好功能。于是一个 KDE 的开发人员兑现承诺开发了这个工具提供了这个功能。</li>
 <li><a target="_blank" rel="noopener" href="https://store.kde.org/p/998910">Active Window Control</a>窗口在最大化后还会保留系统标题栏，而屏幕顶部还有一个 panel（如果和我一样把状态栏放到顶部），这样就会有两层，既不美观又浪费了空间。通过安装这个控件并且设置全屏隐藏标题栏后，可以达到和 OS X 同样的全屏后合并标题栏和系统状态栏的效果。</li>
 </ul>
-<h2 id="易用性">易用性</h2>
-<h3 id="按键映射">按键映射</h3>
-<p>创建文件<code>～/.Xmodmap</code>，fcitx 会自动读取并应用 xmodmap 的设置 以下是我使用的配置文件，将<code>Caps_Lock</code>修改为<code>Ctrl</code>，并交换<code>`~</code> 和<code>Esc</code> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">remove Lock &#x3D; Caps_Lock</span><br><span class="line">keysym Caps_Lock &#x3D; Control_L</span><br><span class="line">add Control &#x3D; Control_L</span><br><span class="line">keysym Escape &#x3D; grave asciitilde grave asciitilde</span><br><span class="line">keysym grave &#x3D; Escape</span><br></pre></td></tr></table></figure> ### 鼠标侧键 对于拥有鼠标侧键的用户而言，将这些侧键映射为常用快捷键（如浏览器标签页的切换、虚拟桌面的切换）可以带来极大的便捷。<br />
-我使用的软件是 <a target="_blank" rel="noopener" href="https://www.archlinux.org/packages/community/x86_64/xbindkeys/">xbindkeys</a> &amp; <a target="_blank" rel="noopener" href="https://www.archlinux.org/packages/community/x86_64/xautomation/">xautomation</a>，在<code>~/.xbindkeysrc</code>中修改配置，以下是我使用的配置</p>
+<h2 id="易用性"><a href="#易用性" class="headerlink" title="易用性"></a>易用性</h2><h3 id="按键映射"><a href="#按键映射" class="headerlink" title="按键映射"></a>按键映射</h3><p>创建文件<code>～/.Xmodmap</code>，fcitx 会自动读取并应用 xmodmap 的设置<br>以下是我使用的配置文件，将<code>Caps_Lock</code>修改为<code>Ctrl</code>，并交换<code> `~</code> 和<code>Esc</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">remove Lock &#x3D; Caps_Lock</span><br><span class="line">keysym Caps_Lock &#x3D; Control_L</span><br><span class="line">add Control &#x3D; Control_L</span><br><span class="line">keysym Escape &#x3D; grave asciitilde grave asciitilde</span><br><span class="line">keysym grave &#x3D; Escape</span><br></pre></td></tr></table></figure>
+<h3 id="鼠标侧键"><a href="#鼠标侧键" class="headerlink" title="鼠标侧键"></a>鼠标侧键</h3><p>对于拥有鼠标侧键的用户而言，将这些侧键映射为常用快捷键（如浏览器标签页的切换、虚拟桌面的切换）可以带来极大的便捷。<br>我使用的软件是 <a target="_blank" rel="noopener" href="https://www.archlinux.org/packages/community/x86_64/xbindkeys/">xbindkeys</a> &amp; <a target="_blank" rel="noopener" href="https://www.archlinux.org/packages/community/x86_64/xautomation/">xautomation</a>，在<code>~/.xbindkeysrc</code>中修改配置，以下是我使用的配置</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 侧键切换虚拟桌面</span><br><span class="line">&quot;xte &#39;keydown Super_L&#39; &#39;keydown Tab&#39; &#39;usleep 100000&#39; &#39;keyup Tab&#39; &#39;keyup Super_L&#39;&quot;</span><br><span class="line">  b:8</span><br><span class="line"></span><br><span class="line">&quot;xte &#39;keydown Super_L&#39; &#39;keydown Tab&#39; &#39;usleep 100000&#39; &#39;keyup Tab&#39; &#39;keyup Super_L&#39;&quot;</span><br><span class="line">  b:9</span><br><span class="line"></span><br><span class="line">#  水平滚轮切换浏览器标签页，延迟是为了防止切换过快</span><br><span class="line">&quot;xte &#39;keydown Control_L&#39; &#39;usleep 200000&#39; &#39;key Tab&#39; &#39;keyup Control_L&#39;&quot;</span><br><span class="line">  b:7</span><br><span class="line"></span><br><span class="line">&quot;xte &#39;keydown Control_L&#39; &#39;keydown Shift_L&#39; &#39;usleep 200000&#39; &#39;key Tab&#39; &#39;keyup Shift_L&#39; &#39;keyup Control_L&#39;&quot;</span><br><span class="line">  b:6</span><br></pre></td></tr></table></figure>
-<h3 id="文件同步">文件同步</h3>
-<p>建议使用坚果云，免费便利。Linux 下有客户端的网盘真的少。Dropbox 必须翻墙，不支持多文件夹同步。</p>
-<h3 id="终端提示符颜色">终端提示符颜色</h3>
-<p><code>~/.bashrc</code>中添加</p>
+<h3 id="文件同步"><a href="#文件同步" class="headerlink" title="文件同步"></a>文件同步</h3><p>建议使用坚果云，免费便利。Linux 下有客户端的网盘真的少。Dropbox 必须翻墙，不支持多文件夹同步。</p>
+<h3 id="终端提示符颜色"><a href="#终端提示符颜色" class="headerlink" title="终端提示符颜色"></a>终端提示符颜色</h3><p><code>~/.bashrc</code>中添加</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">COLOR=<span class="string">&quot;\[<span class="subst">$(tput setaf 105)</span>\]&quot;</span></span><br><span class="line">RESET=<span class="string">&quot;\[<span class="subst">$(tput sgr0)</span>\]&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> PS1=<span class="string">&quot;<span class="variable">$&#123;COLOR&#125;</span>\u@\h \W &gt;<span class="variable">$&#123;RESET&#125;</span> &quot;</span></span><br></pre></td></tr></table></figure>
+
 <p>应用配置 <code>source ~/.bashrc</code></p>
-<h4 id="参考文章">参考文章</h4>
-<p>https://blog.hanschen.org/2009/10/13/mouse-shortcuts-with-xbindkeys/ https://wiki.archlinux.org/index.php/Mouse_buttons#xvkbd_and_xbindkeys ### 触控板手势 对于长期使用触控板的用户来说，多指手势可以用来替代许多快捷键。<br />
-我使用的软件是 <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Touchegg">Touchegg</a> 以及对应的 GUI 配置工具 <a target="_blank" rel="noopener" href="https://aur.archlinux.org/packages/touchegg-gce-git/">touchegg-gce-git</a></p>
-<h2 id="tips">Tips</h2>
-<ul>
+<h4 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h4><p><a target="_blank" rel="noopener" href="https://blog.hanschen.org/2009/10/13/mouse-shortcuts-with-xbindkeys/">https://blog.hanschen.org/2009/10/13/mouse-shortcuts-with-xbindkeys/</a><br><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Mouse_buttons#xvkbd_and_xbindkeys">https://wiki.archlinux.org/index.php/Mouse_buttons#xvkbd_and_xbindkeys</a></p>
+<h3 id="触控板手势"><a href="#触控板手势" class="headerlink" title="触控板手势"></a>触控板手势</h3><p>对于长期使用触控板的用户来说，多指手势可以用来替代许多快捷键。<br>我使用的软件是 <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Touchegg">Touchegg</a> 以及对应的 GUI 配置工具 <a target="_blank" rel="noopener" href="https://aur.archlinux.org/packages/touchegg-gce-git/">touchegg-gce-git</a></p>
+<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><ul>
 <li>dolphin 中<code>Alt + .</code>切换是否显示隐藏文件，F4 打开终端</li>
 <li>更新 kernel 之后不要忘记重启</li>
 <li><code>yaourt -Syu</code>频率太低会更新失败，太高会占用大量硬盘空间（<code>/var/cache/pacman/pkg/</code>）</li>
@@ -508,9 +499,13 @@ crossover 16 有对多个版本的 QQ 的官方支持，建议购买正版，有
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -rf &#x2F;etc&#x2F;pacman.d&#x2F;gnupg</span><br><span class="line">sudo pacman-key --init</span><br><span class="line">sudo pacman-key --populate archlinux</span><br><span class="line">sudo pacman-key --refresh-keys</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>与其手动下载安装包，不如去 AUR 找一找，这样更新会省力不少。</p></li>
+<li><p>与其手动下载安装包，不如去 AUR 找一找，这样更新会省力不少。</p>
+</li>
 <li><p>KSysGuard 中 CPU 和 Network 历史记录消失，那么</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp &#x2F;usr&#x2F;share&#x2F;ksysguard&#x2F;SystemLoad2.sgrd ~&#x2F;.local&#x2F;share&#x2F;ksysguard</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp &#x2F;usr&#x2F;share&#x2F;ksysguard&#x2F;SystemLoad2.sgrd ~&#x2F;.local&#x2F;share&#x2F;ksysguard</span><br></pre></td></tr></table></figure>
+
+
+</li>
 </ul>
 
     </div>

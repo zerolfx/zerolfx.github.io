@@ -212,7 +212,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#swap-%E7%A9%BA%E9%97%B4"><span class="nav-number">1.</span> <span class="nav-text">SWAP 空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E4%BC%91%E7%9C%A0"><span class="nav-number">2.</span> <span class="nav-text">配置休眠</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E4%BC%91%E7%9C%A0"><span class="nav-number">3.</span> <span class="nav-text">使用休眠</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E5%A4%96%E8%AF%9D"><span class="nav-number">4.</span> <span class="nav-text">题外话</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SWAP-%E7%A9%BA%E9%97%B4"><span class="nav-number">1.</span> <span class="nav-text">SWAP 空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E4%BC%91%E7%9C%A0"><span class="nav-number">2.</span> <span class="nav-text">配置休眠</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E4%BC%91%E7%9C%A0"><span class="nav-number">3.</span> <span class="nav-text">使用休眠</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E5%A4%96%E8%AF%9D"><span class="nav-number">4.</span> <span class="nav-text">题外话</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -389,20 +389,17 @@
         <p>系统休眠是个好东西，首先它不需要耗电，其次如果双系统切换的话，睡眠无法保存工作环境。</p>
 <p>启用休眠功能的大致步骤如下：</p>
 <a id="more"></a>
-<h2 id="swap-空间">SWAP 空间</h2>
-<p>如果在安装系统的时候有独立的 swap 分区，那就太方便了，直接就跳过这步。我当初没有创建 swap 分区的原因是要省空间，而且希望能够方便得调节 swap 的大小。</p>
-<p><del>过程参考 https://wiki.archlinux.org/index.php/swap#systemd-swap</del></p>
+
+<h2 id="SWAP-空间"><a href="#SWAP-空间" class="headerlink" title="SWAP 空间"></a>SWAP 空间</h2><p>如果在安装系统的时候有独立的 swap 分区，那就太方便了，直接就跳过这步。我当初没有创建 swap 分区的原因是要省空间，而且希望能够方便得调节 swap 的大小。</p>
+<p><del>过程参考 <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/swap#systemd-swap">https://wiki.archlinux.org/index.php/swap#systemd-swap</a></del></p>
 <p><del>总之，就是安装 <code>systemd-swap</code>，修改配置文件进行大小设置以及启用，随后用 <code>systemctl</code> 来运行/设置开机启动 <code>systemd-swap</code> 服务。</del></p>
 <p>由于 <code>systemd</code> 是动态分配 swap 文件的，可能每次使用的文件位置都不一样，不符合需求，所以就不用了。如果你需要的是一块可大可小的 swap 空间，那么 <code>systemd</code> 是个不错的选择。</p>
-<p>过程参考 https://linuxize.com/post/create-a-linux-swap-file/ 就按照这个创建一个 swap file 吧。</p>
-<h2 id="配置休眠">配置休眠</h2>
-<p>参考 https://wiki.archlinux.org/index.php/Uswsusp</p>
+<p>过程参考 <a target="_blank" rel="noopener" href="https://linuxize.com/post/create-a-linux-swap-file/">https://linuxize.com/post/create-a-linux-swap-file/</a> 就按照这个创建一个 swap file 吧。</p>
+<h2 id="配置休眠"><a href="#配置休眠" class="headerlink" title="配置休眠"></a>配置休眠</h2><p>参考 <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Uswsusp">https://wiki.archlinux.org/index.php/Uswsusp</a></p>
 <p>安装 <code>uswsusp</code>，修改配置文件中的 <code>resume device</code> 以及 <code>resume offset</code> （如果 swap 是文件的话需要修改），随后在 <code>/etc/mkinitcpio.conf</code> 中加入 <code>uresume</code>，最后重新生成 <code>initramfs</code>，命令如 <code>mkinitcpio -p linux419</code>（其中预设文件在 <code>/etc/mkinitcpio.d</code> 中）。</p>
-<h2 id="使用休眠">使用休眠</h2>
-<p>现在要使用的话运行 <code>s2disk</code> 就行了。</p>
-<p>然后参考 https://wiki.archlinux.org/index.php/Uswsusp#With_systemd 修改默认行为，就可以愉快地使用 KDE 菜单中的小雪花来进行愉快的休眠了。</p>
-<h2 id="题外话">题外话</h2>
-<p>可以发现从休眠中启动之后，所有内存被交换出去了，然后随着使用，swap 的占用越来越小，但最后还是会残留，可见有一部分原本的内存在很长时间内都不会被使用到。</p>
+<h2 id="使用休眠"><a href="#使用休眠" class="headerlink" title="使用休眠"></a>使用休眠</h2><p>现在要使用的话运行 <code>s2disk</code> 就行了。</p>
+<p>然后参考 <a target="_blank" rel="noopener" href="https://wiki.archlinux.org/index.php/Uswsusp#With_systemd">https://wiki.archlinux.org/index.php/Uswsusp#With_systemd</a> 修改默认行为，就可以愉快地使用 KDE 菜单中的小雪花来进行愉快的休眠了。</p>
+<h2 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h2><p>可以发现从休眠中启动之后，所有内存被交换出去了，然后随着使用，swap 的占用越来越小，但最后还是会残留，可见有一部分原本的内存在很长时间内都不会被使用到。</p>
 
     </div>
 

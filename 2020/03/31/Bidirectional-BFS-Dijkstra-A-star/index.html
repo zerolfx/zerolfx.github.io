@@ -212,7 +212,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8C%E5%90%91-bfs-%E6%90%9C%E7%B4%A2"><span class="nav-number">1.</span> <span class="nav-text">双向 BFS 搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8C%E5%90%91-dijkstra-%E6%90%9C%E7%B4%A2"><span class="nav-number">2.</span> <span class="nav-text">双向 Dijkstra 搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E4%BE%8B"><span class="nav-number">2.1.</span> <span class="nav-text">反例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%88%E6%AD%A2%E6%9D%A1%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">终止条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E6%98%93%E8%AF%81%E6%98%8E"><span class="nav-number">2.3.</span> <span class="nav-text">简易证明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#a-%E6%90%9C%E7%B4%A2%E5%8D%95%E5%90%91"><span class="nav-number">3.</span> <span class="nav-text">A* 搜索（单向）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8C%E5%90%91-a-%E6%90%9C%E7%B4%A2"><span class="nav-number">4.</span> <span class="nav-text">双向 A* 搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E8%87%B4%E6%80%A7"><span class="nav-number">4.1.</span> <span class="nav-text">一致性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%88%E6%AD%A2%E6%9D%A1%E4%BB%B6-1"><span class="nav-number">4.2.</span> <span class="nav-text">终止条件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="nav-number">5.</span> <span class="nav-text">写在最后</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8C%E5%90%91-BFS-%E6%90%9C%E7%B4%A2"><span class="nav-number">1.</span> <span class="nav-text">双向 BFS 搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8C%E5%90%91-Dijkstra-%E6%90%9C%E7%B4%A2"><span class="nav-number">2.</span> <span class="nav-text">双向 Dijkstra 搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8D%E4%BE%8B"><span class="nav-number">2.1.</span> <span class="nav-text">反例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%88%E6%AD%A2%E6%9D%A1%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">终止条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E6%98%93%E8%AF%81%E6%98%8E"><span class="nav-number">2.3.</span> <span class="nav-text">简易证明</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#A-%E6%90%9C%E7%B4%A2%EF%BC%88%E5%8D%95%E5%90%91%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">A* 搜索（单向）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8C%E5%90%91-A-%E6%90%9C%E7%B4%A2"><span class="nav-number">4.</span> <span class="nav-text">双向 A* 搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E8%87%B4%E6%80%A7"><span class="nav-number">4.1.</span> <span class="nav-text">一致性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%88%E6%AD%A2%E6%9D%A1%E4%BB%B6-1"><span class="nav-number">4.2.</span> <span class="nav-text">终止条件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="nav-number">5.</span> <span class="nav-text">写在最后</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -394,81 +394,66 @@
     <div class="post-body" itemprop="articleBody">
         <p>双向搜索其实也写过好多次了，但是以前一直没意识到自己写的双向 Dijkstra 是假的，然后看了看网上的中文博客，前几个也都是假的，所以就写了这篇文章，不过也没人看就是了。</p>
 <a id="more"></a>
+
 <p>前置知识：BFS, Dijkstra, A*</p>
-<h2 id="双向-bfs-搜索">双向 BFS 搜索</h2>
-<p>双向 BFS 其实是相当符合直觉的，从起点和终点出发，每次扩展其中一边，直到两边同时访问了一个节点就终止了，答案就是从起点到公共点再到终点的一条路径。</p>
-<h2 id="双向-dijkstra-搜索">双向 Dijkstra 搜索</h2>
-<h3 id="反例">反例</h3>
-<p>以前我以为双向 Dijkstra 类似于 BFS，只要两边相遇了就可以终止了，但其实并非如此。</p>
+<h2 id="双向-BFS-搜索"><a href="#双向-BFS-搜索" class="headerlink" title="双向 BFS 搜索"></a>双向 BFS 搜索</h2><p>双向 BFS 其实是相当符合直觉的，从起点和终点出发，每次扩展其中一边，直到两边同时访问了一个节点就终止了，答案就是从起点到公共点再到终点的一条路径。</p>
+<h2 id="双向-Dijkstra-搜索"><a href="#双向-Dijkstra-搜索" class="headerlink" title="双向 Dijkstra 搜索"></a>双向 Dijkstra 搜索</h2><h3 id="反例"><a href="#反例" class="headerlink" title="反例"></a>反例</h3><p>以前我以为双向 Dijkstra 类似于 BFS，只要两边相遇了就可以终止了，但其实并非如此。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">S   1   A   1   B   1   C   1   T</span><br><span class="line">o-------o-------o-------o-------o</span><br><span class="line">        |               |</span><br><span class="line">        +---------------+</span><br><span class="line">               1.5</span><br></pre></td></tr></table></figure>
+
 <p>上图是一个简单的反例，假设正反交替扩展，那么顺序就是</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">S -&gt; A</span><br><span class="line">T -&gt; C</span><br><span class="line">A -&gt; B</span><br><span class="line">C -&gt; B</span><br></pre></td></tr></table></figure>
+
 <p>在四次迭代后就相遇了，然是得到的却不是最短路径。</p>
-<h3 id="终止条件">终止条件</h3>
-<p>设图 <span class="math inline">\(G\)</span> 的起点和终点分别为 <span class="math inline">\(s\)</span> 和 <span class="math inline">\(t\)</span>，边权为 <span class="math inline">\(w\)</span>，搜索过程中所有点到起点和终点的距离为 <span class="math inline">\(d_s\)</span> 和 <span class="math inline">\(d_t\)</span>（如果不可达则为 <span class="math inline">\(\infty\)</span>）。</p>
+<h3 id="终止条件"><a href="#终止条件" class="headerlink" title="终止条件"></a>终止条件</h3><p>设图 $G$ 的起点和终点分别为 $s$ 和 $t$，边权为 $w$，搜索过程中所有点到起点和终点的距离为 $d_s$ 和 $d_t$（如果不可达则为 $\infty$）。</p>
 <ul>
-<li>初始化 <span class="math inline">\(\mu \leftarrow \infty\)</span></li>
-<li>在扩展起点 <span class="math inline">\(s\)</span> 那一侧时，设扩展的边是 <span class="math inline">\((u,v)\)</span>，那么令 <span class="math inline">\(\mu \leftarrow \min\{\mu, d_s(u)+d_t(v)+w(u,v)\}\)</span></li>
-<li>与之类似的，在扩展起点 <span class="math inline">\(t\)</span> 那一侧时，设扩展的边是 <span class="math inline">\(u \Rightarrow v\)</span>，那么令 <span class="math inline">\(\mu \leftarrow \min\{\mu, d_t(u)+d_s(v)+w(u,v)\}\)</span></li>
+<li>初始化 $\mu \leftarrow \infty$ </li>
+<li>在扩展起点 $s$ 那一侧时，设扩展的边是 $(u,v)$，那么令 $\mu \leftarrow \min{\mu, d_s(u)+d_t(v)+w(u,v)}$</li>
+<li>与之类似的，在扩展起点 $t$ 那一侧时，设扩展的边是 $u \Rightarrow v$，那么令 $\mu \leftarrow \min{\mu, d_t(u)+d_s(v)+w(u,v)}$</li>
 </ul>
-<p>终止条件为 <span class="math inline">\(top_s + top_t \ge \mu\)</span>，其中 <span class="math inline">\(top_s\)</span> 和 <span class="math inline">\(top_t\)</span> 为维护的两个最小堆的堆顶元素距离，也就是两侧即将扩展的下一个点的距离之和要大于目前的最优值。</p>
-<p>最后答案就是 <span class="math inline">\(\mu\)</span> 所对应的那条路径。</p>
-<h3 id="简易证明">简易证明</h3>
-<p>反证法：</p>
-<ol type="1">
-<li>设有一条 <span class="math inline">\(s-t\)</span> 之间比 <span class="math inline">\(\mu\)</span> 更短的路径 <span class="math inline">\(P\)</span>。</li>
-<li>那么肯定存在一条边 <span class="math inline">\((u, v)\)</span> 使得 <span class="math inline">\(d_s(u) &lt; top_s\)</span> 和 <span class="math inline">\(d_t(u) &lt; top_t\)</span> 同时成立。（或许不那么显然，我的想法是，把 <span class="math inline">\(P\)</span> 经过的边的边权从起点到终点一个个加起来，肯定有一瞬间导致边权和从 <span class="math inline">\(&lt; top_s\)</span> 跳变到 <span class="math inline">\(\ge top_s\)</span>，那条边就是要找的符合条件的 <span class="math inline">\((u,v)\)</span>。）</li>
-<li>然而这样的路径已经被考虑过了，所以 <span class="math inline">\(P\)</span> 不存在。（更详细一些就是，<span class="math inline">\(u\)</span> 和 <span class="math inline">\(v\)</span> 都被扩展过了，后被扩展的那个点肯定在枚举到 <span class="math inline">\((u, v)\)</span> 这条边时把路径 <span class="math inline">\(P\)</span> 和最优值比较过了。）</li>
+<p>终止条件为 $top_s + top_t \ge \mu$，其中 $top_s$ 和 $top_t$ 为维护的两个最小堆的堆顶元素距离，也就是两侧即将扩展的下一个点的距离之和要大于目前的最优值。</p>
+<p>最后答案就是 $\mu$ 所对应的那条路径。</p>
+<h3 id="简易证明"><a href="#简易证明" class="headerlink" title="简易证明"></a>简易证明</h3><p>反证法：</p>
+<ol>
+<li>设有一条 $s-t$ 之间比 $\mu$ 更短的路径 $P$。</li>
+<li>那么肯定存在一条边 $(u, v)$ 使得 $d_s(u) &lt; top_s$ 和 $d_t(u) &lt; top_t$ 同时成立。（或许不那么显然，我的想法是，把 $P$ 经过的边的边权从起点到终点一个个加起来，肯定有一瞬间导致边权和从 $&lt; top_s$ 跳变到 $\ge top_s$，那条边就是要找的符合条件的 $(u,v)$。）</li>
+<li>然而这样的路径已经被考虑过了，所以 $P$ 不存在。（更详细一些就是，$u$ 和 $v$ 都被扩展过了，后被扩展的那个点肯定在枚举到 $(u, v)$ 这条边时把路径 $P$ 和最优值比较过了。）</li>
 </ol>
-<h2 id="a-搜索单向">A* 搜索（单向）</h2>
-<p>在理解双向 A* 之前，需要明白 A* 的正确性从何而来。</p>
-<p>设 <span class="math inline">\(\pi(u)\)</span> 为启发式函数，就是估计的 <span class="math inline">\(d(u, t)\)</span>。（其实就是 <span class="math inline">\(f(u) = g(u) + h(u)\)</span> 里的 <span class="math inline">\(h(u)\)</span>），设修改过的边权 (reduced cost) <span class="math inline">\(w_\pi(u, v) = w(u, v) - \pi(u) + \pi(v)\)</span>。</p>
+<h2 id="A-搜索（单向）"><a href="#A-搜索（单向）" class="headerlink" title="A* 搜索（单向）"></a>A* 搜索（单向）</h2><p>在理解双向 A* 之前，需要明白 A* 的正确性从何而来。</p>
+<p>设 $\pi(u)$ 为启发式函数，就是估计的 $d(u, t)$。（其实就是 $f(u) = g(u) + h(u)$ 里的 $h(u)$），设修改过的边权 (reduced cost) $w_\pi(u, v) = w(u, v) - \pi(u) + \pi(v)$。</p>
 <p>那么 A* 搜索等价于在这个边权修改过的图上进行 Dijkstra：</p>
 <ul>
 <li><p>对于 Dijkstra，是按照修改后的从起点出发的路径长度从小到大访问：</p>
-<p><span class="math inline">\(dist_\pi(s, u) = dist(s, u) - \pi(s) + \pi(u)\)</span></p></li>
-<li><p>对于 A*，是按照 <span class="math inline">\(key(u)=dist(s,u) + \pi(u)\)</span> 从小到大的顺序访问</p></li>
-<li><p>两者就差一个常数 <span class="math inline">\(\pi(s)\)</span></p></li>
+<p>$dist_\pi(s, u) = dist(s, u) - \pi(s) + \pi(u)$</p>
+</li>
+<li><p>对于 A*，是按照 $key(u)=dist(s,u) + \pi(u)$ 从小到大的顺序访问</p>
+</li>
+<li><p>两者就差一个常数 $\pi(s)$</p>
+</li>
 </ul>
-<p>当然，要保证 A* 能找到最优解，需要保证启发式函数是 feasible 的，也就是修改过的边权非负 <span class="math inline">\(w_\pi(u,v) \ge 0\)</span>。</p>
-<p>当 <span class="math inline">\(\pi\)</span> 是 feasible 且 <span class="math inline">\(\pi(t)=0\)</span> 时，<span class="math inline">\(\pi(u)\)</span> 是 <span class="math inline">\(dist(u,t)\)</span> 的下界：</p>
+<p>当然，要保证 A* 能找到最优解，需要保证启发式函数是 feasible 的，也就是修改过的边权非负 $w_\pi(u,v) \ge 0$。</p>
+<p>当 $\pi$ 是 feasible 且 $\pi(t)=0$ 时，$\pi(u)$ 是 $dist(u,t)$ 的下界：</p>
 <ul>
-<li>在修改边权后的图上，对于从 <span class="math inline">\(u\)</span> 到 <span class="math inline">\(t\)</span> 的最短路，有：
-<ul>
-<li><span class="math inline">\(dist_\pi(u, t) \ge 0\)</span> 。由于 feasible，每条边都非负，所以累加后也非负。</li>
-<li><span class="math inline">\(dist_\pi(u, t)= dist(u,t) -\pi(u) + \pi(t)=dist(u,t)-\pi(u)\)</span>。（根据修改后的边权的定义）</li>
-<li>联立可以得到 <span class="math inline">\(\pi(u) \le dist(v,t)\)</span>。</li>
-</ul></li>
+<li>在修改边权后的图上，对于从 $u$ 到 $t$ 的最短路，有：<ul>
+<li>$dist_\pi(u, t) \ge 0$ 。由于 feasible，每条边都非负，所以累加后也非负。</li>
+<li>$dist_\pi(u, t)= dist(u,t) -\pi(u) + \pi(t)=dist(u,t)-\pi(u)$。（根据修改后的边权的定义）</li>
+<li>联立可以得到 $\pi(u) \le dist(v,t)$。</li>
 </ul>
-<h2 id="双向-a-搜索">双向 A* 搜索</h2>
-<h3 id="一致性">一致性</h3>
-<p>设 <span class="math inline">\(\pi_s(u)\)</span> 和 <span class="math inline">\(\pi_t(u)\)</span> 是对 <span class="math inline">\(dist(s,u)\)</span> 和 <span class="math inline">\(dist(u, t)\)</span> 的估计。</p>
-<p>对于同一条边 <span class="math inline">\((u,v)\)</span> 在正反图中的 reduced cost 如果一致的话，就认为是 consistent 的： <span class="math display">\[
-w_\pi(u,v)=w(u,v) - \pi_t(u) + \pi_t(v) = w(v,u) - \pi_s(v)+\pi_s(u) = w_\pi(v,u) \\
-\pi_s(u)+\pi_t(u) = \pi_s(v)+\pi_t(v)
-\]</span> 也就是说 $_s(u) + _t(u) = $ 常数。</p>
-<p>通常来说，随便掏出两个 feasible 的启发式函数（比如欧氏距离，曼哈顿距离），很可能不是 consistent 的。 <span class="math display">\[
-\pi&#39;_s(u)=\frac 12 (\pi_s(u)-\pi_t(u)+\pi_t(s)) \\
-\pi&#39;_t(u)=\frac 12 (\pi_t(u)-\pi_s(u)+\pi_s(s))
-\]</span> 通过变换，获得了一个 feasible 且 consistent 的启发式函数 <span class="math inline">\(\pi&#39;\)</span>，还满足 <span class="math inline">\(\pi&#39;_s(s) =\pi&#39;_t(t)=0\)</span>。尽管如此，相比起 <span class="math inline">\(\pi\)</span>，<span class="math inline">\(\pi&#39;\)</span> 是一个更差的估计。</p>
-<h3 id="终止条件-1">终止条件</h3>
-<p>大概就是在修改过的图（也就是可以当成 Dijkstra 的图）上考虑 Dijkstra 的终止条件的证明。</p>
+</li>
+</ul>
+<h2 id="双向-A-搜索"><a href="#双向-A-搜索" class="headerlink" title="双向 A* 搜索"></a>双向 A* 搜索</h2><h3 id="一致性"><a href="#一致性" class="headerlink" title="一致性"></a>一致性</h3><p>设 $\pi_s(u)$ 和 $\pi_t(u)$ 是对 $dist(s,u)$ 和 $dist(u, t)$ 的估计。</p>
+<p>对于同一条边 $(u,v)$ 在正反图中的 reduced cost 如果一致的话，就认为是 consistent 的：<br>$$<br>w_\pi(u,v)=w(u,v) - \pi_t(u) + \pi_t(v) = w(v,u) - \pi_s(v)+\pi_s(u) = w_\pi(v,u) \<br>\pi_s(u)+\pi_t(u) = \pi_s(v)+\pi_t(v)<br>$$<br>也就是说 $\pi_s(u) + \pi_t(u) = $ 常数。</p>
+<p>通常来说，随便掏出两个 feasible 的启发式函数（比如欧氏距离，曼哈顿距离），很可能不是 consistent 的。<br>$$<br>\pi’_s(u)=\frac 12 (\pi_s(u)-\pi_t(u)+\pi_t(s)) \<br>\pi’_t(u)=\frac 12 (\pi_t(u)-\pi_s(u)+\pi_s(s))<br>$$<br>通过变换，获得了一个 feasible 且 consistent 的启发式函数 $\pi’$，还满足 $\pi’_s(s) =\pi’_t(t)=0$。尽管如此，相比起 $\pi$，$\pi’$ 是一个更差的估计。</p>
+<h3 id="终止条件-1"><a href="#终止条件-1" class="headerlink" title="终止条件"></a>终止条件</h3><p>大概就是在修改过的图（也就是可以当成 Dijkstra 的图）上考虑 Dijkstra 的终止条件的证明。</p>
 <p>正向的访问过的最长的路径（修改后） + 反向的访问过的最长的路径（修改后）≥ 最优的路径（修改后）</p>
-<p><span class="math inline">\(\mu\)</span> 仍旧定义为最优路径（未修改）。</p>
+<p>$\mu$ 仍旧定义为最优路径（未修改）。</p>
 <ul>
-<li>正向最长路径（修改后）：<span class="math inline">\(dist_\pi(s,u)=d_s(u) - \pi_t(s) + \pi_t(u)=top_s - \pi_t(s)\)</span></li>
-<li>反向最长路径（修改后）：<span class="math inline">\(dist_\pi(u,t)=d_t(u) - \pi_s(u) + \pi_s(t)=top_t - \pi_s(t)\)</span></li>
-<li>最优路径（修改后）：<span class="math inline">\(\mu -\pi_s(s) + \pi_s(t)\)</span></li>
+<li>正向最长路径（修改后）：$dist_\pi(s,u)=d_s(u) - \pi_t(s) + \pi_t(u)=top_s - \pi_t(s)$</li>
+<li>反向最长路径（修改后）：$dist_\pi(u,t)=d_t(u) - \pi_s(u) + \pi_s(t)=top_t - \pi_s(t)$</li>
+<li>最优路径（修改后）：$\mu -\pi_s(s) + \pi_s(t)$</li>
 </ul>
-<p>那么就是 <span class="math display">\[
-[top_s - \pi_t(s)] + [top_s - \pi_s(t)] \ge [\mu -\pi_s(s) + \pi_s(t)]
-\]</span> 利用 <span class="math inline">\(\pi_s(s)=0\)</span> 和 <span class="math inline">\(\pi_t(s) = \pi_s(t)\)</span>，有 <span class="math display">\[
-top_s + top_t \ge \mu + \pi_t(s)
-\]</span></p>
-<h2 id="写在最后">写在最后</h2>
-<p>用正确的终止条件可能会大幅影响效率，而使用错误的终止条件只会以极其微小的概率无法得到最优解。（这是在实际的地图上测试的感受，如果特意构造的数据，错误的算法必定会有错误的结果。）</p>
-<h2 id="参考">参考</h2>
-<p>主要是这个 <a href="/2020/03/31/Bidirectional-BFS-Dijkstra-A-star/Bi%20Directional%20A%20Star%20-%20Slides.pdf">PDF</a>，顺便加上了一点自己的理解。</p>
+<p>那么就是<br>$$<br>[top_s - \pi_t(s)] + [top_s - \pi_s(t)] \ge [\mu -\pi_s(s) + \pi_s(t)]<br>$$<br>利用 $\pi_s(s)=0$ 和 $\pi_t(s) = \pi_s(t)$，有<br>$$<br>top_s + top_t \ge \mu + \pi_t(s)<br>$$</p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>用正确的终止条件可能会大幅影响效率，而使用错误的终止条件只会以极其微小的概率无法得到最优解。（这是在实际的地图上测试的感受，如果特意构造的数据，错误的算法必定会有错误的结果。）</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>主要是这个 [PDF](/2020/03/31/Bidirectional-BFS-Dijkstra-A-star/Bi Directional A Star - Slides.pdf)，顺便加上了一点自己的理解。</p>
 
     </div>
 
