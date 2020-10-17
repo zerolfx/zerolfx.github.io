@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"zerol.me","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+
+  <meta name="description" content="对于函数式的编程语言，柯里化是语法（或者语法糖）的一部分。但是 C++ 要实现柯里函数，就要 lambda 套 lambda，就很不方便，于是我就想用模板元编程来实现一个把函数柯里化的函数。 注：以下代码用到了 C++20 的特性。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在 C++ 中实现柯里函数">
+<meta property="og:url" content="https://zerol.me/2020/10/17/Curry-Function-in-C/index.html">
+<meta property="og:site_name" content="Zerol&#39;s Notes">
+<meta property="og:description" content="对于函数式的编程语言，柯里化是语法（或者语法糖）的一部分。但是 C++ 要实现柯里函数，就要 lambda 套 lambda，就很不方便，于是我就想用模板元编程来实现一个把函数柯里化的函数。 注：以下代码用到了 C++20 的特性。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-16T16:42:30.000Z">
+<meta property="article:modified_time" content="2020-10-17T02:03:22.520Z">
+<meta property="article:author" content="zerol">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://zerol.me/2020/10/17/Curry-Function-in-C/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>在 C++ 中实现柯里函数 | Zerol's Notes</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100757043-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-100757043-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Zerol's Notes</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%88%9D%E4%B9%8B%E4%BD%9C"><span class="nav-number">1.</span> <span class="nav-text">最初之作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%95%E5%9B%BE%E5%90%A6%E5%AE%9A%E6%97%A0%E7%94%A8-copy"><span class="nav-number">2.</span> <span class="nav-text">试图否定无用 copy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%83%B3%E8%A6%81%E6%94%AF%E6%8C%81%E4%BC%A0%E5%85%A5%E5%BC%95%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">想要支持传入引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E5%86%8D%E6%8B%92%E7%BB%9D%E9%87%8D%E8%BD%BD%E5%87%BD%E6%95%B0"><span class="nav-number">4.</span> <span class="nav-text">不再拒绝重载函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9C%9F%E7%9A%84%E6%AD%A3%E7%A1%AE%E4%BA%86%E5%90%97"><span class="nav-number">5.</span> <span class="nav-text">真的正确了吗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E7%BB%86%E8%8A%82"><span class="nav-number">6.</span> <span class="nav-text">一些细节</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mutable"><span class="nav-number">6.1.</span> <span class="nav-text">mutable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#std-invoke"><span class="nav-number">6.2.</span> <span class="nav-text">std::invoke</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%8B%E5%8A%A8%E6%8C%87%E5%AE%9A-lambda-%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="nav-number">6.3.</span> <span class="nav-text">手动指定 lambda 返回值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">7.</span> <span class="nav-text">参考</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="zerol"
+      src="/images/alpha.png">
+  <p class="site-author-name" itemprop="name">zerol</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">133</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zerolfx/template" title="ACM 模板库 → https:&#x2F;&#x2F;github.com&#x2F;zerolfx&#x2F;template" rel="noopener" target="_blank"><i class="fa fa-book fa-fw"></i>ACM 模板库</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://acm.ecnu.edu.cn/wiki/index.php?title=ECNU_Foreigners_(2018)" title="训练记录 → https:&#x2F;&#x2F;acm.ecnu.edu.cn&#x2F;wiki&#x2F;index.php?title&#x3D;ECNU_Foreigners_(2018)" rel="noopener" target="_blank"><i class="fa fa-tasks fa-fw"></i>训练记录</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:z@zerol.me" title="E-Mail → mailto:z@zerol.me"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.jxtxzzw.com/" title="https:&#x2F;&#x2F;www.jxtxzzw.com" rel="noopener" target="_blank">jxtxzzw</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.secrul.cn/" title="http:&#x2F;&#x2F;www.secrul.cn&#x2F;" rel="noopener" target="_blank">secrul</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.rooobin.top/" title="https:&#x2F;&#x2F;www.rooobin.top&#x2F;" rel="noopener" target="_blank">rooobin</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://cubercsl.cn/" title="http:&#x2F;&#x2F;cubercsl.cn&#x2F;" rel="noopener" target="_blank">cubercsl</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://xiejiadong.com/" title="http:&#x2F;&#x2F;xiejiadong.com&#x2F;" rel="noopener" target="_blank">xiejiadong</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.csdn.net/calabash_boy" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;calabash_boy" rel="noopener" target="_blank">calabash_boy</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://dengtesla.com/" title="http:&#x2F;&#x2F;dengtesla.com" rel="noopener" target="_blank">D-Tesla</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://fuckgfw.org/" title="http:&#x2F;&#x2F;fuckgfw.org" rel="noopener" target="_blank">Minty_He</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://godweiyang.com/" title="http:&#x2F;&#x2F;godweiyang.com&#x2F;" rel="noopener" target="_blank">godweiyang</a>
+        </li>
+    </ul>
+  </div>
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://zerol.me/2020/10/17/Curry-Function-in-C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/alpha.png">
+      <meta itemprop="name" content="zerol">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zerol's Notes">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          在 C++ 中实现柯里函数
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2020-10-17 00:42:30 / Modified: 10:03:22" itemprop="dateCreated datePublished" datetime="2020-10-17T00:42:30+08:00">2020-10-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2020/10/17/Curry-Function-in-C/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/10/17/Curry-Function-in-C/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>对于函数式的编程语言，柯里化是语法（或者语法糖）的一部分。但是 C++ 要实现柯里函数，就要 lambda 套 lambda，就很不方便，于是我就想用模板元编程来实现一个把函数柯里化的函数。</p>
+<p>注：以下代码用到了 C++20 的特性。</p>
+<a id="more"></a>
+
+<h2 id="最初之作"><a href="#最初之作" class="headerlink" title="最初之作"></a>最初之作</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> F&gt;</span><br><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">curry</span><span class="params">(F&amp;&amp; f)</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">if</span> <span class="title">constexpr</span> <span class="params">(<span class="built_in">std</span>::is_invocable_v&lt;F&gt;)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> f();</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> [=]&lt;<span class="keyword">typename</span> T&gt;(T&amp;&amp; x) &#123;</span><br><span class="line">      <span class="keyword">return</span> curry(</span><br><span class="line">          [=]&lt;<span class="keyword">typename</span>... Ts&gt;(Ts&amp;&amp;... xs)-&gt;<span class="built_in">std</span>::<span class="keyword">invoke_result_t</span>&lt;F, T, Ts...&gt; &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">std</span>::invoke(f, x, xs...);</span><br><span class="line">          &#125;</span><br><span class="line">      );</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">auto</span> f = [](<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> c)&#123; <span class="keyword">return</span> a + b + c; &#125;;</span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; curry(f)(<span class="number">1</span>)(<span class="number">2</span>)(<span class="number">3</span>) &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// output: 6</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这是一个能用的柯里化函数（大概）。</p>
+<h2 id="试图否定无用-copy"><a href="#试图否定无用-copy" class="headerlink" title="试图否定无用 copy"></a>试图否定无用 copy</h2><p>之前的代码都用了按值捕获，从而产生了无用的 copy。</p>
+<p>以下是用于测试的代码（先不考虑函数的 copy，只考虑参数，因为函数的 copy 也会导致参数的 copy）：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Useless</span> &#123;</span></span><br><span class="line">  Useless() &#123; <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Constructed&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; &#125;</span><br><span class="line">  Useless(Useless&amp;&amp;) <span class="keyword">noexcept</span> &#123; <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Moved&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; &#125;</span><br><span class="line">  Useless(<span class="keyword">const</span> Useless&amp;) &#123; <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;Copied&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; &#125;</span><br><span class="line">  <span class="comment">// ~Useless() &#123; cout &lt;&lt; &quot;Deleted&quot; &lt;&lt; endl; &#125;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">auto</span> g = [](Useless a, Useless b)&#123;&#125;;</span><br><span class="line">  Useless u;</span><br><span class="line">  curry(g)(Useless())(u); <span class="comment">// 6 copies</span></span><br><span class="line">  g(Useless(), u); <span class="comment">// 1 copies</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以发现，<code>curry</code> 产生了 6 次 copy，但是如果按照正常方式调用，只会产生一次 copy。</p>
+<p>那我们的目标是什么，也是只有一次 copy 吗？由于柯里化每指定一个参数都会产生一个新的函数（由于是匿名函数，所以更像是一个实现了 operator() 的结构体），之前的所有参数信息就在那个函数中。再一次调用产生结构体时，如果要避免对于之前参数的 move/copy，只能引用，但是会有 dangling reference 的问题（lambda 的 capture 不会延长右值的生命周期）。所以只能用若干次 move 来解决，也就是说，目标是产生一次 copy 以及若干尽可能少的 move，由于之前有 6 次 copy，只剩一个 copy 的话，那么需要用 5 个 move 来替代 copy。</p>
+<p>在之前的基础上，试图用 <code>std::forward</code> 来解决一切问题，产生了下面的代码。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FWD(x) std::forward<span class="meta-string">&lt;decltype(x)&gt;(x)</span></span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> F&gt;</span><br><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">curry</span><span class="params">(F&amp;&amp; f)</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">if</span> <span class="title">constexpr</span> <span class="params">(<span class="built_in">std</span>::is_invocable_v&lt;F&gt;)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> f();</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> [f = FWD(f)]&lt;<span class="keyword">typename</span> T&gt;(T&amp;&amp; x) <span class="keyword">mutable</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> curry(</span><br><span class="line">          [f = FWD(f), x = FWD(x)]&lt;<span class="keyword">typename</span>... Ts&gt;(Ts&amp;&amp;... xs) <span class="keyword">mutable</span> -&gt; <span class="built_in">std</span>::<span class="keyword">invoke_result_t</span>&lt;F, T, Ts...&gt;  &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">std</span>::invoke(f, FWD(x), FWD(xs)...);</span><br><span class="line">          &#125;);</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于之前的测试，会产出 1 次 copy 以及 5 次 move，看上去是达成目标了。</p>
+<p>其实尝试过程中还做到过完全没有 move（一时不敢相信），但是在 curry 后的函数应用了部分参数并保存到变量后，计算会出错，如果想尝试的话，可以试试下面这个例子。一个典型的错误实现是把全部按值捕获改成全部按引用捕获。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">auto</span> add3 = [](<span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> c)&#123; <span class="keyword">return</span> a + b + c; &#125;;</span><br><span class="line">  <span class="keyword">auto</span> a0 = curry(add3);</span><br><span class="line">  <span class="keyword">auto</span> a1 = a0(<span class="number">1</span>);</span><br><span class="line">  <span class="keyword">auto</span> a2 = a1(<span class="number">2</span>);</span><br><span class="line">  <span class="keyword">auto</span> a3 = a2(<span class="number">3</span>);</span><br><span class="line">  assert(a3 == <span class="number">6</span>);  <span class="comment">// a3 may equals to 9 if curry has wrong implementation</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="想要支持传入引用"><a href="#想要支持传入引用" class="headerlink" title="想要支持传入引用"></a>想要支持传入引用</h2><p>对于下面使用了左值引用的例子，它无法通过编译。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line">curry([](<span class="keyword">int</span>&amp; x)&#123; x += <span class="number">1</span>; &#125;)(x);</span><br><span class="line"><span class="comment">// error: cannot bind non-const lvalue reference of type ‘int&amp;’ to an rvalue of type ‘int’</span></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; x &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+
+<p>但是其实写 curry 是为了接近 functional programming，但是 functional programming 的函数参数不可能会是类似 C++ 中的左值引用，因为引用意味着副作用，所以把这个实现作为答案也合乎情理。然而我选择了继续。</p>
+<p>从编译信息可以看出，最后传给被 <code>curry</code> 的匿名函数的并不是 <code>x</code> 的左值引用而是一个右值（如果把 <code>int&amp;</code> 改成 <code>int&amp;&amp;</code> 就能通过编译也印证了这一点）。因此，怀疑 capture list 中的 <code>std::forward</code> 和预计的行为有出入。下面来构造一个更加简单的例子来说明问题：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(T&amp;&amp; x)</span> </span>&#123;</span><br><span class="line">  [x = <span class="built_in">std</span>::forward&lt;T&gt;(x)]() <span class="keyword">mutable</span> &#123;</span><br><span class="line">    x += <span class="number">1</span>;</span><br><span class="line">  &#125;();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line">  f(x);</span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; x &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// output: 0</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这次倒是没有编译错误了，但是可以肯定的是，传入 <code>f</code> 的一定是左值引用，<code>f</code> 内部 lambda 所 capture 的 x 一定不是左值引用。借助 <a target="_blank" rel="noopener" href="https://cppinsights.io/">cppinsight.io</a>，可以看到模板展开后大概长这样（手动格式化了一下）：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;&gt;</span><br><span class="line"><span class="keyword">void</span> f&lt;<span class="keyword">int</span>&amp;&gt;(<span class="keyword">int</span>&amp; x) &#123;</span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Lambda</span> &#123;</span></span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    Lambda(<span class="keyword">int</span>&amp; _x) : x&#123;_x&#125; &#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">operator</span><span class="params">()</span><span class="params">()</span> </span>&#123; x += <span class="number">1</span>; &#125;</span><br><span class="line">  <span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> x;</span><br><span class="line">  &#125; lambda&#123;<span class="built_in">std</span>::forward&lt;<span class="keyword">int</span>&amp;&gt;(x)&#125;;</span><br><span class="line"></span><br><span class="line">  lambda();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>问题在于 lambda 所形成的匿名类（这很 Java）中用于存放捕获的 <code>x</code> 的变量类型并不是引用。这也很合理，因为在 capture list 中，x 前面并没有 = 号，如果把 <code>[x = ...]</code> 改为 <code>[&amp;x = ...]</code> 就能达到预期的效果。但是事情并没有那么容易，因为用了 universal reference，我们肯定希望对于左值引用和右值引用都能达到预期效果。但是修改后对于传入右值引用，会无法编译，因为没法把右值引用赋值给 lambda 匿名类中的左值引用成员变量。</p>
+<p>此时你可能想问，那为什么成员变量里不放右值引用呢？理由依旧是 dangling reference，现在 <code>f </code>是在函数体内直接调用 lambda，试想一下，<code>f</code> 改成返回 lambda，然后在别的地方调用。此时传入 <code>f</code> 的右值引用很可能已经结束了生命周期，然后 undefined behavior 就发生了。</p>
+<p>考虑一下我想要的到底是什么，如果是 <code>T&amp;</code>，我想用 <code>[&amp;x]</code> 来捕获，如果是 <code>T&amp;&amp;</code>，那么我想用 <code>[x = std::move(x)]</code> 来捕获，代价是一次 move，那么写出来就是</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">f</span><span class="params">(T&amp;&amp; x)</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">if</span> <span class="title">constexpr</span> <span class="params">(<span class="built_in">std</span>::is_lvalue_reference_v&lt;T&amp;&amp;&gt;)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> [&amp;x]() <span class="keyword">mutable</span> &#123;</span><br><span class="line">      x += <span class="number">1</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> [x = <span class="built_in">std</span>::move(x)]() <span class="keyword">mutable</span> &#123;</span><br><span class="line">      x += <span class="number">1</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line">  f(x)();</span><br><span class="line">  f(<span class="number">1</span>)();</span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; x &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; <span class="comment">// output: 1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>考虑简化以上代码。在查阅资料的时候发现 <a target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/utility/functional/ref">std::ref</a> 例子中的 bind 也出现了类似的非预期行为，而解决的方法就是使用 <code>std::ref</code>。所以可以写一个新的 forward，根据情况返回 move 后的值或者一个 <code>std::ref</code> 包装的引用。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">constexpr</span> <span class="keyword">auto</span> <span class="title">capture_forward</span><span class="params">(<span class="keyword">auto</span>&amp;&amp; x)</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">if</span> <span class="title">constexpr</span> <span class="params">(<span class="built_in">std</span>::is_lvalue_reference_v&lt;T&amp;&amp;&gt;)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">std</span>::ref(<span class="built_in">std</span>::forward&lt;T&gt;(x));</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">std</span>::forward&lt;T&gt;(x);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后把它应用到 <code>curry</code> 中（用到宏并不是因为我喜欢宏，只是因为它看上去更直观一些）：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CAP_FWD(x) capture_forward<span class="meta-string">&lt;decltype(x)&gt;(x)</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> STD_FWD(x) std::forward<span class="meta-string">&lt;decltype(x)&gt;(x)</span></span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> F&gt;</span><br><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">curry</span><span class="params">(F&amp;&amp; f)</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">if</span> <span class="title">constexpr</span> <span class="params">(<span class="built_in">std</span>::is_invocable_v&lt;F&gt;)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> f();</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> [f = CAP_FWD(f)]&lt;<span class="keyword">typename</span> T&gt;(T&amp;&amp; x) <span class="keyword">mutable</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> curry(</span><br><span class="line">          [f = CAP_FWD(f), x = CAP_FWD(x)]&lt;<span class="keyword">typename</span>... Ts&gt;(Ts&amp;&amp;... xs) <span class="keyword">mutable</span> -&gt; <span class="built_in">std</span>::<span class="keyword">invoke_result_t</span>&lt;F, T, Ts...&gt;  &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">std</span>::invoke(f, STD_FWD(x), STD_FWD(xs)...);</span><br><span class="line">          &#125;);</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="不再拒绝重载函数"><a href="#不再拒绝重载函数" class="headerlink" title="不再拒绝重载函数"></a>不再拒绝重载函数</h2><p>然而还是有问题，<code>curry</code> 理论上应该支持任意函数的柯里化，如果函数是被重载的，那么会根据传入参数的类型来决定。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// overloaded is copy from https://en.cppreference.com/w/cpp/utility/variant/visit</span></span><br><span class="line">template&lt;class... Ts&gt; struct overloaded : Ts... &#123; using Ts::operator()...; &#125;;</span><br><span class="line"><span class="comment">// explicit deduction guide (not needed as of C++20) (zerol: still needed in my case)</span></span><br><span class="line">template&lt;class... Ts&gt; overloaded(Ts...) -&gt; overloaded&lt;Ts...&gt;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">h</span><span class="params">(<span class="keyword">int</span>&amp;&amp;)</span> </span>&#123; <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; __PRETTY_FUNCTION__ &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; &#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">h</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>&amp;)</span> </span>&#123; <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; __PRETTY_FUNCTION__ &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; &#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">hh</span><span class="params">(<span class="keyword">auto</span>&amp;&amp;)</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  curry(overloaded &#123;</span><br><span class="line">      [](<span class="keyword">int</span>&amp;&amp;)&#123; <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;int&amp;&amp;&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; &#125;,</span><br><span class="line">      [](<span class="keyword">const</span> <span class="keyword">int</span>&amp;)&#123; <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;const int&amp;&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; &#125;,</span><br><span class="line">  &#125;)(<span class="number">1</span>);  <span class="comment">// output nothing</span></span><br><span class="line">  curry([](<span class="keyword">auto</span>&amp;&amp; x)&#123; <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="keyword">typeid</span>(x).name() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; &#125;)(<span class="number">1</span>);  <span class="comment">// output: i (i means int)</span></span><br><span class="line">  curry(h)(<span class="number">1</span>);  <span class="comment">// compile error: no matching function for call to ‘curry(&lt;unresolved overloaded function type&gt;)’</span></span><br><span class="line">  curry(hh)(<span class="number">1</span>);  <span class="comment">// same as above</span></span><br><span class="line">  curry([](<span class="keyword">auto</span>&amp;&amp; x)&#123; <span class="comment">/* type of x is int&amp;&amp; */</span> &#125;)(<span class="number">1</span>);  <span class="comment">// compiles</span></span><br><span class="line">  <span class="keyword">int</span> x;</span><br><span class="line">  curry([](<span class="keyword">auto</span>&amp;&amp; x)&#123; <span class="comment">/* type of x is something like std::ref_wrapper&lt;int&gt; */</span> &#125;)(x);  <span class="comment">// compiles</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>根据结果，看上去对于 overloaded 的函数不大行，但是对于带 template 的函数还行。但是还有一个有趣的现象，对于 <code>hh</code> 这个函数不行，但是对于 lambda 版本的 <code>hh</code> 是可以的（之后会得到解释）。</p>
+<p>根据错误信息，从一篇<a target="_blank" rel="noopener" href="https://florianjw.de/en/passing_overloaded_functions.html">博客</a>中抄来了 <code>RESOLVE_OVERLOAD</code> 这样一个宏。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> RESOLVE_OVERLOAD(...) \</span></span><br><span class="line">	[](<span class="keyword">auto</span>&amp;&amp;...args)&#123; <span class="keyword">return</span> __VA_ARGS__(<span class="built_in">std</span>::forward&lt;<span class="keyword">decltype</span>(args)&gt;(args)...); &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">h</span><span class="params">(<span class="keyword">int</span>&amp;&amp;)</span> </span>&#123; <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; __PRETTY_FUNCTION__ &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; &#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">h</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>&amp;)</span> </span>&#123; <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; __PRETTY_FUNCTION__ &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">std</span>::invoke(h, <span class="number">1</span>);  <span class="comment">// won&#x27;t compile, no matching function for call to &#x27;invoke&#x27;, note: candidate template ignored: couldn&#x27;t infer template argument &#x27;_Callable&#x27;</span></span><br><span class="line">  <span class="built_in">std</span>::invoke(<span class="keyword">static_cast</span>&lt;<span class="keyword">void</span>(*)(<span class="keyword">int</span>&amp;&amp;)&gt;(h), <span class="number">1</span>);  <span class="comment">// compiles</span></span><br><span class="line">  <span class="built_in">std</span>::invoke(RESOLVE_OVERLOAD(h), <span class="number">1</span>);  <span class="comment">// compiles!</span></span><br><span class="line">  <span class="built_in">std</span>::invoke(curry(h), <span class="number">1</span>);  <span class="comment">// won&#x27;t compile, candidate template ignored: couldn&#x27;t infer template argument &#x27;F&#x27;</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">std</span>::invoke(curry(RESOLVE_OVERLOAD(h)), <span class="number">1</span>);  <span class="comment">// no magic happens...  error: no matching function for call to &#x27;h&#x27;</span></span><br><span class="line">  <span class="comment">// note: candidate function not viable: requires 1 argument, but 0 were provided</span></span><br><span class="line">  <span class="comment">// void h(const int&amp;) &#123; std::cout &lt;&lt; __PRETTY_FUNCTION__ &lt;&lt; std::endl; &#125;</span></span><br><span class="line">  <span class="comment">//     ^</span></span><br><span class="line">  <span class="comment">// note: candidate function not viable: requires 1 argument, but 0 were provided</span></span><br><span class="line">  <span class="comment">// void h(int&amp;&amp;) &#123; std::cout &lt;&lt; __PRETTY_FUNCTION__ &lt;&lt; std::endl; &#125;</span></span><br><span class="line">  <span class="comment">//      ^</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>std::invoke</code> 和 <code>curry</code> 都会把函数作为模板传入，因此 <code>std::invoke</code> 不能处理的重载问题，<code>curry</code> 更没法处理。除了手动指定类型，还有 <code>RESOLVE_OVERLOAD</code> 的方法，就是把重载函数替换成一个接受任意参数然后完美转发给原先函数的 lambda。为什么这会有用呢？因为决定 <code>h</code> 的类型的时机变了，从模板参数变成了一个 lambda 内部被调用的时候。在 lambda 被实例化的时候，<code>args</code> 的类型都是确定的，那么此时也就可以推断出 <code>h</code> 到底重载了哪个函数。当把 <code>RESOLVED_OVERLOADED</code> 应用于传入 <code>curry</code> 的重载函数后，奇迹并没有改善，根据错误提示，最后根本就没有参数传入 <code>RESOLVE_OVERLOAD</code> 包的那层 lambda。原因在于 <code>curry</code> 中判断了一下 <code>std::is_invocable_v</code>，判断的时候 lambda 被实例化了，然后发现找不到对应的 <code>h</code>，此时并非是实例化失败而是找不到签名合适的 h。所以不行的根本原因在于，<code>RESOLVE_OVERLOAD</code> 基于这样一个假设，lambda 被调用（或者实例化）时它的类型是正确的，借此决定合适的重载函数，而 <code>curry</code> 需要做错误的试探。所以要解决这个问题，需要的是在编译时检查一个重载函数能否被一些特定的参数调用，不能的话就让 <code>RESOLVE_OVERLOAD</code> lambda 实例化失败，于是就出现了之后的改进。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> RESOLVE_OVERLOAD(...) \</span></span><br><span class="line">	[]&lt;<span class="keyword">typename</span>... Ts, <span class="keyword">typename</span> = <span class="keyword">decltype</span>(__VA_ARGS__(<span class="built_in">std</span>::declval&lt;Ts&gt;()...))&gt; (Ts&amp;&amp;... xs) &#123; \</span><br><span class="line">    <span class="keyword">return</span> __VA_ARGS__(<span class="built_in">std</span>::forward&lt;Ts&gt;(xs)...); \</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> RESOLVE_OVERLOAD_VAR(...) \</span></span><br><span class="line">	[__VA_ARGS__]&lt;<span class="keyword">typename</span>... Ts, <span class="keyword">typename</span> = <span class="keyword">decltype</span>(__VA_ARGS__(<span class="built_in">std</span>::declval&lt;Ts&gt;()...))&gt; (Ts&amp;&amp;... xs) &#123; \</span><br><span class="line">    <span class="keyword">return</span> __VA_ARGS__(<span class="built_in">std</span>::forward&lt;Ts&gt;(xs)...); \</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>改进之后就解决了问题，但是出现了两个版本 <code>RESOLVE_OVERLOAD</code> 和 <code>RESOLVE_OVERLOAD_VAR</code>：</p>
+<ul>
+<li>对于变量（比如 lambda）形式存在的重载函数，使用 <code>RESOLVE_OVERLOAD_VAR</code> 来捕获它。</li>
+<li>对于函数，不能捕获，使用 <code>RESOLVE_OVERLOAD</code>。</li>
+<li>对于右值，使用 <code>RESOLVE_OVERLOAD</code>。但建议赋值到变量再搞，不然可能出现 lambda expression in an unevaluated operand 之类的错误（clang 会编译错误，但 gcc 可以，这是 C++20 特性，怀疑 clang 没有实现这个特性）。</li>
+</ul>
+<p>以下为测试代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">h</span><span class="params">(<span class="keyword">int</span>&amp;&amp;)</span> </span>&#123; <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; __PRETTY_FUNCTION__ &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; &#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">h</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>&amp;)</span> </span>&#123; <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; __PRETTY_FUNCTION__ &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; &#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">hh</span><span class="params">(<span class="keyword">auto</span>&amp;&amp;)</span> </span>&#123; <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; __PRETTY_FUNCTION__ &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  curry(RESOLVE_OVERLOAD(overloaded &#123;</span><br><span class="line">      [](<span class="keyword">int</span>&amp;&amp;)&#123; <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;int&amp;&amp;&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; &#125;,</span><br><span class="line">      [](<span class="keyword">const</span> <span class="keyword">int</span>&amp;)&#123; <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;const int&amp;&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; &#125;,</span><br><span class="line">  &#125;))(<span class="number">1</span>);  <span class="comment">// (can not compile in clang 10.0.1) output (in gcc): int&amp;&amp; </span></span><br><span class="line">  <span class="keyword">auto</span> hhh = overloaded &#123;</span><br><span class="line">      [](<span class="keyword">int</span>&amp;&amp;)&#123; <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;int&amp;&amp;&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; &#125;,</span><br><span class="line">      [](<span class="keyword">const</span> <span class="keyword">int</span>&amp;)&#123; <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;const int&amp;&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; &#125;,</span><br><span class="line">  &#125;;</span><br><span class="line">  curry(RESOLVE_OVERLOAD_VAR(hhh))(<span class="number">1</span>); <span class="comment">// output: int&amp;&amp;</span></span><br><span class="line">  curry(RESOLVE_OVERLOAD(h))(<span class="number">1</span>);  <span class="comment">// output: void h(int&amp;&amp;)</span></span><br><span class="line">  curry(RESOLVE_OVERLOAD(hh))(<span class="number">1</span>);  <span class="comment">// output: void hh(auto:45&amp;&amp;) [with auto:45 = int]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="真的正确了吗"><a href="#真的正确了吗" class="headerlink" title="真的正确了吗"></a>真的正确了吗</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">constexpr</span> <span class="keyword">auto</span> <span class="title">capture_forward</span><span class="params">(<span class="keyword">auto</span>&amp;&amp; x)</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">if</span> <span class="title">constexpr</span> <span class="params">(<span class="built_in">std</span>::is_lvalue_reference_v&lt;T&amp;&amp;&gt;)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">std</span>::ref(<span class="built_in">std</span>::forward&lt;T&gt;(x));</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">std</span>::forward&lt;T&gt;(x);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CAP_FWD(x) capture_forward<span class="meta-string">&lt;decltype(x)&gt;(x)</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> STD_FWD(x) std::forward<span class="meta-string">&lt;decltype(x)&gt;(x)</span></span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> F&gt;</span><br><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">curry</span><span class="params">(F&amp;&amp; f)</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">if</span> <span class="title">constexpr</span> <span class="params">(<span class="built_in">std</span>::is_invocable_v&lt;F&gt;)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> f();</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> [f = CAP_FWD(f)]&lt;<span class="keyword">typename</span> T&gt;(T&amp;&amp; x) <span class="keyword">mutable</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> curry(</span><br><span class="line">          [f = CAP_FWD(f), x = CAP_FWD(x)]&lt;<span class="keyword">typename</span>... Ts&gt;(Ts&amp;&amp;... xs) <span class="keyword">mutable</span> -&gt; <span class="built_in">std</span>::<span class="keyword">invoke_result_t</span>&lt;F, T, Ts...&gt;  &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">std</span>::invoke(f, STD_FWD(x), STD_FWD(xs)...);</span><br><span class="line">          &#125;);</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> RESOLVE_OVERLOAD(...) \</span></span><br><span class="line">	[]&lt;<span class="keyword">typename</span>... Ts, <span class="keyword">typename</span> = <span class="keyword">decltype</span>(__VA_ARGS__(<span class="built_in">std</span>::declval&lt;Ts&gt;()...))&gt; (Ts&amp;&amp;... xs) &#123; \</span><br><span class="line">    <span class="keyword">return</span> __VA_ARGS__(<span class="built_in">std</span>::forward&lt;Ts&gt;(xs)...); \</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> RESOLVE_OVERLOAD_VAR(...) \</span></span><br><span class="line">	[__VA_ARGS__]&lt;<span class="keyword">typename</span>... Ts, <span class="keyword">typename</span> = <span class="keyword">decltype</span>(__VA_ARGS__(<span class="built_in">std</span>::declval&lt;Ts&gt;()...))&gt; (Ts&amp;&amp;... xs) &#123; \</span><br><span class="line">    <span class="keyword">return</span> __VA_ARGS__(<span class="built_in">std</span>::forward&lt;Ts&gt;(xs)...); \</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// call curry(RESOLVE_OVERLOAD(f)) for overloaded function f</span></span><br><span class="line"><span class="comment">// call curry(RESOLVE_OVERLOAD_VAR(f)) for overloaded function f (stored in variable)</span></span><br><span class="line"><span class="comment">// or call curry(f) else</span></span><br></pre></td></tr></table></figure>
+
+<p>我不知道。</p>
+<h2 id="一些细节"><a href="#一些细节" class="headerlink" title="一些细节"></a>一些细节</h2><h3 id="mutable"><a href="#mutable" class="headerlink" title="mutable"></a>mutable</h3><p>没有它的修饰，lambda 形成的匿名类中的捕获的东西就没法是左值引用。如果需要修改 capture 的东西，必须得加 <code>mutable</code>。</p>
+<h3 id="std-invoke"><a href="#std-invoke" class="headerlink" title="std::invoke"></a>std::invoke</h3><p>其实 <code>std::invoke(f, ...)</code> 本来是写成 <code>f(...)</code>，但是 <a target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/utility/functional/invoke">std::invoke</a> 做的事情并没有看上去那么简单，比如它可以作用于成员函数（<code>this</code> 得作为第一个参数传入），可以看一下它的 possible implementation，还是挺复杂的（我可不想把它引入 curry 的实现）。</p>
+<h3 id="手动指定-lambda-返回值"><a href="#手动指定-lambda-返回值" class="headerlink" title="手动指定 lambda 返回值"></a>手动指定 lambda 返回值</h3><p>代码中有这样一句 <code>-&gt; std::invoke_result_t&lt;F, T, Ts...&gt;</code>，本来是省略的，但是会导致过不了编译。曾经抱着试试看的心态手动制定了返回值，结果就能过编译了。但是那个 lambda 只有一个 return，如果把指定的返回值改成 <code>decltype(std::invoke(...))</code> 也能通过编译。我一直以为 lambda 的返回值就是对于 return 语句中的表达式做了 <code>decltype</code>（如果只有一个 return 的话），但看上去并非如此。我也不知道为什么。</p>
+<p>此处参考 <a target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/language/template_argument_deduction#auto-returning_functions">https://en.cppreference.com/w/cpp/language/template_argument_deduction#auto-returning_functions</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>期间打开过无数 StackOverflow，肯定还漏了一些有用的参考：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/beark/ftl/blob/master/include/ftl/implementation/currying.h">https://github.com/beark/ftl/blob/master/include/ftl/implementation/currying.h</a> 一个 C++ 函数式库的 curry 实现</li>
+<li><a target="_blank" rel="noopener" href="https://vittorioromeo.info/index/blog/capturing_perfectly_forwarded_objects_in_lambdas.html">https://vittorioromeo.info/index/blog/capturing_perfectly_forwarded_objects_in_lambdas.html</a> 在捕获中解决完美转发不支持引用的问题，但是解决方法还是不够优雅（因为没用 <code>std::ref</code> 而是使用了 <code>std::tuple</code>）</li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/152005/how-can-currying-be-done-in-c">https://stackoverflow.com/questions/152005/how-can-currying-be-done-in-c</a> 最初的版本就是在某个答案的基础上用了 <code>std::is_invocable_t</code> 简化了代码</li>
+<li><a target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/utility/functional/ref">https://en.cppreference.com/w/cpp/utility/functional/ref</a> <code>std::ref</code></li>
+<li><a target="_blank" rel="noopener" href="https://florianjw.de/en/passing_overloaded_functions.html">https://florianjw.de/en/passing_overloaded_functions.html</a> <code>RESOLVE_OVERLOAD</code> 的起源，可惜不能直接应用于 curry 的使用场景</li>
+<li><a target="_blank" rel="noopener" href="https://en.cppreference.com/w/cpp/language/overloaded_address">https://en.cppreference.com/w/cpp/language/overloaded_address</a> 如何决定重载函数的地址</li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/22232164/why-are-lambda-expressions-not-allowed-in-an-unevaluated-operands-but-allowed-in">https://stackoverflow.com/questions/22232164/why-are-lambda-expressions-not-allowed-in-an-unevaluated-operands-but-allowed-in</a> 在模板里塞 lambda 的合法性</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/04/11/Steam-co-op-games-recommendation/" rel="prev" title="Steam 联机合作游戏推荐">
+                  <i class="fa fa-chevron-left"></i> Steam 联机合作游戏推荐
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/10/17/std-move-std-forward/" rel="next" title="重温 std::move 以及 std::forward">
+                  重温 std::move 以及 std::forward <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zerol</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+      <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://zerolblog.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://zerol.me/2020/10/17/Curry-Function-in-C/";
+    this.page.identifier = "2020/10/17/Curry-Function-in-C/";
+    this.page.title = "在 C++ 中实现柯里函数";
+    };
+  NexT.utils.loadComments('#disqus_thread', () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://zerolblog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>

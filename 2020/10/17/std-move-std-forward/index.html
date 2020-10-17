@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"zerol.me","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+
+  <meta name="description" content="其实本来是另外一篇 curry 函数的一部分，但是和主题没什么关系，就拆出来了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="重温 std::move 以及 std::forward">
+<meta property="og:url" content="https://zerol.me/2020/10/17/std-move-std-forward/index.html">
+<meta property="og:site_name" content="Zerol&#39;s Notes">
+<meta property="og:description" content="其实本来是另外一篇 curry 函数的一部分，但是和主题没什么关系，就拆出来了。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-16T17:02:15.000Z">
+<meta property="article:modified_time" content="2020-10-16T17:07:56.794Z">
+<meta property="article:author" content="zerol">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://zerol.me/2020/10/17/std-move-std-forward/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>重温 std::move 以及 std::forward | Zerol's Notes</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100757043-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-100757043-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Zerol's Notes</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#std-move"><span class="nav-number">1.</span> <span class="nav-text">std::move</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#std-forward"><span class="nav-number">2.</span> <span class="nav-text">std::forward</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="zerol"
+      src="/images/alpha.png">
+  <p class="site-author-name" itemprop="name">zerol</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">133</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zerolfx/template" title="ACM 模板库 → https:&#x2F;&#x2F;github.com&#x2F;zerolfx&#x2F;template" rel="noopener" target="_blank"><i class="fa fa-book fa-fw"></i>ACM 模板库</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://acm.ecnu.edu.cn/wiki/index.php?title=ECNU_Foreigners_(2018)" title="训练记录 → https:&#x2F;&#x2F;acm.ecnu.edu.cn&#x2F;wiki&#x2F;index.php?title&#x3D;ECNU_Foreigners_(2018)" rel="noopener" target="_blank"><i class="fa fa-tasks fa-fw"></i>训练记录</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:z@zerol.me" title="E-Mail → mailto:z@zerol.me"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.jxtxzzw.com/" title="https:&#x2F;&#x2F;www.jxtxzzw.com" rel="noopener" target="_blank">jxtxzzw</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.secrul.cn/" title="http:&#x2F;&#x2F;www.secrul.cn&#x2F;" rel="noopener" target="_blank">secrul</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.rooobin.top/" title="https:&#x2F;&#x2F;www.rooobin.top&#x2F;" rel="noopener" target="_blank">rooobin</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://cubercsl.cn/" title="http:&#x2F;&#x2F;cubercsl.cn&#x2F;" rel="noopener" target="_blank">cubercsl</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://xiejiadong.com/" title="http:&#x2F;&#x2F;xiejiadong.com&#x2F;" rel="noopener" target="_blank">xiejiadong</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.csdn.net/calabash_boy" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;calabash_boy" rel="noopener" target="_blank">calabash_boy</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://dengtesla.com/" title="http:&#x2F;&#x2F;dengtesla.com" rel="noopener" target="_blank">D-Tesla</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://fuckgfw.org/" title="http:&#x2F;&#x2F;fuckgfw.org" rel="noopener" target="_blank">Minty_He</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://godweiyang.com/" title="http:&#x2F;&#x2F;godweiyang.com&#x2F;" rel="noopener" target="_blank">godweiyang</a>
+        </li>
+    </ul>
+  </div>
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://zerol.me/2020/10/17/std-move-std-forward/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/alpha.png">
+      <meta itemprop="name" content="zerol">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zerol's Notes">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          重温 std::move 以及 std::forward
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2020-10-17 01:02:15 / Modified: 01:07:56" itemprop="dateCreated datePublished" datetime="2020-10-17T01:02:15+08:00">2020-10-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2020/10/17/std-move-std-forward/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/10/17/std-move-std-forward/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>其实本来是另外一篇 curry 函数的一部分，但是和主题没什么关系，就拆出来了。</p>
+<a id="more"></a>
+
+<h2 id="std-move"><a href="#std-move" class="headerlink" title="std::move"></a><code>std::move</code></h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> _Tp&gt;</span><br><span class="line">  <span class="keyword">constexpr</span> <span class="keyword">typename</span> <span class="built_in">std</span>::remove_reference&lt;_Tp&gt;::type&amp;&amp;</span><br><span class="line">  move(_Tp&amp;&amp; <span class="keyword">__t</span>) <span class="keyword">noexcept</span></span><br><span class="line">  &#123; <span class="keyword">return</span> <span class="keyword">static_cast</span>&lt;<span class="keyword">typename</span> <span class="built_in">std</span>::remove_reference&lt;_Tp&gt;::type&amp;&amp;&gt;(<span class="keyword">__t</span>); &#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>std::move</code> 做的事就是把类型 <code>static_cast</code> 成对应的右值类型。</p>
+<p>通常我们希望 <code>T a = std::move(b)</code> 调用了 <code>T</code> 的 <code>move</code> 构造函数，但是如果 <code>b</code> 是带有 <code>const</code> 修饰符的，那么 <code>std::move</code> 的结果的类型就会变成 <code>const T&amp;&amp;</code>，于是调用的就是 <code>copy</code> 构造函数了（<code>const T&amp;&amp;</code> 无法转换成 <code>T&amp;&amp;</code>，但是可以转换成 <code>const T&amp;</code>）。</p>
+<h2 id="std-forward"><a href="#std-forward" class="headerlink" title="std::forward"></a><code>std::forward</code></h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> _Tp&gt;</span><br><span class="line">  <span class="keyword">constexpr</span> _Tp&amp;&amp;</span><br><span class="line">  forward(<span class="keyword">typename</span> <span class="built_in">std</span>::remove_reference&lt;_Tp&gt;::type&amp; <span class="keyword">__t</span>) <span class="keyword">noexcept</span></span><br><span class="line">  &#123; <span class="keyword">return</span> <span class="keyword">static_cast</span>&lt;_Tp&amp;&amp;&gt;(<span class="keyword">__t</span>); &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> _Tp&gt;</span><br><span class="line">  <span class="keyword">constexpr</span> _Tp&amp;&amp;</span><br><span class="line">  forward(<span class="keyword">typename</span> <span class="built_in">std</span>::remove_reference&lt;_Tp&gt;::type&amp;&amp; <span class="keyword">__t</span>) <span class="keyword">noexcept</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">static_assert</span>(!<span class="built_in">std</span>::is_lvalue_reference&lt;_Tp&gt;::value, <span class="string">&quot;template argument&quot;</span></span><br><span class="line">	    <span class="string">&quot; substituting _Tp is an lvalue reference type&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">static_cast</span>&lt;_Tp&amp;&amp;&gt;(<span class="keyword">__t</span>);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>由于 <code>std::forward</code> 通常用在 universal reference 中，比如下面的代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp;)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">string</span>&amp;&amp;)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">call_f</span><span class="params">(T&amp;&amp; arg)</span> </span>&#123;</span><br><span class="line">  f(<span class="built_in">std</span>::forward&lt;T&gt;(arg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>假如 <code>arg</code>的类型 <code>T&amp;&amp;</code>：</p>
+<ul>
+<li>右值引用，如 <code>string&amp;&amp;</code>，那么 <code>T</code> 就是 <code>string</code>，<code>std::forward</code> 的返回类型就是 <code>string&amp;&amp;</code>。</li>
+<li>左值引用，如 <code>string&amp;</code> ，那么 <code>T</code> 就是 <code>string&amp;</code>，<code>std::forward</code> 的返回类型是 <code>string&amp;</code>。（由于引用折叠 reference collapsing 的存在，导致 <code>string&amp; &amp;&amp; = string&amp;</code>。）</li>
+</ul>
+<p>可见 <code>std::forward</code> 就是把类型 <code>static_cast</code> 成作为函数参数传入时的类型。也许你会问，这不是啥也没干吗？其实对于传入右值引用的情况有所变化，它在函数内用起来就像是左值引用（因为任何有名字的变量必定是左值），有一个简单的例子。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">string</span>&amp;&amp; x)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">auto</span> y = x;  <span class="comment">// no move constructor but copy constructor called</span></span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; x &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;  <span class="comment">// output 123, x is still there</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f(<span class="string">&quot;123&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>根据 <code>std::forward</code> 的源代码，可以看到它用 <code>static_assert</code> 防止了一种转换，就是 <code>T</code> 为左值引用的情况，此时返回值也是左值引用，但是参数是右值。显然，把右值 cast 成左值是不合法的，因为会导致 dangling reference，比如：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>&amp; x = <span class="built_in">std</span>::forward&lt;<span class="keyword">int</span>&amp;&gt;(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<p>当然，如果用通常的方法使用，也就是配合模板或者 <code>auto + decltype(...)</code>，就肯定不会出现这种异常的转换。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/10/17/Curry-Function-in-C/" rel="prev" title="在 C++ 中实现柯里函数">
+                  <i class="fa fa-chevron-left"></i> 在 C++ 中实现柯里函数
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zerol</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+      <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://zerolblog.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://zerol.me/2020/10/17/std-move-std-forward/";
+    this.page.identifier = "2020/10/17/std-move-std-forward/";
+    this.page.title = "重温 std::move 以及 std::forward";
+    };
+  NexT.utils.loadComments('#disqus_thread', () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://zerolblog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>
