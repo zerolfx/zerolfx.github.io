@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"zerol.me","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+
+  <meta name="description" content="一时兴起，在淘宝上买了一个七八年前的二手服务器拿来玩。就写一篇博客来记录一下折腾的东西吧。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="电子垃圾折腾记 - 家用服务器">
+<meta property="og:url" content="https://zerol.me/2020/12/19/Play-with-E-Waste/index.html">
+<meta property="og:site_name" content="Zerol&#39;s Notes">
+<meta property="og:description" content="一时兴起，在淘宝上买了一个七八年前的二手服务器拿来玩。就写一篇博客来记录一下折腾的东西吧。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-12-19T12:32:31.000Z">
+<meta property="article:modified_time" content="2020-12-19T15:48:26.885Z">
+<meta property="article:author" content="zerol">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://zerol.me/2020/12/19/Play-with-E-Waste/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>电子垃圾折腾记 - 家用服务器 | Zerol's Notes</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100757043-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-100757043-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Zerol's Notes</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A1%AC%E4%BB%B6%E9%83%A8%E5%88%86"><span class="nav-number">1.</span> <span class="nav-text">硬件部分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">1.1.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%98%B5%E5%88%97%E5%8D%A1"><span class="nav-number">1.2.</span> <span class="nav-text">阵列卡</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A1%AC%E7%9B%98"><span class="nav-number">1.3.</span> <span class="nav-text">硬盘</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%9F%E8%80%97%E5%92%8C%E5%99%AA%E9%9F%B3"><span class="nav-number">1.4.</span> <span class="nav-text">功耗和噪音</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%BA%E4%BB%B6"><span class="nav-number">1.5.</span> <span class="nav-text">固件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E9%83%A8%E5%88%86"><span class="nav-number">2.</span> <span class="nav-text">软件部分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F"><span class="nav-number">2.1.</span> <span class="nav-text">系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B-Docker-%E6%8E%A8%E8%8D%90"><span class="nav-number">2.2.</span> <span class="nav-text">一些 Docker 推荐</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B-VM-%E6%8E%A8%E8%8D%90"><span class="nav-number">2.3.</span> <span class="nav-text">一些 VM 推荐</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="nav-number">3.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="zerol"
+      src="/images/alpha.png">
+  <p class="site-author-name" itemprop="name">zerol</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">137</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zerolfx/template" title="ACM 模板库 → https:&#x2F;&#x2F;github.com&#x2F;zerolfx&#x2F;template" rel="noopener" target="_blank"><i class="fa fa-book fa-fw"></i>ACM 模板库</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://acm.ecnu.edu.cn/wiki/index.php?title=ECNU_Foreigners_(2018)" title="训练记录 → https:&#x2F;&#x2F;acm.ecnu.edu.cn&#x2F;wiki&#x2F;index.php?title&#x3D;ECNU_Foreigners_(2018)" rel="noopener" target="_blank"><i class="fa fa-tasks fa-fw"></i>训练记录</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:z@zerol.me" title="E-Mail → mailto:z@zerol.me"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.jxtxzzw.com/" title="https:&#x2F;&#x2F;www.jxtxzzw.com" rel="noopener" target="_blank">jxtxzzw</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.secrul.cn/" title="http:&#x2F;&#x2F;www.secrul.cn&#x2F;" rel="noopener" target="_blank">secrul</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.rooobin.top/" title="https:&#x2F;&#x2F;www.rooobin.top&#x2F;" rel="noopener" target="_blank">rooobin</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://cubercsl.cn/" title="http:&#x2F;&#x2F;cubercsl.cn&#x2F;" rel="noopener" target="_blank">cubercsl</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://xiejiadong.com/" title="http:&#x2F;&#x2F;xiejiadong.com&#x2F;" rel="noopener" target="_blank">xiejiadong</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.csdn.net/calabash_boy" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;calabash_boy" rel="noopener" target="_blank">calabash_boy</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://dengtesla.com/" title="http:&#x2F;&#x2F;dengtesla.com" rel="noopener" target="_blank">D-Tesla</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://fuckgfw.org/" title="http:&#x2F;&#x2F;fuckgfw.org" rel="noopener" target="_blank">Minty_He</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://godweiyang.com/" title="http:&#x2F;&#x2F;godweiyang.com&#x2F;" rel="noopener" target="_blank">godweiyang</a>
+        </li>
+    </ul>
+  </div>
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://zerol.me/2020/12/19/Play-with-E-Waste/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/alpha.png">
+      <meta itemprop="name" content="zerol">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zerol's Notes">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          电子垃圾折腾记 - 家用服务器
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2020-12-19 20:32:31 / Modified: 23:48:26" itemprop="dateCreated datePublished" datetime="2020-12-19T20:32:31+08:00">2020-12-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%99%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">教程</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2020/12/19/Play-with-E-Waste/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/12/19/Play-with-E-Waste/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>一时兴起，在淘宝上买了一个七八年前的二手服务器拿来玩。就写一篇博客来记录一下折腾的东西吧。</p>
+<a id="more"></a>
+
+<h3 id="硬件部分"><a href="#硬件部分" class="headerlink" title="硬件部分"></a>硬件部分</h3><h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>华为 RH2288V2 准系统 (2U) + E5-2650V2 (2.6GHz 8C16T) * 2 + 8G ECC DDR3 * 4 = 1410 元</p>
+<p>服务器主板可以选 X79 和 X99 的垃圾，X99 可以支持 DDR4 以及至强 V3 V4，但是价格会贵出不少，与捡垃圾的初衷违背。<br>之所以选华为的这款，因为它是支持 3.5 寸硬盘最便宜的（甚至有 12 个盘位）。2.5 寸的大容量 SAS/SATA 硬盘很少而且价格偏贵，因为要做存储，所以就必须 3.5 寸盘位。但是因为便宜，所以扩展性打了一些折扣，只有三个半高 PCIEx8，要装显卡的话只能那种低性能的远古显卡（所以想装显卡的话，建议买 DELL R720），但是扩展 M.2 装固态或者 WIFI6 无线的话就没啥问题。</p>
+<h4 id="阵列卡"><a href="#阵列卡" class="headerlink" title="阵列卡"></a>阵列卡</h4><p>阵列卡用的是 LSI SAS2308，我希望的是直通卡（也就是 IT 模式，不支持组 Raid 阵列）。因为当时考虑文件系统用 ZFS 的 raid-z1，ZFS 需要和硬盘直接交互，套一层总不太好。然后我拿到的是支持阵列 IR 模式的，虽然不组阵列也能用，但还是把它刷成了 IT 模式。运行刷机工具需要的系统竟然是 DOS，于是特地下了个 FreeDOS 来刷阵列卡，这大概是我第一次使用 DOS 系统。</p>
+<h4 id="硬盘"><a href="#硬盘" class="headerlink" title="硬盘"></a>硬盘</h4><p>搞了几块 3T 的全新 SAS 硬盘（不知道有没有被坑）和一块便宜的 500G SSD 用来当缓存盘。</p>
+<h4 id="功耗和噪音"><a href="#功耗和噪音" class="headerlink" title="功耗和噪音"></a>功耗和噪音</h4><p>在几乎空载的情况下，平均功率 128W。（其实可以不要双路 CPU，或者选用低功耗的带 L 的至强 CPU）。<br>冬天，风扇维持在 2000 转，噪音 45db，不算安静也不算吵，但是 24h 不间断就有点可怕了。</p>
+<h4 id="固件"><a href="#固件" class="headerlink" title="固件"></a>固件</h4><p>远程管理的固件以及 BIOS 的固件都是 2014 年的，华为官网有新的固件，但是必须注册产品才能下载，让我一个强迫症患者很难受。<br>远程控制是网页版，非常古老，依赖 Java，为此我还特地掏出了 IE 浏览器。但是它竟然支持远程挂载光驱，装系统时非常好用，根本不需要用到 U 盘。</p>
+<h3 id="软件部分"><a href="#软件部分" class="headerlink" title="软件部分"></a>软件部分</h3><h4 id="系统"><a href="#系统" class="headerlink" title="系统"></a>系统</h4><p>我在 ESXi、Proxmox 和 Unraid 之间做选择。被我排除掉的是黑群晖，黑群晖适合装在虚拟机里，直接装宿主机上扩展性太差了。前两个都有（被阉割的）免费版，而 Unraid 是收费的，有一个月的试用（然而网上有破解，而且叫做开心版）。前两个是虚拟机管理系统，而 Unraid 是有虚拟机和 Docker 管理系统的 NAS 系统。</p>
+<p>在尝试了 Proxmox 和 Unraid 之后，我选择了后者。</p>
+<p>Unraid 的缺点：</p>
+<ul>
+<li>需要付费，而且是和 U 盘绑定，导致我凭空少了一个 U 盘。</li>
+<li>正如名字，它不是 Raid，你放再多的硬盘它也只有一块硬盘的速度。</li>
+<li>VM 不支持备份、快照（毕竟是 qemu kvm，可以用别的工具完成）。</li>
+<li>（相比群晖）作为 NAS，比较纯粹，只有网络共享功能。很多功能需要依赖 Nextcloud（比如 WebDAV，文件同步，在线预览文件），但是 Nextcloud 又会引入新的一套权限系统。</li>
+</ul>
+<p>Unraid 的优点：</p>
+<ul>
+<li>正如名字，它不是 Raid。它提供了奇偶校验 (Parity check) 来提供冗余，而不同磁盘组成一个大文件系统的方式是，以文件/文件夹为单位，自动分配到不同的磁盘。也就是说，在没有冗余的情况下，一块磁盘蒸发，丢失的是一半文件而不是像 Raid1 那样丢失全部文件。不过我觉得这不算是优点，冗余肯定要有，挂了冗余数量 + 1 块硬盘这也太可怕了，绝对不能发生这样的事，而不是考虑即便发生了我还能救一半。</li>
+<li>内置了 Docker 和 KVM 管理，挺方便的。其中 Docker 可以在应用商店里下载模板（就是帮你填了一些端口映射、路径映射、环境变量啥的），VM 可以很方便地 PCIe 直通。</li>
+<li>内置（加上官方插件）了很多有用的东西，比如邮件报警、UPS 供电一段时间后自动关机、Wireguard 图形化配置。</li>
+<li>强大的社区支持，有很多插件和 Docker 模板，还有活跃的论坛。</li>
+</ul>
+<h4 id="一些-Docker-推荐"><a href="#一些-Docker-推荐" class="headerlink" title="一些 Docker 推荐"></a>一些 Docker 推荐</h4><ul>
+<li>Calibre + Calibre-Web 电子书管理</li>
+<li>Nextcloud +MariaDB 网盘</li>
+<li>Syncplay 远程一起看视频（本地播放器进度条同步软件）</li>
+<li>Cloudflare-DDNS 动态 DNS，适合家庭宽带（虽然有公网 ip，但是会变）</li>
+<li>NPS 内网穿透</li>
+<li>Code-Server 网页版 VS Code，但是懒得配环境</li>
+<li>Unblock Netease Music 用其他音乐平台解锁网易云音乐灰色歌曲，本质是一个代理服务器</li>
+</ul>
+<h4 id="一些-VM-推荐"><a href="#一些-VM-推荐" class="headerlink" title="一些 VM 推荐"></a>一些 VM 推荐</h4><p>系统有什么好推荐的呢？</p>
+<ul>
+<li>自编译 Openwrt 拿来当路由或者网关路由，软路由嘛，性能从来都不会是瓶颈</li>
+<li>423Down 上的精简 Win10，装个迅雷、百度云，拿来当下载机</li>
+<li>全量 Win10，配合显卡和显示器欺骗器（就是插在显卡上，假装有显示器）用来远程（甚至远程打游戏）。</li>
+</ul>
+<h3 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h3><p>引用 K 的话，服务器是成年人的玩具。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/10/26/CPP-Parser-Combinator/" rel="prev" title="C++ 自制 Parser Combinator">
+                  <i class="fa fa-chevron-left"></i> C++ 自制 Parser Combinator
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/12/19/Compile-Openwrt-for-Newifi-3/" rel="next" title="新路由3 编译 Openwrt 固件">
+                  新路由3 编译 Openwrt 固件 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zerol</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+      <script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              const target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    const script = document.createElement('script');
+    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
+    script.defer = true;
+    document.head.appendChild(script);
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.typesetClear();
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://zerolblog.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://zerol.me/2020/12/19/Play-with-E-Waste/";
+    this.page.identifier = "2020/12/19/Play-with-E-Waste/";
+    this.page.title = "电子垃圾折腾记 - 家用服务器";
+    };
+  NexT.utils.loadComments('#disqus_thread', () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://zerolblog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>
