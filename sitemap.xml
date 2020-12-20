@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://zerol.me/2020/12/20/2020-Reading-Stats/</loc>
+    
+    <lastmod>2020-12-20</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://zerol.me/2020/12/20/Boox-Max-2/</loc>
     
     <lastmod>2020-12-20</lastmod>
@@ -1357,6 +1364,13 @@
 
   
   <url>
+    <loc>https://zerol.me/categories/%E6%9D%82%E6%96%87/</loc>
+    <lastmod>2020-12-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://zerol.me/categories/ACM/</loc>
     <lastmod>2020-12-20</lastmod>
     <changefreq>daily</changefreq>
@@ -1379,13 +1393,6 @@
   
   <url>
     <loc>https://zerol.me/categories/%E6%B5%8B%E8%AF%84/</loc>
-    <lastmod>2020-12-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://zerol.me/categories/%E6%9D%82%E6%96%87/</loc>
     <lastmod>2020-12-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
